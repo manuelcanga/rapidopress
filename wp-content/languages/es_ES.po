@@ -693,6 +693,11 @@ msgstr "<strong>ERROR</strong>: El comentario no se pudo guardar. Por favor, int
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(WordPress no pudo establecer una conexión segura con WordPress.org. Por favor, contacta con el administrador de tu servidor.)"
 
+#: wp-includes/class-wp-editor.php:787
+msgctxt "HTML tag"
+msgid "Preformatted"
+msgstr "Preformateado"
+
 #: wp-includes/class-wp-editor.php:788
 msgctxt "HTML tag"
 msgid "Address"
