@@ -2998,7 +2998,6 @@ function wp_insert_term( $term, $taxonomy, $args = array() ) {
      * @param int    $tt_id    Term taxonomy ID.
      * @param string $taxonomy Taxonomy slug.
      */
-	 */
 	do_action( "created_term", $term_id, $tt_id, $taxonomy );
 
 	/**
