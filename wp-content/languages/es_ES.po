@@ -90,8 +90,8 @@ msgid "<strong>ERROR</strong>: The password you entered for the username <strong
 msgstr "<strong>ERROR</strong>: La contraseña que has introducido para el nombre de usuario  <strong>%1$s</strong> es incorrecta. <a href=\"%2$s\">¿Has perdido la contraseña?</a>"
 
 #: wp-includes/taxonomy.php:2931
-msgid "A term with the name already exists with this parent."
-msgstr "Ya existe un término con ese nombre con este padre"
+msgid "A term with the name provided already exists with this parent"
+msgstr "Ya se ha añadido un término con ese nombre para el mismo padre"
 
 #. translators: %d: nth image found in a post
 #: wp-includes/script-loader.php:486
@@ -112,8 +112,8 @@ msgid "Customizer"
 msgstr "Personalizador"
 
 #: wp-includes/taxonomy.php:2934
-msgid "A term with the name already exists in this taxonomy."
-msgstr "Ya hay un término con ese nombre en esta taxonomía."
+msgid "A term with the name provided already exists in this taxonomy."
+msgstr "Ya existe un término con el nombre indicado para la misma taxonomía."
 
 #: wp-includes/script-loader.php:400
 msgid "Site Preview"
