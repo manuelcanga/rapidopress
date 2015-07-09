@@ -932,8 +932,6 @@ function register_post_type( $post_type, $args = array() ) {
 			$args->rewrite['with_front'] = true;
 		if ( ! isset( $args->rewrite['pages'] ) )
 			$args->rewrite['pages'] = true;
-		if ( ! isset( $args->rewrite['feeds'] ) || ! $args->has_archive )
-			$args->rewrite['feeds'] = (bool) $args->has_archive;
 		if ( ! isset( $args->rewrite['ep_mask'] ) ) {
 			if ( isset( $args->permalink_epmask ) )
 				$args->rewrite['ep_mask'] = $args->permalink_epmask;
@@ -954,17 +952,12 @@ function register_post_type( $post_type, $args = array() ) {
 				$archive_slug = $wp_rewrite->root . $archive_slug;
 
 			add_rewrite_rule( "{$archive_slug}/?$", "index.php?post_type=$post_type", 'top' );
-			if ( $args->rewrite['feeds'] && $wp_rewrite->feeds ) {
-				$feeds = '(' . trim( implode( '|', $wp_rewrite->feeds ) ) . ')';
-				add_rewrite_rule( "{$archive_slug}/feed/$feeds/?$", "index.php?post_type=$post_type" . '&feed=$matches[1]', 'top' );
-				add_rewrite_rule( "{$archive_slug}/$feeds/?$", "index.php?post_type=$post_type" . '&feed=$matches[1]', 'top' );
-			}
+
 			if ( $args->rewrite['pages'] )
 				add_rewrite_rule( "{$archive_slug}/{$wp_rewrite->pagination_base}/([0-9]{1,})/?$", "index.php?post_type=$post_type" . '&paged=$matches[1]', 'top' );
 		}
 
 		$permastruct_args = $args->rewrite;
-		$permastruct_args['feed'] = $permastruct_args['feeds'];
 		add_permastruct( $post_type, "{$args->rewrite['slug']}/%$post_type%", $permastruct_args );
 	}
 
@@ -3223,10 +3216,6 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 
 	$original_slug = $slug;
 
-	$feeds = $wp_rewrite->feeds;
-	if ( ! is_array( $feeds ) )
-		$feeds = array();
-
 	if ( 'attachment' == $post_type ) {
 		// Attachment slugs must be unique across all types.
 		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND ID != %d LIMIT 1";
@@ -3240,7 +3229,7 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		 * @param bool   $bad_slug Whether the slug would be bad as an attachment slug.
 		 * @param string $slug     The post slug.
 		 */
-		if ( $post_name_check || in_array( $slug, $feeds ) || apply_filters( 'wp_unique_post_slug_is_bad_attachment_slug', false, $slug ) ) {
+		if ( $post_name_check  || apply_filters( 'wp_unique_post_slug_is_bad_attachment_slug', false, $slug ) ) {
 			$suffix = 2;
 			do {
 				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
@@ -3270,7 +3259,7 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		 * @param string $post_type   Post type.
 		 * @param int    $post_parent Post parent ID.
 		 */
-		if ( $post_name_check || in_array( $slug, $feeds ) || preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $slug )  || apply_filters( 'wp_unique_post_slug_is_bad_hierarchical_slug', false, $slug, $post_type, $post_parent ) ) {
+		if ( $post_name_check || preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $slug )  || apply_filters( 'wp_unique_post_slug_is_bad_hierarchical_slug', false, $slug, $post_type, $post_parent ) ) {
 			$suffix = 2;
 			do {
 				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
@@ -3293,7 +3282,7 @@ function wp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_p
 		 * @param string $slug      The post slug.
 		 * @param string $post_type Post type.
 		 */
-		if ( $post_name_check || in_array( $slug, $feeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $post_type ) ) {
+		if ( $post_name_check || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $post_type ) ) {
 			$suffix = 2;
 			do {
 				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
