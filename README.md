@@ -30,7 +30,7 @@ RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the d
 *   Post using email
 *   English language by default. You can change it if you remove  "$wp_local_package" line in includes/init/version.php file
   
-## RapidoPress have...
+## Rapido has...
 
 *  Widget Banner ( from Image Widget plugin )
 *  Widget Facebook Likebox  ( from JetPack )
