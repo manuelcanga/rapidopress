@@ -1293,9 +1293,9 @@ function upgrade_420() {
 }
 
 /**
- * Execute changes made in WordPress 4.2.1.
+ * Execute changes made in WordPress 4.3.
  *
- * @since 4.2.1
+ * @since 4.3
  */
 function upgrade_430() {
     global $wp_current_db_version, $wpdb;
@@ -1314,7 +1314,7 @@ function upgrade_430() {
         );
 
         foreach ( $comments as $comment ) {
-            wp_delete_comment( $comment->comment_ID );
+            wp_delete_comment( $comment->comment_ID, true );
         }
     }
 }
