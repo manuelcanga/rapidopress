@@ -11,6 +11,8 @@ class WP_Embed {
 	public $post_ID;
 	public $usecache = true;
 	public $linkifunknown = true;
+    public $last_attr = array(); 
+    public $last_url = ''; 
 
 	/**
 	 * When an URL cannot be embedded, return false instead of returning a link
@@ -135,11 +137,15 @@ class WP_Embed {
 		}
 
 
-		if ( empty( $url ) )
+        $this->last_url = $url; 
+		if ( empty( $url ) ){
+            $this->last_attr = $attr; 
 			return '';
+		}
 
 		$rawattr = $attr;
 		$attr = wp_parse_args( $attr, wp_embed_defaults( $url ) );
+        $this->last_attr = $attr; 
 
 		// kses converts & into &amp; and we need to undo this
 		// See https://core.trac.wordpress.org/ticket/11311
