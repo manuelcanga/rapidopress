@@ -822,15 +822,15 @@ function wp_media_upload_handler() {
 }
 
 /**
- * Download an image from the specified URL and attach it to a post.
+ * Downloads an image from the specified URL and attaches it to a post. 
  *
  * @since 4.2.0 Introduced the `$return` parameter. 
  *
- * @param string $file The URL of the image to download
- * @param int $post_id The post ID the media is to be associated with
- * @param string $desc Optional. Description of the image
- * @param string $return Optional. Accepts 'html' (image tag html) or 'src' (URL). Default 'html'. 
- * @return string|WP_Error Populated HTML img tag on success
+ * @param string $file    The URL of the image to download. 
+ * @param int    $post_id The post ID the media is to be associated with. 
+ * @param string $desc    Optional. Description of the image. 
+ * @param string $return  Optional. Accepts 'html' (image tag html) or 'src' (URL). Default 'html'. 
+ * @return string|WP_Error Populated HTML img tag on success, WP_Error object otherwise. 
  */
 function media_sideload_image( $file, $post_id, $desc = null, $return = 'html' ) {
 	if ( ! empty( $file ) ) {
@@ -859,7 +859,7 @@ function media_sideload_image( $file, $post_id, $desc = null, $return = 'html' )
 		$src = wp_get_attachment_url( $id );
 	}
 
-	// Finally check to make sure the file has been saved, then return the HTML.
+	// Finally, check to make sure the file has been saved, then return the HTML.
 	if ( ! empty( $src ) ) {
 		if ( $return === 'src' ) {
 			return $src;
