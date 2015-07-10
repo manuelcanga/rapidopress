@@ -1860,29 +1860,33 @@ class Db {
 		return $data;
 	}
 
-	/**
-	 * For string fields, record the maximum string length that field can safely save.
-	 *
-	 * @since 4.2.1
-	 * @access protected
-	 *
-	 * @param array  $data  As it comes from the wpdb::process_field_charsets() method.
-	 * @param string $table Table name.
-	 * @return array|False The same array as $data with additional 'length' keys, or false if
-	 *                     any of the values were too long for their corresponding field.
-	 */
-	protected function process_field_lengths( $data, $table ) {
-		foreach ( $data as $field => $value ) {
-			if ( '%d' === $value['format'] || '%f' === $value['format'] ) {
-				// We can skip this field if we know it isn't a string.
-				// This checks %d/%f versus ! %s because it's sprintf() could take more.
-				$value['length'] = false;
-			} else {
-				$value['length'] = $this->get_col_length( $table, $field );
-				if ( is_wp_error( $value['length'] ) ) {
-					return false;
-				}
-			}
+    /**
+     * For string fields, record the maximum string length that field can safely save.
+     *
+     * @since 4.2.1
+     * @access protected
+     *
+     * @param array  $data  As it comes from the wpdb::process_field_charsets() method.
+     * @param string $table Table name.
+     * @return array|False The same array as $data with additional 'length' keys, or false if
+     *                     any of the values were too long for their corresponding field.
+     */
+    protected function process_field_lengths( $data, $table ) {
+        foreach ( $data as $field => $value ) {
+            if ( '%d' === $value['format'] || '%f' === $value['format'] ) {
+                // We can skip this field if we know it isn't a string.
+                // This checks %d/%f versus ! %s because it's sprintf() could take more.
+                $value['length'] = false;
+            } else {
+                $value['length'] = $this->get_col_length( $table, $field );
+                if ( is_wp_error( $value['length'] ) ) {
+                    return false;
+                }
+            }
+
+            if ( false !== $value['length'] && mb_strlen( $value['value'] ) > $value['length'] ) {
+                  return false;
+            }
 
 			$data[ $field ] = $value;
 		}
@@ -2223,98 +2227,76 @@ class Db {
 		return $charset;
 	}
 
-	/**
-	 * Retrieve the maximum string length allowed in a given column.
-	 * The length may either be specified as a byte length or a character length.
-	 *
-	 * @since 4.2.1
-	 * @access public
-	 *
-	 * @param string $table  Table name.
-	 * @param string $column Column name.
-	 * @return mixed array( 'length' => (int), 'type' => 'byte' | 'char' )
-	 *               false if the column has no length (for example, numeric column)
-	 *               WP_Error OBJECT if there was an error.
-	 */
-	public function get_col_length( $table, $column ) {
-		$tablekey = strtolower( $table );
-		$columnkey = strtolower( $column );
+     /**
+     * Retrieve the maximum string length allowed in a given column.
+     *
+     * @since 4.2.1
+     * @access public
+     *
+     * @param string $table  Table name.
+     * @param string $column Column name.
+     * @return mixed Max column length as an int. False if the column has no
+     *               length. WP_Error object if there was an error.
+     */
+    public function get_col_length( $table, $column ) {
+        $tablekey = strtolower( $table );
+        $columnkey = strtolower( $column );
 
-		// Skip this entirely if this isn't a MySQL database.
-		if ( false === $this->is_mysql ) {
-			return false;
-		}
+        // Skip this entirely if this isn't a MySQL database.
+        if ( false === $this->is_mysql ) {
+            return false;
+        }
 
-		if ( empty( $this->col_meta[ $tablekey ] ) ) {
-			// This primes column information for us.
-			$table_charset = $this->get_table_charset( $table );
-			if ( is_wp_error( $table_charset ) ) {
-				return $table_charset;
-			}
-		}
+        if ( empty( $this->col_meta[ $tablekey ] ) ) {
+            // This primes column information for us.
+            $table_charset = $this->get_table_charset( $table );
+            if ( is_wp_error( $table_charset ) ) {
+                return $table_charset;
+            }
+        }
 
-		if ( empty( $this->col_meta[ $tablekey ][ $columnkey ] ) ) {
-			return false;
-		}
+        if ( empty( $this->col_meta[ $tablekey ][ $columnkey ] ) ) {
+            return false;
+        }
 
-		$typeinfo = explode( '(', $this->col_meta[ $tablekey ][ $columnkey ]->Type );
+        $typeinfo = explode( '(', $this->col_meta[ $tablekey ][ $columnkey ]->Type );
 
-		$type = strtolower( $typeinfo[0] );
-		if ( ! empty( $typeinfo[1] ) ) {
-			$length = trim( $typeinfo[1], ')' );
-		} else {
-			$length = false;
-		}
+        $type = strtolower( $typeinfo[0] );
+        if ( ! empty( $typeinfo[1] ) ) {
+            $length = trim( $typeinfo[1], ')' );
+        } else {
+            $length = false;
+        }
 
-		switch( $type ) {
-			case 'char':
-			case 'varchar':
-				return array(
-					'type'   => 'char',
-					'length' => (int) $length,
-				);
-				break;
-			case 'binary':
-			case 'varbinary':
-				return array(
-					'type'   => 'byte',
-					'length' => (int) $length,
-				);
-				break;
-			case 'tinyblob':
-			case 'tinytext':
-				return array(
-					'type'   => 'byte',
-					'length' => 255,        // 2^8 - 1
-				);
-				break;
-			case 'blob':
-			case 'text':
-				return array(
-					'type'   => 'byte',
-					'length' => 65535,      // 2^16 - 1
-				);
-				break;
-			case 'mediumblob':
-			case 'mediumtext':
-				return array(
-					'type'   => 'byte',
-					'length' => 16777215,   // 2^24 - 1
-				);
-				break;
-			case 'longblob':
-			case 'longtext':
-				return array(
-					'type'   => 'byte',
-					'length' => 4294967295, // 2^32 - 1
-				);
-				break;
-			default:
-				return false;
-		}
+        switch( $type ) {
+            case 'binary':
+            case 'char':
+            case 'varbinary':
+            case 'varchar':
+                return $length;
+                break;
+            case 'tinyblob':
+            case 'tinytext':
+                return 255; // 2^8 - 1
+                break;
+            case 'blob':
+            case 'text':
+                return 65535; // 2^16 - 1
+                break;
+            case 'mediumblob':
+            case 'mediumtext':
+                return 16777215; // 2^24 - 1
+                break;
+            case 'longblob':
+            case 'longtext':
+                return 4294967295; // 2^32 - 1
+                break;
+            default:
+                return false;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
 	/**
 	 * Check if a string is ASCII.
