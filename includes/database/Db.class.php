@@ -2229,14 +2229,16 @@ class Db {
 
      /**
      * Retrieve the maximum string length allowed in a given column.
+     * The length may either be specified as a byte length or a character length. 
      *
      * @since 4.2.1
      * @access public
      *
      * @param string $table  Table name.
      * @param string $column Column name.
-     * @return mixed Max column length as an int. False if the column has no
-     *               length. WP_Error object if there was an error.
+     * @return mixed array( 'length' => (int), 'type' => 'byte' | 'char' ) 
+     *               false if the column has no length (for example, numeric column) 
+     *               WP_Error object if there was an error. 
      */
     public function get_col_length( $table, $column ) {
         $tablekey = strtolower( $table );
@@ -2269,27 +2271,42 @@ class Db {
         }
 
         switch( $type ) {
+            case 'char': 
+            case 'varchar': 
+                return array( 
+                    'type'   => 'char', 
+                    'length' => (int) $length, 
+                ); 
+                break; 
             case 'binary':
-            case 'char':
             case 'varbinary':
-            case 'varchar':
-                return $length;
-                break;
             case 'tinyblob':
             case 'tinytext':
-                return 255; // 2^8 - 1
+                return array( 
+                    'type'   => 'byte', 
+                    'length' => 255,        // 2^8 - 1 
+                ); 
                 break;
             case 'blob':
             case 'text':
-                return 65535; // 2^16 - 1
+                return array( 
+                    'type'   => 'byte', 
+                    'length' => 65535,      // 2^16 - 1 
+                ); 
                 break;
             case 'mediumblob':
             case 'mediumtext':
-                return 16777215; // 2^24 - 1
+                return array( 
+                    'type'   => 'byte', 
+                    'length' => 16777215,   // 2^24 - 1 
+                ); 
                 break;
             case 'longblob':
             case 'longtext':
-                return 4294967295; // 2^32 - 1
+                return array( 
+                    'type'   => 'byte', 
+                    'length' => 4294967295, // 2^32 - 1 
+                ); 
                 break;
             default:
                 return false;
