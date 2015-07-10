@@ -1521,6 +1521,11 @@ msgstr ""
 msgid "Show next theme"
 msgstr "Mostrar el tema siguiente"
 
+#: wp-admin/themes.php:366
+msgid "Close details dialog"
+msgstr "Cerrar ventana de detalles"
+
+
 #: wp-admin/post.php:116
 msgid "Unable to submit this form, please refresh and try again."
 msgstr "No ha sido posible enviar este formulario, por favor, recarga e inténtalo de nuevo."
