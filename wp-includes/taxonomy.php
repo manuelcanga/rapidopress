@@ -4,7 +4,6 @@
  *
  * @package WordPress
  * @subpackage Taxonomy
- * @since 2.3.0
  */
 
 //
@@ -15,8 +14,12 @@
  * Creates the initial taxonomies.
  *
  * This function fires twice: in wp-settings.php before plugins are loaded (for
- * backwards compatibility reasons), and again on the 'init' action. We must avoid
- * registering rewrite rules before the 'init' action.
+ * backwards compatibility reasons), and again on the {@see 'init'} action. We must 
+ * avoid registering rewrite rules before the {@see 'init'} action. 
+ * 
+ * @since 2.8.0 
+ * 
+ * @global WP_Rewrite $wp_rewrite The WordPress rewrite class. 
  */
 function create_initial_taxonomies() {
 	global $wp_rewrite;
@@ -100,10 +103,10 @@ function create_initial_taxonomies() {
 }
 
 /**
- * Get a list of registered taxonomy objects.
+ * Retrieves a list of registered taxonomy names or objects. 
  *
  * @since 3.0.0
- * @uses $wp_taxonomies
+ * @global array $wp_taxonomies The registered taxonomies. 
  *
  * @param array $args An array of key => value arguments to match against the taxonomy objects.
  * @param string $output The type of output to return, either taxonomy 'names' or 'objects'. 'names' is the default.
@@ -130,7 +133,7 @@ function get_taxonomies( $args = array(), $output = 'names', $operator = 'and' )
  *
  * @since 2.3.0
  *
- * @uses $wp_taxonomies
+ * @global array $wp_taxonomies The registered taxonomies. 
  *
  * @param array|string|object $object Name of the type of taxonomy object, or an object (row from posts)
  * @param string $output The type of output to return, either taxonomy 'names' or 'objects'. 'names' is the default.
@@ -168,7 +171,7 @@ function get_object_taxonomies($object, $output = 'names') {
  *
  * @since 2.3.0
  *
- * @uses $wp_taxonomies
+ * @global array $wp_taxonomies The registered taxonomies. 
  *
  * @param string $taxonomy Name of taxonomy object to return
  * @return object|bool The Taxonomy Object or false if $taxonomy doesn't exist
@@ -189,7 +192,7 @@ function get_taxonomy( $taxonomy ) {
  *
  * @since 3.0.0
  *
- * @uses $wp_taxonomies
+ * @global array $wp_taxonomies The registered taxonomies. 
  *
  * @param string $taxonomy Name of taxonomy object
  * @return bool Whether the taxonomy exists.
@@ -475,7 +478,7 @@ function get_taxonomy_labels( $tax ) {
  * Add an already registered taxonomy to an object type.
  *
  * @since 3.0.0
- * @uses $wp_taxonomies Modifies taxonomy object
+ * @global array $wp_taxonomies The registered taxonomies.  Modifies taxonomy object
  *
  * @param string $taxonomy Name of taxonomy object
  * @param string $object_type Name of the object type
@@ -543,7 +546,7 @@ function unregister_taxonomy_for_object_type( $taxonomy, $object_type ) {
  *
  * @since 2.3.0
  *
- * @global wpdb $wpdb WordPress database abstraction object.
+ * @global wpdb $wpdb The WordPress database abstraction object. 
  *
  * @param int|array $term_ids Term id or array of term ids of terms that will be used
  * @param string|array $taxonomies String of taxonomy name or Array of string values of taxonomy names
@@ -972,6 +975,8 @@ class WP_Tax_Query {
 	 * @since 4.1.0
 	 * @access public
 	 *
+     * @global wpdb $wpdb The WordPress database abstraction object. 
+	 *
 	 * @param array $clause       Query clause, passed by reference
 	 * @param array $parent_query Parent query array.
 	 * @return array {
@@ -1179,6 +1184,8 @@ class WP_Tax_Query {
 	 * Transforms a single query, from one field to another.
 	 *
 	 * @since 3.2.0
+	 *
+     * @global wpdb $wpdb The WordPress database abstraction object. 
 	 *
 	 * @param array  &$query          The single query.
 	 * @param string $resulting_field The resulting field. Accepts 'slug', 'name', 'term_taxonomy_id',
