@@ -39,7 +39,6 @@ jQuery(document).ready(function() {
 }
 add_filter('admin_head', 'options_permalink_add_js');
 
-$home_path = get_home_path();
 $iis7_permalinks = iis7_supports_permalinks();
 
 $prefix = $blog_prefix = '';
@@ -90,18 +89,18 @@ $tag_base            = get_option( 'tag_base' );
 $update_required     = false;
 
 if ( $iis7_permalinks ) {
-	if ( ( ! file_exists($home_path . 'web.config') && win_is_writable($home_path) ) || win_is_writable($home_path . 'web.config') )
+	if ( ( ! file_exists(ABSPATH . 'web.config') && win_is_writable(ABSPATH) ) || win_is_writable(ABSPATH . 'web.config') )
 		$writable = true;
 	else
 		$writable = false;
 } elseif ( $is_nginx ) {
 	$writable = false;
 } else {
-	if ( ( ! file_exists( $home_path . '.htaccess' ) && is_writable( $home_path ) ) || is_writable( $home_path . '.htaccess' ) ) {
+	if ( ( ! file_exists( ABSPATH . '.htaccess' ) && is_writable( ABSPATH ) ) || is_writable( ABSPATH . '.htaccess' ) ) {
 		$writable = true;
 	} else {
 		$writable = false;
-		$existing_rules  = array_filter( extract_from_markers( $home_path . '.htaccess', 'WordPress' ) );
+		$existing_rules  = array_filter( extract_from_markers( ABSPATH . '.htaccess', 'WordPress' ) );
 		$new_rules       = array_filter( explode( "\n", $wp_rewrite->mod_rewrite_rules() ) );
 		$update_required = ( $new_rules !== $existing_rules );
 	}
@@ -163,23 +162,23 @@ $structures = array(
 <table class="form-table permalink-structure">
 	<tr>
 		<th><label><input name="selection" type="radio" value="" <?php checked('', $permalink_structure); ?> /> <?php _e('Default'); ?></label></th>
-		<td><code><?php echo get_option('home'); ?>/?p=123</code></td>
+		<td><code><?php echo get_option('siteurl'); ?>/?p=123</code></td>
 	</tr>
 	<tr>
 		<th><label><input name="selection" type="radio" value="<?php echo esc_attr($structures[1]); ?>" <?php checked($structures[1], $permalink_structure); ?> /> <?php _e('Day and name'); ?></label></th>
-		<td><code><?php echo get_option('home') . $blog_prefix . $prefix . '/' . date('Y') . '/' . date('m') . '/' . date('d') . '/' . _x( 'sample-post', 'sample permalink structure' ) . '/'; ?></code></td>
+		<td><code><?php echo get_option('siteurl') . $blog_prefix . $prefix . '/' . date('Y') . '/' . date('m') . '/' . date('d') . '/' . _x( 'sample-post', 'sample permalink structure' ) . '/'; ?></code></td>
 	</tr>
 	<tr>
 		<th><label><input name="selection" type="radio" value="<?php echo esc_attr($structures[2]); ?>" <?php checked($structures[2], $permalink_structure); ?> /> <?php _e('Month and name'); ?></label></th>
-		<td><code><?php echo get_option('home') . $blog_prefix . $prefix . '/' . date('Y') . '/' . date('m') . '/' . _x( 'sample-post', 'sample permalink structure' ) . '/'; ?></code></td>
+		<td><code><?php echo get_option('siteurl') . $blog_prefix . $prefix . '/' . date('Y') . '/' . date('m') . '/' . _x( 'sample-post', 'sample permalink structure' ) . '/'; ?></code></td>
 	</tr>
 	<tr>
 		<th><label><input name="selection" type="radio" value="<?php echo esc_attr($structures[3]); ?>" <?php checked($structures[3], $permalink_structure); ?> /> <?php _e('Numeric'); ?></label></th>
-		<td><code><?php echo get_option('home') . $blog_prefix . $prefix . '/' . _x( 'archives', 'sample permalink base' ) . '/123'; ?></code></td>
+		<td><code><?php echo get_option('siteurl') . $blog_prefix . $prefix . '/' . _x( 'archives', 'sample permalink base' ) . '/123'; ?></code></td>
 	</tr>
 	<tr>
 		<th><label><input name="selection" type="radio" value="<?php echo esc_attr($structures[4]); ?>" <?php checked($structures[4], $permalink_structure); ?> /> <?php _e('Post name'); ?></label></th>
-		<td><code><?php echo get_option('home') . $blog_prefix . $prefix . '/' . _x( 'sample-post', 'sample permalink structure' ) . '/'; ?></code></td>
+		<td><code><?php echo get_option('siteurl') . $blog_prefix . $prefix . '/' . _x( 'sample-post', 'sample permalink structure' ) . '/'; ?></code></td>
 	</tr>
 	<tr>
 		<th>
@@ -188,7 +187,7 @@ $structures = array(
 			</label>
 		</th>
 		<td>
-			<code><?php echo get_option('home') . $blog_prefix; ?></code>
+			<code><?php echo get_option('siteurl') . $blog_prefix; ?></code>
 			<input name="permalink_structure" id="permalink_structure" type="text" value="<?php echo esc_attr($permalink_structure); ?>" class="regular-text code" />
 		</td>
 	</tr>
@@ -197,7 +196,7 @@ $structures = array(
 <h3 class="title"><?php _e('Optional'); ?></h3>
 <p><?php
 /* translators: %s is a placeholder that must come at the start of the URL. */
-printf( __('If you like, you may enter custom structures for your category and tag <abbr title="Universal Resource Locator">URL</abbr>s here. For example, using <code>topics</code> as your category base would make your category links like <code>%s/topics/uncategorized/</code>. If you leave these blank the defaults will be used.'), get_option('home') . $blog_prefix . $prefix ); ?></p>
+printf( __('If you like, you may enter custom structures for your category and tag <abbr title="Universal Resource Locator">URL</abbr>s here. For example, using <code>topics</code> as your category base would make your category links like <code>%s/topics/uncategorized/</code>. If you leave these blank the defaults will be used.'), get_option('siteurl') . $blog_prefix . $prefix ); ?></p>
 
 <table class="form-table">
 	<tr>
@@ -218,7 +217,7 @@ printf( __('If you like, you may enter custom structures for your category and t
 
 <?php if ( $iis7_permalinks ) :
 	if ( isset($_POST['submit']) && $permalink_structure && ! $usingpi && ! $writable ) :
-		if ( file_exists($home_path . 'web.config') ) : ?>
+		if ( file_exists(ABSPATH . '/web.config') ) : ?>
 <p><?php _e('If your <code>web.config</code> file were <a href="https://codex.wordpress.org/Changing_File_Permissions">writable</a>, we could do this automatically, but it isn&#8217;t so this is the url rewrite rule you should have in your <code>web.config</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all. Then insert this rule inside of the <code>/&lt;configuration&gt;/&lt;system.webServer&gt;/&lt;rewrite&gt;/&lt;rules&gt;</code> element in <code>web.config</code> file.') ?></p>
 <form action="options-permalink.php" method="post">
 <?php wp_nonce_field('update-permalink') ?>

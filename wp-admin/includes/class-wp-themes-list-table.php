@@ -143,7 +143,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 			$preview_link = esc_url( add_query_arg(
 				array( 'preview' => 1, 'template' => urlencode( $template ), 'stylesheet' => urlencode( $stylesheet ), 'preview_iframe' => true, 'TB_iframe' => 'true' ),
-				home_url( '/' ) ) );
+				site_url( '/' ) ) );
 
 			$actions = array();
 			$actions['activate'] = '<a href="' . $activate_link . '" class="activatelink" title="'

@@ -783,7 +783,7 @@ function wp_nav_menu_item_post_type_meta_box( $object, $post_type ) {
 							'post_title' => _x('Home', 'nav menu home label'),
 							'post_type' => 'nav_menu_item',
 							'type' => 'custom',
-							'url' => home_url('/'),
+							'url' => site_url('/'),
 						) );
 					}
 				}

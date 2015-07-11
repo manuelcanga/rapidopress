@@ -64,7 +64,7 @@ class Widget_Categories extends Widget {
 	var dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id ); ?>" );
 	function onCatChange() {
 		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
-			location.href = "<?php echo home_url(); ?>/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+			location.href = "<?php echo sute_url(); ?>/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
 		}
 	}
 	dropdown.onchange = onCatChange;

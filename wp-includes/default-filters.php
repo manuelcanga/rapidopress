@@ -172,7 +172,6 @@ add_filter( 'the_guid',           'esc_url'                       );
 // Misc filters
 add_filter( 'option_blog_charset',      '_wp_specialchars'                    ); // IMPORTANT: This must not be wp_specialchars() or esc_html() or it'll cause an infinite loop
 add_filter( 'option_blog_charset',      '_canonical_charset'                  );
-add_filter( 'option_home',              '_config_wp_home'                     );
 add_filter( 'option_siteurl',           '_config_wp_siteurl'                  );
 add_filter( 'tiny_mce_before_init',     '_mce_set_direction'                  );
 add_filter( 'teeny_mce_before_init',    '_mce_set_direction'                  );

@@ -31,7 +31,7 @@ class WP_Admin_Bar {
 			$this->user->blogs = get_blogs_of_user( get_current_user_id() );
 
 			$this->user->active_blog = $this->user->blogs[get_current_blog_id()];
-			$this->user->domain = trailingslashit( home_url() );
+			$this->user->domain = trailingslashit( site_url() );
 			$this->user->account_domain = $this->user->domain;
 		}
 

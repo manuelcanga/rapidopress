@@ -350,14 +350,14 @@ function get_http_origin() {
  */
 function get_allowed_http_origins() {
 	$admin_origin = parse_url( admin_url() );
-	$home_origin = parse_url( home_url() );
+	$site_origin = parse_url( site_url() );
 
 	// @todo preserve port?
 	$allowed_origins = array_unique( array(
 		'http://' . $admin_origin[ 'host' ],
 		'https://' . $admin_origin[ 'host' ],
-		'http://' . $home_origin[ 'host' ],
-		'https://' . $home_origin[ 'host' ],
+		'http://' . $site_origin[ 'host' ],
+		'https://' . $site_origin[ 'host' ],
 	) );
 
 	/**
@@ -369,8 +369,8 @@ function get_allowed_http_origins() {
 	 *     Default allowed HTTP origins.
 	 *     @type string Non-secure URL for admin origin.
 	 *     @type string Secure URL for admin origin.
-	 *     @type string Non-secure URL for home origin.
-	 *     @type string Secure URL for home origin.
+	 *     @type string Non-secure URL for site origin.
+	 *     @type string Secure URL for site origin.
 	 * }
 	 */
 	return apply_filters( 'allowed_http_origins' , $allowed_origins );
@@ -460,9 +460,9 @@ function wp_http_validate_url( $url ) {
 	if ( false !== strpbrk( $parsed_url['host'], ':#?[]' ) )
 		return false;
 
-	$parsed_home = @parse_url( get_option( 'home' ) );
+	$parsed_site = @parse_url( get_option( 'siteurl' ) );
 
-	$same_host = strtolower( $parsed_home['host'] ) === strtolower( $parsed_url['host'] );
+	$same_host = strtolower( $parsed_site['host'] ) === strtolower( $parsed_url['host'] );
 
 	if ( ! $same_host ) {
 		$host = trim( $parsed_url['host'], '.' );
@@ -504,7 +504,7 @@ function wp_http_validate_url( $url ) {
 	if ( 80 === $port || 443 === $port || 8080 === $port )
 		return $url;
 
-	if ( $parsed_home && $same_host && isset( $parsed_home['port'] ) && $parsed_home['port'] === $port )
+	if ( $parsed_site && $same_host && isset( $parsed_site['port'] ) && $parsed_site['port'] === $port )
 		return $url;
 
 	return false;

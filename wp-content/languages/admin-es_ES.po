@@ -3665,10 +3665,6 @@ msgstr "Formato de fecha"
 msgid "Time Format"
 msgstr "Formato de hora"
 
-#: wp-admin/options-general.php:362
-msgid "RapidoPress Address (URL)"
-msgstr "Dirección de RapidoPress (URL)"
-
 #: wp-admin/options-general.php:367
 msgid "Site Address (URL)"
 msgstr "Dirección del sitio (URL)"

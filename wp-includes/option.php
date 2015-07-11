@@ -46,6 +46,10 @@ function get_option( $option, $default = false ) {
 	if ( false !== $pre )
 		return $pre;
 
+	//option is deprecated
+	if( 'home' == $option )
+			$option = 'siteurl';
+
 	if ( defined( 'WP_SETUP_CONFIG' ) )
 		return false;
 
@@ -101,11 +105,8 @@ function get_option( $option, $default = false ) {
 		}
 	}
 
-	// If home is not set use siteurl.
-	if ( 'home' == $option && '' == $value )
-		return get_option( 'siteurl' );
 
-	if ( in_array( $option, array('siteurl', 'home', 'category_base', 'tag_base') ) )
+	if ( in_array( $option, array('siteurl', 'category_base', 'tag_base') ) )
 		$value = untrailingslashit( $value );
 
 	/**

@@ -1158,7 +1158,7 @@ function comments_template( $file = '/comments.php', $separate_comments = false 
 /**
  * Display the JS popup script to show a comment.
  *
- * If the $file parameter is empty, then the home page is assumed. The defaults
+ * If the $file parameter is empty, then the site page is assumed. The defaults
  * for the window are 400px by 400px.
  *
  * For the comment link popup to work, this function has to be called or the
@@ -1248,11 +1248,8 @@ function comments_popup_link( $zero = false, $one = false, $more = false, $css_c
 
 	echo '<a href="';
 	if ( $wpcommentsjavascript ) {
-		if ( empty( $wpcommentspopupfile ) )
-			$home = home_url();
-		else
-			$home = get_option('siteurl');
-		echo $home . '/' . $wpcommentspopupfile . '?comments_popup=' . $id;
+			$site = get_option('siteurl');
+		echo $site . '/' . $wpcommentspopupfile . '?comments_popup=' . $id;
 		echo '" onclick="wpopen(this.href); return false"';
 	} else { // if comments_popup_script() is not in the template, display simple comment link
 		if ( 0 == $number )

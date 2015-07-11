@@ -720,7 +720,7 @@ function preview_theme_ob_filter_callback( $matches ) {
 	if (
 		( false !== strpos($matches[3], '/wp-admin/') )
 	||
-		( false !== strpos( $matches[3], '://' ) && 0 !== strpos( $matches[3], home_url() ) )
+		( false !== strpos( $matches[3], '://' ) && 0 !== strpos( $matches[3], site_url() ) )
 	)
 		return $matches[1] . "#$matches[2] onclick=$matches[2]return false;" . $matches[4];
 

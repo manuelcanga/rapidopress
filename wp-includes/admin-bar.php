@@ -200,7 +200,7 @@ function wp_admin_bar_site_menu( $wp_admin_bar ) {
 	$blogname = get_bloginfo('name');
 
 	if ( ! $blogname ) {
-		$blogname = preg_replace( '#^(https?://)?(www.)?#', '', get_home_url() );
+		$blogname = preg_replace( '#^(https?://)?(www.)?#', '', get_site_url() );
 	}
 
 	if ( is_user_admin() ) {
@@ -212,7 +212,7 @@ function wp_admin_bar_site_menu( $wp_admin_bar ) {
 	$wp_admin_bar->add_menu( array(
 		'id'    => 'site-name',
 		'title' => $title,
-		'href'  => is_admin() ? home_url( '/' ) : admin_url(),
+		'href'  => is_admin() ? site_url( '/' ) : admin_url(),
 	) );
 
 
@@ -487,7 +487,7 @@ function wp_admin_bar_search_menu( $wp_admin_bar ) {
 	if ( is_admin() )
 		return;
 
-	$form  = '<form action="' . esc_url( home_url( '/' ) ) . '" method="get" id="adminbarsearch">';
+	$form  = '<form action="' . esc_url( site_url( '/' ) ) . '" method="get" id="adminbarsearch">';
 	$form .= '<input class="adminbar-input" name="s" id="adminbar-search" type="text" value="" maxlength="150" />';
 	$form .= '<label for="adminbar-search" class="screen-reader-text">' . __( 'Search' ) . '</label>';
 	$form .= '<input type="submit" class="adminbar-button" value="' . __('Search') . '"/>';

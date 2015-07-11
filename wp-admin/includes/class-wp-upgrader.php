@@ -2970,7 +2970,7 @@ class WP_Automatic_Updater {
 
 		switch ( $type ) {
 			case 'success' :
-				$body .= sprintf( __( 'Howdy! Your site at %1$s has been updated automatically to WordPress %2$s.' ), home_url(), $core_update->current );
+				$body .= sprintf( __( 'Howdy! Your site at %1$s has been updated automatically to WordPress %2$s.' ), site_url(), $core_update->current );
 				$body .= "\n\n";
 				if ( ! $newer_version_available )
 					$body .= __( 'No further action is needed on your part.' ) . ' ';
@@ -2988,7 +2988,7 @@ class WP_Automatic_Updater {
 
 			case 'fail' :
 			case 'manual' :
-				$body .= sprintf( __( 'Please update your site at %1$s to WordPress %2$s.' ), home_url(), $next_user_core_update->current );
+				$body .= sprintf( __( 'Please update your site at %1$s to WordPress %2$s.' ), site_url(), $next_user_core_update->current );
 
 				$body .= "\n\n";
 
@@ -3003,9 +3003,9 @@ class WP_Automatic_Updater {
 
 			case 'critical' :
 				if ( $newer_version_available )
-					$body .= sprintf( __( 'Your site at %1$s experienced a critical failure while trying to update WordPress to version %2$s.' ), home_url(), $core_update->current );
+					$body .= sprintf( __( 'Your site at %1$s experienced a critical failure while trying to update WordPress to version %2$s.' ), site_url(), $core_update->current );
 				else
-					$body .= sprintf( __( 'Your site at %1$s experienced a critical failure while trying to update to the latest version of WordPress, %2$s.' ), home_url(), $core_update->current );
+					$body .= sprintf( __( 'Your site at %1$s experienced a critical failure while trying to update to the latest version of WordPress, %2$s.' ), site_url(), $core_update->current );
 
 				$body .= "\n\n" . __( "This means your site may be offline or broken. Don't panic; this can be fixed." );
 
@@ -3112,7 +3112,7 @@ class WP_Automatic_Updater {
 		$body = array();
 		$failures = 0;
 
-		$body[] = sprintf( __( 'WordPress site: %s' ), network_home_url( '/' ) );
+		$body[] = sprintf( __( 'WordPress site: %s' ), network_site_url( '/' ) );
 
 		// Core
 		if ( isset( $this->update_results['core'] ) ) {

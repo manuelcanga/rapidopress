@@ -512,8 +512,8 @@ function wp_set_auth_cookie($user_id, $remember = false, $secure = '') {
 		$secure = is_ssl();
 	}
 
-	// Frontend cookie is secure when the auth cookie is secure and the site's home URL is forced HTTPS.
-	$secure_logged_in_cookie = $secure && 'https' === parse_url( get_option( 'home' ), PHP_URL_SCHEME );
+	// Frontend cookie is secure when the auth cookie is secure and the site's site URL is forced HTTPS.
+	$secure_logged_in_cookie = $secure && 'https' === parse_url( get_option( 'siteurl' ), PHP_URL_SCHEME );
 
 	/**
 	 * Filter whether the connection is secure.
@@ -966,7 +966,7 @@ function wp_validate_redirect($location, $default = '') {
 	if ( isset($lp['scheme'])  && !isset($lp['host']) )
 		return $default;
 
-	$wpp = parse_url(home_url());
+	$wpp = parse_url(site_url());
 
 	/**
 	 * Filter the whitelist of hosts to redirect to.

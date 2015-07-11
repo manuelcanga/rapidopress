@@ -345,7 +345,6 @@ function populate_options() {
 
 	$options = array(
 	'siteurl' => $guessurl,
-	'home' => $guessurl,
 	'blogname' => __('My Site'),
 	/* translators: blog tagline */
 	'blogdescription' => __('Just another RapidoPress site'),
@@ -478,9 +477,6 @@ function populate_options() {
 
 	if ( !empty($insert) )
 		$wpdb->query("INSERT INTO $wpdb->options (option_name, option_value, autoload) VALUES " . $insert);
-
-	// In case it is set, but blank, update "home".
-	if ( !__get_option('home') ) update_option('home', $guessurl);
 
 	// Delete unused options.
 	$unusedoptions = array(

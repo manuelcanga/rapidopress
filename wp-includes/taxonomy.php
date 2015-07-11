@@ -4355,7 +4355,7 @@ function get_term_link( $term, $taxonomy = '') {
 			$termlink = "?$t->query_var=$slug";
 		else
 			$termlink = "?taxonomy=$taxonomy&term=$slug";
-		$termlink = home_url($termlink);
+		$termlink = site_url($termlink);
 	} else {
 		if ( $t->rewrite['hierarchical'] ) {
 			$hierarchical_slugs = array();
@@ -4370,7 +4370,7 @@ function get_term_link( $term, $taxonomy = '') {
 		} else {
 			$termlink = str_replace("%$taxonomy%", $slug, $termlink);
 		}
-		$termlink = home_url( user_trailingslashit($termlink, 'category') );
+		$termlink = site_url( user_trailingslashit($termlink, 'category') );
 	}
 	// Back Compat filters.
 	if ( 'post_tag' == $taxonomy ) {

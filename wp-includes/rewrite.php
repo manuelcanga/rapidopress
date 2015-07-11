@@ -300,25 +300,25 @@ function url_to_postid($url) {
 	$url = $url_split[0];
 
 	// Add 'www.' if it is absent and should be there
-	if ( false !== strpos(home_url(), '://www.') && false === strpos($url, '://www.') )
+	if ( false !== strpos(site_url(), '://www.') && false === strpos($url, '://www.') )
 		$url = str_replace('://', '://www.', $url);
 
 	// Strip 'www.' if it is present and shouldn't be
-	if ( false === strpos(home_url(), '://www.') )
+	if ( false === strpos(site_url(), '://www.') )
 		$url = str_replace('://www.', '://', $url);
 
 	// Strip 'index.php/' if we're not using path info permalinks
 	if ( !$wp_rewrite->using_index_permalinks() )
 		$url = str_replace( $wp_rewrite->index . '/', '', $url );
 
-	if ( false !== strpos( trailingslashit( $url ), home_url( '/' ) ) ) {
+	if ( false !== strpos( trailingslashit( $url ), site_url( '/' ) ) ) {
 		// Chop off http://domain.com/[path]
-		$url = str_replace(home_url(), '', $url);
+		$url = str_replace(site_url(), '', $url);
 	} else {
 		// Chop off /path/to/blog
-		$home_path = parse_url( home_url( '/' ) );
-		$home_path = isset( $home_path['path'] ) ? $home_path['path'] : '' ;
-		$url = preg_replace( sprintf( '#^%s#', preg_quote( $home_path ) ), '', trailingslashit( $url ) );
+		$site_path = parse_url( site_url( '/' ) );
+		$site_path = isset( $site_path['path'] ) ? $site_path['path'] : '' ;
+		$url = preg_replace( sprintf( '#^%s#', preg_quote( $site_path ) ), '', trailingslashit( $url ) );
 	}
 
 	// Trim leading and lagging slashes
@@ -1406,8 +1406,8 @@ class WP_Rewrite {
 			return $rewrite;
 
 		// robots.txt -only if installed at the root
-		$home_path = parse_url( home_url() );
-		$robots_rewrite = ( empty( $home_path['path'] ) || '/' == $home_path['path'] ) ? array( 'robots\.txt$' => $this->index . '?robots=1' ) : array();
+		$site_path = parse_url( site_url() );
+		$robots_rewrite = ( empty( $site_path['path'] ) || '/' == $site_path['path'] ) ? array( 'robots\.txt$' => $this->index . '?robots=1' ) : array();
 
 
 
@@ -1614,16 +1614,12 @@ class WP_Rewrite {
 		$site_root = parse_url( site_url() );
 		if ( isset( $site_root['path'] ) )
 			$site_root = trailingslashit($site_root['path']);
-
-		$home_root = parse_url(home_url());
-		if ( isset( $home_root['path'] ) )
-			$home_root = trailingslashit($home_root['path']);
 		else
-			$home_root = '/';
+			$site_root = '/';
 
 		$rules = "<IfModule mod_rewrite.c>\n";
 		$rules .= "RewriteEngine On\n";
-		$rules .= "RewriteBase $home_root\n";
+		$rules .= "RewriteBase $site_root\n";
 		$rules .= "RewriteRule ^index\.php$ - [L]\n"; // Prevent -f checks on index.php.
 
 		//add in the rules that don't redirect to WP's index.php (and thus shouldn't be handled by WP at all)
@@ -1637,7 +1633,7 @@ class WP_Rewrite {
 				//nada.
 			//}
 
-			$rules .= 'RewriteRule ^' . $match . ' ' . $home_root . $query . " [QSA,L]\n";
+			$rules .= 'RewriteRule ^' . $match . ' ' . $site_root . $query . " [QSA,L]\n";
 		}
 
 		if ( $this->use_verbose_rules ) {
@@ -1657,16 +1653,12 @@ class WP_Rewrite {
 				//if ($match == '(.+)/?$' || $match == '([^/]+)/?$' ) {
 					//nada.
 				//}
-
-				if ( strpos($query, $this->index) !== false )
-					$rules .= 'RewriteRule ^' . $match . ' ' . $home_root . $query . " [QSA,L]\n";
-				else
 					$rules .= 'RewriteRule ^' . $match . ' ' . $site_root . $query . " [QSA,L]\n";
 			}
 		} else {
 			$rules .= "RewriteCond %{REQUEST_FILENAME} !-f\n" .
 				"RewriteCond %{REQUEST_FILENAME} !-d\n" .
-				"RewriteRule . {$home_root}{$this->index} [L]\n";
+				"RewriteRule . {$site_root}{$this->index} [L]\n";
 		}
 
 		$rules .= "</IfModule>\n";

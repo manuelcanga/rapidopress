@@ -74,7 +74,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 		$user_count = $user_count['total_users'];
 		$multisite_enabled = 0;
 		$num_blogs = 1;
-		$wp_install = home_url( '/' );
+		$wp_install = site_url( '/' );
 
 
 	$query = array(
@@ -101,10 +101,10 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 
 	$options = array(
 		'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3 ),
-		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ),
+		'user-agent' => 'WordPress/' . $wp_version . '; ' . site_url( '/' ),
 		'headers' => array(
 			'wp_install' => $wp_install,
-			'wp_blog' => home_url( '/' )
+			'wp_blog' => site_url( '/' )
 		),
 		'body' => $post_body,
 	);

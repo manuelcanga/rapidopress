@@ -211,10 +211,10 @@ function get_permalink( $id = 0, $leavename = false ) {
 			$author,
 			$post->post_name,
 		);
-		$permalink = home_url( str_replace($rewritecode, $rewritereplace, $permalink) );
+		$permalink = site_url( str_replace($rewritecode, $rewritereplace, $permalink) );
 		$permalink = user_trailingslashit($permalink, 'single');
 	} else { // if they're not using the fancy permalink option
-		$permalink = home_url('?p=' . $post->ID);
+		$permalink = site_url('?p=' . $post->ID);
 	}
 
 	/**
@@ -265,13 +265,13 @@ function get_post_permalink( $id = 0, $leavename = false, $sample = false ) {
 		if ( ! $leavename ) {
 			$post_link = str_replace("%$post->post_type%", $slug, $post_link);
 		}
-		$post_link = home_url( user_trailingslashit($post_link) );
+		$post_link = site_url( user_trailingslashit($post_link) );
 	} else {
 		if ( $post_type->query_var && ( isset($post->post_status) && !$draft_or_pending ) )
 			$post_link = add_query_arg($post_type->query_var, $slug, '');
 		else
 			$post_link = add_query_arg(array('post_type' => $post->post_type, 'p' => $post->ID), '');
-		$post_link = home_url($post_link);
+		$post_link = site_url($post_link);
 	}
 
 	/**
@@ -319,7 +319,7 @@ function get_page_link( $post = false, $leavename = false, $sample = false ) {
 	$post = get_post( $post );
 
 	if ( 'page' == get_option( 'show_on_front' ) && $post->ID == get_option( 'page_on_front' ) )
-		$link = home_url('/');
+		$link = site_url('/');
 	else
 		$link = _get_page_link( $post, $leavename, $sample );
 
@@ -362,10 +362,10 @@ function _get_page_link( $post = false, $leavename = false, $sample = false ) {
 			$link = str_replace('%pagename%', get_page_uri( $post ), $link);
 		}
 
-		$link = home_url($link);
+		$link = site_url($link);
 		$link = user_trailingslashit($link, 'page');
 	} else {
-		$link = home_url( '?page_id=' . $post->ID );
+		$link = site_url( '?page_id=' . $post->ID );
 	}
 
 	/**
@@ -417,7 +417,7 @@ function get_attachment_link( $post = null, $leavename = false ) {
 	}
 
 	if ( ! $link )
-		$link = home_url( '/?attachment_id=' . $post->ID );
+		$link = site_url( '/?attachment_id=' . $post->ID );
 
 	/**
 	 * Filter the permalink for an attachment.
@@ -445,9 +445,9 @@ function get_year_link($year) {
 	$yearlink = $wp_rewrite->get_year_permastruct();
 	if ( !empty($yearlink) ) {
 		$yearlink = str_replace('%year%', $year, $yearlink);
-		$yearlink = home_url( user_trailingslashit( $yearlink, 'year' ) );
+		$yearlink = site_url( user_trailingslashit( $yearlink, 'year' ) );
 	} else {
-		$yearlink = home_url( '?m=' . $year );
+		$yearlink = site_url( '?m=' . $year );
 	}
 
 	/**
@@ -480,9 +480,9 @@ function get_month_link($year, $month) {
 	if ( !empty($monthlink) ) {
 		$monthlink = str_replace('%year%', $year, $monthlink);
 		$monthlink = str_replace('%monthnum%', zeroise(intval($month), 2), $monthlink);
-		$monthlink = home_url( user_trailingslashit( $monthlink, 'month' ) );
+		$monthlink = site_url( user_trailingslashit( $monthlink, 'month' ) );
 	} else {
-		$monthlink = home_url( '?m=' . $year . zeroise( $month, 2 ) );
+		$monthlink = site_url( '?m=' . $year . zeroise( $month, 2 ) );
 	}
 
 	/**
@@ -521,9 +521,9 @@ function get_day_link($year, $month, $day) {
 		$daylink = str_replace('%year%', $year, $daylink);
 		$daylink = str_replace('%monthnum%', zeroise(intval($month), 2), $daylink);
 		$daylink = str_replace('%day%', zeroise(intval($day), 2), $daylink);
-		$daylink = home_url( user_trailingslashit( $daylink, 'day' ) );
+		$daylink = site_url( user_trailingslashit( $daylink, 'day' ) );
 	} else {
-		$daylink = home_url( '?m=' . $year . zeroise( $month, 2 ) . zeroise( $day, 2 ) );
+		$daylink = site_url( '?m=' . $year . zeroise( $month, 2 ) . zeroise( $day, 2 ) );
 	}
 
 	/**
@@ -690,12 +690,12 @@ function get_search_link( $query = '' ) {
 	$permastruct = $wp_rewrite->get_search_permastruct();
 
 	if ( empty( $permastruct ) ) {
-		$link = home_url('?s=' . urlencode($search) );
+		$link = site_url('?s=' . urlencode($search) );
 	} else {
 		$search = urlencode($search);
 		$search = str_replace('%2F', '/', $search); // %2F(/) is not valid within a URL, send it unencoded.
 		$link = str_replace( '%search%', $search, $permastruct );
-		$link = home_url( user_trailingslashit( $link, 'search' ) );
+		$link = site_url( user_trailingslashit( $link, 'search' ) );
 	}
 
 	/**
@@ -733,9 +733,9 @@ function get_post_type_archive_link( $post_type ) {
 			$struct = $wp_rewrite->front . $struct;
 		else
 			$struct = $wp_rewrite->root . $struct;
-		$link = home_url( user_trailingslashit( $struct, 'post_type_archive' ) );
+		$link = site_url( user_trailingslashit( $struct, 'post_type_archive' ) );
 	} else {
-		$link = home_url( '?post_type=' . $post_type );
+		$link = site_url( '?post_type=' . $post_type );
 	}
 
 	/**
@@ -1485,11 +1485,11 @@ function get_pagenum_link($pagenum = 1, $escape = true ) {
 
 	$request = remove_query_arg( 'paged' );
 
-	$home_root = parse_url(home_url());
-	$home_root = ( isset($home_root['path']) ) ? $home_root['path'] : '';
-	$home_root = preg_quote( $home_root, '|' );
+	$site_root = parse_url(site_url());
+	$site_root = ( isset($site_root['path']) ) ? $site_root['path'] : '';
+	$site_root = preg_quote( $site_root, '|' );
 
-	$request = preg_replace('|^'. $home_root . '|i', '', $request);
+	$request = preg_replace('|^'. $site_root . '|i', '', $request);
 	$request = preg_replace('|^/+|', '', $request);
 
 	if ( !$wp_rewrite->using_permalinks() || is_admin() ) {
@@ -2163,27 +2163,27 @@ function root_url( $path = '') {
 
 
 /**
- * Retrieve the home url for the current site.
+ * Retrieve the site url for the current site.
  *
- * Returns the 'home' option with the appropriate protocol, 'https' if
+ * Returns the 'site' option with the appropriate protocol, 'https' if
  * {@see is_ssl()} and 'http' otherwise. If `$scheme` is 'http' or 'https',
  * `is_ssl()` is overridden.
  *
  * @since 3.0.0
  *
- * @param  string $path   Optional. Path relative to the home url. Default empty.
- * @param  string $scheme Optional. Scheme to give the home url context. Accepts
+ * @param  string $path   Optional. Path relative to the site url. Default empty.
+ * @param  string $scheme Optional. Scheme to give the site url context. Accepts
  *                        'http', 'https', or 'relative'. Default null.
- * @return string Home url link with optional path appended.
+ * @return string Site url link with optional path appended.
 */
 function home_url( $path = '', $scheme = null ) {
-	return get_home_url( null, $path, $scheme );
+	return get_site_url( null, $path, $scheme );
 }
 
 /**
- * Retrieve the home url for a given site.
+ * Retrieve the site url for a given site.
  *
- * Returns the 'home' option with the appropriate protocol, 'https' if
+ * Returns the 'site' option with the appropriate protocol, 'https' if
  * {@see is_ssl()} and 'http' otherwise. If `$scheme` is 'http' or 'https',
  * `is_ssl()` is
  * overridden.
@@ -2191,41 +2191,13 @@ function home_url( $path = '', $scheme = null ) {
  * @since 3.0.0
  *
  * @param  int         $blog_id     Optional. Blog ID. Default null (current blog).
- * @param  string      $path        Optional. Path relative to the home URL. Default empty.
- * @param  string|null $orig_scheme Optional. Scheme to give the home URL context. Accepts
+ * @param  string      $path        Optional. Path relative to the site URL. Default empty.
+ * @param  string|null $orig_scheme Optional. Scheme to give the site URL context. Accepts
  *                                  'http', 'https', 'relative', or null. Default null.
- * @return string Home URL link with optional path appended.
+ * @return string Site URL link with optional path appended.
 */
 function get_home_url( $blog_id = null, $path = '', $scheme = null ) {
-	$orig_scheme = $scheme;
-
-
-		$url = get_option( 'home' );
-
-
-	if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ) ) ) {
-		if ( is_ssl() && ! is_admin() && 'wp-login.php' !== $GLOBALS['pagenow'] )
-			$scheme = 'https';
-		else
-			$scheme = parse_url( $url, PHP_URL_SCHEME );
-	}
-
-	$url = set_url_scheme( $url, $scheme );
-
-	if ( $path && is_string( $path ) )
-		$url .= '/' . ltrim( $path, '/' );
-
-	/**
-	 * Filter the home URL.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string      $url         The complete home URL including scheme and path.
-	 * @param string      $path        Path relative to the home URL. Blank string if no path is specified.
-	 * @param string|null $orig_scheme Scheme to give the home URL context. Accepts 'http', 'https', 'relative' or null.
-	 * @param int|null    $blog_id     Blog ID, or null for the current blog.
-	 */
-	return apply_filters( 'home_url', $url, $path, $orig_scheme, $blog_id );
+	return get_site_url($blog_id, $path,   $scheme);
 }
 
 /**
@@ -2449,21 +2421,21 @@ function network_site_url( $path = '', $scheme = null ) {
 }
 
 /**
- * Retrieves the home url for the current network.
+ * Retrieves the site url for the current network.
  *
- * Returns the home url with the appropriate protocol, 'https' {@see is_ssl()}
+ * Returns the site url with the appropriate protocol, 'https' {@see is_ssl()}
  * and 'http' otherwise. If `$scheme` is 'http' or 'https', `is_ssl()` is
  * overridden.
  *
  * @since 3.0.0
  *
- * @param  string $path   Optional. Path relative to the home url. Default empty.
- * @param  string $scheme Optional. Scheme to give the home url context. Accepts
+ * @param  string $path   Optional. Path relative to the site url. Default empty.
+ * @param  string $scheme Optional. Scheme to give the site url context. Accepts
  *                        'http', 'https', or 'relative'. Default null.
- * @return string Home url link with optional path appended.
+ * @return string site url link with optional path appended.
 */
 function network_home_url( $path = '', $scheme = null ) {
-	return home_url($path, $scheme);
+	return site_url($path, $scheme);
 }
 
 /**
@@ -2708,9 +2680,9 @@ function wp_get_shortlink($id = 0, $context = 'post', $allow_slugs = true) {
 		$post_type = get_post_type_object( $post->post_type );
 
 		if ( 'page' === $post->post_type && $post->ID == get_option( 'page_on_front' ) && 'page' == get_option( 'show_on_front' ) ) {
-			$shortlink = home_url( '/' );
+			$shortlink = site_url( '/' );
 		} elseif ( $post_type->public ) {
-			$shortlink = home_url( '?p=' . $post_id );
+			$shortlink = site_url( '?p=' . $post_id );
 		}
 	}
 

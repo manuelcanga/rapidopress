@@ -478,7 +478,7 @@ function wp_prepare_themes_for_js( $themes = null ) {
 					'stylesheet'     => urlencode( $slug ),
 					'preview_iframe' => true,
 					'TB_iframe'      => true,
-				), home_url( '/' ) ),
+				), site_url( '/' ) ),
 				'delete'   => current_user_can( 'delete_themes' ) ? wp_nonce_url( admin_url( 'themes.php?action=delete&amp;stylesheet=' . $encoded_slug ), 'delete-theme_' . $slug ) : null,
 			),
 		);

@@ -142,7 +142,7 @@ function wp_install_defaults( $user_id ) {
 	// First post
 	$now = current_time( 'mysql' );
 	$now_gmt = current_time( 'mysql', 1 );
-	$first_post_guid = get_option( 'home' ) . '/?p=1';
+	$first_post_guid = get_option( 'siteurl' ) . '/?p=1';
 
 
 	$first_post = __('Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!');
@@ -193,7 +193,7 @@ To delete a comment, just log in and view the post&#039;s comments. There you wi
 
 As a new RapidoPress user, you should go to <a href=\"%s\">your dashboard</a> to delete this page and create new pages for your content. Have fun!" ), admin_url() );
 
-	$first_post_guid = get_option('home') . '/?page_id=2';
+	$first_post_guid = get_option('siteurl') . '/?page_id=2';
 	$wpdb->insert( $wpdb->posts, array(
 								'post_author' => $user_id,
 								'post_date' => $now,
@@ -269,7 +269,7 @@ function wp_install_maybe_enable_pretty_permalinks() {
 		$test_url = get_permalink( 1 );
 
 		if ( ! $test_url ) {
-			$test_url = home_url( '/wordpress-check-for-rewrites/' );
+			$test_url = site_url( '/wordpress-check-for-rewrites/' );
 		}
 
 		/*
@@ -929,7 +929,7 @@ function get_alloptions_110() {
 	$all_options = new stdClass;
 	if ( $options = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options" ) ) {
 		foreach ( $options as $option ) {
-			if ( 'siteurl' == $option->option_name || 'home' == $option->option_name || 'category_base' == $option->option_name )
+			if ( 'siteurl' == $option->option_name ||  'category_base' == $option->option_name )
 				$option->option_value = untrailingslashit( $option->option_value );
 			$all_options->{$option->option_name} = stripslashes( $option->option_value );
 		}
@@ -950,18 +950,17 @@ function get_alloptions_110() {
 function __get_option($setting) {
 	global $wpdb;
 
-	if ( $setting == 'home' && defined( 'WP_HOME' ) )
-		return untrailingslashit( WP_HOME );
+	//home is deprecated
+	if('home' == $setting) {
+		$setting == 'siteurl';
+	}
 
 	if ( $setting == 'siteurl' && defined( 'WP_SITEURL' ) )
 		return untrailingslashit( WP_SITEURL );
 
 	$option = $wpdb->get_var( $wpdb->prepare("SELECT option_value FROM $wpdb->options WHERE option_name = %s", $setting ) );
 
-	if ( 'home' == $setting && '' == $option )
-		return __get_option( 'siteurl' );
-
-	if ( 'siteurl' == $setting || 'home' == $setting || 'category_base' == $setting || 'tag_base' == $setting )
+	if ( 'siteurl' == $setting ||  'category_base' == $setting || 'tag_base' == $setting )
 		$option = untrailingslashit( $option );
 
 	return maybe_unserialize( $option );
@@ -1308,10 +1307,9 @@ function make_db_current_silent( $tables = 'all' ) {
  * @return bool
  */
 function make_site_theme_from_oldschool($theme_name, $template) {
-	$home_path = get_home_path();
 	$site_dir = WP_CONTENT_DIR . "/themes/$template";
 
-	if (! file_exists("$home_path/index.php"))
+	if (! file_exists(ABSPATH.'/index.php'))
 		return false;
 
 	/*
@@ -1321,14 +1319,9 @@ function make_site_theme_from_oldschool($theme_name, $template) {
 	$files = array('index.php' => 'index.php', 'wp-layout.css' => 'style.css', 'wp-comments.php' => 'comments.php', 'wp-comments-popup.php' => 'comments-popup.php');
 
 	foreach ($files as $oldfile => $newfile) {
-		if ($oldfile == 'index.php')
-			$oldpath = $home_path;
-		else
-			$oldpath = ABSPATH;
-
 		// Check to make sure it's not a new index.
 		if ($oldfile == 'index.php') {
-			$index = implode('', file("$oldpath/$oldfile"));
+			$index = implode('', file(ABSPATH."/$oldfile"));
 			if (strpos($index, 'WP_USE_THEMES') !== false) {
 				if (! @copy(WP_CONTENT_DIR . '/themes/' . WP_DEFAULT_THEME . '/index.php', "$site_dir/$newfile"))
 					return false;
@@ -1338,7 +1331,7 @@ function make_site_theme_from_oldschool($theme_name, $template) {
 				}
 		}
 
-		if (! @copy("$oldpath/$oldfile", "$site_dir/$newfile"))
+		if (! @copy(ABSPATH."/$oldfile", "$site_dir/$newfile"))
 			return false;
 
 		chmod("$site_dir/$newfile", 0777);
@@ -1356,7 +1349,7 @@ function make_site_theme_from_oldschool($theme_name, $template) {
 				$line = str_replace("<?php echo __get_option('siteurl'); ?>/wp-layout.css", "<?php bloginfo('stylesheet_url'); ?>", $line);
 
 				// Update comments template inclusion.
-				$line = str_replace("<?php include(ABSPATH . 'wp-comments.php'); ?>", "<?php comments_template(); ?>", $line);
+				$line = str_replace("<?php include(ABSPATH . '/wp-comments.php'); ?>", "<?php comments_template(); ?>", $line);
 
 				fwrite($f, "{$line}\n");
 			}

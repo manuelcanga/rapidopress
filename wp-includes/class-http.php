@@ -202,9 +202,9 @@ class WP_Http {
 		$r['ssl'] = $arrURL['scheme'] == 'https' || $arrURL['scheme'] == 'ssl';
 
 		// Determine if this request is to OUR install of WordPress.
-		$homeURL = parse_url( get_bloginfo( 'url' ) );
-		$r['local'] = 'localhost' == $arrURL['host'] || ( isset( $homeURL['host'] ) && $homeURL['host'] == $arrURL['host'] );
-		unset( $homeURL );
+		$siteURL = parse_url( get_bloginfo( 'url' ) );
+		$r['local'] = 'localhost' == $arrURL['host'] || ( isset( $siteURL['host'] ) && $siteURL['host'] == $arrURL['host'] );
+		unset( $siteURL );
 
 		/*
 		 * If we are streaming to a file but no filename was given drop it in the WP temp dir
@@ -636,10 +636,10 @@ class WP_Http {
 		if ( ! $check )
 			return true;
 
-		$home = parse_url( get_option('siteurl') );
+		$site = parse_url( get_option('siteurl') );
 
 		// Don't block requests back to ourselves by default.
-		if ( 'localhost' == $check['host'] || ( isset( $home['host'] ) && $home['host'] == $check['host'] ) ) {
+		if ( 'localhost' == $check['host'] || ( isset( $site['host'] ) && $site['host'] == $check['host'] ) ) {
 			/**
 			 * Filter whether to block local requests through the proxy.
 			 *
@@ -1810,7 +1810,7 @@ class WP_HTTP_Proxy {
 		if ( $check === false )
 			return true;
 
-		$home = parse_url( get_option('siteurl') );
+		$site = parse_url( get_option('siteurl') );
 
 		/**
 		 * Filter whether to preempt sending the request through the proxy server.
@@ -1823,13 +1823,13 @@ class WP_HTTP_Proxy {
 		 * @param null   $override Whether to override the request result. Default null.
 		 * @param string $uri      URL to check.
 		 * @param array  $check    Associative array result of parsing the URI.
-		 * @param array  $home     Associative array result of parsing the site URL.
+		 * @param array  $site     Associative array result of parsing the site URL.
 		 */
-		$result = apply_filters( 'pre_http_send_through_proxy', null, $uri, $check, $home );
+		$result = apply_filters( 'pre_http_send_through_proxy', null, $uri, $check, $site );
 		if ( ! is_null( $result ) )
 			return $result;
 
-		if ( 'localhost' == $check['host'] || ( isset( $home['host'] ) && $home['host'] == $check['host'] ) )
+		if ( 'localhost' == $check['host'] || ( isset( $site['host'] ) && $site['host'] == $check['host'] ) )
 			return false;
 
 		if ( !defined('WP_PROXY_BYPASS_HOSTS') )

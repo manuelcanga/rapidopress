@@ -545,7 +545,7 @@ function wp_list_categories( $args = '' ) {
 
             // Fallback for the 'All' link is the front page.
             if ( ! $posts_page ) {
-                $posts_page = 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
+                $posts_page = 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ? get_permalink( get_option( 'page_for_posts' ) ) : site_url( '/' );
             }
 			$posts_page = esc_url( $posts_page );
 			if ( 'list' == $r['style'] ) {

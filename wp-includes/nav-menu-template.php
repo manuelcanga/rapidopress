@@ -486,7 +486,7 @@ function _wp_menu_item_classes_by_context( &$menu_items ) {
 
 	$possible_object_parents = array_filter( $possible_object_parents );
 
-	$front_page_url = home_url();
+	$front_page_url = site_url();
 
 	foreach ( (array) $menu_items as $key => $menu_item ) {
 
@@ -544,7 +544,7 @@ function _wp_menu_item_classes_by_context( &$menu_items ) {
 					$active_ancestor_item_ids[] = $_anc_id;
 				}
 
-				if ( in_array( home_url(), array( untrailingslashit( $current_url ), untrailingslashit( $_indexless_current ) ) ) ) {
+				if ( in_array( site_url(), array( untrailingslashit( $current_url ), untrailingslashit( $_indexless_current ) ) ) ) {
 					// Back compat for home link to match wp_page_menu()
 					$classes[] = 'current_page_item current';
 				}
@@ -557,7 +557,7 @@ function _wp_menu_item_classes_by_context( &$menu_items ) {
 				$classes[] = 'current-menu-item current';
 			}
 
-			if ( untrailingslashit($item_url) == home_url() )
+			if ( untrailingslashit($item_url) == site_url() )
 				$classes[] = 'menu-item-home';
 		}
 

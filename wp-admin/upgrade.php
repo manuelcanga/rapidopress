@@ -67,7 +67,7 @@ else
 
 <h2><?php _e( 'No Update Required' ); ?></h2>
 <p><?php _e( 'Your WordPress database is already up-to-date!' ); ?></p>
-<p class="step"><a class="button button-large" href="<?php echo get_option( 'home' ); ?>/"><?php _e( 'Continue' ); ?></a></p>
+<p class="step"><a class="button button-large" href="<?php echo get_option( 'siteurl' ); ?>/"><?php _e( 'Continue' ); ?></a></p>
 
 <?php elseif ( !$php_compat || !$mysql_compat ) :
 	if ( !$mysql_compat && !$php_compat )
@@ -95,9 +95,9 @@ switch ( $step ) :
 	case 1:
 		wp_upgrade();
 
-			$backto = !empty($_GET['backto']) ? wp_unslash( urldecode( $_GET['backto'] ) ) : __get_option( 'home' ) . '/';
+			$backto = !empty($_GET['backto']) ? wp_unslash( urldecode( $_GET['backto'] ) ) : __get_option( 'siteurl' ) . '/';
 			$backto = esc_url( $backto );
-			$backto = wp_validate_redirect($backto, __get_option( 'home' ) . '/');
+			$backto = wp_validate_redirect($backto, __get_option( 'siteurl' ) . '/');
 ?>
 <h2><?php _e( 'Update Complete' ); ?></h2>
 	<p><?php _e( 'Your WordPress database has been successfully updated!' ); ?></p>

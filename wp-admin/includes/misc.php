@@ -157,14 +157,13 @@ function insert_with_markers( $filename, $marker, $insertion ) {
 function save_mod_rewrite_rules() {
 	global $wp_rewrite;
 
-	$home_path = get_home_path();
-	$htaccess_file = $home_path.'.htaccess';
+	$htaccess_file = ABSPATH.'/.htaccess';
 
 	/*
 	 * If the file doesn't already exist check for write access to the directory
 	 * and whether we have some rules. Else check for write access to the file.
 	 */
-	if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
+	if ((!file_exists($htaccess_file) && is_writable(ABSPATH) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
 		if ( got_mod_rewrite() ) {
 			$rules = explode( "\n", $wp_rewrite->mod_rewrite_rules() );
 			return insert_with_markers( $htaccess_file, 'WordPress', $rules );
@@ -185,11 +184,10 @@ function save_mod_rewrite_rules() {
 function iis7_save_url_rewrite_rules(){
 	global $wp_rewrite;
 
-	$home_path = get_home_path();
-	$web_config_file = $home_path . 'web.config';
+	$web_config_file = ABSPATH. '/web.config';
 
 	// Using win_is_writable() instead of is_writable() because of a bug in Windows PHP
-	if ( iis7_supports_permalinks() && ( ( ! file_exists($web_config_file) && win_is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks() ) || win_is_writable($web_config_file) ) ) {
+	if ( iis7_supports_permalinks() && ( ( ! file_exists($web_config_file) && win_is_writable(ABSPATH) && $wp_rewrite->using_mod_rewrite_permalinks() ) || win_is_writable($web_config_file) ) ) {
 		$rule = $wp_rewrite->iis7_url_rewrite_rules(false, '', '');
 		if ( ! empty($rule) ) {
 			return iis7_add_rewrite_rule($web_config_file, $rule);
@@ -217,7 +215,6 @@ function update_home_siteurl( $old_value, $value ) {
 	flush_rewrite_rules();
 }
 
-add_action( 'update_option_home', 'update_home_siteurl', 10, 2 );
 add_action( 'update_option_siteurl', 'update_home_siteurl', 10, 2 );
 add_action( 'update_option_page_on_front', 'update_home_siteurl', 10, 2 );
 

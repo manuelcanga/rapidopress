@@ -510,7 +510,7 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 			'preview'    => 1,
 			'template'   => urlencode( $template ),
 			'stylesheet' => urlencode( $stylesheet ),
-		), trailingslashit( home_url() ) );
+		), trailingslashit( site_url() ) );
 
 		$activate_link = add_query_arg( array(
 			'action'     => 'activate',
@@ -581,7 +581,7 @@ class Theme_Upgrader_Skin extends WP_Upgrader_Skin {
 				'preview'    => 1,
 				'template'   => urlencode( $template ),
 				'stylesheet' => urlencode( $stylesheet ),
-			), trailingslashit( home_url() ) );
+			), trailingslashit( site_url() ) );
 
 			$activate_link = add_query_arg( array(
 				'action'     => 'activate',

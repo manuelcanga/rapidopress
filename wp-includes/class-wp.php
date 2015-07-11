@@ -156,7 +156,7 @@ class WP {
 
 			list( $req_uri ) = explode( '?', $_SERVER['REQUEST_URI'] );
 			$self = $_SERVER['PHP_SELF'];
-			$home_path = trim( parse_url( home_url(), PHP_URL_PATH ), '/' );
+			$home_path = trim( parse_url( site_url(), PHP_URL_PATH ), '/' );
 
 			// Trim path info from the end and the leading home path from the
 			// front. For path info requests, this leaves us with the requesting

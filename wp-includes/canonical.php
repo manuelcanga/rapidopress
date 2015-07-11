@@ -154,7 +154,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 			if ( $redirect_url = get_permalink(get_query_var('page_id')) )
 				$redirect['query'] = remove_query_arg('page_id', $redirect['query']);
 		} elseif ( is_page() && isset($wp_query->queried_object) && 'page' == get_option('show_on_front') && $wp_query->queried_object->ID == get_option('page_on_front')  && ! $redirect_url ) {
-			$redirect_url = home_url('/');
+			$redirect_url = site_url('/');
 		} elseif ( is_home() && !empty($_GET['page_id']) && 'page' == get_option('show_on_front') && get_query_var('page_id') == get_option('page_for_posts')  && ! $redirect_url ) {
 			if ( $redirect_url = get_permalink(get_option('page_for_posts')) )
 				$redirect['query'] = remove_query_arg('page_id', $redirect['query']);
@@ -312,15 +312,15 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		$redirect = @parse_url($redirect_url);
 
 	// www.example.com vs example.com
-	$user_home = @parse_url(home_url());
-	if ( !empty($user_home['host']) )
-		$redirect['host'] = $user_home['host'];
-	if ( empty($user_home['path']) )
-		$user_home['path'] = '/';
+	$user_site = @parse_url(site_url());
+	if ( !empty($user_site['host']) )
+		$redirect['host'] = $user_site['host'];
+	if ( empty($user_site['path']) )
+		$user_site['path'] = '/';
 
 	// Handle ports
-	if ( !empty($user_home['port']) )
-		$redirect['port'] = $user_home['port'];
+	if ( !empty($user_site['port']) )
+		$redirect['port'] = $user_site['port'];
 	else
 		unset($redirect['port']);
 
@@ -369,7 +369,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		$redirect['path'] = preg_replace('|/+|', '/', $redirect['path']);
 
 	// Always trailing slash the Front Page URL
-	if ( trailingslashit( $redirect['path'] ) == trailingslashit( $user_home['path'] ) )
+	if ( trailingslashit( $redirect['path'] ) == trailingslashit( $user_site['path'] ) )
 		$redirect['path'] = trailingslashit($redirect['path']);
 
 	// Ignore differences in host capitalization, as this can lead to infinite redirects
@@ -518,9 +518,9 @@ function wp_redirect_admin_locations() {
 		return;
 
 	$admins = array(
-		home_url( 'wp-admin', 'relative' ),
-		home_url( 'dashboard', 'relative' ),
-		home_url( 'admin', 'relative' ),
+		site_url( 'wp-admin', 'relative' ),
+		site_url( 'dashboard', 'relative' ),
+		site_url( 'admin', 'relative' ),
 		site_url( 'dashboard', 'relative' ),
 		site_url( 'admin', 'relative' ),
 	);
@@ -530,8 +530,8 @@ function wp_redirect_admin_locations() {
 	}
 
 	$logins = array(
-		home_url( 'wp-login.php', 'relative' ),
-		home_url( 'login', 'relative' ),
+		site_url( 'wp-login.php', 'relative' ),
+		site_url( 'login', 'relative' ),
 		site_url( 'login', 'relative' ),
 	);
 	if ( in_array( untrailingslashit( $_SERVER['REQUEST_URI'] ), $logins ) ) {

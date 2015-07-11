@@ -69,8 +69,6 @@ if ( ! in_array( get_option( 'blog_charset' ), array( 'utf8', 'utf-8', 'UTF8', '
 
 if ( !defined( 'WP_SITEURL' ) )
 	$whitelist_options['general'][] = 'siteurl';
-if ( !defined( 'WP_HOME' ) )
-	$whitelist_options['general'][] = 'home';
 
 $whitelist_options['general'][] = 'admin_email';
 
