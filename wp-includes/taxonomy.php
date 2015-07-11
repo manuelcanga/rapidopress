@@ -1542,12 +1542,12 @@ function get_term_to_edit( $id, $taxonomy ) {
  * You can fully inject any customizations to the query before it is sent, as
  * well as control the output with a filter.
  *
- * The {@see 'get_terms'} filter will be called when the cache has the term and will
+ * The 'get_terms' filter will be called when the cache has the term and will
  * pass the found term along with the array of $taxonomies and array of $args.
  * This filter is also called before the array of terms is passed and will pass
  * the array of terms, along with the $taxonomies and $args.
  *
- * The {@see 'list_terms_exclusions'} filter passes the compiled exclusions along with
+ * The 'list_terms_exclusions' filter passes the compiled exclusions along with
  * the $args.
  *
  * The {@see 'get_terms_orderby'} filter passes the `ORDER BY` clause for the query
@@ -1699,7 +1699,7 @@ function get_terms( $taxonomies, $args = '' ) {
 	}
 
 	// $args can be whatever, only use the args defined in defaults to compute the key
-	$filter_key = ( has_filter({@see 'list_terms_exclusions'}) ) ? serialize($GLOBALS['wp_filter'][{@see 'list_terms_exclusions'}]) : '';
+	$filter_key = ( has_filter('list_terms_exclusions') ) ? serialize($GLOBALS['wp_filter']['list_terms_exclusions']) : '';
 	$key = md5( serialize( wp_array_slice_assoc( $args, array_keys( $defaults ) ) ) . serialize( $taxonomies ) . $filter_key );
 	$last_changed = wp_cache_get( 'last_changed', 'terms' );
 	if ( ! $last_changed ) {
@@ -1719,7 +1719,7 @@ function get_terms( $taxonomies, $args = '' ) {
 		 * @param array $taxonomies An array of taxonomies.
 		 * @param array $args       An array of arguments to get terms.
 		 */
-		$cache = apply_filters( {@see 'get_terms'}, $cache, $taxonomies, $args );
+		$cache = apply_filters( 'get_terms', $cache, $taxonomies, $args );
 		return $cache;
 	}
 
@@ -1825,7 +1825,7 @@ function get_terms( $taxonomies, $args = '' ) {
 	 * @param array  $args       An array of terms query arguments.
 	 * @param array  $taxonomies An array of taxonomies.
 	 */
-	$exclusions = apply_filters( {@see 'list_terms_exclusions'}, $exclusions, $args, $taxonomies );
+	$exclusions = apply_filters( 'list_terms_exclusions', $exclusions, $args, $taxonomies );
 
 	if ( ! empty( $exclusions ) ) {
 		$where .= $exclusions;
@@ -1971,7 +1971,7 @@ function get_terms( $taxonomies, $args = '' ) {
 		wp_cache_add( $cache_key, array(), 'terms', DAY_IN_SECONDS );
 
 		/** This filter is documented in wp-includes/taxonomy.php */
-		$terms = apply_filters( {@see 'get_terms'}, array(), $taxonomies, $args );
+		$terms = apply_filters( 'get_terms', array(), $taxonomies, $args );
 		return $terms;
 	}
 
@@ -2045,7 +2045,7 @@ function get_terms( $taxonomies, $args = '' ) {
 	wp_cache_add( $cache_key, $terms, 'terms', DAY_IN_SECONDS );
 
 	/** This filter is documented in wp-includes/taxonomy */
-	$terms = apply_filters( {@see 'get_terms'}, $terms, $taxonomies, $args );
+	$terms = apply_filters( 'get_terms', $terms, $taxonomies, $args );
 	return $terms;
 }
 
