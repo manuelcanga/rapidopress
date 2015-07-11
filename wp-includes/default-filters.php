@@ -87,7 +87,7 @@ add_filter( 'post_mime_type', 'sanitize_mime_type' );
 
 // Places to balance tags on input
 foreach ( array( 'content_save_pre', 'excerpt_save_pre', 'comment_save_pre', 'pre_comment_content' ) as $filter ) {
-	add_filter( $filter, 'balanceTags', 50 );
+	add_filter( $filter, 'force_balance_tags', 50 );
 }
 
 // Format strings for display.

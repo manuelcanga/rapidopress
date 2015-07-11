@@ -61,12 +61,6 @@ settings_fields( 'seo' );
 <?php endif; ?>
 </fieldset></td>
 </tr>
-<tr>
-<th scope="row"><?php _e('Formatting') ?></th>
-<td><fieldset><legend class="screen-reader-text"><span><?php _e('Formatting') ?></span></legend>
-<label for="use_balanceTags"><input name="use_balanceTags" type="checkbox" id="use_balanceTags" value="1" <?php checked('1', get_option('use_balanceTags')); ?> /> <?php _e('WordPress should correct invalidly nested XHTML automatically') ?></label>
-</fieldset></td>
-</tr>
 <?php do_settings_fields( 'seo', 'default' ); ?>
 </table>
 

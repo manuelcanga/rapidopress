@@ -58,7 +58,7 @@ $whitelist_options = array(
 	'users' => array( 'show_avatars', 'avatar_rating', 'avatar_default' ),
 	'discussion' => array('comments_notify', 'moderation_notify', 'comment_moderation', 'require_name_email', 'comment_whitelist', 'comment_max_links', 'moderation_keys', 'blacklist_keys',  'close_comments_for_old_posts', 'close_comments_days_old', 'thread_comments', 'thread_comments_depth', 'page_comments', 'comments_per_page', 'default_comments_page', 'comment_order', 'comment_registration' ),
 	'media' => array( 'thumbnail_size_w', 'thumbnail_size_h', 'thumbnail_crop', 'medium_size_w', 'medium_size_h', 'large_size_w', 'large_size_h', 'image_default_size', 'image_default_align', 'image_default_link_type' ),
-	'seo' => array( 'blog_public', 'use_balanceTags' ),
+	'seo' => array( 'blog_public' ),
 	'tracking' => array('tracking_code')
 );
 $whitelist_options['misc'] = $whitelist_options['options'] = $whitelist_options['privacy'] = array();
