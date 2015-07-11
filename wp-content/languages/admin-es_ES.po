@@ -23,17 +23,9 @@ msgstr "Por defecto WordPress utiliza <abbr title=\"Universal Resource Locator\"
 msgid "<a href=\"https://codex.wordpress.org/Revision_Management\" target=\"_blank\">Revisions Management</a>"
 msgstr "<a href=\"https://codex.wordpress.org/Revision_Management\" target=\"_blank\">Gestión de Revisiones</a>"
 
-#: wp-admin/edit-form-advanced.php:351
-msgid "You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. Please refer to the Codex to <a href=\"https://codex.wordpress.org/Embeds\">learn more about embeds</a>."
-msgstr "Puedes incrustar contenidos de muchos sitios web como Twitter, You Tube, Flickr y otros sólo con poner la URL del contenido en una línea (sólo la URL en el párrafo) en la entrada o página. Por favor, consulta el Codex <a href=\"https://codex.wordpress.org/Embeds\">para saber más sobre contenido incrustado</a>"
-
 #: wp-admin/includes/dashboard.php:1335
 msgid "https://codex.wordpress.org/First_Steps_With_WordPress"
 msgstr "https://codex.wordpress.org/First_Steps_With_WordPress"
-
-#: wp-admin/edit-form-advanced.php:365
-msgid "<strong>Format</strong> - Post Formats designate how your theme will display a specific post. For example, you could have a <em>standard</em> blog post with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href=\"https://codex.wordpress.org/Post_Formats#Supported_Formats\">descriptions of each post format</a>. Your theme could enable all or some of 10 possible formats."
-msgstr "<strong>Formato</strong> - Los formatos de entrada definen como tu tema mostrará una entrada específica. Por ejemplo, podría ser  una entrada de blog <em>estándar</em>, con un título y párrafos, o una pequeña <em>minientrada</em> que omita el título y contenga solo un pequeño texto. Revisa el Codex para saber más de las <a href=\"https://codex.wordpress.org/Post_Formats#Supported_Formats\">descripciones de cada formato de entrada</a>. Tu tema puede soportar todos o solo alguno de los 10 posibles formatos."
 
 #: wp-admin/includes/class-wp-themes-list-table.php:216
 #: wp-admin/theme-editor.php:33 wp-admin/update-core.php:305
@@ -199,10 +191,6 @@ msgstr "ejemplo: www.trasweb.net"
 #: wp-admin/theme-install.php:52 wp-admin/themes.php:114
 msgid "Number of Themes found: %d"
 msgstr "Número de temas encontrados: %d"
-
-#: wp-admin/theme-install.php:75 wp-admin/themes.php:51
-msgid "The search results will be updated as you type."
-msgstr "Los resultados de búsqueda será actualizados conforme vayas escribiendo."
 
 #: wp-admin/theme-install.php:75
 msgid "You can Search for themes by keyword, author, or tag, or can get more specific and search by criteria listed in the feature filter."
@@ -443,7 +431,7 @@ msgid ""
 "This debugging email is sent when you are using a development version of WordPress.\n"
 "\n"
 "If you think these failures might be due to a bug in WordPress, could you report it?\n"
-" * Open a thread in the support forums: https://wordpress.org/support/forum/alphabeta\n"
+" * Open a thread in the support forums: https://wordpress.org/support/https://wordpress.org/support/forum/alphabeta\n"
 " * Or, if you're comfortable writing a bug report: https://core.trac.wordpress.org/\n"
 "\n"
 "Thanks! -- The WordPress Team"
@@ -693,10 +681,6 @@ msgstr "Escritura sin distracción "
 msgid "These suggestions are based on the plugins you and other users have installed."
 msgstr "Estas sugerencias están basadas en los plugins que habéis instalado tú y otros usuarios."
 
-#: wp-admin/edit-form-advanced.php:300
-msgid "You can enable distraction-free writing mode using the icon to the right. This feature is not available for old browsers or devices with small screens, and requires that the full-height editor be enabled in Screen Options."
-msgstr "Puedes activar el modo de escritura sin distracción usando el icono de la derecha. Esta función no está disponible para navegadores antiguos ni dispositivos con pantallas pequeñas , y requiere que esté habilitado el editor completo en los ajustes de pantalla."
-
 #: wp-admin/includes/template.php:2117
 msgid "Enable distraction-free writing mode, and everything surrounding the editor will fade away when you start typing. Move your mouse out of the editor to reveal everything again."
 msgstr "Activa el modo de escritura sin distracciones, y todo lo que rodea al editor desaparecerá cuando comiences a escribir. Mueve el ratón fuera del editor para mostrarlo todo de nuevo."
@@ -767,14 +751,6 @@ msgstr "Puedes configurar el idioma y los archivos de traducción serán descarg
 msgid "Mystery Person"
 msgstr "Persona misteriosa"
 
-#: wp-admin/index.php:74
-msgid "<strong>WordPress News</strong> - Latest news from the official WordPress project, the <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>."
-msgstr "<strong>Noticias WordPress</strong> - Últimas noticias desde el proyecto oficial de WordPress, el <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>."
-
-#: wp-admin/index.php:72
-msgid "<strong>WordPress News</strong> - Latest news from the official WordPress project, the <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>, and popular and recent plugins."
-msgstr "<strong>Noticias WordPress</strong> - Últimas noticias desde el proyecto oficial de WordPress, el <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>, y plugins recientes y populares."
-
 #: wp-admin/install.php:121
 msgid "Usernames can have only alphanumeric characters, spaces, underscores, hyphens, periods, and the @ symbol."
 msgstr "Los nombres de usuario pueden tener únicamente caracteres alfanuméricos, espacios, guiones bajos, guiones medios, puntos y el símbolo @."
@@ -839,22 +815,6 @@ msgctxt "term parent"
 msgid "Parent"
 msgstr "Superior"
 
-#: wp-admin/edit-form-advanced.php:298
-msgid "The Text mode allows you to enter HTML along with your post text. Line breaks will be converted to paragraphs automatically."
-msgstr "El modo de texto te permite escribir código HTML junto con el texto de la entrada. Los saltos de línea se convertirán en párrafos automáticamente."
-
-#: wp-admin/edit-form-advanced.php:297
-msgid "Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. "
-msgstr "El modo Visual te da un editor WYSIWYG (Lo que ves es lo que tienes). Haz click en el último icono para tener una segunda fila de controles."
-
-#: wp-admin/edit-form-advanced.php:296
-msgid "<strong>Post editor</strong> - Enter the text for your post. There are two modes of editing: Visual and Text. Choose the mode by clicking on the appropriate tab."
-msgstr "<strong>Editor de entradas</strong> - Introduce el texto de tu entrada. Hay dos modos de edición: Visual y Texto. Elige el modo haciendo clic en la pestaña correspondiente."
-
-#: wp-admin/edit-form-advanced.php:299
-msgid "You can insert media files by clicking the icons above the post editor and following the directions. You can align or edit images using the inline formatting toolbar available in Visual mode."
-msgstr "Puedes insertar archivos multimedia haciendo clic en los iconos de la parte superior del editor de entradas y siguiendo las indicaciones. Puedes alinear o editar imágenes utilizando la barra de herramientas de formato integrada que está disponible en el modo Visual."
-
 #: wp-admin/includes/screen.php:1051
 msgctxt "Welcome panel"
 msgid "Welcome"
@@ -893,31 +853,6 @@ msgstr[1] "Todos <span class=\"count\">(%s)</span>"
 #: wp-admin/options-permalink.php:238
 msgid "If you like, you may enter custom structures for your category and tag <abbr title=\"Universal Resource Locator\">URL</abbr>s here. For example, using <code>topics</code> as your category base would make your category links like <code>%s/topics/uncategorized/</code>. If you leave these blank the defaults will be used."
 msgstr "Si quieres puedes introducir aquí estructuras personalizadas para las <abbr title=\"Universal Resource Locator\">URL</abbr>s de tu etiqueta o categoría. Por ejemplo, usando <code>temas</code> como categoría base hará que los enlaces de categorías sean algo como <code>%s/temas/sin-categoria/</code>. Si dejas esto en blanco se usarán los ajustes por defecto."
-
-#: wp-admin/upload.php:58
-msgid "Use the arrow buttons at the top of the dialog, or the left and right arrow keys on your keyboard, to navigate between media items quickly."
-msgstr "Utiliza los botones con flechas de la parte superior, o las teclas de flecha de tu teclado, para navegar rápidamente entre los elementos multimedia."
-
-#: wp-admin/upload.php:49 wp-admin/upload.php:184
-msgid "You can view your media in a simple visual grid or a list with columns. Switch between these views using the icons to the left above the media."
-msgstr "Puedes ver tus medios en una cuadrícula visual sencilla o en lista con columnas. Cambia entre estas vistas usando los iconos en la parte superior izquierda de los medios."
-
-#: wp-admin/upload.php:57
-msgid "Clicking an item will display an Attachment Details dialog, which allows you to preview media and make quick edits. Any changes you make to the attachment details will be automatically saved."
-msgstr "Al hacer clic en un elemento se mostrará la ventana de Detalles del adjunto, que te permite previsualizar el medio y hacer modificaciones rápidas. Cualquier cambio que hagas en los detalles del adjunto se guardarán automáticamente."
-
-#: wp-admin/upload.php:59
-msgid "You can also delete individual items and access the extended edit screen from the details dialog."
-msgstr "También puedes borrar elementos individualmente y acceder a la pantalla de edición extendida desde la ventana de detalles."
-
-#: wp-admin/upload.php:50
-msgid "To delete media items, click the Bulk Select button at the top of the screen. Select any items you wish to delete, then click the Delete Selected button. Clicking the Cancel Selection button takes you back to viewing your media."
-msgstr "Para borrar elementos multimedia haz clic en el botón de Selección múltiple de la parte superior de la pantalla. Elige cualesquiera elementos que quieras borrar y luego haz clic en el botón de Borrar seleccionados. Hacer clic en el botón de Cancelar selección te lleva de vuelta a la visualización de tus elementos multimedia."
-
-#: wp-admin/upload.php:48
-msgid "All the files you&#8217;ve uploaded are listed in the Media Library, with the most recent uploads listed first."
-msgstr "Todos los archivos que hayas subido están en la lista de la biblioteca multimedia, con los subidos más recientemente en la parte superior."
-
 #: wp-admin/plugin-install.php:80
 msgid "If you just want to get an idea of what&#8217;s available, you can browse Featured and Popular plugins by using the links in the upper left of the screen. These sections rotate regularly."
 msgstr "Si quieres hacerte una idea de los disponibles puedes navegar por los plugins Destacados y Populares usando l os enlaces de la parte superior izquierda de la pantalla. Estas secciones rotas regularmente."
@@ -1137,10 +1072,6 @@ msgstr "No se encontraron temas. Prueba otra búsqueda."
 msgid "The aspect ratio is the relationship between the width and height. You can preserve the aspect ratio by holding down the shift key while resizing your selection. Use the input box to specify the aspect ratio, e.g. 1:1 (square), 4:3, 16:9, etc."
 msgstr "La relación de aspecto es la proporción entre el ancho y el alto. Puedes conservar la relación de aspecto manteniendo presionada la tecla Mayús (Shift) mientras redimensionas la selección. Usa las cajas de texto para especificar la relación de aspecto, p.e.: 1:1 (cuadrado), 4:3, 16:9, etc."
 
-#: wp-admin/edit-comments.php:124
-msgid "A red bar on the left means the comment is waiting for you to moderate it."
-msgstr "Una línea roja a la izquierda indica que el comentario está esperando moderación."
-
 #: wp-admin/includes/image-edit.php:90
 msgid "To crop the image, click on it and drag to make your selection."
 msgstr "Para recortar la imagen, haz click y arrastra en ella para hacer la selección."
@@ -1232,14 +1163,6 @@ msgstr "Borrar te permite borrar un usuario de tu sitio. No borra su contenido. 
 msgid "Delete brings you to the Delete Users screen for confirmation, where you can permanently remove a user from your site and delete their content. You can also delete multiple users at once by using Bulk Actions."
 msgstr "Borrar te lleva a la pantalla de confirmación de borrado de usuarios, donde puedes borrar permanentemente a un usuario de tu sitio y borrar su contenido. También puedes borrar varios usuarios a la vez usando las acciones en lote."
 
-#: wp-admin/index.php:67
-msgid "<strong>At A Glance</strong> - Displays a summary of the content on your site and identifies which theme and version of WordPress you are using."
-msgstr "<strong>De un vistazo</strong> - Muestra un resumen del contenido de tu sitio e identifica el tema y la versión de WordPress que estás utilizando."
-
-#: wp-admin/index.php:57
-msgid "<strong>Box Controls</strong> - Click the title bar of the box to expand or collapse it. Some boxes added by plugins may have configurable content, and will show a &#8220;Configure&#8221; link in the title bar if you hover over it."
-msgstr "<strong>Controles de caja</strong> - Haz clic en la barra de título de la caja para expandirla o contraerla. Algunas cajas añadidas por plugins pueden tener contenido configurable, y mostrarán un enlace en la barra de título si pasas el cursor sobre ella para &#8220;Configurar&#8221;."
-
 #: wp-admin/includes/ajax-actions.php:1668
 msgid "Type"
 msgstr "Tipo"
@@ -1299,26 +1222,6 @@ msgstr "En la mayoría de los casos WordPress realizará por su cuenta las actua
 #: wp-admin/update-core.php:478
 msgid "If an update is available, you&#8127;ll see a notification appear in the Toolbar and navigation menu."
 msgstr "Si hay una actualización disponible, aparecerá una notificación en la barra de herramientas y en el menú de navegación."
-
-#: wp-admin/update-core.php:486
-msgid "<strong>WordPress</strong> &mdash; Updating your WordPress installation is a simple one-click procedure: just <strong>click on the &#8220;Update Now&#8221; button</strong> when you are notified that a new version is available."
-msgstr "<strong>WordPress</strong> &mdash; Actualizar tu instalación de WordPress es un procedimiento sencillo de un solo clic: simplemente <strong>haz clic en el botón &#8220;Actualizar ahora&#8221;</strong> cuando veas el aviso de que hay disponible una nueva versión."
-
-#: wp-admin/update-core.php:490
-msgid "<strong>Translations</strong> &mdash; The files translating WordPress into your language are updated for you whenever any other updates occur. But if these files are out of date, you can <strong>click the &#8220;Update Translations&#8221;</strong> button."
-msgstr "<strong>Traducciones</strong> &mdash; Los archivos que traducen WordPress a tu idioma se actualizan por si solos cuando se actualice cualquier otra cosa. Pero si estos archivos están anticuados puedes <strong>hacer clic en el botón &#8220;Actualizar traducciones&#8221;</strong>."
-
-#: wp-admin/update-core.php:477
-msgid "On this screen, you can update to the latest version of WordPress, as well as update your themes and plugins from the WordPress.org repositories."
-msgstr "En esta pantalla puedes actualizar a la última versión de WordPress, así como actualizar tus temas y plugins desde los repositorios de WordPress.org"
-
-#: wp-admin/update-core.php:487
-msgid "<strong>Themes and Plugins</strong> &mdash; To update individual themes or plugins from this screen, use the checkboxes to make your selection, then <strong>click on the appropriate &#8220;Update&#8221; button</strong>. To update all of your themes or plugins at once, you can check the box at the top of the section to select all before clicking the update button."
-msgstr "<strong>Temas y Plugins</strong> &mdash; Para actualizar temas o plugins uno a uno desde esta pantalla usa las casillas de selección para hacer tu elección, luego <strong>haz clic en el botón &#8220;Actualizar&#8221; correspondiente</strong>. Para actualizar todos tus temas o plugins de una vez puedes marcar la casilla de la parte superior de la sección para elegirlos todos antes de hacer clic en el botón de actualizar."
-
-#: wp-admin/themes.php:65
-msgid "If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href=\"%s\" target=\"_blank\">WordPress.org Theme Directory</a>. Themes in the WordPress.org Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!"
-msgstr "Si quieres ver más temas entre los que elegir haz clic en el botón &#8220;Añadir nuevo&#8221; y podrás navegar o buscar temas adicionales del <a href=\"%s\" target=\"_blank\">directorio de temas de WordPress.org</a>. Los temas del directorio de temas de WordPress.org están diseñados y desarrollados por otros, y son compatibles con la licencia que usa WordPress. ¡Ah, y son gratis!"
 
 #: wp-admin/includes/theme.php:211
 msgid "Fixed Layout"
@@ -1396,30 +1299,6 @@ msgstr "Listo para accesibilidad"
 msgid "This is a child theme of %s."
 msgstr "Este es un tema hijo de %s."
 
-#: wp-admin/themes.php:45
-msgid "This screen is used for managing your installed themes. Aside from the default theme(s) included with your WordPress installation, themes are designed and developed by third parties."
-msgstr "Esta pantalla se utiliza para gestionar los temas que tienes instalados. Además del (los) tema(s) por defecto incluidos en tu instalación de WordPress, los temas son diseñados y desarrollados por terceros."
-
-#: wp-admin/themes.php:48
-msgid "Click on the theme to see the theme name, version, author, description, tags, and the Delete link"
-msgstr "Haz click en el tema para ver el nombre del tema, su versión, autor, descripción, etiquetas y el enlace para borrar"
-
-#: wp-admin/themes.php:50
-msgid "The current theme is displayed highlighted as the first theme."
-msgstr "El tema actual se muestra de forma destacada en primer lugar."
-
-#: wp-admin/themes.php:80
-msgid "When previewing on smaller monitors, you can use the collapse icon at the bottom of the left-hand pane. This will hide the pane, giving you more room to preview your site in the new theme. To bring the pane back, click on the collapse icon again."
-msgstr "Al previsualizar en monitores pequeños puedes usar el icono de Contraer que está al fondo del panel izquierdo. esto ocultará el panel, dándote más espacio para previsualizar tu sitio con el nuevo tema. Para volver a ver el panel haz clic de nuevo en el icono de Contraer."
-
-#: wp-admin/themes.php:47
-msgid "Hover or tap to see Activate and Live Preview buttons"
-msgstr "Pasa el cursor por encima o toca para activar y ver los botones de Vista previa."
-
-#: wp-admin/themes.php:79
-msgid "The theme being previewed is fully interactive &mdash; navigate to different pages to see how the theme handles posts, archives, and other page templates. The settings may differ depending on what theme features the theme being previewed supports. To accept the new settings and activate the theme all in one step, click the Save &amp; Activate button above the menu."
-msgstr "El tema previsualizado es totalmente interactivo &mdash; navega por distintas páginas para ver como el tema muestra entradas, archivos u otras plantillas de página. Los ajustes pueden diferir dependiendo de las características que soporte el tema previsualizado. Para aceptar los nuevos ajustes y activar el tema en un solo paso haz clic en el botón Guardar y activar que hay sobre el menú."
-
 #: wp-admin/widgets.php:356
 msgid "To activate a widget drag it to a sidebar or click on it. To deactivate a widget and delete its settings, drag it back."
 msgstr "Para activar un widget, arrástralo a la barra lateral o haz click en él. Para desactivar un widget y borrar su configuración, arrástralo de vuelta a su lugar de origen."
@@ -1490,18 +1369,6 @@ msgstr "Mostrar tema anterior"
 #: wp-admin/widgets.php:447
 msgid "Add Widget"
 msgstr "Añadir widget"
-
-#: wp-admin/index.php:55
-msgid "<strong>Screen Options</strong> - Use the Screen Options tab to choose which Dashboard boxes to show."
-msgstr "<strong>Ajustes de pantalla</strong> - Usa la pestaña de Ajustes de pantalla para elegir que cajas de Escritorio se mostrarán."
-
-#: wp-admin/index.php:68
-msgid "<strong>Activity</strong> - Shows the upcoming scheduled posts, recently published posts, and the most recent comments on your posts and allows you to moderate them."
-msgstr "<strong>Actividad</strong> - Muestra las siguientes entradas programadas, las publicadas recientemente y los comentarios más recientes a tus entradas, además de permitirte moderarlos. "
-
-#: wp-admin/index.php:70
-msgid "<strong>Quick Draft</strong> - Allows you to create a new post and save it as a draft. Also displays links to the 5 most recent draft posts you've started."
-msgstr "<strong>Borrador rápido</strong> - Te permite crear una entrada nueva y guardarla como borrador. También muestra enlaces a los últimos 5 borradores que hayas creado."
 
 #: wp-admin/post.php:119
 msgid "Oops, you don&#8217;t have access to add new drafts."
@@ -2173,10 +2040,6 @@ msgstr "Gestionar lugares"
 msgid "Theme Location"
 msgstr "Localización del Tema"
 
-#: wp-admin/nav-menus.php:496 wp-admin/themes.php:46
-msgid "From this screen you can:"
-msgstr "En esta pantalla puedes:"
-
 #: wp-admin/nav-menus.php:497
 msgid "Create, edit, and delete menus"
 msgstr "Crear, editar y borrar menús"
@@ -2483,10 +2346,6 @@ msgstr "El menú de documentación bajo el editor contiene un listado de funcion
 msgid "%s is currently editing"
 msgstr "%s está editando en este momento"
 
-#: wp-admin/edit-form-advanced.php:350
-msgid "You can upload and insert media (images, audio, documents, etc.) by clicking the Add Media button. You can select from the images and files already uploaded to the Media Library, or upload new media to add to your page or post. To create an image gallery, select the images to add and click the &#8220;Create a new gallery&#8221; button."
-msgstr "Puedes subir e insertar archivos multimedia (imágenes, audios, documentos, etc.) con sólo hacer click en el botón \"Añadir medio\". Puedes elegir entras las imágenes ya subidas a la biblioteca multimedia o subir nuevos archivos. Para crear una galería de imágenes, sólo tienes que seleccionar algunas y hacer click en el botón &#8220;Crear nueva galería&#8221;"
-
 #: wp-admin/includes/image-edit.php:165
 msgid "Image rotation is not supported by your web host."
 msgstr "La rotación de imágenes no es soportada por tu hosting"
@@ -2503,17 +2362,9 @@ msgstr "Gestiona <a href=\"%1$s\">widgets</a> o <a href=\"%2$s\">menús</a>"
 msgid "Inserting Media"
 msgstr "Insertando multimedia"
 
-#: wp-admin/edit-form-advanced.php:361
-msgid "Several boxes on this screen contain settings for how your content will be published, including:"
-msgstr "Muchos apartados en esta pantalla contienen configuraciones para cómo se publicará tu contenido, incluyendo:"
-
 #: wp-admin/edit-form-advanced.php:376
 msgid "Publish Settings"
 msgstr "Configuración de publicación"
-
-#: wp-admin/edit-tags.php:220
-msgid "<strong>Parent</strong> - Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown."
-msgstr "<strong>Superior</strong> - Las categorías, al contrario que las etiquetas, pueden tener jerarquías. Podrías tener una categoría Jazz, y bajo ella categorías hijas para Bebop y Big Band. Es totalmente opcional. Para crear una subcategoría simplemente elige otra categoría del desplegable Superior."
 
 #: wp-admin/widgets.php:68
 msgid "When changing themes, there is often some variation in the number and setup of widget areas/sidebars and sometimes these conflicts make the transition a bit less smooth. If you changed themes and seem to be missing widgets, scroll down on this screen to the Inactive Widgets area, where all of your widgets and their settings will have been saved."
@@ -2553,10 +2404,6 @@ msgstr "Aprende más de cómo comenzar"
 #: wp-admin/includes/media.php:2757
 msgid "File URL:"
 msgstr "URL archivo:"
-
-#: wp-admin/edit-comments.php:127
-msgid "In the <strong>In Response To</strong> column, there are three elements. The text is the name of the post that inspired the comment, and links to the post editor for that entry. The View Post link leads to that post on your live site. The small bubble with the number in it shows the number of approved comments that post has received. If the bubble is gray, you have moderated all comments for that post. If it is blue, there are pending comments. Clicking the bubble will filter the comments screen to show only comments on that post."
-msgstr "En la columna <strong>En respuesta a</strong>  hay tres elementos. El texto es el nombre de la entrada que inspiró el comentario, y los enlaces al editor para esa entrada. El enlace de Ver entrada te lleva a esa entrada en tu sitio. La pequeña burbuja con números muestra la cantidad de comentarios aprobados que ha recibido esa entrada. Si la burbuja es gris has aprobado todos los comentarios de esa entrada. Si es azul hay comentarios pendientes. Haciendo clic en la burbuja filtrará la pantalla de comentarios para mostrar solo los comentarios de esa entrada."
 
 #: wp-admin/includes/ms.php:442
 msgid "Used: %1$s%% of %2$s"
@@ -2849,10 +2696,6 @@ msgstr "Elige %s"
 msgid "You can delete Link Categories in the Bulk Action pull-down, but that action does not delete the links within the category. Instead, it moves them to the default Link Category."
 msgstr "Puedes borrar Categorías de enlace en el desplegable de Acciones en lote, pero la acción no borra los enlaces dentro de la categoría. En su lugar, los mueve a la Categoría de enlaces por defecto."
 
-#: wp-admin/edit-form-advanced.php:317
-msgid "Creating a Page is very similar to creating a Post, and the screens can be customized in the same way using drag and drop, the Screen Options tab, and expanding/collapsing boxes as you choose. This screen also has the distraction-free writing space, available in both the Visual and Text modes via the Fullscreen buttons. The Page editor mostly works the same as the Post editor, but there are some Page-specific features in the Page Attributes box:"
-msgstr "Crear una Página es muy parecido a crear una Entrada, las pantallas se pueden personalizar del mismo modo, arrastrando y soltando, tienes pestaña de Opciones de pantalla, y puedes expandir y contraer cajas como quieras. Esta pantalla también dispone del espacio de escritura sin distracciones, disponible tanto en el editor Visual como en el de Texto a través del botón \"Pantalla completa\". El editor de Páginas funciona muy similar al editor de Entradas, pero aquí hay algunas características específicas para páginas en la caja de Atributos de página:"
-
 #: wp-admin/includes/class-wp-theme-install-list-table.php:303
 #: wp-admin/theme-install.php:260
 msgid "Collapse"
@@ -2906,10 +2749,6 @@ msgstr "Error de configuración"
 #: wp-admin/install.php:183
 msgid "Your <code>wp-config.php</code> file has an empty database table prefix, which is not supported."
 msgstr "Tu archivo <code>wp-config.php</code> tiene un prefijo de tabla de base de datos vacío, y esto no está soportado."
-
-#: wp-admin/media-new.php:51
-msgid "Revert to the <strong>Browser Uploader</strong> by clicking the link below the drag and drop box."
-msgstr "Vuelve al <strong>Cargador del navegador</strong> haciendo clic en el enlace siguiente para poder arrastrar y soltar."
 
 #: wp-admin/users.php:393
 msgid "User deleted."
@@ -3155,10 +2994,6 @@ msgstr "Esto no es solo un plugin, simboliza la esperanza y entusiasmo de toda u
 #: wp-admin/includes/screen.php:1031
 msgid "Show on screen"
 msgstr "Mostrar en pantalla"
-
-#: wp-admin/index.php:76
-msgid "<strong>Welcome</strong> - Shows links for some of the most common tasks when setting up a new site."
-msgstr "<strong>Hola</strong> - Se muestran los enlaces para algunas de las tareas más frecuentes para configurar un sitio nuevo"
 
 #. translators: 1: user_login, 2: user_email
 #: wp-admin/includes/ajax-actions.php:287
@@ -3517,10 +3352,6 @@ msgstr "Permite que se publiquen comentarios en los artículos nuevos"
 msgid "Show Toolbar when viewing site"
 msgstr "Muestra la Barra de Herramientas en el sitio"
 
-#: wp-admin/index.php:32
-msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
-msgstr "¡Bienvenido a tu panel de WordPress! Esta es la pantalla que verás cuando inicies sesión en tu sitio, que te da acceso a todas las funciones de gestión del sitio de WordPress. Puedes obtener ayuda para cualquier pantalla haciendo clic en la pestaña Ayuda en la esquina superior."
-
 #: wp-admin/options-permalink.php:22
 msgid "This screen allows you to choose your default permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Esta pantalla te permite elegir la estructura de enlaces permanentes. Puedes elegir entre las más habituales o crear una estructura de URL personalizada."
@@ -3540,10 +3371,6 @@ msgstr "Añadir categorías"
 #: wp-admin/edit-tags.php:228
 msgid "Adding Tags"
 msgstr "Añadir etiquetas"
-
-#: wp-admin/media-new.php:47
-msgid "You can upload media files here without creating a post first. This allows you to upload files to use with posts and pages later and/or to get a web link for a particular file that you can share. There are three options for uploading files:"
-msgstr "Aquí puedes subir archivos de medios sin tener que crear una entrada antes. Esto te permite subir archivos para entradas o páginas que escribas con posterioridad u obtener un enlace para un archivo que quieras compartir. Hay tres opciones para subir archivos:"
 
 #: wp-admin/users.php:32
 msgid "Screen Display"
@@ -3608,18 +3435,6 @@ msgstr "Los suscriptores pueden leer comentarios/comentar/recibir listas de dist
 #: wp-admin/user-new.php:156
 msgid "You must assign a password to the new user, which they can change after logging in. The username, however, cannot be changed."
 msgstr "Debes asignar una contraseña al nuevo usuario, la cual puedes cambiar después de que acceda. En todo caso, el nombre de usuario no pude cambiarse."
-
-#: wp-admin/edit.php:175
-msgid "This screen provides access to all of your posts. You can customize the display of this screen to suit your workflow."
-msgstr "Esta pantalla te da acceso a todas tus entradas. Puedes personalizar el formato de esta pantalla para acomodarlo a tu sistema de trabajo."
-
-#: wp-admin/edit.php:205
-msgid "You can also edit or move multiple posts to the trash at once. Select the posts you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
-msgstr "También puedes editar o mover varias entradas a la basura a la vez. Selecciona los mensajes sobre los que deseas actuar utilizando las casillas de verificación. A continuaciónselecciona la acción a realizar en el menú Acciones en Bloque y haz clic en Aplicar."
-
-#: wp-admin/edit.php:206
-msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected posts at once. To remove a post from the grouping, just click the x next to its name in the Bulk Edit area that appears."
-msgstr "Si usas la edición por bloques, podrás cambiar los metadatos (categorías, autor, etc.) para los todas las entradas seleccionadas de una tacada. Para eliminar una entrada de esa selección, sólo tienes que hacer clic en la x que hay junto a nombre en el área de edición por bloques que aparece."
 
 #: wp-admin/plugin-install.php:73
 msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\" target=\"_blank\">WordPress.org Plugin Directory</a> are compatible with the license WordPress uses. You can find new plugins to install by searching or browsing the Directory right here in your own Plugins section."
@@ -3701,53 +3516,13 @@ msgstr "Quitar y reutilizar"
 msgid "Missing Widgets"
 msgstr "Widgets perdidos"
 
-#: wp-admin/media-new.php:49
-msgid "<strong>Drag and drop</strong> your files into the area below. Multiple files are allowed."
-msgstr "<strong>Arrastra y suelta</strong> tus archivos en el espacio inferior. Puedes subir múltiples archivos."
-
-#: wp-admin/media-new.php:50
-msgid "Clicking <strong>Select Files</strong> opens a navigation window showing you files in your operating system. Selecting <strong>Open</strong> after clicking on the file you want activates a progress bar on the uploader screen."
-msgstr "Haciendo click en <strong>Seleccionar archivos</strong> se abre una ventana de navegación, mostrando los archivos de tu sistema operativo. Seleccionando <strong>Abrir</strong> después de hacer clic en el archivo que quieres, activas una barra de progreso en la pantalla del cargador."
-
 #: wp-admin/edit-tags.php:192
 msgid "You can create groups of links by using Link Categories. Link Category names must be unique and Link Categories are separate from the categories you use for posts."
 msgstr "Puedes crear grupos de enlaces utilizando las Categorías de enlaces. Los nombres de las Categorías de enlaces deben ser únicos y son algo distinto a las categorías que usas para tus entradas."
 
-#: wp-admin/edit-tags.php:194
-msgid "You can assign keywords to your posts using <strong>tags</strong>. Unlike categories, tags have no hierarchy, meaning there&#8217;s no relationship from one tag to another."
-msgstr "Puedes asignar palabras clave a tu entradas utilizando las <strong>etiquetas</strong>. A diferencia de las categorías, las etiquetas no tienen jerarquía, lo que significa que no hay relación  de una etiqueta con otra."
-
-#: wp-admin/edit.php:226
-msgid "Managing pages is very similar to managing posts, and the screens can be customized in the same way."
-msgstr "Gestionar páginas es muy parecido a gestionar entradas, y las pantallas pueden ser personalizadas de la misma manera."
-
-#: wp-admin/edit-comments.php:128
-msgid "Many people take advantage of keyboard shortcuts to moderate their comments more quickly. Use the link to the side to learn more."
-msgstr "Mucha gente aprovecha los atajos de teclado para moderar los comentarios más rapidamente. Utiliza el enlace del lateral para aprender más sobre esto."
-
 #: wp-admin/upload.php:196
 msgid "If a media file has not been attached to any post, you will see that in the Attached To column, and can click on Attach File to launch a small popup that will allow you to search for a post and attach the file."
 msgstr "Si un archivo no se ha adjuntado a ningún artículo, podrás verlo en la columna de Adjunto. Puedes hacer clic en Adjuntar Archivo para lanzar un pequeño popup que te permitirá buscar un artículo para adjuntar el archivo. "
-
-#: wp-admin/index.php:46
-msgid "Links in the Toolbar at the top of the screen connect your dashboard and the front end of your site, and provide access to your profile and helpful WordPress information."
-msgstr "Enlaces en la Barra de Herramientas en la parte superior de la pantalla conecta tu escritorio y tu sitio, y proporciona acceso a tu perfil e información valiosa de WordPress. "
-
-#: wp-admin/edit-comments.php:125
-msgid "In the <strong>Author</strong> column, in addition to the author&#8217;s name, email address, and blog URL, the commenter&#8217;s IP address is shown. Clicking on this link will show you all the comments made from this IP address."
-msgstr "En la columna de <strong>Autor</strong>, además del nombre del autor, dirección de correo electrónico y URL del blog, se muestra la dirección IP del comentarista. Haciendo clic en ese enlace se mostrarán todos los comentarios realizados desde esa dirección IP."
-
-#: wp-admin/edit-comments.php:118
-msgid "You can manage comments made on your site similar to the way you manage posts and other content. This screen is customizable in the same ways as other management screens, and you can act on comments using the on-hover action links or the Bulk Actions."
-msgstr "Puedes gestionar los comentarios de tu sitio igual que gestionas tus artículos y el resto de tu contenido. Esta pantalla es configurable de la misma forma que el resto de pantallas de gestión, pudiendo utilizar las acciones que aparecen al pasar sobre los comentarios, o las Acciones en Bloque."
-
-#: wp-admin/edit.php:227
-msgid "You can also perform the same types of actions, including narrowing the list by using the filters, acting on a page using the action links that appear when you hover over a row, or using the Bulk Actions menu to edit the metadata for multiple pages at once."
-msgstr "Puedes realizar el mismo tipo de acciones, incluyendo disminuir la lista utilizando filtros, utilizar los enlaces de acción que aparecen al pasar sobre una fila, o utilizando el menú de Acciones en Bloque para editar los metadatos de varias páginas a la vez. "
-
-#: wp-admin/edit-comments.php:126
-msgid "In the <strong>Comment</strong> column, above each comment it says &#8220;Submitted on,&#8221; followed by the date and time the comment was left on your site. Clicking on the date/time link will take you to that comment on your live site. Hovering over any comment gives you options to approve, reply (and approve), quick edit, edit, spam mark, or trash that comment."
-msgstr "En la columna <strong>Comentarios</strong>, sobre cada comentario hay un &#8220;Añadido el,&#8221; seguido de la fecha y la hora en la que se dejó el comentario en tu sitio. Haciendo clic en el enlace de fecha/hora irás a ese comentario en tu sitio. Pasando sobre cualquier comentario tendrás la opción de aprobarlo, responderlo (y aprobarlo), edición rápida, edición, marcarlo como spam, o enviarlo. "
 
 #: wp-admin/upload.php:182
 msgid "All the files you&#8217;ve uploaded are listed in the Media Library, with the most recent uploads listed first. You can use the Screen Options tab to customize the display of this screen."
@@ -3756,12 +3531,6 @@ msgstr "Todos los archivos que has subido están listados en la biblioteca multi
 #: wp-admin/upload.php:190
 msgid "Hovering over a row reveals action links: Edit, Delete Permanently, and View. Clicking Edit or on the media file&#8217;s name displays a simple screen to edit that individual file&#8217;s metadata. Clicking Delete Permanently will delete the file from the media library (as well as from any posts to which it is currently attached). View will take you to the display page for that file."
 msgstr "Pasar sobre una fila revela los enlaces de acción: Editar, Borrar Permanentemente y Ver. Haciendo clic en Editar o en los nombres de los archivos multimedia se mostrará una pantalla simple para editar los metadatos de ese archivo. Haciendo clic en Borrar Permanentemente se borrará el archivo de la biblioteca multimedia, así como de todos los artículos en los que estuviera adjuntada. Ver te llevará a la página de visualización de ese archivo. "
-
-#: wp-admin/edit.php:220
-msgid "Pages are similar to posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest pages under other pages by making one the &#8220;Parent&#8221; of the other, creating a group of pages."
-msgstr ""
-"Las páginas son similares a los artículos en que tienen un título, cuerpo y metadatos asociados. Son diferentes en que no son parte de la corriente cronológica del blog, siendo una especie de artículos permanentes. \n"
-"Las páginas no están categorizadas o etiquetadas, pero pueden tener jerarquía. Puedes anidar páginas bajo otras páginas haciendo que una sea &#8220;Superior&#8221; de otra, creando así grupos de páginas."
 
 #: wp-admin/update-core.php:196
 msgid "<a href=\"%s\">Learn more about WordPress %s</a>."
@@ -3783,25 +3552,9 @@ msgstr "Puedes mostrar/ocultar columnas basándote en tus necesidades y decidir 
 msgid "Hovering over a row in the users list will display action links that allow you to manage users. You can perform the following actions:"
 msgstr "Pasando por encima de una línea en la lista de usuarios se mostrarán los enlaces de acción para gestionar usuarios. Puedes realizar las siguientes acciones:"
 
-#: wp-admin/edit.php:196
-msgid "<strong>Quick Edit</strong> provides inline access to the metadata of your post, allowing you to update post details without leaving this screen."
-msgstr "<strong>Edición Rápida</strong> proporciona acceso en línea a los metadatos de tu artículo, permitiéndote actualizar detalles del artículo sin dejar la pantalla. "
-
-#: wp-admin/edit.php:197
-msgid "<strong>Trash</strong> removes your post from this list and places it in the trash, from which you can permanently delete it."
-msgstr "<strong>Papelera</strong> elimina tu artículo de esta lista y lo añade a la papelera, donde puedes borrarlo permanentemente. "
-
 #: wp-admin/users.php:43
 msgid "Edit takes you to the editable profile screen for that user. You can also reach that screen by clicking on the username."
 msgstr "Editar te lleva a la pantalla de edición de perfil para ese usuario. Puedes llegar también a esa pantalla cliqueando sobre su nombre de usuario."
-
-#: wp-admin/edit.php:195
-msgid "<strong>Edit</strong> takes you to the editing screen for that post. You can also reach that screen by clicking on the post title."
-msgstr "<strong>Editar</strong> te lleva a la pantalla de edición de esa entrada. También puede llegar hasta ella haciendo clic en el título de la entrada."
-
-#: wp-admin/edit.php:198
-msgid "<strong>Preview</strong> will show you what your draft post will look like if you publish it. View will take you to your live site to view the post. Which link is available depends on your post&#8217;s status."
-msgstr "<strong>Previsualizacón</strong> mostrará cómo se verá tu borrador si se publica. \"Ver\" te llevará a tu sitio para ver el artículo. Depende del estado del artículo qué enlace se muestra."
 
 #: wp-admin/user-new.php:153
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
@@ -3918,14 +3671,6 @@ msgstr "Error: estás respondiendo a un comentario de una entrada en borrador."
 msgid "ERROR: please type a comment."
 msgstr "Error: por favor, escribe un comentario."
 
-#: wp-admin/index.php:54
-msgid "You can use the following controls to arrange your Dashboard screen to suit your workflow. This is true on most other administration screens as well."
-msgstr "Puedes usar los controles siguientes para organizar tu escritorio de modo que se adapte a tu rutina de trabajo. Puedes hacer lo mismo en la mayoría de las secciones de administración."
-
-#: wp-admin/index.php:56
-msgid "<strong>Drag and Drop</strong> - To rearrange the boxes, drag and drop by clicking on the title bar of the selected box and releasing when you see a gray dotted-line rectangle appear in the location you want to place the box."
-msgstr "<strong>Arrastra y suelta</strong> - Para reordenar los cuadros, arrastra y suelta, haz clic en la barra de título del cuadro seleccionado y suéltalo cuando se vea un rectángulo de líneas punteadas en la ubicación donde quieras ponerlo."
-
 #: wp-admin/comment.php:51
 #: wp-admin/edit-comments.php:116
 #: wp-admin/edit-form-advanced.php:334 wp-admin/edit-link-form.php:56
@@ -3945,10 +3690,6 @@ msgstr "<strong>Arrastra y suelta</strong> - Para reordenar los cuadros, arrastr
 #: wp-admin/widgets.php:50
 msgid "Overview"
 msgstr "Vista previa"
-
-#: wp-admin/index.php:45
-msgid "The left-hand navigation menu provides links to all of the WordPress administration screens, with submenu items displayed on hover. You can minimize this menu to a narrow icon strip by clicking on the Collapse Menu arrow at the bottom."
-msgstr "El menú de navegación de la izquierda proporciona enlaces a todas las pantallas de administración de WordPress, con elementos de submenú que aparecen al pasar el ratón sobre ellos. Puedes minimizar este menú para que sea una barra estrecha de iconos haciendo clic en la flecha del menú Cerrar en la parte inferior."
 
 #: wp-admin/menu.php:220 wp-admin/menu.php:222 wp-admin/user-new.php:143
 #: wp-admin/user-new.php:334 wp-admin/user-new.php:434
@@ -3984,26 +3725,6 @@ msgstr "Buscar usuarios"
 msgctxt "user"
 msgid "Add New"
 msgstr "Añadir nuevo"
-
-#: wp-admin/comment.php:58
-#: wp-admin/edit-comments.php:132
-#: wp-admin/edit-form-advanced.php:311 wp-admin/edit-form-advanced.php:326
-#: wp-admin/edit-form-advanced.php:343 wp-admin/edit-link-form.php:64
-#: wp-admin/edit-tags.php:233 wp-admin/edit.php:210 wp-admin/edit.php:231
-#: wp-admin/index.php:87
-#: wp-admin/media-new.php:55 wp-admin/media.php:82
-#: wp-admin/nav-menus.php:543
-#: wp-admin/options-discussion.php:45 wp-admin/options-general.php:103
-#: wp-admin/options-media.php:33 wp-admin/options-permalink.php:43
-#: wp-admin/options-reading.php:68 wp-admin/options-writing.php:44
-#: wp-admin/plugin-editor.php:139 wp-admin/plugin-install.php:86
-#: wp-admin/plugins.php:390 wp-admin/revision.php:118
-#: wp-admin/theme-editor.php:38 wp-admin/theme-install.php:96
-#: wp-admin/update-core.php:500
-#: wp-admin/upload.php:63 wp-admin/upload.php:200 wp-admin/user-edit.php:53
-#: wp-admin/user-new.php:182 wp-admin/users.php:60 wp-admin/widgets.php:72
-msgid "For more information:"
-msgstr "Para más información:"
 
 #: wp-admin/user-new.php:272 wp-admin/user-new.php:327
 msgid "Add Existing User"
@@ -4359,10 +4080,6 @@ msgstr "Cualquier modificación de los archivos se verá reflejada en todos los 
 msgctxt "user"
 msgid "Add Existing User"
 msgstr "Añadir usuario existente"
-
-#: wp-admin/index.php:65
-msgid "The boxes on your Dashboard screen are:"
-msgstr "Las cajas en tu Escritorio son:"
 
 #: wp-admin/users.php:26
 msgid "This screen lists all the existing users for your site. Each user has one of five defined roles as set by the site admin: Site Administrator, Editor, Author, Contributor, or Subscriber. Users with roles other than Administrator will see fewer options in the dashboard navigation when they are logged in, based on their role."
@@ -4782,10 +4499,6 @@ msgstr "La mayoría de los temas muestran el título del sitio en la parte super
 msgid "You can set maximum sizes for images inserted into your written content; you can also insert an image as Full Size."
 msgstr "Puedes establecer los tamaños máximos para las imágenes insertadas en tu contenido; también puedes insertar una imagen a tamaño completo."
 
-#: wp-admin/edit-form-advanced.php:391
-msgid "<strong>Order</strong> - Pages are usually ordered alphabetically, but you can choose your own order by entering a number (1 for first, etc.) in this field."
-msgstr "<strong>Orden</strong> - Normalmente las páginas se ordenan alfabéticamente, pero puedes elegir tu propio orden introduciendo un número (1 para la primera, etc) en este campo."
-
 #: wp-admin/includes/file.php:1137
 msgid "Please enter your FTP or SSH credentials to proceed."
 msgstr "Por favor, introduce tus datos de acceso FTP o SSH para proceder."
@@ -4806,11 +4519,6 @@ msgstr "Pudes subir manualmente un tema si ya has descargado su archivo ZIP en t
 msgid "Your profile contains information about you (your &#8220;account&#8221;) as well as some personal options related to using WordPress."
 msgstr "Tu perfil contiene infomación sobre ti (tu &#8220;cuenta&#8221;) así como algunas opciones personales relacionadas con el uso de WordPress."
 
-
-#: wp-admin/edit-form-advanced.php:316
-msgid "Pages are similar to Posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest Pages under other Pages by making one the &#8220;Parent&#8221; of the other, creating a group of Pages."
-msgstr "Las páginas son similares a las entradas y tienen título, cuerpo de texto y metadatos asociados, pero son diferentes en que no forman parte de la secuencia cronológica tipo blog, son una especie de entradas permanentes. Las páginas no tienen categorías ni etiquetas, pero pueden tener una jerarquía. Puedes anidar páginas bajo otras páginas haciendo a una  &#8220;Superior&#8221; de otra, creando así un grupo de páginas."
-
 #: wp-admin/user-new.php:174
 msgid "Contributors can write and manage their posts but not publish posts or upload media files."
 msgstr "Los Colaboradores pueden escribir y gestionar sus entradas, pero no pueden publicar entradas o subir archivos multimedia."
@@ -4822,14 +4530,6 @@ msgstr "Los Administradores tienen acceso a todas las funciones de administraci�
 #: wp-admin/plugin-editor.php:130
 msgid "You can use the editor to make changes to any of your plugins&#8217; individual PHP files. Be aware that if you make changes, plugins updates will overwrite your customizations."
 msgstr "Puedes usar el editor para realizar cambios a cualquier archivo php de tus plugins. Cuidado si realizas cambios, la actualización de los plugins producirá que tus modificaciones sean sobrescritas y se pierdan."
-
-#: wp-admin/edit-form-advanced.php:310
-msgid "You can also create posts with the <a href=\"%s\">Press This bookmarklet</a>."
-msgstr "También puedes crear entradas con  <a href=\"%s\">el marcador Publicar esto</a>."
-
-#: wp-admin/edit-tags.php:217
-msgid "<strong>Slug</strong> - The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."
-msgstr "<strong>Slug</strong> - La &#8220;slug &#8221; es la versión amigable de la URL. Normalmente, son todo minúsculas y contiene sólo letras, números y guiones."
 
 #: wp-admin/user-edit.php:41
 msgid "Your username cannot be changed, but you can use other fields to enter your real name or a nickname, and change which name to display on your posts."
@@ -4987,45 +4687,13 @@ msgstr "Los Widgets son secciones independientes de contenido que pueden ser col
 msgid "(no parent)"
 msgstr "(sin superior)"
 
-#: wp-admin/edit-form-advanced.php:390
-msgid "<strong>Template</strong> - Some themes have custom templates you can use for certain pages that might have additional features or custom layouts. If so, you&#8217;ll see them in this dropdown menu."
-msgstr "<strong>Plantilla</strong> - Algunos temas tienen plantillas personalizadas que pueden usarse para añadir algunas características adicionales o diseños personalizados. Si las hay, las encontrarás en el menú desplegable."
-
-#: wp-admin/edit-form-advanced.php:389
-msgid "<strong>Parent</strong> - You can arrange your pages in hierarchies. For example, you could have an &#8220;About&#8221; page that has &#8220;Life Story&#8221; and &#8220;My Dog&#8221; pages under it. There are no limits to how many levels you can nest pages."
-msgstr "<strong>Superiores</strong> - Puedes ordenar tus páginas en jerarquías. Por ejemplo, podrías tener una página &#8220;Sobre&#8221; que bajo ella las páginas &#8220;Historia de mi vida&#8221; y &#8220;Mi perro&#8221;. No hay límites en cuántos niveles puedes anidar páginas."
-
 #: wp-admin/includes/class-wp-upgrader-skins.php:225
 msgid "All updates have been completed."
 msgstr "Todas las actualizaciones han sido completadas."
 
-#: wp-admin/edit-tags.php:222
-msgid "<strong>Description</strong> - The description is not prominent by default; however, some themes may display it."
-msgstr "<strong>Descripción</strong> - La descripción no se muestra por defecto, pero algunos temas la podrían mostrar."
-
-#: wp-admin/edit-tags.php:214
-msgid "<strong>Name</strong> - The name is how it appears on your site."
-msgstr "<strong>Nombre</strong> - El nombre es como aparece en tu sitio"
-
-#: wp-admin/edit-tags.php:209
-msgid "When adding a new category on this screen, you&#8217;ll fill in the following fields:"
-msgstr "Cuando añades una nueva categoría en esta pantalla, rellenas los siguientes campos."
-
 #: wp-admin/edit-tags.php:190
 msgid "You can use categories to define sections of your site and group related posts. The default category is &#8220;Uncategorized&#8221; until you change it in your <a href=\"%s\">writing settings</a>."
 msgstr "Puedes usar categorías para definir secciones para las entradas de tu sitio y grupo. La categoría por defecto es &#8220;Sin categoría&#8221; hasta que la cambies en tus <a href=\"%s\">ajustes de escritura</a>."
-
-#: wp-admin/edit-tags.php:211
-msgid "When adding a new tag on this screen, you&#8217;ll fill in the following fields:"
-msgstr "Cuando añadas una nueva etiqueta en esta pantalla, rellenarás los siguientes campos:"
-
-#: wp-admin/edit-tags.php:199
-msgid "What&#8217;s the difference between categories and tags? Normally, tags are ad-hoc keywords that identify important information in your post (names, subjects, etc) that may or may not recur in other posts, while categories are pre-determined sections. If you think of your site like a book, the categories are like the Table of Contents and the tags are like the terms in the index."
-msgstr "¿Cuál es la diferencia entre categorías y etiquetas? Normalmente, las etiquetas son palabras clave que identifican información importante en tus entradas (nombres, asuntos, etc...) que pueden ser recurrentes o no en otras entradas, mientras que las categorías son secciones predeterminadas. Si piensas en tu sitio como en un libro, las categorías sería la tabla de contenidos mientras que las etiquetas serían como los términos en el índice."
-
-#: wp-admin/edit-tags.php:224
-msgid "You can change the display of this screen using the Screen Options tab to set how many items are displayed per screen and to display/hide columns in the table."
-msgstr "Puedes cambiar la forma de visualización de esta pantalla usando la pestaña Opciones de pantalla para marcar cuántos elementos se muestran por pantalla y mostrar/esconder columnas."
 
 #: wp-admin/upload.php:183
 msgid "You can narrow the list by file type/status using the text link filters at the top of the screen. You also can refine the list by date using the dropdown menu above the media table."
@@ -5062,45 +4730,9 @@ msgstr "Permitir comentarios."
 msgid "Return to WordPress Updates"
 msgstr "Volver a  las actualizaciones de WordPress"
 
-#: wp-admin/edit-form-advanced.php:295
-msgid "<strong>Title</strong> - Enter a title for your post. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
-msgstr "<strong>Título</strong> - Introduce el título de tu entrada. Después de introducir el título, podrás ver el enlace permanente el cual podrás editar."
-
-#: wp-admin/edit-form-advanced.php:381
-msgid "<strong>Discussion</strong> - You can turn comments and pings on or off, and if there are comments on the post, you can see them here and moderate them."
-msgstr "<strong>Comentarios</strong> - Puedes activar o desactivar los comentarios y pings, y si hay comentario en las entradas, puedes verlos aquí y moderarlos."
-
-#: wp-admin/edit-form-advanced.php:362
-msgid "<strong>Publish</strong> - You can set the terms of publishing your post in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a post or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a post to be published in the future or backdate a post."
-msgstr "<strong>Publicar</strong> - Puedes fijar las características de publicación en la caja de publicación. Para el estado, visibilidad y publicar (inmediatamente), haz clic en el enlace \"editar\" para ver más opciones. La visibilidad incluye opciones para proteger una entrada con contraseña o para hacer que se quede en la parte superior de tu sitio indefinidamente (entrada fija). Publicar (inmediatamente) te permite fijar una fecha de publicación pasada o futura, con lo que puedes programar una entrada para publicarse después o atrasar la fecha de una entrada."
-
-#: wp-admin/edit-form-advanced.php:369
-msgid "<strong>Featured Image</strong> - This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the featured image as a post thumbnail on the home page, a custom header, etc."
-msgstr "<strong>Imagen destacada</strong> - Esto te permite asociar una imagen con su entrada sin tener que insertarla, Es útil sólo si tu tema usa la imagen destacada para mostrar una miniatura en la página de inicio, en una cabecera personalizada, etc."
-
-#: wp-admin/edit.php:184
-msgid "You can filter the list of posts by post status using the text links in the upper left to show All, Published, Draft, or Trashed posts. The default view is to show all posts."
-msgstr "Puedes filtrar la lista de entradas por estados usando los enlaces que aparecen en la parte superior izquierda para mostrar Todas, Publicado, Borrador o entradas en Papelera. La vista por defecto es mostrar todas las entradas."
-
 #: wp-admin/users.php:33
 msgid "You can customize the display of this screen in a number of ways:"
 msgstr "Puedes personalizar cómo se muestra esta pantalla de diferentes formas:"
-
-#: wp-admin/edit.php:186
-msgid "You can refine the list to show only posts in a specific category or from a specific month by using the dropdown menus above the posts list. Click the Filter button after making your selection. You also can refine the list by clicking on the post author, category or tag in the posts list."
-msgstr "Puedes refinar lo que muestra el listado de entradas haciendo que sólo se muestren las de una categoría específica o de un mes determinado usando el menú desplegable que encontrarás sobre el listado de entradas. Realiza un clic sobre el botón Filtro después de realizar tu selección. También puedes refinar el listado haciendo clic sobre el autor de una entrada, categoría o etiqueta del listado de entradas."
-
-#: wp-admin/edit.php:185
-msgid "You can view posts in a simple title list or with an excerpt. Choose the view you prefer by clicking on the icons at the top of the list on the right."
-msgstr "Puedes ver las entradas en un listado que muestre sólo los títulos o un fragmento del contenido. Selecciona la vista que prefieras realizando un clic en los iconos que encontrarás en la parte superior derecha del listado."
-
-#: wp-admin/edit.php:183
-msgid "You can hide/display columns based on your needs and decide how many posts to list per screen using the Screen Options tab."
-msgstr "Puedes esconder/mostrar columnas basándote en tus necesidades y decidir cuántas entradas se mostrarán por pantalla utilizando la pestaña Opciones de pantalla."
-
-#: wp-admin/edit.php:193
-msgid "Hovering over a row in the posts list will display action links that allow you to manage your post. You can perform the following actions:"
-msgstr "Pasando el cursor sobre la línea de la entrada, mostrará los enlaces de las acciones, permitiéndote gestionar la entrada. Puedes realizar las siguientes acciones:"
 
 #: wp-admin/plugins.php:473
 msgid "Search Installed Plugins"
@@ -8973,10 +8605,6 @@ msgid_plural "%s posts updated."
 msgstr[0] "%s entrada actualizada."
 msgstr[1] "%s entradas actualizadas."
 
-#: wp-admin/edit-tag-form.php:87 wp-admin/edit-tags.php:458
-msgid "The name is how it appears on your site."
-msgstr "El nombre es cómo aparecerá en tu sitio."
-
 #: wp-admin/includes/meta-boxes.php:1055
 msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"http://gmpg.org/xfn/\">XFN</a>."
 msgstr "Si el enlace es a una persona, puedes especificar tu relación con ella utilizando el formulario de arriba. Si deseas aprender más acerca de cómo funciona esto revisa el <a href=\"http://gmpg.org/xfn/\">XFN</a>."
@@ -9012,10 +8640,6 @@ msgstr "Entrada restaurada a la revisión %s"
 #: wp-admin/edit-form-advanced.php:87
 msgid "Post published. <a href=\"%s\">View post</a>"
 msgstr "Entrada publicada. <a href=\"%s\">Ver entrada</a>"
-
-#: wp-admin/edit-tag-form.php:107 wp-admin/edit-tags.php:464
-msgid "The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."
-msgstr "El &#8220;slug&#8221; es la versión amigable de la URL del nombre. Suele estar en minúsculas y contiene sólo letras, números y guiones."
 
 #: wp-admin/edit-tags.php:342
 msgid "<strong>Note:</strong><br />Deleting a category does not delete the posts in that category. Instead, posts that were only assigned to the deleted category are set to the category <strong>%s</strong>."
