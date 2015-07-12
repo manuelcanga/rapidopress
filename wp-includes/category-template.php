@@ -1126,6 +1126,7 @@ class Walker_CategoryDropdown extends Walker {
 
 		/** This filter is documented in wp-includes/category-template.php */
 		$cat_name = apply_filters( 'list_cats', $category->name, $category );
+        if ( isset( $args['value_field'] ) && isset( $category->{$args['value_field']} ) ) { 
             $value_field = $args['value_field']; 
         } else { 
             $value_field = 'term_id'; 
