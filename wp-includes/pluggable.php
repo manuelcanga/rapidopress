@@ -477,14 +477,15 @@ if ( !function_exists('wp_set_auth_cookie') ) :
  * default the cookie is kept without remembering is two days. When $remember is
  * set, the cookies will be kept for 14 days or two weeks.
  *
- * @since 2.5.0
+ * @since 4.3.0 Added the `$token` parameter. 
  *
  * @param int $user_id User ID
  * @param bool $remember Whether to remember the user
  * @param mixed $secure  Whether the admin cookies should only be sent over HTTPS.
  *                       Default is_ssl().
+ * @param string $token  Optional. User's session token to use for this cookie. 
  */
-function wp_set_auth_cookie($user_id, $remember = false, $secure = '') {
+function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token = '' ) { 
 	if ( $remember ) {
 		/**
 		 * Filter the duration of the authentication cookie expiration period.
@@ -544,8 +545,10 @@ function wp_set_auth_cookie($user_id, $remember = false, $secure = '') {
 		$scheme = 'auth';
 	}
 
-	$manager = WP_Session_Tokens::get_instance( $user_id );
-	$token = $manager->create( $expiration );
+    if ( '' === $token ) { 
+        $manager = WP_Session_Tokens::get_instance( $user_id ); 
+        $token   = $manager->create( $expiration ); 
+    } 
 
 	$auth_cookie = wp_generate_auth_cookie( $user_id, $expiration, $scheme, $token );
 	$logged_in_cookie = wp_generate_auth_cookie( $user_id, $expiration, 'logged_in', $token );
