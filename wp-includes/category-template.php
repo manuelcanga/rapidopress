@@ -1126,15 +1126,16 @@ class Walker_CategoryDropdown extends Walker {
 
 		/** This filter is documented in wp-includes/category-template.php */
 		$cat_name = apply_filters( 'list_cats', $category->name, $category );
+            $value_field = $args['value_field']; 
+        } else { 
+            $value_field = 'term_id'; 
+        } 
 
-		if ( ! isset( $args['value_field'] ) || ! isset( $category->{$args['value_field']} ) ) {
-			$args['value_field'] = 'term_id';
-		}
+        $output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $category->{$value_field} ) . "\""; 
 
-		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $category->{$args['value_field']} ) . "\"";
-
-		if ( $category->term_id == $args['selected'] )
+        if ( $category->{$value_field} == $args['selected'] ) 
 			$output .= ' selected="selected"';
+
 		$output .= '>';
 		$output .= $pad.$cat_name;
 		if ( $args['show_count'] )
