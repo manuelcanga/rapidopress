@@ -98,7 +98,13 @@ function wp_admin_bar_render() {
  * @param WP_Admin_Bar $wp_admin_bar
  */
 function wp_admin_bar_sidebar_toggle( $wp_admin_bar ) {
-
+        if ( is_admin() ) {
+                $wp_admin_bar->add_menu( array(
+                        'id'    => 'menu-toggle',
+                        'title' => '<span class="ab-icon"></span><span class="screen-reader-text">' . __( 'Menu' ) . '</span>',
+                        'href'  => '#',
+                ) );
+        }
 }
 
 /**
