@@ -2716,7 +2716,8 @@ class Db {
 		if ( $this->col_info )
 			return;
 
-		for ( $i = 0; $i < @mysqli_num_fields( $this->result ); $i++ ) {
+        $num_fields = @mysqli_num_fields( $this->result ); 
+        for ( $i = 0; $i < $num_fields; $i++ ) { 
 			$this->col_info[ $i ] = @mysqli_fetch_field( $this->result );
 		}
 	}
