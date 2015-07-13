@@ -33,8 +33,7 @@
  * @param string $requested_url Optional. The URL that was requested, used to
  *		figure if redirect is needed.
  * @param bool $do_redirect Optional. Redirect to the new URL.
- * @return null|false|string Null, if redirect not needed. False, if redirect
- *		not needed or the string of the URL
+ * @return null|string Null, if redirect not needed, or the string of the URL 
  */
 function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 	global $wp_rewrite, $is_IIS, $wp_query, $wpdb;
@@ -403,8 +402,8 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 			$redirect_url .= '?' . $redirect['query'];
 	}
 
-	if ( !$redirect_url || $redirect_url == $requested_url )
-		return false;
+    if ( ! $redirect_url || $redirect_url == $requested_url ) { 
+        return; 
 
 	// Hex encoded octets are case-insensitive.
 	if ( false !== strpos($requested_url, '%') ) {
@@ -428,7 +427,8 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 	 */
 	$redirect_url = apply_filters( 'redirect_canonical', $redirect_url, $requested_url );
 
-	if ( !$redirect_url || $redirect_url == $requested_url ) // yes, again -- in case the filter aborted the request
+	// yes, again -- in case the filter aborted the request
+	if ( !$redirect_url || $redirect_url == $requested_url ) 
 		return false;
 
 	if ( $do_redirect ) {
@@ -439,7 +439,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		} else {
 			// Debug
 			// die("1: $redirect_url<br />2: " . redirect_canonical( $redirect_url, false ) );
-			return false;
+			return ;
 		}
 	} else {
 		return $redirect_url;
@@ -479,7 +479,7 @@ function _remove_qs_args_if_not_in_url( $query_string, Array $args_to_check, $ur
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
- * @return bool|string The correct URL if one is found. False on failure.
+ * @return false|string The correct URL if one is found. False on failure. 
  */
 function redirect_guess_404_permalink() {
 	global $wpdb, $wp_rewrite;
