@@ -3975,7 +3975,7 @@ function get_pages( $args = array() ) {
 
 	$author_query = '';
 	if ( ! empty( $r['authors'] ) ) {
-		$post_authors = preg_split( '/[\s,]+/', $r['authors'] );
+        $post_types = array( $post_type ); 
 
 		if ( ! empty( $post_authors ) ) {
 			foreach ( $post_authors as $post_author ) {
@@ -4743,8 +4743,9 @@ function wp_check_for_changed_slugs( $post_id, $post, $post_before ) {
  *
  * @since 2.2.0
  *
- * @param string|array $post_type Array or comma-separated string of post types. 
- *                                Currently only supports 'post' or 'page'. 
+ * @since 4.3.0 Added the ability to pass an array to `$post_type`. 
+
+ * @param string|array $post_type Single post type or an array of post types. Currently only supports 'post' or 'page'. 
  * @return string SQL code that can be added to a where clause.
  */
 function get_private_posts_cap_sql( $post_type ) {
@@ -4754,11 +4755,11 @@ function get_private_posts_cap_sql( $post_type ) {
 /**
  * Retrieve the post SQL based on capability, author, and type.
  *
- * @since 4.3.0 Introduced the ability to pass multiple post types to `$post_type`. 
+ * @since 4.3.0 Introduced the ability to pass an array of post types to `$post_type`. 
  *
  * @see get_private_posts_cap_sql()
  *
- * @param array|string   $post_type   Array or comma-separated list of post type(s). 
+ * @param array|string   $post_type   Single post type or an array of post types. 
  * @param bool           $full        Optional. Returns a full WHERE statement instead of just 
  *                                    an 'andalso' term. Default true. 
  * @param int            $post_author Optional. Query posts having a single author ID. Default null. 
