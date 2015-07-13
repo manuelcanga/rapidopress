@@ -858,6 +858,7 @@ function wp_dropdown_languages( $args = array() ) {
 		'languages'    => array(),
 		'translations' => array(),
 		'selected'     => '',
+        'echo'         => 1, 
 		'show_available_translations' => true,
 	) );
 
@@ -941,4 +942,4 @@ function wp_dropdown_languages( $args = array() ) {
     } 
      return $output; 
 } 
-}
+
