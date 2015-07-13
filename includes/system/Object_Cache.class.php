@@ -252,8 +252,8 @@ class Object_Cache {
 	 * @param int|string $key What the contents in the cache are called
 	 * @param string $group Where the cache contents are grouped
 	 * @param string $force Whether to force a refetch rather than relying on the local cache (default is false)
-	 * @return bool|mixed False on failure to retrieve contents or the cache
-	 *		contents on success
+     * @return false|mixed False on failure to retrieve contents or the cache 
+     *                     contents on success 
 	 */
 	public function get( $key, $group = 'default', $force = false, &$found = null ) {
 		if ( empty( $group ) )
@@ -346,7 +346,7 @@ class Object_Cache {
 	 * @param mixed $data The contents to store in the cache
 	 * @param string $group Where to group the cache contents
 	 * @param int $expire Not Used
-	 * @return bool Always returns true
+     * @return true Always returns true 
 	 */
 	public function set( $key, $data, $group = 'default', $expire = 0 ) {
 		if ( empty( $group ) )
@@ -432,7 +432,7 @@ class Object_Cache {
 	 *
 	 * @since  2.0.8
 	 *
-	 * @return bool True value. Won't be used by PHP
+     * @return true True value. Won't be used by PHP 
 	 */
 	public function __destruct() {
 		return true;

@@ -41,7 +41,7 @@ function wp_cache_add( $key, $data, $group = '', $expire = 0 ) {
  *
  * @since 2.0.0
  *
- * @return bool Always returns True
+ * @return true Always returns True 
  */
 function wp_cache_close() {
 	return true;
@@ -109,7 +109,7 @@ function wp_cache_flush() {
  * @param bool $force Whether to force an update of the local cache from the persistent cache (default is false)
  * @param bool &$found Whether key was found in the cache. Disambiguates a return of false, a storable value.
  * @return bool|mixed False on failure to retrieve contents or the cache
- *		contents on success
+ *                    contents on success 
  */
 function wp_cache_get( $key, $group = '', $force = false, &$found = null ) {
 	global $wp_object_cache;
@@ -139,7 +139,8 @@ function wp_cache_incr( $key, $offset = 1, $group = '' ) {
  * Sets up Object Cache Global and assigns it.
  *
  * @since 2.0.0
- * @global WP_Object_Cache $wp_object_cache WordPress Object Cache
+ * @global $wp_object_cache WordPress Object Cache instance 
+ * @uses WP_Object_Cache 
  */
 function wp_cache_init() {
 	$GLOBALS['wp_object_cache'] = new WP_Object_Cache();
@@ -196,7 +197,7 @@ function wp_cache_set( $key, $data, $group = '', $expire = 0 ) {
 function wp_cache_switch_to_blog( $blog_id ) {
 	global $wp_object_cache;
 
-	return $wp_object_cache->switch_to_blog( $blog_id );
+    $wp_object_cache->switch_to_blog( $blog_id ); 
 }
 
 /**
@@ -209,7 +210,7 @@ function wp_cache_switch_to_blog( $blog_id ) {
 function wp_cache_add_global_groups( $groups ) {
 	global $wp_object_cache;
 
-	return $wp_object_cache->add_global_groups( $groups );
+    $wp_object_cache->add_global_groups( $groups ); 
 }
 
 /**
