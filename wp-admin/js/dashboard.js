@@ -34,7 +34,7 @@ jQuery(document).ready( function($) {
 
 	postboxes.add_postbox_toggles(pagenow, { pbshow: ajaxPopulateWidgets } );
 
-	$( '.meta-box-sortables' ).sortable( 'option', 'containment', 'document' );
+	$( '.meta-box-sortables' ).sortable( 'option', 'containment', '#wpwrap' );
 
 	function autoResizeTextarea() {
 		if ( document.documentMode && document.documentMode < 9 ) {
