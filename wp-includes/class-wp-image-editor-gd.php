@@ -33,6 +33,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @since 3.5.0
 	 * @access public
 	 *
+     * @param array $args 
 	 * @return boolean
 	 */
 	public static function test( $args = array() ) {
@@ -79,7 +80,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @since 3.5.0
 	 * @access protected
 	 *
-	 * @return boolean|WP_Error True if loaded successfully; WP_Error on failure.
+	 * @return true|WP_Error True if loaded successfully; WP_Error on failure.
 	 */
 	public function load() {
 		if ( $this->image )
@@ -127,6 +128,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 *
 	 * @param int $width
 	 * @param int $height
+     * @return true 
 	 */
 	protected function update_size( $width = false, $height = false ) {
 		if ( ! $width )
@@ -152,7 +154,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @param  int|null $max_w Image width.
 	 * @param  int|null $max_h Image height.
 	 * @param  boolean  $crop
-	 * @return boolean|WP_Error
+	 * @return true|WP_Error
 	 */
 	public function resize( $max_w, $max_h, $crop = false ) {
 		if ( ( $this->size['width'] == $max_w ) && ( $this->size['height'] == $max_h ) )
@@ -171,6 +173,13 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 		return new WP_Error( 'image_resize_error', __('Image resize failed.'), $this->file );
 	}
 
+    /** 
+     * 
+     * @param int $max_w 
+     * @param int $max_h 
+     * @param bool|array $crop 
+     * @return resource|WP_Error 
+     */ 
 	protected function _resize( $max_w, $max_h, $crop = false ) {
 		$dims = image_resize_dimensions( $this->size['width'], $this->size['height'], $max_w, $max_h, $crop );
 		if ( ! $dims ) {
@@ -433,6 +442,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @access public
 	 *
 	 * @param string $mime_type
+     * @return bool 
 	 */
 	public function stream( $mime_type = null ) {
 		list( $filename, $extension, $mime_type ) = $this->get_output_format( null, $mime_type );
