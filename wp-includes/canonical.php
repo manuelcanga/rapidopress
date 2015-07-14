@@ -404,6 +404,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 
     if ( ! $redirect_url || $redirect_url == $requested_url ) { 
         return; 
+	}
 
 	// Hex encoded octets are case-insensitive.
 	if ( false !== strpos($requested_url, '%') ) {
