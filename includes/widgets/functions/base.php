@@ -246,8 +246,7 @@ function register_sidebar($args = array()) {
 function unregister_sidebar( $name ) {
 	global $wp_registered_sidebars;
 
-	if ( isset( $wp_registered_sidebars[$name] ) )
-		unset( $wp_registered_sidebars[$name] );
+    unset( $wp_registered_sidebars[ $name ] ); 
 }
 
 /**
