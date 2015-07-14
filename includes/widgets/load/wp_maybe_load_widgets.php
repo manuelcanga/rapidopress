@@ -17,7 +17,7 @@ $is_admin = is_admin();
 
 $widgets_load =  $widgets_admin_page ||  !$is_admin || $doing_ajax ;
 
-$widgets_load = apply_filters('/rapido/widgets/load', $widgets_load);
+$widgets_load = apply_filters('\\rapidopress\\widgets\\load', $widgets_load);
 
 if($widgets_load ) {
 	add_action('init', RAPIDO_INCLUDES . 'widgets/load/default-widgets.php' );

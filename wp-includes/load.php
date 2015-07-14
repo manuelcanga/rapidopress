@@ -40,7 +40,7 @@ function rapido_autoload_classes($class_name) {
 	else
 		return ;
 
-	$class_file = apply_filters('/rapido/autoload/new_class', $class_file, $class_name);
+	$class_file = apply_filters('\\rapidopress\\autoload\\new_class', $class_file, $class_name);
 
 
 	if(file_exists($class_file) ) {
