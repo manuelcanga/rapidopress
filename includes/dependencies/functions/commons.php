@@ -116,6 +116,7 @@ function get_file($path) {
 
 
 
+require( RAPIDO_DEPENDENCIES . '_WP_Dependency.class.php' );
 require( RAPIDO_DEPENDENCIES . 'WP_Dependencies.class.php' );
 require( RAPIDO_DEPENDENCIES . 'WP_Scripts.class.php' );
 require( RAPIDO_DEPENDENCIES . 'WP_Styles.class.php' );

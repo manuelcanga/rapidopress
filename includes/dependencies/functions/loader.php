@@ -26,6 +26,7 @@
 
 
 /** BackPress: WordPress Dependencies Class */
+class_alias('\rapidopress\dependencies\_WP_Dependency', '_WP_Dependency');
 class_alias('\rapidopress\dependencies\WP_Dependencies', 'WP_Dependencies');
 
 /** BackPress: WordPress Scripts Class */
