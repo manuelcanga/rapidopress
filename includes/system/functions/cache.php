@@ -16,8 +16,8 @@ class_alias('\rapidopress\system\Object_Cache', 'WP_Object_Cache');
  * Adds data to the cache, if the cache key doesn't already exist.
  *
  * @since 2.0.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::add()
+ *
+ * @global WP_Object_Cache $wp_object_cache
  *
  * @param int|string $key The cache key to use for retrieval later
  * @param mixed $data The data to add to the cache store
@@ -51,8 +51,8 @@ function wp_cache_close() {
  * Decrement numeric cache item's value
  *
  * @since 3.3.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::decr()
+ *
+ * @global WP_Object_Cache $wp_object_cache
  *
  * @param int|string $key The cache key to increment
  * @param int $offset The amount by which to decrement the item's value. Default is 1.
@@ -69,8 +69,8 @@ function wp_cache_decr( $key, $offset = 1, $group = '' ) {
  * Removes the cache contents matching key and group.
  *
  * @since 2.0.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::delete()
+ *
+ * @global WP_Object_Cache $wp_object_cache
  *
  * @param int|string $key What the contents in the cache are called
  * @param string $group Where the cache contents are grouped
@@ -86,8 +86,8 @@ function wp_cache_delete($key, $group = '') {
  * Removes all cache items.
  *
  * @since 2.0.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::flush()
+ *
+ * @global WP_Object_Cache $wp_object_cache
  *
  * @return bool False on failure, true on success
  */
@@ -101,8 +101,8 @@ function wp_cache_flush() {
  * Retrieves the cache contents from the cache by key and group.
  *
  * @since 2.0.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::get()
+ *
+ * @global WP_Object_Cache $wp_object_cache
  *
  * @param int|string $key What the contents in the cache are called
  * @param string $group Where the cache contents are grouped
@@ -121,8 +121,8 @@ function wp_cache_get( $key, $group = '', $force = false, &$found = null ) {
  * Increment numeric cache item's value
  *
  * @since 3.3.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::incr()
+ *
+ * @global WP_Object_Cache $wp_object_cache 
  *
  * @param int|string $key The cache key to increment
  * @param int $offset The amount by which to increment the item's value. Default is 1.
@@ -150,8 +150,8 @@ function wp_cache_init() {
  * Replaces the contents of the cache with new data.
  *
  * @since 2.0.0
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::replace()
+ *
+ * @global WP_Object_Cache $wp_object_cache 
  *
  * @param int|string $key What to call the contents in the cache
  * @param mixed $data The contents to store in the cache
@@ -170,8 +170,7 @@ function wp_cache_replace( $key, $data, $group = '', $expire = 0 ) {
  *
  * @since 2.0.0
  *
- * @uses $wp_object_cache Object Cache Class
- * @see WP_Object_Cache::set()
+ * @global WP_Object_Cache $wp_object_cache 
  *
  * @param int|string $key What to call the contents in the cache
  * @param mixed $data The contents to store in the cache
@@ -192,6 +191,8 @@ function wp_cache_set( $key, $data, $group = '', $expire = 0 ) {
  *
  * @since 3.5.0
  *
+ * @global WP_Object_Cache $wp_object_cache 
+ *
  * @param int $blog_id Blog ID
  */
 function wp_cache_switch_to_blog( $blog_id ) {
@@ -204,6 +205,8 @@ function wp_cache_switch_to_blog( $blog_id ) {
  * Adds a group or set of groups to the list of global groups.
  *
  * @since 2.6.0
+ *
+ * @global WP_Object_Cache $wp_object_cache 
  *
  * @param string|array $groups A group or an array of groups to add
  */

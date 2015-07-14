@@ -230,10 +230,10 @@ class Object_Cache {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @return bool Always returns true
+     * @return true Always returns true 
 	 */
 	public function flush() {
-		$this->cache = array ();
+        $this->cache = array(); 
 
 		return true;
 	}
@@ -411,6 +411,8 @@ class Object_Cache {
 	 * Sets up object properties; PHP 5 style constructor
 	 *
 	 * @since 2.0.8
+     *
+     * @global int $blog_id 
 	 */
 	public function __construct() {
 		global $blog_id;
