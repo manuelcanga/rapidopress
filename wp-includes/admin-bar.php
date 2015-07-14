@@ -13,6 +13,9 @@
  *
  * @since 3.1.0
  * @access private
+ *
+ * @global WP_Admin_Bar $wp_admin_bar 
+ *
  * @return bool Whether the admin bar was successfully initialized.
  */
 function _wp_admin_bar_init() {
@@ -55,6 +58,8 @@ function _wp_admin_bar_init() {
  * right before the admin bar is rendered. This also gives you access to the $post global, among others.
  *
  * @since 3.1.0
+ *
+ * @global WP_Admin_Bar $wp_admin_bar 
  */
 function wp_admin_bar_render() {
 	global $wp_admin_bar;
@@ -254,6 +259,9 @@ function wp_admin_bar_shortlink_menu( $wp_admin_bar ) {
  * Provide an edit link for posts and terms.
  *
  * @since 3.1.0
+ *
+ * @global object   $tag 
+ * @global WP_Query $wp_the_query 
  *
  * @param WP_Admin_Bar $wp_admin_bar
  */
@@ -569,7 +577,6 @@ function _admin_bar_bump_cb() { ?>
  * @since 3.1.0
  *
  * @param bool $show Whether to allow the admin bar to show.
- * @return void
  */
 function show_admin_bar( $show ) {
 	global $show_admin_bar;
@@ -580,6 +587,9 @@ function show_admin_bar( $show ) {
  * Determine whether the admin bar should be showing.
  *
  * @since 3.1.0
+ *
+ * @global WP_Admin_Bar $wp_admin_bar 
+ * @global string       $pagenow 
  *
  * @return bool Whether the admin bar should be showing.
  */
