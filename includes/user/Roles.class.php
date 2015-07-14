@@ -133,6 +133,8 @@ class Roles {
 	 *
 	 * @since 3.5.0
 	 * @access public
+     *
+     * @global wpdb $wpdb 
 	 */
 	public function reinit() {
 		// There is no need to reinit if using the wp_user_roles global.

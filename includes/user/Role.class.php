@@ -48,7 +48,6 @@ class Role {
 	/**
 	 * Assign role a capability.
 	 *
-	 * @see WP_Roles::add_cap() Method uses implementation for role.
 	 * @since 2.0.0
 	 * @access public
 	 *
@@ -56,13 +55,8 @@ class Role {
 	 * @param bool $grant Whether role has capability privilege.
 	 */
 	public function add_cap( $cap, $grant = true ) {
-		global $wp_roles;
-
-		if ( ! isset( $wp_roles ) )
-			$wp_roles = new Roles();
-
 		$this->capabilities[$cap] = $grant;
-		$wp_roles->add_cap( $this->name, $cap, $grant );
+		wp_roles()->add_cap( $this->name, $cap, $grant );
 	}
 
 	/**
@@ -79,10 +73,7 @@ class Role {
 	 * @param string $cap Capability name.
 	 */
 	public function remove_cap( $cap ) {
-		global $wp_roles;
-
-		if ( ! isset( $wp_roles ) )
-			$wp_roles = new Roles();
+		$wp_roles = wp_roles();
 
 		unset( $this->capabilities[$cap] );
 		$wp_roles->remove_cap( $this->name, $cap );

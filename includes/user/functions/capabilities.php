@@ -394,6 +394,22 @@ function user_can( $user, $capability ) {
 	return call_user_func_array( array( $user, 'has_cap' ), $args );
 }
 
+
+ /**
+ * Retrieve the global WP_Roles instance, instantiate if necessary
+ *
+ * @global WP_Roles $wp_roles
+ * @return WP_Roles global instance
+ */
+function wp_roles() {
+    global $wp_roles;
+
+    if ( ! isset( $wp_roles ) ) {
+        $wp_roles = new WP_Roles();
+    }
+    return $wp_roles;
+}
+
 /**
  * Retrieve role object.
  *
@@ -404,12 +420,7 @@ function user_can( $user, $capability ) {
  * @return WP_Role|null WP_Role object if found, null if the role does not exist.
  */
 function get_role( $role ) {
-	global $wp_roles;
-
-	if ( ! isset( $wp_roles ) )
-		$wp_roles = new WP_Roles();
-
-	return $wp_roles->get_role( $role );
+	return wp_roles()->get_role( $role );
 }
 
 /**
@@ -424,12 +435,7 @@ function get_role( $role ) {
  * @return WP_Role|null WP_Role object if role is added, null if already exists.
  */
 function add_role( $role, $display_name, $capabilities = array() ) {
-	global $wp_roles;
-
-	if ( ! isset( $wp_roles ) )
-		$wp_roles = new WP_Roles();
-
-	return $wp_roles->add_role( $role, $display_name, $capabilities );
+	return wp_roles()->add_role( $role, $display_name, $capabilities );
 }
 
 /**
@@ -441,12 +447,7 @@ function add_role( $role, $display_name, $capabilities = array() ) {
  * @param string $role Role name.
  */
 function remove_role( $role ) {
-	global $wp_roles;
-
-	if ( ! isset( $wp_roles ) )
-		$wp_roles = new WP_Roles();
-
-	$wp_roles->remove_role( $role );
+    wp_roles()->remove_role( $role ); 
 }
 
 /**
