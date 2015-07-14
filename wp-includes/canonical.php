@@ -30,6 +30,11 @@
  * @uses $wp_rewrite
  * @uses $is_IIS
  *
+ * @global WP_Rewrite $wp_rewrite 
+ * @global bool $is_IIS 
+ * @global WP_Query $wp_query 
+ * @global wpdb $wpdb 
+ *
  * @param string $requested_url Optional. The URL that was requested, used to
  *		figure if redirect is needed.
  * @param bool $do_redirect Optional. Redirect to the new URL.
@@ -479,6 +484,7 @@ function _remove_qs_args_if_not_in_url( $query_string, Array $args_to_check, $ur
  * @since 2.3.0
  *
  * @global wpdb $wpdb WordPress database abstraction object.
+ * @global WP_Rewrite $wp_rewrite 
  *
  * @return false|string The correct URL if one is found. False on failure. 
  */
@@ -513,6 +519,10 @@ function redirect_guess_404_permalink() {
 	return false;
 }
 
+/** 
+ * 
+ * @global WP_Rewrite $wp_rewrite 
+ */ 
 function wp_redirect_admin_locations() {
 	global $wp_rewrite;
 	if ( ! ( is_404() && $wp_rewrite->using_permalinks() ) )
