@@ -94,4 +94,8 @@ class _WP_Dependency {
 		return true;
 	}
 
+	public function get_src() {
+		return $this->src;
+	}
+
 } // _WP_Dependency

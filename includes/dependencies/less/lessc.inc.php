@@ -70,7 +70,7 @@ class lessc {
 	protected function findImport($url) {
 		foreach ((array)$this->importDir as $dir) {
 			$full = $dir.(substr($dir, -1) != '/' ? '/' : '').$url;
-			if ($this->fileExists($file = $full.'.less') || $this->fileExists($file = $full)) {
+			if ($this->fileExists($file = $full.'.css') || $this->fileExists($file = $full)) {
 				return $file;
 			}
 		}
@@ -97,22 +97,66 @@ class lessc {
 		}
 
 		$str = $this->coerceString($importPath);
+
 		if ($str === null) return false;
 
 		$url = $this->compileValue($this->lib_e($str));
 
-		// don't import if it ends in css
-		if (substr_compare($url, '.css', -4, 4) === 0) return false;
+		if(empty($url) ) return false;
 
-		$realPath = $this->findImport($url);
+		return $this->importFile($url);
+	}
 
-		if ($realPath === null) return false;
+	protected function importFile($url) {
+		$realPath = '';
 
-		if ($this->importDisabled) {
-			return array(false, "/* import disabled */");
+		// if imported file doesn't have css extension then is a rapidopress handle( @see wp_default_styles ) 
+		if (substr_compare($url, '.css', -4, 4) !== 0) {
+			$handle = $url;
+
+			global $wp_styles;
+
+			$data = $wp_styles->query($handle,'scripts');
+			if(empty($data)) return array(false, null);
+
+			$realPath = ABSPATH.ltrim($data-> get_src(),'/');
+
+			/**
+			 * Filter import for css files
+			 *
+			 * @since rapidopress 0.4
+			 *
+			 * @param string realPath is el file( with full path ) for $handle
+			 */
+			$realPath = apply_filters('\\rapidopress\\styles\\parser\\'.$handle.'\\import', $realPath);
+
+		}else {
+			if($url && "/" == $url[0]) {
+				$realPath = ABSPATH.ltrim($url,'/');
+			}else {
+				$realPath = $this->findImport($url);
+			}
+
+			if ($realPath === null) return false;
+
+
+			/**
+			 * Filter findimport for css files
+			 *
+			 * @since rapidopress 0.4
+			 *
+			 * @param string realPath is el file( with full path ) for $handle
+			 * @param string url is el file within @import "tag"
+			 */
+			$realPath = apply_filters('\\rapidopress\\styles\\parser\\findimport', $realPath, $url);
+
+			if ($this->importDisabled) {
+				return array(false, "/* import disabled */");
+			}
+
 		}
 
-		if (isset($this->allParsedFiles[realpath($realPath)])) {
+		if (!$realPath || !file_exists($realPath) || isset($this->allParsedFiles[realpath($realPath)])  ) {
 			return array(false, null);
 		}
 
@@ -140,6 +184,7 @@ class lessc {
 			}
 		}
 
+
 		$pi = pathinfo($realPath);
 		$dir = $pi["dirname"];
 
@@ -147,6 +192,7 @@ class lessc {
 		$this->compileImportedProps($top, $parentBlock, $out, $parser, $dir);
 
 		return array(true, $bottom, $parser, $dir);
+
 	}
 
 	protected function compileImportedProps($props, $block, $out, $sourceParser, $importDir) {
@@ -743,6 +789,7 @@ class lessc {
 			$out->lines[] = $prop[1];
 			break;
 		case "import";
+
 			list(, $importPath, $importId) = $prop;
 			$importPath = $this->reduce($importPath);
 

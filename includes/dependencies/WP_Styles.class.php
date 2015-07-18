@@ -1,6 +1,8 @@
 <?php
-
 namespace rapidopress\dependencies;
+
+if(!class_exists('\lessc') )
+	require_once(__DIR__."/less/lessc.inc.php");
 
 /**
  * BackPress Styles enqueue.
@@ -197,11 +199,16 @@ class WP_Styles extends WP_Dependencies {
 	 * @return string
 	 */
 	public function _css_href( $src, $ver, $handle ) {
-		if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) {
-			$src = root_url($src);
+		if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) { //admin css
+		    $path = str_replace(site_url(), '', $src);
+			$path = $this->precompile($path, $handle );
+			$src = root_url($path);
+
 		}else if( 0 === strpos($src, $this->content_url ) ){ //theme css
 		    $path = str_replace(site_url(), '', $src);
+			$path = $this->precompile($path, $handle );
 			$src = root_url($path);
+			
 		}else {
 			//External css
 		}
@@ -216,6 +223,94 @@ class WP_Styles extends WP_Dependencies {
 		 */
 		$src = apply_filters( 'style_loader_src', $src, $handle );
 		return esc_url( $src );
+	}
+
+	protected function precompile($in_file, $handle ) {
+		if(!file_exists(ABSPATH.$in_file) ) return ;
+
+		$out_file = str_replace('.css', '.rapido.css', $in_file);
+		
+		$when_last_rapido_css_was_created = 0;
+		if(file_exists(ABSPATH.$out_file) ) {
+			$when_last_rapido_css_was_created = (int) filemtime(ABSPATH.$out_file);
+		}
+
+		$last_update = (int) filemtime(ABSPATH.$in_file);
+
+		/**
+		 * Filter last update of a css file 
+		 *
+		 * @since rapidopress 0.4
+		 *
+		 * @param int $last_update last time when file was modified
+		 * @param string $handle The style's registered handle.
+		 */
+		$last_update = apply_filters('\\rapidopress\\styles\\last_update', $last_update, $handle );
+
+
+		if( $last_update >  $when_last_rapido_css_was_created ) {
+			$out_file = self::parse_css_file($in_file, $out_file, $handle );
+		}
+
+
+		return $out_file;
+	}
+
+	protected function parse_css_file($in_file, $out_file, $handle ) {
+
+
+		$content = file_get_contents(ABSPATH.$in_file);
+
+		/**
+		 * Filter vars for css file
+		 *
+		 * @since rapidopress 0.4
+		 *
+		 * @param array vars variables are used in less CSS
+		 */
+		$vars = apply_filters('\\rapidopress\\styles\\parser\\'.$handle.'\\vars', array() );
+
+		/**
+		 * Filter content of a css file
+		 *
+		 * @since rapidopress 0.4
+		 *
+		 * @param text content The content css file
+		 */
+		$content = apply_filters('\\rapidopress\\styles\\parser\\'.$handle.'\\content', $content);
+
+
+
+		try {
+			$less = new \lessc();
+
+			$import_dir =ABSPATH.dirname($in_file);
+			$less->setImportDir($import_dir);
+			$content = $less->parse($content, $vars );
+		} catch (exception $e) {
+			return $in_file;
+		}
+
+
+		//We crunch CSS
+		if(!SCRIPT_DEBUG ) {
+			$content = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $content);
+			$content = str_replace(array('    ','    ', '  '), array(' ',' ', ' '), $content);
+			$content = str_replace(array("\r\n", "\r", "\n", "\t"), '', $content);
+			$content = str_replace('{ ', '{', $content);
+			$content = str_replace(' {', '{', $content);
+			$content = str_replace(': ', ':', $content);
+			$content = str_replace(' }', '}', $content);
+			$content = str_replace('; }', ' }', $content);
+			$content = str_replace(';}', '}', $content);
+			$content = str_replace(', ', ',', $content);
+			$content = str_replace('; ', ';', $content);
+		}
+
+		//saving rapido css file
+		file_put_contents(ABSPATH.$out_file, $content);
+
+		return $out_file;
 	}
 
 	/**

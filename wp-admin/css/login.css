@@ -1,6 +1,9 @@
 @import url(forms.css);
-@import url(l10n.css);
 
+@background: default( background ,  #f1f1f1 );  
+@main_font: default( main_font ,  'Open Sans' );  
+@main_fontsize: default( main_fontsize ,  13px );  
+ 
 html,
 body {
 	height: 100%;
@@ -9,15 +12,15 @@ body {
 }
 
 html {
-	background: #f1f1f1;
+	background: @background;
 }
 
 body {
-	background: #f1f1f1;
+	background: @background; 
 	min-width: 0;
 	color: #444;
-	font-family: "Open Sans", sans-serif;
-	font-size: 13px;
+	font-family: @main_font, sans-serif;
+	font-size: @main_fontsize;
 	line-height: 1.4em;
 }
 

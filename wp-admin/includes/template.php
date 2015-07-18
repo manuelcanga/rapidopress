@@ -1961,7 +1961,8 @@ final class WP_Internal_Pointers {
 			return;
 
 		// Add pointers script and style to queue
-		wp_enqueue_style( 'wp-pointer' );
+		if(!is_admin() )
+			wp_enqueue_style( 'wp-pointer' ); //wp-pointer is part of wp-admin-commons
 		wp_enqueue_script( 'wp-pointer' );
 	}
 

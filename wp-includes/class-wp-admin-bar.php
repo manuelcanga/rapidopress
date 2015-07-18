@@ -58,7 +58,9 @@ class WP_Admin_Bar {
 		add_action('wp_head', $header_callback);
 
 		wp_enqueue_script( 'admin-bar' );
-		wp_enqueue_style( 'admin-bar' );
+		if(!is_admin() ) { //admin-bar is part of wp-admin-common in admin area
+			wp_enqueue_style( 'admin-bar' );
+		}
 
 		/**
 		 * Fires after WP_Admin_Bar is initialized.

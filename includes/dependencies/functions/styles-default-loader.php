@@ -77,35 +77,37 @@ function wp_default_styles( &$styles ) {
 	}
 
 	// Register a stylesheet for the selected admin color scheme.
-	$styles->add( 'colors', true, array( 'wp-admin', 'buttons', 'open-sans', 'dashicons' ) );
+	$styles->add( 'colors', true, array( 'wp-admin', 'wp-editor', 'open-sans' ) );
 
 	$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 	// Admin CSS
-	$styles->add( 'wp-admin',           "/wp-admin/css/wp-admin$suffix.css", array( 'open-sans', 'dashicons' ) );
-	$styles->add( 'login',              "/wp-admin/css/login$suffix.css", array( 'buttons', 'open-sans', 'dashicons' ) );
-	$styles->add( 'install',            "/wp-admin/css/install$suffix.css", array( 'buttons', 'open-sans' ) );
-	$styles->add( 'wp-color-picker',    "/wp-admin/css/color-picker$suffix.css" );
-	$styles->add( 'admin-widgets',  "/wp-admin/css/admin-widgets$suffix.css", array( 'wp-admin', 'colors' ) );
+	$styles->add( 'wp-admin',           "/wp-admin/css/wp-admin.css", array( 'open-sans', 'wp-admin-commons' ) );
+	$styles->add( 'wp-admin-commons',   "/wp-includes/css/wp-admin-commons.css", array( 'open-sans') );
+	$styles->add( 'wp-editor',           "/wp-includes/css/wp-editor.css", array( 'open-sans', 'wp-admin-commons' ) );
+	$styles->add( 'login',              "/wp-admin/css/login.css", array('open-sans',  'wp-admin-commons' ) );
+	$styles->add( 'install',            "/wp-admin/css/install.css", array('open-sans',  'wp-admin-commons' ) );
+	$styles->add( 'wp-color-picker',    "/wp-admin/css/color-picker.css" );
+	$styles->add( 'admin-widgets',		  "/wp-admin/css/admin-widgets.css", array( 'wp-admin', 'colors' ) );
 
 	// Common dependencies
-	$styles->add( 'buttons',   "/wp-includes/css/buttons$suffix.css" );
-	$styles->add( 'dashicons', "/wp-includes/css/dashicons$suffix.css" );
+	$styles->add( 'buttons',   "/wp-includes/css/buttons.css" );
+	$styles->add( 'dashicons', "/wp-includes/css/dashicons.css" );
 	$styles->add( 'open-sans', $open_sans_font_url );
 
 	// Includes CSS
-	$styles->add( 'admin-bar',      "/wp-includes/css/admin-bar$suffix.css", array( 'open-sans', 'dashicons' ) );
-	$styles->add( 'wp-auth-check',  "/wp-includes/css/wp-auth-check$suffix.css", array( 'dashicons' ) );
-	$styles->add( 'editor-buttons', "/wp-includes/css/editor$suffix.css", array( 'dashicons' ) );
-	$styles->add( 'media-views',    "/wp-includes/css/media-views$suffix.css", array( 'buttons', 'dashicons', 'wp-mediaelement' ) );
-	$styles->add( 'wp-pointer',     "/wp-includes/css/wp-pointer$suffix.css", array( 'dashicons' ) );
+	$styles->add( 'admin-bar',      "/wp-includes/css/admin-bar.css", array('open-sans',  'wp-admin-commons' ) );
+	$styles->add( 'wp-auth-check',  "/wp-includes/css/wp-auth-check.css", array() );
+	$styles->add( 'editor-buttons', "/wp-includes/css/editor.css", array('wp-admin-commons' ) );
+	$styles->add( 'media-views',    "/wp-includes/css/media-views.css", array( 'wp-admin-commons', 'wp-mediaelement' ) );
+	$styles->add( 'wp-pointer',     "/wp-includes/css/wp-pointer.css", array( 'wp-admin-commons' ) );
 
 	// External libraries and friends
 	$styles->add( 'imgareaselect',       '/wp-includes/js/imgareaselect/imgareaselect.css', array(), '0.9.8' );
-	$styles->add( 'wp-jquery-ui-dialog', "/wp-includes/css/jquery-ui-dialog$suffix.css", array( 'dashicons' ) );
+	$styles->add( 'wp-jquery-ui-dialog', "/wp-includes/css/jquery-ui-dialog$suffix.css", array( 'wp-admin-commons' ) );
 	$styles->add( 'mediaelement',        "/wp-includes/js/mediaelement/mediaelementplayer.min.css", array(), '2.16.2' );
 	$styles->add( 'wp-mediaelement',     "/wp-includes/js/mediaelement/wp-mediaelement.css", array( 'mediaelement' ) );
-	$styles->add( 'thickbox',            '/wp-includes/js/thickbox/thickbox.css', array( 'dashicons' ) );
+	$styles->add( 'thickbox',            '/wp-includes/js/thickbox/thickbox.css', array( 'wp-admin-commons' ) );
 
 
 }
@@ -168,7 +170,6 @@ function wp_style_loader_src( $src, $handle ) {
 
 
 /**
- * Prints the styles queue in the HTML head on admin pages.
  *
  * @since 2.8.0
  */
@@ -180,7 +181,8 @@ function print_admin_styles() {
 	}
 
 	script_concat_settings();
-	$wp_styles->do_concat = $concatenate_scripts;
+	$wp_styles->do_concat = false;
+//	$wp_styles->do_concat = $concatenate_scripts;
 	$wp_styles->do_items(false);
 
 	/**

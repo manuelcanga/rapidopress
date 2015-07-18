@@ -2559,7 +2559,9 @@ function wp_admin_css( $file = 'wp-admin', $force_echo = false ) {
  */
 function add_thickbox() {
 	wp_enqueue_script( 'thickbox' );
-	wp_enqueue_style( 'thickbox' );
+
+	if(!is_admin() ) //it's always loaded in admin inside of wp-admin-commons
+		wp_enqueue_style( 'thickbox' );
 }
 
 

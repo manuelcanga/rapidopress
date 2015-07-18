@@ -1174,7 +1174,8 @@ function wp_underscore_playlist_templates() {
  * @param string $type Type of playlist. Accepts 'audio' or 'video'.
  */
 function wp_playlist_scripts( $type ) {
-	wp_enqueue_style( 'wp-mediaelement' );
+	//wp-medialement is part of wp-editor
+//	wp_enqueue_style( 'wp-mediaelement' );
 	wp_enqueue_script( 'wp-playlist' );
 ?>
 <!--[if lt IE 9]><script>document.createElement('<?php echo esc_js( $type ) ?>');</script><![endif]-->
@@ -1598,7 +1599,8 @@ function wp_audio_shortcode( $attr, $content = '' ) {
 	 */
 	$library = apply_filters( 'wp_audio_shortcode_library', 'mediaelement' );
 	if ( 'mediaelement' === $library && did_action( 'init' ) ) {
-		wp_enqueue_style( 'wp-mediaelement' );
+		//wp-medialement is part of wp-editor
+		//wp_enqueue_style( 'wp-mediaelement' );
 		wp_enqueue_script( 'wp-mediaelement' );
 	}
 
@@ -1831,7 +1833,8 @@ function wp_video_shortcode( $attr, $content = '' ) {
 	 */
 	$library = apply_filters( 'wp_video_shortcode_library', 'mediaelement' );
 	if ( 'mediaelement' === $library && did_action( 'init' ) ) {
-		wp_enqueue_style( 'wp-mediaelement' );
+		//wp-medialement is part of wp-editor
+		//wp_enqueue_style( 'wp-mediaelement' );
 		wp_enqueue_script( 'wp-mediaelement' );
 	}
 
@@ -3125,12 +3128,15 @@ function wp_enqueue_media( $args = array() ) {
 	wp_localize_script( 'media-views', '_wpMediaViewsL10n', $strings );
 
 	wp_enqueue_script( 'media-audiovideo' );
-	wp_enqueue_style( 'media-views' );
+		
+	//now, media-views is part of wp-editor
+//	wp_enqueue_style( 'media-views' );
 	if ( is_admin() ) {
 		wp_enqueue_script( 'mce-view' );
 		wp_enqueue_script( 'image-edit' );
 	}
-	wp_enqueue_style( 'imgareaselect' );
+	//now, imgareaselect is part of wp-editor
+	//wp_enqueue_style( 'imgareaselect' );
 	wp_plupload_default_settings();
 
 	require_once ABSPATH . WPINC . '/media-template.php';

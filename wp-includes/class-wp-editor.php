@@ -187,7 +187,8 @@ final class _WP_Editors {
 		echo '<div id="wp-' . $editor_id . '-wrap" class="' . $wrap_class . '">';
 
 		if ( self::$editor_buttons_css ) {
-			wp_print_styles('editor-buttons');
+			//In RapidoPress editor-buttons is always added for wp-admin
+			wp_print_styles('wp-editor');
 			self::$editor_buttons_css = false;
 		}
 
@@ -517,11 +518,11 @@ final class _WP_Editors {
 
 				$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
                 $version = 'ver=' . $wp_version; 
-				$dashicons = includes_url( "css/dashicons$suffix.css?$version" );
+				//$dashicons = includes_url( "css/dashicons$suffix.css?$version" );
 
 				// WordPress default stylesheet and dashicons
 				$mce_css = array(
-					$dashicons,
+				//	$dashicons,
 					self::$baseurl . '/skins/wordpress/wp-content.css?' . $version
 				);
 
@@ -745,7 +746,9 @@ final class _WP_Editors {
 
 		if ( self::$has_quicktags ) {
 			wp_enqueue_script( 'quicktags' );
-			wp_enqueue_style( 'buttons' );
+
+			if(!is_admin() )
+				wp_enqueue_style( 'buttons' );
 		}
 
 		if ( in_array('wplink', self::$plugins, true) || in_array('link', self::$qt_buttons, true) ) {
