@@ -63,8 +63,7 @@ function comment_author( $comment_ID = 0 ) {
 	 * @param string $author     The comment author's username.
 	 * @param int    $comment_ID The comment ID.
 	 */
-	$author = apply_filters( 'comment_author', $author, $comment_ID );
-	echo $author;
+	echo apply_filters( 'comment_author', $author, $comment_ID );
 }
 
 /**
@@ -157,6 +156,7 @@ function comment_author_email_link( $linktext = '', $before = '', $after = '' ) 
  *                         Default empty.
  * @param string $before   Optional. Text or HTML to display before the email link. Default empty.
  * @param string $after    Optional. Text or HTML to display after the email link. Default empty.
+ * @return string 
  */
 function get_comment_author_email_link( $linktext = '', $before = '', $after = '' ) {
 	global $comment;
@@ -390,6 +390,7 @@ function comment_author_url_link( $linktext = '', $before = '', $after = '' ) {
  * @param int|WP_Post  $post_id    Post ID or WP_Post object. Default current post.
  * @param bool         $echo       Optional. Whether to cho or return the output.
  *                                 Default true.
+ * @return string|null 
  */
 function comment_class( $class = '', $comment_id = null, $post_id = null, $echo = true ) {
 	// Separates classes with a single space, collates classes for comment DIV
@@ -404,6 +405,10 @@ function comment_class( $class = '', $comment_id = null, $post_id = null, $echo 
  * Returns the classes for the comment div as an array.
  *
  * @since 2.7.0
+ * 
+ * @global int $comment_alt 
+ * @global int $comment_depth 
+ * @global int $comment_thread_alt 
  *
  * @param string|array $class      Optional. One or more classes to add to the class list. Default empty.
  * @param int          $comment_id Comment ID. Default current comment.
@@ -596,6 +601,8 @@ function comment_excerpt( $comment_ID = 0 ) {
  *
  * @since 1.5.0
  *
+ * @global object $comment 
+ *
  * @return int The comment ID.
  */
 function get_comment_ID() {
@@ -628,6 +635,9 @@ function comment_ID() {
  * @since 1.5.0
  *
  * @see get_page_of_comment()
+ *
+ * @global WP_Rewrite $wp_rewrite 
+ * @global bool       $in_comment_loop 
  *
  * @param mixed $comment Comment to retrieve. Default current comment.
  * @param array $args    Optional. An array of arguments to override the defaults.
@@ -852,6 +862,8 @@ function comment_text( $comment_ID = 0, $args = array() ) {
  *
  * @since 1.5.0
  *
+ * @global object $comment 
+ *
  * @param string $d         Optional. The format of the time. Default user's settings.
  * @param bool   $gmt       Optional. Whether to use the GMT date. Default false.
  * @param bool   $translate Optional. Whether to translate the time (for use in feeds).
@@ -1055,10 +1067,19 @@ function wp_comment_form_unfiltered_html_nonce() {
  * default theme. If either does not exist, then the WordPress process will be
  * halted. It is advised for that reason, that the default theme is not deleted.
  *
- * @todo Document globals
  * @uses $withcomments Will not try to get the comments if the post has none.
  *
  * @since 1.5.0
+ * 
+ * @global WP_Query $wp_query 
+ * @global WP_Post  $post 
+ * @global wpdb     $wpdb 
+ * @global int      $id 
+ * @global object   $comment 
+ * @global string   $user_login 
+ * @global int      $user_ID 
+ * @global string   $user_identity 
+ * @global bool     $overridden_cpage 
  *
  * @param string $file              Optional. The file to load. Default '/comments.php'.
  * @param bool   $separate_comments Optional. Whether to separate the comments by comment type.
@@ -1485,6 +1506,7 @@ function post_reply_link($args = array(), $post = null) {
  * @since 2.7.0
  *
  * @param string $text Optional. Text to display for cancel reply link. Default empty.
+ * @return string 
  */
 function get_cancel_comment_reply_link( $text = '' ) {
 	if ( empty($text) )
@@ -1562,6 +1584,8 @@ function comment_id_fields( $id = 0 ) {
  * Only affects users with JavaScript disabled.
  *
  * @since 2.7.0
+ * 
+ * @global object $comment 
  *
  * @param string $noreplytext  Optional. Text to display when not replying to a comment.
  *                             Default false.
@@ -1622,6 +1646,8 @@ class Walker_Comment extends Walker {
 	 *
 	 * @since 2.7.0
 	 *
+     * @global int $comment_depth 
+	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of comment.
 	 * @param array $args Uses 'style' argument for type of HTML list.
@@ -1648,6 +1674,8 @@ class Walker_Comment extends Walker {
 	 * @see Walker::end_lvl()
 	 *
 	 * @since 2.7.0
+	 *
+     * @global int $comment_depth 
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int    $depth  Depth of comment.
@@ -1729,6 +1757,9 @@ class Walker_Comment extends Walker {
 	 *
 	 * @see Walker::start_el()
 	 * @see wp_list_comments()
+     * 
+     * @global int    $comment_depth 
+     * @global object $comment 
 	 *
 	 * @param string $output  Passed by reference. Used to append additional content.
 	 * @param object $comment Comment data object.
@@ -1907,6 +1938,13 @@ class Walker_Comment extends Walker {
  * @since 2.7.0
  *
  * @see WP_Query->comments
+ *
+ * @global WP_Query $wp_query 
+ * @global int      $comment_alt 
+ * @global int      $comment_depth 
+ * @global int      $comment_thread_alt 
+ * @global bool     $overridden_cpage 
+ * @global bool     $in_comment_loop 
  *
  * @param string|array $args {
  *     Optional. Formatting options.
