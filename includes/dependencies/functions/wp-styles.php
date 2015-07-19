@@ -32,8 +32,6 @@ function wp_styles() {
  * passing an array with one string prints that style,
  * and passing an array of strings prints those styles.
  *
- * @global WP_Styles $wp_styles The WP_Styles object for printing styles.
- *
  * @since 2.6.0
  *
  * @param string|bool|array $handles Styles to be printed. Default 'false'.
@@ -50,16 +48,10 @@ function wp_print_styles( $handles = false ) {
 	 */
 	if ( ! $handles ) {
 		do_action( 'wp_print_styles' );
+		return array(); // No need to instantiate if nothing is there.
 	}
 
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
-
-	global $wp_styles;
-	if ( ! ( $wp_styles instanceof WP_Styles ) ) {
-		if ( ! $handles ) {
-			return array(); // No need to instantiate if nothing is there.
-		}
-	}
 
 	return wp_styles()->do_items( $handles );
 }
@@ -151,7 +143,6 @@ function wp_deregister_style( $handle ) {
  *                            'screen', 'tty', or 'tv'.
  */
 function wp_enqueue_style( $handle, $src = false, $deps = array(), $ver = false, $media = 'all' ) {
-	global $wp_styles;
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
 
 	$wp_styles = wp_styles();
