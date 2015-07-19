@@ -3352,14 +3352,6 @@ msgstr "Permite que se publiquen comentarios en los artículos nuevos"
 msgid "Show Toolbar when viewing site"
 msgstr "Muestra la Barra de Herramientas en el sitio"
 
-#: wp-admin/options-permalink.php:22
-msgid "This screen allows you to choose your default permalink structure. You can choose from common settings or create custom URL structures."
-msgstr "Esta pantalla te permite elegir la estructura de enlaces permanentes. Puedes elegir entre las más habituales o crear una estructura de URL personalizada."
-
-#: wp-admin/includes/update-core.php:1181 wp-admin/update-core.php:434
-msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
-msgstr "Bienvenido a WordPress %1$s. <a href=\"%2$s\">Aprende más</a>."
-
 #: wp-admin/plugins.php:383
 msgid "Troubleshooting"
 msgstr "Solución de problemas"
@@ -3447,14 +3439,6 @@ msgstr "Ajustes comunes"
 #: wp-admin/options-permalink.php:37
 msgid "Custom Structures"
 msgstr "Estruturas personalizadas"
-
-#: wp-admin/options-permalink.php:21
-msgid "Permalinks are the permanent URLs to your individual pages and blog posts, as well as your category and tag archives. A permalink is the web address used to link to your content. The URL to each post should be permanent, and never change &#8212; hence the name permalink."
-msgstr "Los enlaces permanentes son URLs permanentes para tus páginas y entradas de blog, así como para las categorías y las etiquetas de archivos. Un enlace permanente es la dirección web utilizada para enlazar tu contenido. La URL de cada entrada debe ser siempre la misma, permanente, y nunca cambiar; de ahí que se llame enlace permanente."
-
-#: wp-admin/options-permalink.php:29
-msgid "Many people choose to use &#8220;pretty permalinks,&#8221; URLs that contain useful information such as the post title rather than generic post ID numbers. You can choose from any of the permalink formats under Common Settings, or can craft your own if you select Custom Structure."
-msgstr "Mucha gente elige utilizar &#8220;enlaces permanentes chulos,&#8221; URLs que contienen información útil, como el título de la entrada en vez del los números de ID de la entrada genéricos. Puedes elegir cualquiera de los formatos de enlace permanente que hay en Ajustes comunes o puedes construir el tuyo propio si eliges Estructura personalizada."
 
 #: wp-admin/options-media.php:21
 msgid "Uploading Files allows you to choose the folder and path for storing your uploaded files."
@@ -4463,10 +4447,6 @@ msgstr "Usuario FTP/SSH"
 msgid "You can choose what&#8217;s displayed on the front page of your site. It can be posts in reverse chronological order (classic blog), or a fixed/static page. To set a static home page, you first need to create two <a href=\"%s\">Pages</a>. One will become the front page, and the other will be where your posts are displayed."
 msgstr "Puedes elegir lo que se muestra en la página principal de tu sitio. Pueden ser entradas en orden cronológico inverso (blog clásico) o una página fija/estática. Para definir una página de inicio estática primero tienes que crear dos <a href=\"%s\">páginas</a>. Una será la página principal y la otra donde se mostrarán tus entradas."
 
-#: wp-admin/options-permalink.php:38
-msgid "The Optional fields let you customize the &#8220;category&#8221; and &#8220;tag&#8221; base names that will appear in archive URLs. For example, the page listing all posts in the &#8220;Uncategorized&#8221; category could be <code>/topics/uncategorized</code> instead of <code>/category/uncategorized</code>."
-msgstr "Los campos opcionales te permiten personalizar los nombres base de &#8220;categoría&#8221; y &#8220;etiqueta&#8221; que aparecerán en las URLs del archivo. Por ejemplo, la página con el listado de todas las entradas de la categoría &#8220;Sin categoría&#8221; podrían ser como <code>/temas/sin-categoria</code> en vez de <code>/category/sin-categoria</code>."
-
 #: wp-admin/themes.php:273
 msgid "The following themes are installed but incomplete. Themes must have a stylesheet and a template."
 msgstr "Los siguientes temas están instalados pero incompletos. Los temas deben tener una hoja de estilos y una plantilla."
@@ -4474,14 +4454,6 @@ msgstr "Los siguientes temas están instalados pero incompletos. Los temas deben
 #: wp-admin/widgets.php:67
 msgid "Many themes show some sidebar widgets by default until you edit your sidebars, but they are not automatically displayed in your sidebar management tool. After you make your first widget change, you can re-add the default widgets by adding them from the Available Widgets area."
 msgstr "Muchos temas muestran varios widgets de barra lateral por defecto hasta que editas tus barras laterales, pero no se muestran automáticamente en tu herramienta de gestión de barras laterales. Una vez hagas tu primer cambio en un widget puedes volver a añadirlo desde el área de widgets disponibles."
-
-#: wp-admin/options-permalink.php:31
-msgid "When you assign multiple categories or tags to a post, only one can show up in the permalink: the lowest numbered category. This applies if your custom structure includes <code>%category%</code> or <code>%tag%</code>."
-msgstr "Cuando asignas varias categorías o etiquetas a una entrada sólo se puede mostrar una en el enlace permanente: la categoría con el número más bajo. Esto es así si tu estructura personalizada contiene <code>%category%</code> o <code>%tag%</code>."
-
-#: wp-admin/options-permalink.php:30
-msgid "If you pick an option other than Default, your general URL path with structure tags, terms surrounded by <code>%</code>, will also appear in the custom structure field and your path can be further modified there."
-msgstr "Si eliges una opción distinta de la que está por defecto tu ruta general de URL con etiquetas de estructura, los términos rodeados por <code>%</code>, también aparecerán en el campo de estructura personalizada y podrás cambiar aquí tu ruta en otro momento."
 
 #: wp-admin/users.php:27
 msgid "To add a new user for your site, click the Add New button at the top of the screen or Add New in the Users menu section."
@@ -4574,13 +4546,6 @@ msgstr "La URL de WordPress y la URL del sitio pueden ser las mismas (ejemplo.co
 #: wp-admin/options-reading.php:54
 msgid "This screen contains the settings that affect the display of your content."
 msgstr "Esta pantalla contiene los ajustes que afectarán a cómo se muestran tus contenidos."
-
-#: wp-admin/options-discussion.php:41 wp-admin/options-general.php:94
-#: wp-admin/options-media.php:24 wp-admin/options-permalink.php:23
-#: wp-admin/options-permalink.php:32 wp-admin/options-permalink.php:39
-#: wp-admin/options-reading.php:57 wp-admin/options-writing.php:22
-msgid "You must click the Save Changes button at the bottom of the screen for new settings to take effect."
-msgstr "Debes hacer clic en el botón Guardar cambios en la parte inferior de la pantalla para que los nuevos ajustes tengan efecto."
 
 #: wp-admin/edit-link-form.php:59
 msgid "The boxes for link name, web address, and description have fixed positions, while the others may be repositioned using drag and drop. You can also hide boxes you don&#8217;t use in the Screen Options tab, or minimize boxes by clicking on the title bar of the box."
