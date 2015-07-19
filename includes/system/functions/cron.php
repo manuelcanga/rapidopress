@@ -18,6 +18,7 @@
  * @param int $timestamp Timestamp for when to run the event.
  * @param string $hook Action hook to execute when cron is run.
  * @param array $args Optional. Arguments to pass to the hook's callback function.
+ * @return void|false 
  */
 function wp_schedule_single_event( $timestamp, $hook, $args = array()) {
 	// don't schedule a duplicate if there's already an identical event due within 10 minutes of it
@@ -66,7 +67,7 @@ function wp_schedule_single_event( $timestamp, $hook, $args = array()) {
  * @param string $recurrence How often the event should recur.
  * @param string $hook Action hook to execute when cron is run.
  * @param array $args Optional. Arguments to pass to the hook's callback function.
- * @return false|null False on failure, null when complete with scheduling event.
+ * @return false|void False when does not schedule event. 
  */
 function wp_schedule_event( $timestamp, $recurrence, $hook, $args = array()) {
 	$crons = _get_cron_array();
@@ -99,7 +100,7 @@ function wp_schedule_event( $timestamp, $recurrence, $hook, $args = array()) {
  * @param string $recurrence How often the event should recur.
  * @param string $hook Action hook to execute when cron is run.
  * @param array $args Optional. Arguments to pass to the hook's callback function.
- * @return false|null False on failure. Null when event is rescheduled.
+ * @return false|void False when does not schedule event. 
  */
 function wp_reschedule_event( $timestamp, $recurrence, $hook, $args = array() ) {
 	$crons = _get_cron_array();
@@ -195,7 +196,7 @@ function wp_clear_scheduled_hook( $hook, $args = array() ) {
  *
  * @param string $hook Action hook to execute when cron is run.
  * @param array $args Optional. Arguments to pass to the hook's callback function.
- * @return bool|int The UNIX timestamp of the next time the scheduled event will occur.
+ * @return false|int The UNIX timestamp of the next time the scheduled event will occur. return null Cron could not be spawned, becau
  */
 function wp_next_scheduled( $hook, $args = array() ) {
 	$crons = _get_cron_array();
@@ -213,8 +214,6 @@ function wp_next_scheduled( $hook, $args = array() ) {
  * Send request to run cron through HTTP request that doesn't halt page loading.
  *
  * @since 2.1.0
- *
- * @return null Cron could not be spawned, because it is not needed to run.
  */
 function spawn_cron( $gmt_time = 0 ) {
 
@@ -310,8 +309,6 @@ function spawn_cron( $gmt_time = 0 ) {
  * Run scheduled callbacks or spawn cron for all scheduled events.
  *
  * @since 2.1.0
- *
- * @return null When doesn't need to run Cron.
  */
 function wp_cron() {
 
@@ -392,7 +389,7 @@ function wp_get_schedules() {
  *
  * @param string $hook Action hook to execute when cron is run.
  * @param array $args Optional. Arguments to pass to the hook's callback function.
- * @return string|bool False, if no schedule. Schedule on success.
+ * @return string|false False, if no schedule. Schedule on success. 
  */
 function wp_get_schedule($hook, $args = array()) {
 	$crons = _get_cron_array();
@@ -416,7 +413,7 @@ function wp_get_schedule($hook, $args = array()) {
  * @since 2.1.0
  * @access private
  *
- * @return array CRON info array.
+ * @return false|array CRON info array. 
  */
 function _get_cron_array()  {
 	$cron = get_option('cron');
