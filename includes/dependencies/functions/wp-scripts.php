@@ -55,7 +55,6 @@ function _wp_scripts_maybe_doing_it_wrong( $function ) {
  * hook to register/enqueue new scripts.
  *
  * @see WP_Scripts::do_items()
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 2.6.0
  *
@@ -71,16 +70,10 @@ function wp_print_scripts( $handles = false ) {
 	do_action( 'wp_print_scripts' );
 	if ( '' === $handles ) { // for wp_head
 		$handles = false;
+		return array(); // No need to instantiate if nothing is there.
 	}
 
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
-
-	global $wp_scripts;
-	if ( ! ( $wp_scripts instanceof WP_Scripts ) ) {
-		if ( ! $handles ) {
-			return array(); // No need to instantiate if nothing is there.
-		}
-	}
 
 	return wp_scripts()->do_items( $handles );
 }
@@ -91,7 +84,6 @@ function wp_print_scripts( $handles = false ) {
  * Registers a script to be linked later using the wp_enqueue_script() function.
  *
  * @see WP_Dependencies::add(), WP_Dependencies::add_data()
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 4.3.0 A return value was added. 
  *
@@ -135,7 +127,6 @@ function wp_register_script( $handle, $src, $deps = array(), $ver = false, $in_f
  *
  * @see WP_Dependencies::localize()
  * @link https://core.trac.wordpress.org/ticket/11520
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 2.6.0
  *
@@ -148,12 +139,6 @@ function wp_register_script( $handle, $src, $deps = array(), $ver = false, $in_f
  * @return bool True if the script was successfully localized, false otherwise.
  */
 function wp_localize_script( $handle, $object_name, $l10n ) {
-	global $wp_scripts;
-	if ( ! ( $wp_scripts instanceof WP_Scripts ) ) {
-		_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
-		return false;
-	}
-
 	return wp_scripts()->localize( $handle, $object_name, $l10n );
 }
 
@@ -164,7 +149,6 @@ function wp_localize_script( $handle, $object_name, $l10n ) {
  * such as jQuery core, from being unregistered.
  *
  * @see WP_Dependencies::remove()
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 2.6.0
  *
@@ -207,7 +191,6 @@ function wp_deregister_script( $handle ) {
  * Registers the script if $src provided (does NOT overwrite), and enqueues it.
  *
  * @see WP_Dependencies::add(), WP_Dependencies::add_data(), WP_Dependencies::enqueue()
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 2.6.0
  *
@@ -245,7 +228,6 @@ function wp_enqueue_script( $handle, $src = false, $deps = array(), $ver = false
  * Remove a previously enqueued script.
  *
  * @see WP_Dependencies::dequeue()
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 3.1.0
  *
@@ -260,7 +242,6 @@ function wp_dequeue_script( $handle ) {
 /**
  * Check whether a script has been added to the queue.
  *
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  *
  * @since 2.8.0
  * @since 3.5.0 'enqueued' added as an alias of the 'queue' list.
@@ -294,6 +275,5 @@ function wp_script_is( $handle, $list = 'enqueued' ) {
  * @return bool True on success, false on failure.
  */
 function wp_script_add_data( $handle, $key, $value ){
-	global $wp_scripts;
-	return $wp_scripts->add_data( $handle, $key, $value );
+	return wp_scripts()->add_data( $handle, $key, $value );
 }
