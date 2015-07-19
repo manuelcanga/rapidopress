@@ -17,16 +17,16 @@ if ( !function_exists('wp_set_current_user') ) :
  * actions on users who aren't signed in.
  *
  * @since 2.0.3
- * @global object $current_user The current user object which holds the user data.
+ * @global WP_User $current_user The current user object which holds the user data. 
  *
- * @param int $id User ID
+ * @param int    $id  User ID 
  * @param string $name User's username
  * @return WP_User Current user User object
  */
 function wp_set_current_user($id, $name = '') {
 	global $current_user;
 
-	if ( isset( $current_user ) && ( $current_user instanceof WP_User ) && ( $id == $current_user->ID ) )
+	if ( isset( $current_user ) && ( $current_user instanceof \WP_User ) && ( $id == $current_user->ID ) )
 		return $current_user;
 
 	$current_user = new WP_User( $id, $name );
@@ -50,6 +50,8 @@ if ( !function_exists('wp_get_current_user') ) :
  *
  * @since 2.0.3
  *
+ * @global WP_User $current_user 
+ *
  * @return WP_User Current user WP_User object
  */
 function wp_get_current_user() {
@@ -71,9 +73,9 @@ if ( !function_exists('get_currentuserinfo') ) :
  *
  * @since 0.71
  *
- * @uses $current_user Checks if the current user is set
+ * @global WP_User $current_user Checks if the current user is set 
  *
- * @return null|false False on XML-RPC Request and invalid auth cookie. Null when current user set.
+ * @return false|void False on XML-RPC Request and invalid auth cookie. 
  */
 function get_currentuserinfo() {
 	global $current_user;
@@ -127,7 +129,7 @@ if ( !function_exists('get_userdata') ) :
  * @since 0.71
  *
  * @param int $user_id User ID
- * @return WP_User|bool WP_User object on success, false on failure.
+ * @return WP_User|false WP_User object on success, false on failure. 
  */
 function get_userdata( $user_id ) {
 	return get_user_by( 'id', $user_id );
@@ -140,9 +142,9 @@ if ( !function_exists('get_user_by') ) :
  *
  * @since 2.8.0
  *
- * @param string $field The field to retrieve the user with. id | slug | email | login
+ * @param string     $field The field to retrieve the user with. id | slug | email | login 
  * @param int|string $value A value for $field. A user ID, slug, email address, or login name.
- * @return WP_User|bool WP_User object on success, false on failure.
+ * @return WP_User|false WP_User object on success, false on failure. 
  */
 function get_user_by( $field, $value ) {
 	$userdata = WP_User::get_data_by( $field, $value );
@@ -162,6 +164,8 @@ if ( !function_exists('cache_users') ) :
  * Retrieve info for user lists to prevent multiple queries by get_userdata()
  *
  * @since 3.0.0
+ *
+ * @global wpdb $wpdb 
  *
  * @param array $user_ids User ID numbers list
  */
@@ -272,9 +276,11 @@ if ( !function_exists('wp_validate_auth_cookie') ) :
  *
  * @since 2.5.0
  *
+ * @global int $login_grace_period 
+ *
  * @param string $cookie Optional. If used, will validate contents instead of cookie's
  * @param string $scheme Optional. The cookie scheme to use: auth, secure_auth, or logged_in
- * @return bool|int False if invalid cookie, User ID if valid.
+ * @return false|int False if invalid cookie, User ID if valid. 
  */
 function wp_validate_auth_cookie($cookie = '', $scheme = '') {
 	if ( ! $cookie_elements = wp_parse_auth_cookie($cookie, $scheme) ) {
@@ -379,10 +385,10 @@ if ( !function_exists('wp_generate_auth_cookie') ) :
  *
  * @since 2.5.0
  *
- * @param int $user_id User ID
- * @param int $expiration Cookie expiration in seconds
- * @param string $scheme Optional. The cookie scheme to use: auth, secure_auth, or logged_in
- * @param string $token User's session token to use for this cookie
+ * @param int    $user_id    User ID 
+ * @param int    $expiration Cookie expiration in seconds 
+ * @param string $scheme     Optional. The cookie scheme to use: auth, secure_auth, or logged_in 
+ * @param string $token      User's session token to use for this cookie 
  * @return string Authentication cookie contents. Empty string if user does not exist.
  */
 function wp_generate_auth_cookie( $user_id, $expiration, $scheme = 'auth', $token = '' ) {
@@ -429,7 +435,7 @@ if ( !function_exists('wp_parse_auth_cookie') ) :
  *
  * @param string $cookie
  * @param string $scheme Optional. The cookie scheme to use: auth, secure_auth, or logged_in
- * @return array Authentication cookie components
+ * @return array|false Authentication cookie components 
  */
 function wp_parse_auth_cookie($cookie = '', $scheme = '') {
 	if ( empty($cookie) ) {
@@ -479,11 +485,11 @@ if ( !function_exists('wp_set_auth_cookie') ) :
  *
  * @since 4.3.0 Added the `$token` parameter. 
  *
- * @param int $user_id User ID
- * @param bool $remember Whether to remember the user
- * @param mixed $secure  Whether the admin cookies should only be sent over HTTPS.
- *                       Default is_ssl().
- * @param string $token  Optional. User's session token to use for this cookie. 
+ * @param int    $user_id User ID 
+ * @param bool   $remember Whether to remember the user 
+ * @param mixed  $secure   Whether the admin cookies should only be sent over HTTPS. 
+ *                         Default is_ssl(). 
+ * @param string $token    Optional. User's session token to use for this cookie. 
  */
 function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token = '' ) { 
 	if ( $remember ) {
@@ -635,10 +641,7 @@ if ( !function_exists('is_user_logged_in') ) :
 function is_user_logged_in() {
 	$user = wp_get_current_user();
 
-	if ( ! $user->exists() )
-		return false;
-
-	return true;
+    return $user->exists(); 
 }
 endif;
 
@@ -817,8 +820,10 @@ if ( !function_exists('wp_redirect') ) :
  *
  * @since 1.5.1
  *
+ * @global bool $is_IIS 
+ *
  * @param string $location The path to redirect to.
- * @param int $status Status code to use.
+ * @param int    $status  Status code to use. 
  * @return bool False if $location is not provided, true otherwise.
  */
 function wp_redirect($location, $status = 302) {
@@ -885,8 +890,7 @@ function wp_sanitize_redirect($location) {
 
 	// remove %0d and %0a from location
 	$strip = array('%0d', '%0a', '%0D', '%0A');
-	$location = _deep_replace($strip, $location);
-	return $location;
+    return _deep_replace( $strip, $location ); 
 }
 
 /**
@@ -918,7 +922,8 @@ if ( !function_exists('wp_safe_redirect') ) :
  * @since 2.3.0
  *
  * @return void Does not return anything
- **/
+ *
+ */
 function wp_safe_redirect($location, $status = 302) {
 
 	// Need to look at the URL the way it will end up in wp_redirect()
@@ -943,7 +948,7 @@ if ( !function_exists('wp_validate_redirect') ) :
  * @since 2.8.1
  *
  * @param string $location The redirect to validate
- * @param string $default The value to return if $location is not allowed
+ * @param string $default  The value to return if $location is not allowed 
  * @return string redirect-sanitized URL
  **/
 function wp_validate_redirect($location, $default = '') {
@@ -994,7 +999,7 @@ if ( ! function_exists('wp_notify_postauthor') ) :
  *
  * @since 1.0.0
  *
- * @param int $comment_id Comment ID
+ * @param int    $comment_id Comment ID 
  * @param string $deprecated Not used
  * @return bool True on completion. False if no email addresses were specified.
  */
@@ -1167,7 +1172,7 @@ if ( !function_exists('wp_notify_moderator') ) :
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param int $comment_id Comment ID
- * @return bool Always returns true
+ * @return true Always returns true 
  */
 function wp_notify_moderator($comment_id) {
 	global $wpdb;
@@ -1453,6 +1458,9 @@ if ( !function_exists('wp_salt') ) :
  *
  * @link https://api.wordpress.org/secret-key/1.1/salt/ Create secrets for wp-config.php
  *
+ * @staticvar array $cached_salts 
+ * @staticvar array $duplicated_keys 
+ *
  * @param string $scheme Authentication scheme (auth, secure_auth, logged_in, nonce)
  * @return string Salt value
  */
@@ -1552,8 +1560,7 @@ if ( !function_exists('wp_hash_password') ) :
  *
  * @since 2.5.0
  *
- * @global object $wp_hasher PHPass object
- * @uses PasswordHash::HashPassword
+ * @global PasswordHash $wp_hasher PHPass object 
  *
  * @param string $password Plain text user password to hash
  * @return string The hash string of the password
@@ -1584,12 +1591,12 @@ if ( !function_exists('wp_check_password') ) :
  *
  * @since 2.5.0
  *
- * @global object $wp_hasher PHPass object used for checking the password
+ * @global PasswordHash $wp_hasher PHPass object used for checking the password 
  *	against the $hash + $password
  * @uses PasswordHash::CheckPassword
  *
  * @param string $password Plaintext user's password
- * @param string $hash Hash of the user's password to check against.
+ * @param string $hash     Hash of the user's password to check against. 
  * @return bool False, if the $password does not match the hashed password
  */
 function wp_check_password($password, $hash, $user_id = '') {
@@ -1674,6 +1681,9 @@ if ( !function_exists('wp_rand') ) :
  *
  * @since 2.6.2
  *
+ * @global string $rnd_value 
+ * @staticvar string $seed 
+ *
  * @param int $min Lower limit for the generated number
  * @param int $max Upper limit for the generated number
  * @return int A random number between min and max
@@ -1731,7 +1741,7 @@ if ( !function_exists('wp_set_password') ) :
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $password The plaintext new user password
- * @param int $user_id User ID
+ * @param int    $user_id User ID 
  */
 function wp_set_password( $password, $user_id ) {
 	global $wpdb;
@@ -1909,9 +1919,9 @@ if ( !function_exists( 'wp_text_diff' ) ) :
  * @uses Text_Diff
  * @uses WP_Text_Diff_Renderer_Table
  *
- * @param string $left_string "old" (left) version of string
- * @param string $right_string "new" (right) version of string
- * @param string|array $args Optional. Change 'title', 'title_left', and 'title_right' defaults.
+ * @param string       $left_string "old" (left) version of string 
+ * @param string       $right_string "new" (right) version of string 
+ * @param string|array $args         Optional. Change 'title', 'title_left', and 'title_right' defaults. 
  * @return string Empty string if strings are equivalent or HTML with differences.
  */
 function wp_text_diff( $left_string, $right_string, $args = null ) {

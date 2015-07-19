@@ -21,12 +21,12 @@ if(!defined('ABSPATH') ) die();
  *
  * @since 1.2.1
  *
- * @uses PHPMailer
+ * @global PHPMailer $phpmailer 
  *
- * @param string|array $to Array or comma-separated list of email addresses to send message.
- * @param string $subject Email subject
- * @param string $message Message contents
- * @param string|array $headers Optional. Additional headers.
+ * @param string|array $to          Array or comma-separated list of email addresses to send message. 
+ * @param string       $subject    Email subject 
+ * @param string       $message    Message contents 
+ * @param string|array $headers     Optional. Additional headers. 
  * @param string|array $attachments Optional. Files to attach.
  * @return bool Whether the email contents were sent successfully.
  */
