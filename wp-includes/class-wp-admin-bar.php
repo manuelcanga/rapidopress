@@ -59,7 +59,7 @@ class WP_Admin_Bar {
 
 		wp_enqueue_script( 'admin-bar' );
 		if(!is_admin() ) { //admin-bar is part of wp-admin-common in admin area
-			wp_enqueue_style( 'admin-bar' );
+			wp_enqueue_style( 'wp-admin-commons' );
 		}
 
 		/**
