@@ -21,13 +21,22 @@
  * Code within certain html blocks are skipped.
  *
  * @since 0.71
- * @uses $wp_cockneyreplace Array of formatted entities for certain common phrases
+ * 
+ * @global array $wp_cockneyreplace Array of formatted entities for certain common phrases
+ * @global array $shortcode_tags
+ * @staticvar array $static_characters
+ * @staticvar array $static_replacements
+ * @staticvar array $dynamic_characters
+ * @staticvar array $dynamic_replacements
+ * @staticvar array $default_no_texturize_tags
+ * @staticvar array $default_no_texturize_shortcodes
+ * @staticvar bool  $run_texturize
  *
  * @param string $text The text to be formatted
- * @param bool $reset Set to true for unit testing. Translated patterns will reset.
+ * @param bool  $reset Set to true for unit testing. Translated patterns will reset.
  * @return string The string replaced with html entities
  */
-function wptexturize($text, $reset = false) {
+function wptexturize( $text, $reset = false ) { 
 	global $wp_cockneyreplace, $shortcode_tags;
 	static $static_characters, $static_replacements, $dynamic_characters, $dynamic_replacements,
 		$default_no_texturize_tags, $default_no_texturize_shortcodes, $run_texturize = true;
@@ -294,9 +303,7 @@ function wptexturize($text, $reset = false) {
 	$text = implode( '', $textarr );
 
 	// Replace each & with &#038; unless it already looks like an entity.
-	$text = preg_replace('/&(?!#(?:\d+|x[a-f0-9]+);|[a-z1-4]{1,8};)/i', '&#038;', $text);
-
-	return $text;
+    return preg_replace( '/&(?!#(?:\d+|x[a-f0-9]+);|[a-z1-4]{1,8};)/i', '&#038;', $text ); 
 }
 
 /**
@@ -310,10 +317,10 @@ function wptexturize($text, $reset = false) {
  * @access private
  *
  * @param string $text Text to check. Must be a tag like `<html>` or `[shortcode]`.
- * @param array $stack List of open tag elements.
- * @param array $disabled_elements The tag names to match against. Spaces are not allowed in tag names.
+ * @param array  $stack List of open tag elements. 
+ * @param array  $disabled_elements The tag names to match against. Spaces are not allowed in tag names. 
  */
-function _wptexturize_pushpop_element($text, &$stack, $disabled_elements) {
+function _wptexturize_pushpop_element( $text, &$stack, $disabled_elements ) { 
 	// Is it an opening tag or closing tag?
 	if ( '/' !== $text[1] ) {
 		$opening_tag = true;
@@ -367,7 +374,7 @@ function _wptexturize_pushpop_element($text, &$stack, $disabled_elements) {
  *                    after paragraphing. Default true.
  * @return string Text which has been converted into correct paragraph tags.
  */
-function wpautop($pee, $br = true) {
+function wpautop( $pee, $br = true ) { 
 	$pre_tags = array();
 
 	if ( trim($pee) === '' )
@@ -416,7 +423,7 @@ function wpautop($pee, $br = true) {
 	$pee = preg_replace('!(</' . $allblocks . '>)!', "$1\n\n", $pee);
 
 	// Standardize newline characters to "\n".
-	$pee = str_replace(array("\r\n", "\r"), "\n", $pee); 
+    $pee = str_replace(array("\r\n", "\r"), "\n", $pee); 
 
 	// Collapse line breaks before and after <option> elements so they don't get autop'd.
 	if ( strpos( $pee, '<option' ) !== false ) {
@@ -459,16 +466,16 @@ function wpautop($pee, $br = true) {
 	}
 
 	// Under certain strange conditions it could create a P of entirely whitespace.
-	$pee = preg_replace('|<p>\s*</p>|', '', $pee); 
+    $pee = preg_replace('|<p>\s*</p>|', '', $pee); 
 
 	// Add a closing <p> inside <div>, <address>, or <form> tag if missing.
 	$pee = preg_replace('!<p>([^<]+)</(div|address|form)>!', "<p>$1</p></$2>", $pee);
 	
 	// If an opening or closing block element tag is wrapped in a <p>, unwrap it.
-	$pee = preg_replace('!<p>\s*(</?' . $allblocks . '[^>]*>)\s*</p>!', "$1", $pee); 
+    $pee = preg_replace('!<p>\s*(</?' . $allblocks . '[^>]*>)\s*</p>!', "$1", $pee); 
 	
 	// In some cases <li> may get wrapped in <p>, fix them.
-	$pee = preg_replace("|<p>(<li.+?)</p>|", "$1", $pee); 
+    $pee = preg_replace("|<p>(<li.+?)</p>|", "$1", $pee); 
 	
 	// If a <blockquote> is wrapped with a <p>, move it inside the <blockquote>.
 	$pee = preg_replace('|<p><blockquote([^>]*)>|i', "<blockquote$1><p>", $pee);
@@ -516,7 +523,7 @@ function wpautop($pee, $br = true) {
  * @return string
  */
 function _autop_newline_preservation_helper( $matches ) {
-	return str_replace("\n", "<WPPreserveNewline />", $matches[0]);
+    return str_replace( "\n", "<WPPreserveNewline />", $matches[0] ); 
 }
 
 /**
@@ -525,6 +532,8 @@ function _autop_newline_preservation_helper( $matches ) {
  * Ensures that shortcodes are not wrapped in `<p>...</p>`.
  *
  * @since 2.9.0
+ *
+ * @global array $shortcode_tags 
  *
  * @param string $pee The content.
  * @return string The filtered content.
@@ -586,7 +595,7 @@ function shortcode_unautop( $pee ) {
  * @param string $str The string to be checked
  * @return bool True if $str fits a UTF-8 model, false otherwise.
  */
-function seems_utf8($str) {
+function seems_utf8( $str ) { 
 	mbstring_binary_safe_encoding();
 	$length = strlen($str);
 	reset_mbstring_encoding();
@@ -618,10 +627,12 @@ function seems_utf8($str) {
  * @since 1.2.2
  * @access private
  *
- * @param string $string The text which is to be encoded.
- * @param int $quote_style Optional. Converts double quotes if set to ENT_COMPAT, both single and double if set to ENT_QUOTES or none if set to ENT_NOQUOTES. Also compatible with old values; converting single quotes if set to 'single', double if set to 'double' or both if otherwise set. Default is ENT_NOQUOTES.
- * @param string $charset Optional. The character encoding of the string. Default is false.
- * @param boolean $double_encode Optional. Whether to encode existing html entities. Default is false.
+ * @staticvar string|false $_charset 
+ * 
+ * @param string $string         The text which is to be encoded. 
+ * @param int    $quote_style    Optional. Converts double quotes if set to ENT_COMPAT, both single and double if set to ENT_QUOTES or none if set to ENT_NOQUOTES. Also compatible with old values; converting single quotes if set to 'single', double if set to 'double' or both if otherwise set. Default is ENT_NOQUOTES. 
+ * @param string $charset        Optional. The character encoding of the string. Default is false. 
+ * @param bool   $double_encode  Optional. Whether to encode existing html entities. Default is false. 
  * @return string The encoded text with HTML entities.
  */
 function _wp_specialchars( $string, $quote_style = ENT_NOQUOTES, $charset = false, $double_encode = false ) {
@@ -698,8 +709,14 @@ function _wp_specialchars( $string, $quote_style = ENT_NOQUOTES, $charset = fals
  *
  * @since 2.8.0
  *
- * @param string $string The text which is to be decoded.
- * @param mixed $quote_style Optional. Converts double quotes if set to ENT_COMPAT, both single and double if set to ENT_QUOTES or none if set to ENT_NOQUOTES. Also compatible with old _wp_specialchars() values; converting single quotes if set to 'single', double if set to 'double' or both if otherwise set. Default is ENT_NOQUOTES.
+ * @param string     $string The text which is to be decoded. 
+ * @param string|int $quote_style Optional. Converts double quotes if set to ENT_COMPAT, 
+ *                                both single and double if set to ENT_QUOTES or 
+ *                                none if set to ENT_NOQUOTES. 
+ *                                Also compatible with old _wp_specialchars() values; 
+ *                                converting single quotes if set to 'single', 
+ *                                double if set to 'double' or both if otherwise set. 
+ *                                Default is ENT_NOQUOTES. 
  * @return string The decoded text without HTML entities.
  */
 function wp_specialchars_decode( $string, $quote_style = ENT_NOQUOTES ) {
@@ -755,8 +772,11 @@ function wp_specialchars_decode( $string, $quote_style = ENT_NOQUOTES ) {
  *
  * @since 2.8.0
  *
- * @param string $string The text which is to be checked.
- * @param boolean $strip Optional. Whether to attempt to strip out invalid UTF8. Default is false.
+ * @staticvar bool $is_utf8 
+ * @staticvar bool $utf8_pcre 
+ * 
+ * @param string  $string The text which is to be checked. 
+ * @param bool    $strip Optional. Whether to attempt to strip out invalid UTF8. Default is false. 
  * @return string The checked text.
  */
 function wp_check_invalid_utf8( $string, $strip = false ) {
@@ -804,7 +824,7 @@ function wp_check_invalid_utf8( $string, $strip = false ) {
  * @since 1.5.0
  *
  * @param string $utf8_string
- * @param int $length Max length of the string
+ * @param int    $length Max length of the string 
  * @return string String with Unicode encoded for URI.
  */
 function utf8_uri_encode( $utf8_string, $length = 0 ) {
@@ -867,7 +887,7 @@ function utf8_uri_encode( $utf8_string, $length = 0 ) {
  * @param string $string Text that might have accent characters
  * @return string Filtered string with replaced "nice" characters.
  */
-function remove_accents($string) {
+function remove_accents( $string ) { 
 	if ( !preg_match('/[\x80-\xff]/', $string) )
 		return $string;
 
@@ -1184,7 +1204,7 @@ function sanitize_file_name( $filename ) {
  * @since 2.0.0
  *
  * @param string $username The username to be sanitized.
- * @param bool $strict If set limits $username to specific characters. Default false.
+ * @param bool   $strict  If set limits $username to specific characters. Default false. 
  * @return string The sanitized username, after passing through filters.
  */
 function sanitize_user( $username, $strict = false ) {
@@ -1250,9 +1270,9 @@ function sanitize_key( $key ) {
  *
  * @since 1.0.0
  *
- * @param string $title The string to be sanitized.
+ * @param string $title          The string to be sanitized. 
  * @param string $fallback_title Optional. A title to use if $title is empty.
- * @param string $context Optional. The operation for which the string is sanitized
+ * @param string $context        Optional. The operation for which the string is sanitized 
  * @return string The sanitized string.
  */
 function sanitize_title( $title, $fallback_title = '', $context = 'save' ) {
@@ -1300,9 +1320,9 @@ function sanitize_title_for_query( $title ) {
  *
  * @since 1.2.0
  *
- * @param string $title The title to be sanitized.
+ * @param string $title     The title to be sanitized. 
  * @param string $raw_title Optional. Not used.
- * @param string $context Optional. The operation for which the string is sanitized.
+ * @param string $context   Optional. The operation for which the string is sanitized. 
  * @return string The sanitized title.
  */
 function sanitize_title_with_dashes( $title, $raw_title = '', $context = 'display' ) {
@@ -1369,7 +1389,7 @@ function sanitize_title_with_dashes( $title, $raw_title = '', $context = 'displa
  * @since 2.5.1
  *
  * @param string $orderby Order by clause to be validated.
- * @return string|bool Returns $orderby if valid, false otherwise.
+ * @return string|false Returns $orderby if valid, false otherwise. 
  */
 function sanitize_sql_orderby( $orderby ) {
 	if ( preg_match( '/^\s*(([a-z0-9_]+|`[a-z0-9_]+`)(\s+(ASC|DESC))?\s*(,\s*(?=[a-z0-9_`])|$))+$/i', $orderby ) || preg_match( '/^\s*RAND\(\s*\)\s*$/i', $orderby ) ) {
@@ -1388,7 +1408,7 @@ function sanitize_sql_orderby( $orderby ) {
  *
  * @since 2.8.0
  *
- * @param string $class The classname to be sanitized
+ * @param string $class    The classname to be sanitized 
  * @param string $fallback Optional. The value to return if the sanitization ends up as an empty string.
  * 	Defaults to an empty string.
  * @return string The sanitized value
@@ -1424,10 +1444,10 @@ function sanitize_html_class( $class, $fallback = '' ) {
  *
  * @since 0.71
  *
- * @param string $content String of characters to be converted.
+ * @param string $content    String of characters to be converted. 
  * @return string Converted string.
  */
-function convert_chars($content) {
+function convert_chars( $content, $deprecated = '' ) { 
 
 	// Translation of invalid Unicode references range to valid range
 	$wp_htmltranswinuni = array(
@@ -1499,7 +1519,8 @@ function convert_chars($content) {
  *			 Added Cleaning Hooks
  *		1.0  First Version
  *
- * @param string $text Text to be balanced.
+ * @param string $text  Text to be balanced 
+ * @param bool   $force If true, forces balancing, ignoring the value of the option. Default false. 
  * @return string Balanced text.
  */
 function force_balance_tags( $text ) {
@@ -2058,7 +2079,7 @@ function wp_rel_nofollow_callback( $matches ) {
  * @since 0.71
  *
  * @param string $email Email address to verify.
- * @param boolean $deprecated Deprecated.
+ * @param bool  $deprecated Deprecated. 
  * @return string|bool Either false or the valid email address.
  */
 function is_email( $email, $deprecated = false ) {
@@ -2156,8 +2177,7 @@ function wp_iso_descrambler($string) {
 		return $string;
 	} else {
 		$subject = str_replace('_', ' ', $matches[2]);
-		$subject = preg_replace_callback('#\=([0-9a-f]{2})#i', '_wp_iso_convert', $subject);
-		return $subject;
+        return preg_replace_callback( '#\=([0-9a-f]{2})#i', '_wp_iso_convert', $subject ); 
 	}
 }
 
