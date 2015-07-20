@@ -751,6 +751,8 @@ function post_password_required( $post = null ) {
  * @return string Formatted output in HTML.
  */
 function wp_link_pages( $args = '' ) {
+	global $page, $numpages, $multipage, $more;
+
 	$defaults = array(
 		'before'           => '<p>' . __( 'Pages:' ),
 		'after'            => '</p>',
@@ -774,8 +776,6 @@ function wp_link_pages( $args = '' ) {
 	 * @param array $params An array of arguments for page links for paginated posts.
 	 */
 	$r = apply_filters( 'wp_link_pages_args', $params );
-
-	global $page, $numpages, $multipage, $more;
 
 	$output = '';
 	if ( $multipage ) {
@@ -1440,10 +1440,7 @@ function is_page_template( $template = '' ) {
 		}
 	}
 
-	if ( 'default' == $template && ! $page_template )
-		return true;
-
-	return false;
+    return ( 'default' === $template && ! $page_template ); 
 }
 
 /**
