@@ -3042,8 +3042,8 @@ function wp_enqueue_media( $args = array() ) {
 		'insertFromUrlTitle' => __( 'Insert from URL' ),
 
 		// Featured Images
-		'setFeaturedImageTitle' => __( 'Set Featured Image' ),
-		'setFeaturedImage'    => __( 'Set featured image' ),
+        'setFeaturedImageTitle' => $post_type_object->labels->featured_image, 
+        'setFeaturedImage'      => $post_type_object->labels->set_featured_image, 
 
 		// Gallery
 		'createGalleryTitle' => __( 'Create Gallery' ),
