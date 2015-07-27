@@ -312,17 +312,17 @@ if ( ! defined( 'WP_INSTALLING' ) || 'wp-activate.php' === $pagenow ) {
 			$functions[] = STYLESHEETPATH . '/functions.php';
 
 			if(is_admin() ) {
-				$functions[] = STYLESHEETPATH . '/functions-admin.php';
+				$functions[] = STYLESHEETPATH . '/admin-functions.php';
 			}else {
-				$functions[] = STYLESHEETPATH . '/functions-theme.php';
+				$functions[] = STYLESHEETPATH . '/theme-functions.php';
 			}
 	}
 
 	$functions[] = TEMPLATEPATH . '/functions.php';
 	if(is_admin() ) {
-		$functions[] = TEMPLATEPATH . '/functions-admin.php';
+		$functions[] = TEMPLATEPATH . '/admin-functions.php';
 	}else {
-		$functions[] = TEMPLATEPATH . '/functions-theme.php';
+		$functions[] = TEMPLATEPATH . '/theme-functions.php';
 	}
 
 	foreach($functions as $_function) {

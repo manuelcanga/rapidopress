@@ -49,7 +49,7 @@ RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the d
 ## For developers...
 
 * constant RAPIDO_PRESS always 'true'
-* RapidoPress loads functions.php but it also loads  functions-theme.php ( for theme area ) or  functions-admin.php ( for admin area ) 
+* RapidoPress loads functions.php but it also loads  theme-functions.php ( for theme area ) or  admin-functions.php ( for admin area ) 
 * not more "$accepted_args" in add_action or add_filter.
 * add_action allow path. Examples: 
 
