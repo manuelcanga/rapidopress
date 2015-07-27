@@ -2978,6 +2978,12 @@ function wp_enqueue_media( $args = array() ) {
 
 	$hier = $post && is_post_type_hierarchical( $post->post_type );
 
+    if ( $post ) { 
+        $post_type_object = get_post_type_object( $post->post_type ); 
+    } else { 
+        $post_type_object = get_post_type_object( 'post' ); 
+	}
+
 	$strings = array(
 		// Generic
 		'url'         => __( 'URL' ),
