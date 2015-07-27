@@ -236,7 +236,8 @@ function print_late_styles() {
  * @ignore
  */
 function _print_styles() {
-	global $wp_styles, $compress_css;
+    global $compress_css; 
+    $wp_styles = wp_styles(); 
 
 	$zip = $compress_css ? 1 : 0;
 	if ( $zip && defined('ENFORCE_GZIP') && ENFORCE_GZIP )

@@ -122,7 +122,7 @@ function has_filter($tag, $function_to_check = false) {
 		}
 	}
 
-	if ( false === $function_to_check || false == $has )
+    if ( false === $function_to_check || false === $has ) 
 		return $has;
 
 	if ( !$idx = _wp_filter_build_unique_id($tag, $function_to_check, false) )

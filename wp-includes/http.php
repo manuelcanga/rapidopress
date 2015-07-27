@@ -149,8 +149,8 @@ function wp_safe_remote_head( $url, $args = array() ) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_request($url, $args = array()) {
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->request($url, $args);
+    $http = _wp_http_get_object(); 
+    return $http->request( $url, $args ); 
 }
 
 /**
@@ -166,8 +166,8 @@ function wp_remote_request($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_get($url, $args = array()) {
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->get($url, $args);
+    $http = _wp_http_get_object(); 
+    return $http->get( $url, $args ); 
 }
 
 /**
@@ -183,8 +183,8 @@ function wp_remote_get($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_post($url, $args = array()) {
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->post($url, $args);
+    $http = _wp_http_get_object(); 
+    return $http->post( $url, $args ); 
 }
 
 /**
@@ -200,8 +200,8 @@ function wp_remote_post($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_head($url, $args = array()) {
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->head($url, $args);
+    $http = _wp_http_get_object(); 
+    return $http->head( $url, $args ); 
 }
 
 /**
@@ -298,7 +298,7 @@ function wp_remote_retrieve_body( $response ) {
  * @return bool
  */
 function wp_http_supports( $capabilities = array(), $url = null ) {
-	$objFetchSite = _wp_http_get_object();
+    $http = _wp_http_get_object(); 
 
 	$capabilities = wp_parse_args( $capabilities );
 
@@ -316,7 +316,7 @@ function wp_http_supports( $capabilities = array(), $url = null ) {
 		}
 	}
 
-	return (bool) $objFetchSite->_get_first_available_transport( $capabilities );
+    return (bool) $http->_get_first_available_transport( $capabilities ); 
 }
 
 /**

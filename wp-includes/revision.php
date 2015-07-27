@@ -442,7 +442,7 @@ function wp_get_post_revisions( $post_id = 0, $args = null ) {
  * @return bool True if number of revisions to keep isn't zero, false otherwise.
  */
 function wp_revisions_enabled( $post ) {
-	return wp_revisions_to_keep( $post ) != 0;
+    return wp_revisions_to_keep( $post ) !== 0; 
 }
 
 /**

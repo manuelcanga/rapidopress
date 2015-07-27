@@ -343,9 +343,7 @@ function get_image_tag( $id, $alt, $title, $align, $size = 'medium' ) {
 	 * @param string $align Part of the class name for aligning the image.
 	 * @param string $size  Optional. Default is 'medium'.
 	 */
-	$html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
-
-	return $html;
+    return apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size ); 
 }
 
 /**
@@ -2585,7 +2583,7 @@ function _wp_image_editor_choose( $args = array() ) {
  * @since 3.4.0
  */
 function wp_plupload_default_settings() {
-	global $wp_scripts;
+    $wp_scripts = wp_scripts(); 
 
 	$data = $wp_scripts->get_data( 'wp-plupload', 'data' );
 	if ( $data && false !== strpos( $data, '_wpPluploadSettings' ) )

@@ -55,8 +55,7 @@ function user_trailingslashit($string, $type_of_url = '') {
 	 *                            'single_paged', 'category', 'page', 'year',
 	 *                            'month', 'day', 'paged', 'post_type_archive'.
 	 */
-	$string = apply_filters( 'user_trailingslashit', $string, $type_of_url );
-	return $string;
+    return apply_filters( 'user_trailingslashit', $string, $type_of_url ); 
 }
 
 /**
@@ -1984,9 +1983,7 @@ function get_comments_pagenum_link( $pagenum = 1, $max_page = 0 ) {
 	 *
 	 * @param string $result The comments page number link.
 	 */
-	$result = apply_filters( 'get_comments_pagenum_link', $result );
-
-	return $result;
+    return apply_filters( 'get_comments_pagenum_link', $result ); 
 }
 
 /**

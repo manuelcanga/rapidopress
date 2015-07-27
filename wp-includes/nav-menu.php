@@ -522,10 +522,7 @@ function _sort_nav_menu_items( $a, $b ) {
  * @return bool False if invalid, otherwise true.
  */
 function _is_valid_nav_menu_item( $item ) {
-	if ( ! empty( $item->_invalid ) )
-		return false;
-
-	return true;
+    return empty( $item->_invalid ); 
 }
 
 /**

@@ -1213,7 +1213,7 @@ function wp_kses_named_entities($matches) {
 		return '';
 
 	$i = $matches[1];
-	return ( ( ! in_array($i, $allowedentitynames) ) ? "&amp;$i;" : "&$i;" );
+    return ( ! in_array( $i, $allowedentitynames ) ) ? "&amp;$i;" : "&$i;"; 
 }
 
 /**
@@ -1259,7 +1259,7 @@ function wp_kses_normalize_entities3($matches) {
 		return '';
 
 	$hexchars = $matches[1];
-	return ( ( ! valid_unicode(hexdec($hexchars)) ) ? "&amp;#x$hexchars;" : '&#x'.ltrim($hexchars,'0').';' );
+    return ( ! valid_unicode( hexdec( $hexchars ) ) ) ? "&amp;#x$hexchars;" : '&#x'.ltrim($hexchars,'0').';'; 
 }
 
 /**
@@ -1335,7 +1335,7 @@ function wp_filter_kses( $data ) {
  * @return string Filtered content
  */
 function wp_kses_data( $data ) {
-	return wp_kses( $data , current_filter() );
+    return wp_kses( $data, current_filter() ); 
 }
 
 /**

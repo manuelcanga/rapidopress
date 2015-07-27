@@ -1303,13 +1303,11 @@ function get_term($term, $taxonomy, $output = OBJECT, $filter = 'raw') {
 	global $wpdb;
 
 	if ( empty($term) ) {
-		$error = new WP_Error('invalid_term', __('Empty Term'));
-		return $error;
+        return new WP_Error( 'invalid_term', __( 'Empty Term' ) ); 
 	}
 
 	if ( ! taxonomy_exists($taxonomy) ) {
-		$error = new WP_Error('invalid_taxonomy', __('Invalid taxonomy'));
-		return $error;
+        return new WP_Error( 'invalid_taxonomy', __( 'Invalid taxonomy' ) ); 
 	}
 
 	if ( is_object($term) && empty($term->filter) ) {
@@ -1621,8 +1619,7 @@ function get_terms( $taxonomies, $args = '' ) {
 
 	foreach ( $taxonomies as $taxonomy ) {
 		if ( ! taxonomy_exists($taxonomy) ) {
-			$error = new WP_Error('invalid_taxonomy', __('Invalid taxonomy'));
-			return $error;
+            return new WP_Error( 'invalid_taxonomy', __( 'Invalid taxonomy' ) ); 
 		}
 	}
 
@@ -1719,8 +1716,7 @@ function get_terms( $taxonomies, $args = '' ) {
 		 * @param array $taxonomies An array of taxonomies.
 		 * @param array $args       An array of arguments to get terms.
 		 */
-		$cache = apply_filters( 'get_terms', $cache, $taxonomies, $args );
-		return $cache;
+        return apply_filters( 'get_terms', $cache, $taxonomies, $args ); 
 	}
 
 	$_orderby = strtolower( $args['orderby'] );
@@ -1958,8 +1954,7 @@ function get_terms( $taxonomies, $args = '' ) {
 	$query = "SELECT $fields FROM $wpdb->terms AS t $join WHERE $where $orderby $order $limits";
 
 	if ( 'count' == $_fields ) {
-		$term_count = $wpdb->get_var($query);
-		return $term_count;
+        return $wpdb->get_var( $query ); 
 	}
 
 	$terms = $wpdb->get_results($query);
@@ -1971,8 +1966,7 @@ function get_terms( $taxonomies, $args = '' ) {
 		wp_cache_add( $cache_key, array(), 'terms', DAY_IN_SECONDS );
 
 		/** This filter is documented in wp-includes/taxonomy.php */
-		$terms = apply_filters( 'get_terms', array(), $taxonomies, $args );
-		return $terms;
+        return apply_filters( 'get_terms', array(), $taxonomies, $args ); 
 	}
 
 	if ( $child_of ) {
@@ -2045,8 +2039,7 @@ function get_terms( $taxonomies, $args = '' ) {
 	wp_cache_add( $cache_key, $terms, 'terms', DAY_IN_SECONDS );
 
 	/** This filter is documented in wp-includes/taxonomy */
-	$terms = apply_filters( 'get_terms', $terms, $taxonomies, $args );
-	return $terms;
+    return apply_filters( 'get_terms', $terms, $taxonomies, $args ); 
 }
 
 /**
@@ -4597,16 +4590,14 @@ function is_object_in_term( $object_id, $taxonomy, $terms = null ) {
  * @param string $taxonomy Single taxonomy name
  * @return bool True if object is associated with the taxonomy, otherwise false.
  */
-function is_object_in_taxonomy($object_type, $taxonomy) {
-	$taxonomies = get_object_taxonomies($object_type);
+function is_object_in_taxonomy( $object_type, $taxonomy ) { 
+    $taxonomies = get_object_taxonomies( $object_type ); 
 
-	if ( empty($taxonomies) )
+    if ( empty( $taxonomies ) ) { 
 		return false;
+	}
 
-	if ( in_array($taxonomy, $taxonomies) )
-		return true;
-
-	return false;
+    return in_array( $taxonomy, $taxonomies ); 
 }
 
 /**

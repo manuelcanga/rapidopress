@@ -71,7 +71,7 @@ function add_permastruct( $name, $struct, $args = array() ) {
 	if ( func_num_args() == 4 )
 		$args['ep_mask'] = func_get_arg( 3 );
 
-	return $wp_rewrite->add_permastruct( $name, $struct, $args );
+	$wp_rewrite->add_permastruct( $name, $struct, $args );
 }
 
 
@@ -731,10 +731,7 @@ class WP_Rewrite {
 			return false;
 
 		// If the index is not in the permalink, we're using mod_rewrite.
-		if ( preg_match('#^/*' . $this->index . '#', $this->permalink_structure) )
-			return true;
-
-		return false;
+        return preg_match( '#^/*' . $this->index . '#', $this->permalink_structure ); 
 	}
 
 	/**
@@ -748,10 +745,7 @@ class WP_Rewrite {
 	 * @return bool
 	 */
 	public function using_mod_rewrite_permalinks() {
-		if ( $this->using_permalinks() && ! $this->using_index_permalinks() )
-			return true;
-		else
-			return false;
+        return $this->using_permalinks() && ! $this->using_index_permalinks(); 
 	}
 
 	/**
@@ -1681,9 +1675,7 @@ class WP_Rewrite {
 		 *
 		 * @param string $rules mod_rewrite Rewrite rules formatted for .htaccess.
 		 */
-		$rules = apply_filters( 'rewrite_rules', $rules );  // Deprecated
-
-		return $rules;
+        return apply_filters( 'rewrite_rules', $rules ); 
 	}
 
 	/**
@@ -1734,9 +1726,7 @@ class WP_Rewrite {
 		 *
 		 * @param string $rules Rewrite rules formatted for IIS web.config.
 		 */
-		$rules = apply_filters( 'iis7_url_rewrite_rules', $rules );
-
-		return $rules;
+        return apply_filters( 'iis7_url_rewrite_rules', $rules ); 
 	}
 
 	/**
