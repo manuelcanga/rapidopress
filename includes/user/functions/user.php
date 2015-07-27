@@ -999,9 +999,9 @@ function clean_user_cache( $user ) {
 function username_exists( $username ) {
 	if ( $user = get_user_by('login', $username ) ) {
 		return $user->ID;
-	} else {
-		return null;
 	}
+
+    return false; 
 }
 
 /**
