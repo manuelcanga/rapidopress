@@ -66,7 +66,7 @@ class Db {
 	 * @access private
 	 * @var bool
 	 */
-	var $show_errors = false;
+	public $show_errors = false;
 
 	/**
 	 * Whether to suppress errors during the DB bootstrapping.
@@ -75,7 +75,7 @@ class Db {
 	 * @since 2.5.0
 	 * @var bool
 	 */
-	var $suppress_errors = false;
+	public $suppress_errors = false;
 
 	/**
 	 * The last error during query.
@@ -92,7 +92,7 @@ class Db {
 	 * @access private
 	 * @var int
 	 */
-	var $num_queries = 0;
+	public $num_queries = 0;
 
 	/**
 	 * Count of rows returned by previous query
@@ -101,7 +101,7 @@ class Db {
 	 * @access private
 	 * @var int
 	 */
-	var $num_rows = 0;
+	public $num_rows = 0;
 
 	/**
 	 * Count of affected rows by previous query
@@ -110,7 +110,7 @@ class Db {
 	 * @access private
 	 * @var int
 	 */
-	var $rows_affected = 0;
+	public $rows_affected = 0;
 
 	/**
 	 * The ID generated for an AUTO_INCREMENT column by the previous query (usually INSERT).
@@ -119,7 +119,7 @@ class Db {
 	 * @access public
 	 * @var int
 	 */
-	var $insert_id = 0;
+	public $insert_id = 0;
 
 	/**
 	 * Last query made
@@ -128,7 +128,7 @@ class Db {
 	 * @access private
 	 * @var array
 	 */
-	var $last_query;
+	public $last_query;
 
 	/**
 	 * Results of the last query made
@@ -137,7 +137,7 @@ class Db {
 	 * @access private
 	 * @var array|null
 	 */
-	var $last_result;
+	public $last_result;
 
 	/**
 	 * MySQL result, which is either a resource or boolean.
@@ -201,7 +201,7 @@ class Db {
 	 * @access private
 	 * @var array
 	 */
-	var $queries;
+	public $queries;
 
 	/**
 	 * The number of times to retry reconnecting before dying.
@@ -224,7 +224,7 @@ class Db {
 	 * @access private
 	 * @var string
 	 */
-	var $prefix = '';
+	public $prefix = '';
 
 	/**
 	 * WordPress base table prefix.
@@ -242,7 +242,7 @@ class Db {
 	 * @access private
 	 * @var bool
 	 */
-	var $ready = false;
+	public $ready = false;
 
 	/**
 	 * Blog ID.
@@ -270,20 +270,8 @@ class Db {
 	 * @see wpdb::tables()
 	 * @var array
 	 */
-	var $tables = array( 'posts', 'comments', 'links', 'options', 'postmeta',
+	public $tables = array( 'posts', 'comments', 'links', 'options', 'postmeta',
 		'terms', 'term_taxonomy', 'term_relationships', 'commentmeta' );
-
-	/**
-	 * List of deprecated WordPress tables
-	 *
-	 * categories, post2cat, and link2cat were deprecated in 2.3.0, db version 5539
-	 *
-	 * @since 2.9.0
-	 * @access private
-	 * @see wpdb::tables()
-	 * @var array
-	 */
-	var $old_tables = array( 'categories', 'post2cat', 'link2cat' );
 
 	/**
 	 * List of WordPress global tables
@@ -293,18 +281,7 @@ class Db {
 	 * @see wpdb::tables()
 	 * @var array
 	 */
-	var $global_tables = array( 'users', 'usermeta' );
-
-	/**
-	 * List of Multisite global tables
-	 *
-	 * @since 3.0.0
-	 * @access private
-	 * @see wpdb::tables()
-	 * @var array
-	 */
-	var $ms_global_tables = array( 'blogs', 'signups', 'site', 'sitemeta',
-		'sitecategories', 'registration_log', 'blog_versions' );
+	public $global_tables = array( 'users', 'usermeta' );
 
 	/**
 	 * WordPress Comments table
@@ -917,7 +894,6 @@ class Db {
 	 * @uses wpdb::$tables
 	 * @uses wpdb::$old_tables
 	 * @uses wpdb::$global_tables
-	 * @uses wpdb::$ms_global_tables
 	 *
 	 * @param string $scope Optional. Can be all, global, ms_global, blog, or old tables. Defaults to all.
 	 * @param bool $prefix Optional. Whether to include table prefixes. Default true. If blog
@@ -929,22 +905,12 @@ class Db {
 		switch ( $scope ) {
 			case 'all' :
 				$tables = array_merge( $this->global_tables, $this->tables );
-				if ( is_multisite() )
-					$tables = array_merge( $tables, $this->ms_global_tables );
 				break;
 			case 'blog' :
 				$tables = $this->tables;
 				break;
 			case 'global' :
 				$tables = $this->global_tables;
-				if ( is_multisite() )
-					$tables = array_merge( $tables, $this->ms_global_tables );
-				break;
-			case 'ms_global' :
-				$tables = $this->ms_global_tables;
-				break;
-			case 'old' :
-				$tables = $this->old_tables;
 				break;
 			default :
 				return array();
@@ -955,7 +921,7 @@ class Db {
 				$blog_id = $this->blogid;
 			$blog_prefix = $this->get_blog_prefix( $blog_id );
 			$base_prefix = $this->base_prefix;
-			$global_tables = array_merge( $this->global_tables, $this->ms_global_tables );
+			$global_tables = $this->global_tables;
 			foreach ( $tables as $k => $table ) {
 				if ( in_array( $table, $global_tables ) )
 					$tables[ $table ] = $base_prefix . $table;
