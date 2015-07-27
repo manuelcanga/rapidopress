@@ -858,7 +858,8 @@ function validate_current_theme() {
  */
 function get_theme_mods() {
 	$theme_slug = get_option( 'stylesheet' );
-	if ( false === ( $mods = get_option( "theme_mods_$theme_slug" ) ) ) {
+    $mods = get_option( "theme_mods_$theme_slug" ); 
+    if ( false === $mods ) { 
 		$theme_name = get_option( 'current_theme' );
 		if ( false === $theme_name )
 			$theme_name = wp_get_theme()->get('Name');

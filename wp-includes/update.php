@@ -24,7 +24,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	if ( defined('WP_INSTALLING') )
 		return;
 
-	global $wpdb, $wp_local_package;
+	global $wp_version, $wpdb, $wp_local_package;
 	include( RAPIDO_INCLUDES. 'init/version.php' ); // include an unmodified $wp_version
 	$php_version = phpversion();
 
@@ -48,7 +48,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	$timeout = 60;
 	$time_not_changed = isset( $current->last_checked ) && $timeout > ( time() - $current->last_checked );
 	if ( ! $force_check && $time_not_changed )
-		return false;
+		return ;
 
 	$locale = get_locale();
 	/**
@@ -58,7 +58,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	 *
 	 * @param string $locale Current locale.
 	 */
-	$locale = apply_filters( 'core_version_check_locale', $locale );
+    $locale = apply_filters( 'core_version_check_locale', get_locale() ); 
 
 	// Update last_checked for current to prevent multiple blocking requests if request hangs
 	$current->last_checked = time();
@@ -116,13 +116,13 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	}
 
 	if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
-		return false;
+		return ;
 
 	$body = trim( wp_remote_retrieve_body( $response ) );
 	$body = json_decode( $body, true );
 
 	if ( ! is_array( $body ) || ! isset( $body['offers'] ) )
-		return false;
+		return ;
 
 	$offers = $body['offers'];
 
@@ -178,10 +178,11 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
  * @return false|null Returns null if update is unsupported. Returns false if check is too soon.
  */
 function wp_update_plugins( $extra_stats = array() ) {
-	include( RAPIDO_INCLUDES. 'init/version.php' ); // include an unmodified $wp_version
-
 	if ( defined('WP_INSTALLING') )
-		return false;
+		return ;
+
+    global $wp_version; 
+	include( RAPIDO_INCLUDES. 'init/version.php' ); // include an unmodified $wp_version
 
 	// If running blog-side, bail unless we've not checked in the last 12 hours
 	if ( !function_exists( 'get_plugins' ) )
@@ -240,7 +241,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 
 		// Bail if we've checked recently and if nothing has changed
 		if ( ! $plugin_changed )
-			return false;
+			return ;
 	}
 
 	// Update last_checked for current to prevent multiple blocking requests if request hangs
@@ -249,7 +250,6 @@ function wp_update_plugins( $extra_stats = array() ) {
 
 	$to_send = compact( 'plugins', 'active' );
 
-	$locales = array( get_locale() );
 	/**
 	 * Filter the locales requested for plugin translations.
 	 *
@@ -257,7 +257,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 	 *
 	 * @param array $locales Plugin locale. Default is current locale of the site.
 	 */
-	$locales = apply_filters( 'plugins_update_check_locales', $locales );
+	$locales = apply_filters( 'plugins_update_check_locales',  array( get_locale() ) );
 
 	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 		$timeout = 30;
@@ -332,10 +332,11 @@ function wp_update_plugins( $extra_stats = array() ) {
  * @return false|null Returns null if update is unsupported. Returns false if check is too soon.
  */
 function wp_update_themes( $extra_stats = array() ) {
-	include( RAPIDO_INCLUDES. 'init/version.php' ); // include an unmodified $wp_version
-
 	if ( defined( 'WP_INSTALLING' ) )
 		return false;
+
+    global $wp_version; 
+	include( RAPIDO_INCLUDES. 'init/version.php' ); // include an unmodified $wp_version
 
 	$installed_themes = wp_get_themes();
 	$translations = wp_get_installed_translations( 'themes' );
@@ -567,11 +568,12 @@ function wp_get_update_data() {
 }
 
 function _maybe_update_core() {
+    global $wp_version; 
 	include( RAPIDO_INCLUDES. 'init/version.php' ); // include an unmodified $wp_version
 
 	$current = get_site_transient( 'update_core' );
 
-	if ( isset( $current->last_checked ) &&
+    if ( isset( $current->last_checked, $current->version_checked ) && 
 		12 * HOUR_IN_SECONDS > ( time() - $current->last_checked ) &&
 		isset( $current->version_checked ) &&
 		$current->version_checked == $wp_version )
