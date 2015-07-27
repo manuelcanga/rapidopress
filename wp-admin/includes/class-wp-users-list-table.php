@@ -334,7 +334,7 @@ class WP_Users_List_Table extends WP_List_Table {
 	 * @return string Output for a single row.
 	 */
 	public function single_row( $user_object, $style = '', $role = '', $numposts = 0 ) {
-		global $wp_roles;
+        $wp_roles = wp_roles(); 
 
 		if ( ! ( $user_object instanceof WP_User ) ) {
 			$user_object = get_userdata( (int) $user_object );

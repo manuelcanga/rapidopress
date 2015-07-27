@@ -198,9 +198,7 @@ function edit_user( $user_id = 0 ) {
  * @return array
  */
 function get_editable_roles() {
-	global $wp_roles;
-
-	$all_roles = $wp_roles->roles;
+    $all_roles = wp_roles()->roles; 
 
 	/**
 	 * Filter the list of editable roles.
