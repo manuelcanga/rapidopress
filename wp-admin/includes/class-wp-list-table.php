@@ -791,6 +791,46 @@ class WP_List_Table {
 		return array();
 	}
 
+     /**
+     * Get name of default primary column
+     *
+     * @since 4.3.0
+     * @access protected
+     *
+     * @return string
+     */
+    protected function get_default_primary_column_name() {
+        return '';
+    }
+
+    /**
+     * Get name of primary column.
+     *
+     * @since 4.3.0
+     * @access protected
+     *
+     * @return string Filtered name of primary column
+     */
+    protected function get_primary_column_name() {
+        $columns = $this->get_columns();
+        $default = $this->get_default_primary_column_name();
+        /**
+         * Filter the name of the primary column for the current list table, with context as argument (eg: 'plugins').
+         *
+         * @since 4.3.0
+         *
+         * @param string $default Column name default for the specific list table (eg: 'name')
+         * @param string $context Screen ID for specific list table (eg: 'plugins')
+         */
+        $column  = apply_filters( 'list_table_primary_column', $default, $this->screen->id );
+
+        if ( empty( $column ) || ! isset( $columns[ $column ] ) ) {
+            $column = $default;
+        }
+
+        return $column;
+    }
+
 	/**
 	 * Get a list of all, hidden and sortable columns, with filter applied
 	 *
@@ -831,7 +871,8 @@ class WP_List_Table {
 			$sortable[$id] = $data;
 		}
 
-		$this->_column_headers = array( $columns, $hidden, $sortable );
+        $primary = $this->get_primary_column_name(); 
+        $this->_column_headers = array( $columns, $hidden, $sortable, $primary ); 
 
 		return $this->_column_headers;
 	}
@@ -1059,14 +1100,20 @@ class WP_List_Table {
 	 * @param object $item The current item
 	 */
 	protected function single_row_columns( $item ) {
-		list( $columns, $hidden ) = $this->get_column_info();
+        list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info(); 
 
 		foreach ( $columns as $column_name => $column_display_name ) {
-			$class = "class='$column_name column-$column_name'";
+            $classes = "$column_name column-$column_name"; 
+            if ( $primary === $column_name ) { 
+                $classes .= ' has-row-actions column-primary'; 
+            } 
 
 			$style = '';
-			if ( in_array( $column_name, $hidden ) )
+            if ( in_array( $column_name, $hidden ) ) { 
 				$style = ' style="display:none;"';
+            } 
+
+            $attributes = "class='$classes'$style"; 
 
 			$attributes = "$class$style";
 
@@ -1078,11 +1125,13 @@ class WP_List_Table {
 			elseif ( method_exists( $this, 'column_' . $column_name ) ) {
 				echo "<td $attributes>";
 				echo call_user_func( array( $this, 'column_' . $column_name ), $item );
+                echo $this->handle_row_actions( $item, $column_name, $primary ); 
 				echo "</td>";
 			}
 			else {
 				echo "<td $attributes>";
 				echo $this->column_default( $item, $column_name );
+                echo $this->handle_row_actions( $item, $column_name, $primary ); 
 				echo "</td>";
 			}
 		}

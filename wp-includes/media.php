@@ -2651,6 +2651,8 @@ function wp_plupload_default_settings() {
 	$wp_scripts->add_data( 'wp-plupload', 'data', $script );
 }
 
+
+
 /**
  * Prepares an attachment post object for JS, where it is expected
  * to be JSON-encoded and fit into an Attachment model.

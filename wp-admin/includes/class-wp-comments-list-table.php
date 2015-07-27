@@ -324,6 +324,20 @@ class WP_Comments_List_Table extends WP_List_Table {
 		);
 	}
 
+
+    /** 
+     * Get name of default primary column 
+     * 
+     * @since 4.3.0 
+     * @access protected 
+     * 
+     * @return string 
+     */ 
+    protected function get_default_primary_column_name() { 
+        return 'comment'; 
+    } 
+
+
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
 
@@ -384,6 +398,8 @@ class WP_Comments_List_Table extends WP_List_Table {
 		}
 	}
 
+
+
 	public function column_comment( $comment ) {
 		global $comment_status;
 		$post = get_post();
@@ -426,7 +442,37 @@ class WP_Comments_List_Table extends WP_List_Table {
 		<?php
 		}
 
-		if ( $this->user_can ) {
+	
+	}
+
+
+    /**
+     * Generate and display row actions links
+     *
+     * @since 4.3.0
+     * @access protected
+     *
+     * @param object $comment Comment being acted upon
+     * @param string $column_name Current column name
+     * @param string $primary Primary column name
+     *
+     * @return string
+     */
+    protected function handle_row_actions( $comment, $column_name, $primary ) {
+        global $comment_status;
+ 
+        if ( ! $this->user_can ) {
+            return;
+
+        }
+
+        $post = get_post();
+
+        $the_comment_status = wp_get_comment_status( $comment->comment_ID );
+
+        $out = '';
+
+        if( $primary === $column_name ) {
             $del_nonce = esc_html( '_wpnonce=' . wp_create_nonce( "delete-comment_$comment->comment_ID" ) );
             $approve_nonce = esc_html( '_wpnonce=' . wp_create_nonce( "approve-comment_$comment->comment_ID" ) );
 
@@ -440,78 +486,80 @@ class WP_Comments_List_Table extends WP_List_Table {
             $untrash_url = esc_url( $url . "&action=untrashcomment&$del_nonce" );
             $delete_url = esc_url( $url . "&action=deletecomment&$del_nonce" );
 
-			// Preorder it: Approve | Reply | Quick Edit | Edit | Spam | Trash.
-			$actions = array(
-				'approve' => '', 'unapprove' => '',
-				'reply' => '',
-				'quickedit' => '',
-				'edit' => '',
-				'spam' => '', 'unspam' => '',
-				'trash' => '', 'untrash' => '', 'delete' => ''
-			);
+            // Preorder it: Approve | Reply | Quick Edit | Edit | Spam | Trash.
+            $actions = array(
+                'approve' => '', 'unapprove' => '',
+                'reply' => '',
+                'quickedit' => '',
+                'edit' => '',
+                'spam' => '', 'unspam' => '',
+                'trash' => '', 'untrash' => '', 'delete' => ''
+            );
 
-			// Not looking at all comments.
-			if ( $comment_status && 'all' != $comment_status ) {
-				if ( 'approved' == $the_comment_status ) {
-					$actions['unapprove'] = "<a href='$unapprove_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:e7e7d3:action=dim-comment&amp;new=unapproved' class='vim-u vim-destructive' title='" . esc_attr__( 'Unapprove this comment' ) . "'>" . __( 'Unapprove' ) . '</a>';
-				} elseif ( 'unapproved' == $the_comment_status ) {
-					$actions['approve'] = "<a href='$approve_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:e7e7d3:action=dim-comment&amp;new=approved' class='vim-a vim-destructive' title='" . esc_attr__( 'Approve this comment' ) . "'>" . __( 'Approve' ) . '</a>';
-				}
-			} else {
-				$actions['approve'] = "<a href='$approve_url' data-wp-lists='dim:the-comment-list:comment-$comment->comment_ID:unapproved:e7e7d3:e7e7d3:new=approved' class='vim-a' title='" . esc_attr__( 'Approve this comment' ) . "'>" . __( 'Approve' ) . '</a>';
-				$actions['unapprove'] = "<a href='$unapprove_url' data-wp-lists='dim:the-comment-list:comment-$comment->comment_ID:unapproved:e7e7d3:e7e7d3:new=unapproved' class='vim-u' title='" . esc_attr__( 'Unapprove this comment' ) . "'>" . __( 'Unapprove' ) . '</a>';
-			}
+            // Not looking at all comments.
+            if ( $comment_status && 'all' != $comment_status ) {
+                if ( 'approved' == $the_comment_status ) {
+                    $actions['unapprove'] = "<a href='$unapprove_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:e7e7d3:action=dim-comment&amp;new=unapproved' class='vim-u vim-destructive' title='" . esc_attr__( 'Unapprove this comment' ) . "'>" . __( 'Unapprove' ) . '</a>';
+                } elseif ( 'unapproved' == $the_comment_status ) {
+                    $actions['approve'] = "<a href='$approve_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:e7e7d3:action=dim-comment&amp;new=approved' class='vim-a vim-destructive' title='" . esc_attr__( 'Approve this comment' ) . "'>" . __( 'Approve' ) . '</a>';
+                }
+            } else {
+                $actions['approve'] = "<a href='$approve_url' data-wp-lists='dim:the-comment-list:comment-$comment->comment_ID:unapproved:e7e7d3:e7e7d3:new=approved' class='vim-a' title='" . esc_attr__( 'Approve this comment' ) . "'>" . __( 'Approve' ) . '</a>';
+                $actions['unapprove'] = "<a href='$unapprove_url' data-wp-lists='dim:the-comment-list:comment-$comment->comment_ID:unapproved:e7e7d3:e7e7d3:new=unapproved' class='vim-u' title='" . esc_attr__( 'Unapprove this comment' ) . "'>" . __( 'Unapprove' ) . '</a>';
+            }
 
-			if ( 'spam' != $the_comment_status ) {
-				$actions['spam'] = "<a href='$spam_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::spam=1' class='vim-s vim-destructive' title='" . esc_attr__( 'Mark this comment as spam' ) . "'>" . /* translators: mark as spam link */ _x( 'Spam', 'verb' ) . '</a>';
-			} elseif ( 'spam' == $the_comment_status ) {
-				$actions['unspam'] = "<a href='$unspam_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:66cc66:unspam=1' class='vim-z vim-destructive'>" . _x( 'Not Spam', 'comment' ) . '</a>';
-			}
+            if ( 'spam' != $the_comment_status ) {
+                $actions['spam'] = "<a href='$spam_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::spam=1' class='vim-s vim-destructive' title='" . esc_attr__( 'Mark this comment as spam' ) . "'>" . /* translators: mark as spam link */ _x( 'Spam', 'verb' ) . '</a>';
+            } elseif ( 'spam' == $the_comment_status ) {
+                $actions['unspam'] = "<a href='$unspam_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:66cc66:unspam=1' class='vim-z vim-destructive'>" . _x( 'Not Spam', 'comment' ) . '</a>';
+            }
 
-			if ( 'trash' == $the_comment_status ) {
-				$actions['untrash'] = "<a href='$untrash_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:66cc66:untrash=1' class='vim-z vim-destructive'>" . __( 'Restore' ) . '</a>';
-			}
+            if ( 'trash' == $the_comment_status ) {
+                $actions['untrash'] = "<a href='$untrash_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:66cc66:untrash=1' class='vim-z vim-destructive'>" . __( 'Restore' ) . '</a>';
+            }
 
-			if ( 'spam' == $the_comment_status || 'trash' == $the_comment_status || !EMPTY_TRASH_DAYS ) {
-				$actions['delete'] = "<a href='$delete_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::delete=1' class='delete vim-d vim-destructive'>" . __( 'Delete Permanently' ) . '</a>';
-			} else {
-				$actions['trash'] = "<a href='$trash_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::trash=1' class='delete vim-d vim-destructive' title='" . esc_attr__( 'Move this comment to the trash' ) . "'>" . _x( 'Trash', 'verb' ) . '</a>';
-			}
+            if ( 'spam' == $the_comment_status || 'trash' == $the_comment_status || !EMPTY_TRASH_DAYS ) {
+                $actions['delete'] = "<a href='$delete_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::delete=1' class='delete vim-d vim-destructive'>" . __( 'Delete Permanently' ) . '</a>';
+            } else {
+                $actions['trash'] = "<a href='$trash_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::trash=1' class='delete vim-d vim-destructive' title='" . esc_attr__( 'Move this comment to the trash' ) . "'>" . _x( 'Trash', 'verb' ) . '</a>';
+            }
 
-			if ( 'spam' != $the_comment_status && 'trash' != $the_comment_status ) {
-				$actions['edit'] = "<a href='comment.php?action=editcomment&amp;c={$comment->comment_ID}' title='" . esc_attr__( 'Edit comment' ) . "'>". __( 'Edit' ) . '</a>';
+            if ( 'spam' != $the_comment_status && 'trash' != $the_comment_status ) {
+                $actions['edit'] = "<a href='comment.php?action=editcomment&amp;c={$comment->comment_ID}' title='" . esc_attr__( 'Edit comment' ) . "'>". __( 'Edit' ) . '</a>';
 
-				$format = '<a data-comment-id="%d" data-post-id="%d" data-action="%s" class="%s" title="%s" href="#">%s</a>';
+                $format = '<a data-comment-id="%d" data-post-id="%d" data-action="%s" class="%s" title="%s" href="#">%s</a>';
 
-				$actions['quickedit'] = sprintf( $format, $comment->comment_ID, $post->ID, 'edit', 'vim-q comment-inline',esc_attr__( 'Edit this item inline' ), __( 'Quick&nbsp;Edit' ) );
+                $actions['quickedit'] = sprintf( $format, $comment->comment_ID, $post->ID, 'edit', 'vim-q comment-inline',esc_attr__( 'Edit this item inline' ), __( 'Quick&nbsp;Edit' ) );
 
-				$actions['reply'] = sprintf( $format, $comment->comment_ID, $post->ID, 'replyto', 'vim-r comment-inline', esc_attr__( 'Reply to this comment' ), __( 'Reply' ) );
-			}
+                $actions['reply'] = sprintf( $format, $comment->comment_ID, $post->ID, 'replyto', 'vim-r comment-inline', esc_attr__( 'Reply to this comment' ), __( 'Reply' ) );
+            }
 
-			/** This filter is documented in wp-admin/includes/dashboard.php */
-			$actions = apply_filters( 'comment_row_actions', array_filter( $actions ), $comment );
+            /** This filter is documented in wp-admin/includes/dashboard.php */
+            $actions = apply_filters( 'comment_row_actions', array_filter( $actions ), $comment );
 
-			$i = 0;
-			echo '<div class="row-actions">';
-			foreach ( $actions as $action => $link ) {
-				++$i;
-				( ( ( 'approve' == $action || 'unapprove' == $action ) && 2 === $i ) || 1 === $i ) ? $sep = '' : $sep = ' | ';
+            $i = 0;
+            $out .= '<div class="row-actions">';
+            foreach ( $actions as $action => $link ) {
+                $i;
+                ( ( ( 'approve' == $action || 'unapprove' == $action ) && 2 === $i ) || 1 === $i ) ? $sep = '' : $sep = ' | ';
 
-				// Reply and quickedit need a hide-if-no-js span when not added with ajax
-				if ( ( 'reply' == $action || 'quickedit' == $action ) && ! defined('DOING_AJAX') )
-					$action .= ' hide-if-no-js';
-				elseif ( ( $action == 'untrash' && $the_comment_status == 'trash' ) || ( $action == 'unspam' && $the_comment_status == 'spam' ) ) {
-					if ( '1' == get_comment_meta( $comment->comment_ID, '_wp_trash_meta_status', true ) )
-						$action .= ' approve';
-					else
-						$action .= ' unapprove';
-				}
+                // Reply and quickedit need a hide-if-no-js span when not added with ajax
+                if ( ( 'reply' == $action || 'quickedit' == $action ) && ! defined('DOING_AJAX') )
+                    $action .= ' hide-if-no-js';
+                elseif ( ( $action == 'untrash' && $the_comment_status == 'trash' ) || ( $action == 'unspam' && $the_comment_status == 'spam' ) ) {
+                    if ( '1' == get_comment_meta( $comment->comment_ID, '_wp_trash_meta_status', true ) )
+                        $action .= ' approve';
+                    else
+                        $action .= ' unapprove';
+                }
 
-				echo "<span class='$action'>$sep$link</span>";
-			}
-			echo '</div>';
-		}
-	}
+                $out .= "<span class='$action'>$sep$link</span>";
+            }
+            $out .= '</div>';
+        }
+
+        return $out;
+     }
 
 	public function column_author( $comment ) {
 		global $comment_status;
@@ -609,6 +657,7 @@ class WP_Post_Comments_List_Table extends WP_Comments_List_Table {
 			),
 			array(),
 			array(),
+            'comment', 
 		);
 	}
 
