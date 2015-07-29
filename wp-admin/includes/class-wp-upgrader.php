@@ -1643,7 +1643,7 @@ class Language_Pack_Upgrader extends WP_Upgrader {
 	public static function async_upgrade( $upgrader = false ) {
 		// Avoid recursion.
 		if ( $upgrader && $upgrader instanceof Language_Pack_Upgrader ) {
-			return;
+			return;WP_AUTO_UPDATE_CORE
 		}
 
 		// Nothing to do?
@@ -2121,8 +2121,8 @@ class Core_Upgrader extends WP_Upgrader {
 		$current_is_development_version = (bool) strpos( $wp_version, '-' );
 
 		// Defaults:
-		$upgrade_dev   = true;
-		$upgrade_minor = true;
+		$upgrade_dev   = false;
+		$upgrade_minor = false;
 		$upgrade_major = false;
 
 		// WP_AUTO_UPDATE_CORE = true (all), 'minor', false.
