@@ -372,7 +372,7 @@ function wp_revoke_user($id) {
 	$user->remove_all_caps();
 }
 
-add_action('admin_init', 'default_password_nag_handler');
+
 /**
  * @since 2.8.0
  */
@@ -389,7 +389,7 @@ function default_password_nag_handler($errors = false) {
 	}
 }
 
-add_action('profile_update', 'default_password_nag_edit_user', 10, 2);
+
 
 /**
  * @since 2.8.0
@@ -408,7 +408,7 @@ function default_password_nag_edit_user($user_ID, $old_data) {
 	}
 }
 
-add_action('admin_notices', 'default_password_nag');
+
 
 /**
  * @since 2.8.0

@@ -158,7 +158,7 @@ function install_dashboard() {
 	}
 	echo '</p><br class="clear" />';
 }
-add_action( 'install_plugins_featured', 'install_dashboard' );
+
 
 /**
  * Display search form for searching plugins.
@@ -209,7 +209,7 @@ function install_plugins_upload() {
 </div>
 <?php
 }
-add_action('install_plugins_upload', 'install_plugins_upload' );
+
 
 
 /**
@@ -232,11 +232,7 @@ function display_plugins_table() {
 	</form>
 	<?php
 }
-add_action( 'install_plugins_search',      'display_plugins_table' );
-add_action( 'install_plugins_popular',     'display_plugins_table' );
-add_action( 'install_plugins_recommended', 'display_plugins_table' );
-add_action( 'install_plugins_new',         'display_plugins_table' );
-add_action( 'install_plugins_beta',        'display_plugins_table' );
+
 
 /**
  * Determine the status we can perform on a plugin.
@@ -552,4 +548,4 @@ function install_plugin_information() {
 	iframe_footer();
 	exit;
 }
-add_action('install_plugins_pre_plugin-information', 'install_plugin_information');
+

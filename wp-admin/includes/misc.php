@@ -215,9 +215,6 @@ function update_home_siteurl( $old_value, $value ) {
 	flush_rewrite_rules();
 }
 
-add_action( 'update_option_siteurl', 'update_home_siteurl', 10, 2 );
-add_action( 'update_option_page_on_front', 'update_home_siteurl', 10, 2 );
-
 /**
  * Shorten an URL, to be used as link text
  *
@@ -637,7 +634,6 @@ function wp_color_scheme_settings() {
 
 	echo '<script type="text/javascript">var _wpColorScheme = ' . wp_json_encode( array( 'icons' => $icon_colors ) ) . ";</script>\n";
 }
-add_action( 'admin_head', 'wp_color_scheme_settings' );
 
 function _ipad_meta() {
 	if ( wp_is_mobile() ) {
@@ -646,7 +642,6 @@ function _ipad_meta() {
 		<?php
 	}
 }
-add_action('admin_head', '_ipad_meta');
 
 /**
  * Check lock status for posts displayed on the Posts screen
@@ -677,7 +672,7 @@ function wp_check_locked_posts( $response, $data, $screen_id ) {
 
 	return $response;
 }
-add_filter( 'heartbeat_received', 'wp_check_locked_posts', 10, 3 );
+
 
 /**
  * Check lock status on the New/Edit Post screen and refresh the lock
@@ -716,7 +711,7 @@ function wp_refresh_post_lock( $response, $data, $screen_id ) {
 
 	return $response;
 }
-add_filter( 'heartbeat_received', 'wp_refresh_post_lock', 10, 3 );
+
 
 /**
  * Check nonce expiration on the New/Edit Post screen and refresh if needed
@@ -750,7 +745,7 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 
 	return $response;
 }
-add_filter( 'heartbeat_received', 'wp_refresh_post_nonces', 10, 3 );
+
 
 /**
  * Disable suspension of Heartbeat on the Add/Edit Post screens.
@@ -794,8 +789,6 @@ function heartbeat_autosave( $response, $data ) {
 
 	return $response;
 }
-// Run later as we have to set DOING_AUTOSAVE for back-compat
-add_filter( 'heartbeat_received', 'heartbeat_autosave', 500, 2 );
 
 /**
  * Disables autocomplete on the 'post' form (Add/Edit Post screens) for WebKit browsers,
@@ -811,7 +804,6 @@ function post_form_autocomplete_off() {
 		echo ' autocomplete="off"';
 	}
 }
-add_action( 'post_edit_form_tag', 'post_form_autocomplete_off' );
 
 /**
  * Remove single-use URL parameters and create canonical link based on new URL.
@@ -856,4 +848,4 @@ function wp_admin_canonical_url() {
 	</script>
 <?php
 }
-add_action( 'admin_head', 'wp_admin_canonical_url' );
+

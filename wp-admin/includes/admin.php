@@ -15,6 +15,9 @@ if ( ! defined('WP_ADMIN') ) {
 	load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
 }
 
+/** WordPress Administration Hooks */
+require_once(ABSPATH . 'wp-admin/includes/admin-filters.php');
+
 /** WordPress Comment Administration API */
 require_once(ABSPATH . 'wp-admin/includes/comment.php');
 
@@ -51,7 +54,7 @@ require_once(ABSPATH . 'wp-admin/includes/list-table.php');
 
 /** WordPress Theme Administration API */
 require_once(ABSPATH . 'wp-admin/includes/theme.php');
-
+/** WordPress Bookmark Administration API */ 
 /** WordPress User Administration API */
 require_once(ABSPATH . 'wp-admin/includes/user.php');
 

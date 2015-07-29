@@ -675,7 +675,6 @@ function wp_dashboard_trigger_widget_control( $widget_control_id = false ) {
 function wp_dashboard_quota() {
 		return true;
 }
-add_action( 'activity_box_end', 'wp_dashboard_quota' );
 
 // Display Browser Nag Meta Box
 function wp_dashboard_browser_nag() {
