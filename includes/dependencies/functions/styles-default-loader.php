@@ -96,7 +96,7 @@ function wp_default_styles( &$styles ) {
 	$styles->add( 'open-sans', $open_sans_font_url );
 
 	// Includes CSS
-	//$styles->add( 'admin-bar',      "/wp-includes/css/admin-bar.css", array('open-sans',  'wp-admin-commons' ) );
+	$styles->add( 'admin-bar',      "/wp-includes/css/admin-bar.css" );
 	$styles->add( 'wp-auth-check',  "/wp-includes/css/wp-auth-check.css", array() );
 	$styles->add( 'editor-buttons', "/wp-includes/css/editor.css", array('wp-admin-commons' ) );
 	$styles->add( 'media-views',    "/wp-includes/css/media-views.css", array( 'wp-admin-commons', 'wp-mediaelement' ) );

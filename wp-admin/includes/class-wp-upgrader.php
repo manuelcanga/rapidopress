@@ -1643,7 +1643,7 @@ class Language_Pack_Upgrader extends WP_Upgrader {
 	public static function async_upgrade( $upgrader = false ) {
 		// Avoid recursion.
 		if ( $upgrader && $upgrader instanceof Language_Pack_Upgrader ) {
-			return;WP_AUTO_UPDATE_CORE
+			return;
 		}
 
 		// Nothing to do?

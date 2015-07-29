@@ -247,7 +247,8 @@ class WP_Styles extends WP_Dependencies {
 		 */
 		$last_update = apply_filters('\\rapidopress\\styles\\last_update', $last_update, $handle );
 
-
+//$last_update = time();
+error_log($in_file);
 		if( $last_update >  $when_last_rapido_css_was_created ) {
 			$out_file = self::parse_css_file($in_file, $out_file, $handle );
 		}
@@ -279,12 +280,10 @@ class WP_Styles extends WP_Dependencies {
 		 */
 		$content = apply_filters('\\rapidopress\\styles\\parser\\'.$handle.'\\content', $content);
 
-
-
 		try {
 			$less = new \lessc();
 
-			$import_dir =ABSPATH.dirname($in_file);
+			$import_dir =ABSPATH.ltrim(dirname($in_file), '/');
 			$less->setImportDir($import_dir);
 			$content = $less->parse($content, $vars );
 		} catch (exception $e) {

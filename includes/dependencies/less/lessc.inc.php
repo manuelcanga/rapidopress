@@ -46,6 +46,7 @@ class lessc {
 	protected $registeredVars = array();
 	protected $preserveComments = false;
 
+	public $dvPrefix = '#'; // prefix of default abstract properties
 	public $vPrefix = '@'; // prefix of abstract properties
 	public $mPrefix = '$'; // prefix of abstract blocks
 	public $parentSelector = '&';
@@ -234,6 +235,7 @@ class lessc {
 	 *
 	 */
 	protected function compileBlock($block) {
+
 		switch ($block->type) {
 		case "root":
 			$this->compileRoot($block);
@@ -893,30 +895,12 @@ class lessc {
 		case 'function':
 			list(, $name, $args) = $value;
 			return $name.'('.$this->compileValue($args).')';
-		default: // assumed to be unit
-			$this->throwError("unknown value type: $value[0]");
+		default: // assumed to be url
+			return $value;
 		}
 	}
 
-	protected function lib_default($args) {
-	
-		$name = '';	
-		if(isset($args[2][0][1])) {
-			$name = $args[2][0][1];
-		}
 
-		$default = '';
-		if(isset($args[2][1]) ) {
-			$default = $args[2][1];
-		}
-		
-
-		if(!isset($this->registeredVars[$name]) )
-			return $default;
-		else
-			$this->registeredVars[$name];
- 			
-	}
 
 	protected function lib_pow($args) {
 		list($base, $exp) = $this->assertArgs($args, 2, "pow");
@@ -1421,6 +1405,7 @@ class lessc {
 	}
 
 	protected function reduce($value, $forExpression = false) {
+
 		switch ($value[0]) {
 		case "interpolate":
 			$reduced = $this->reduce($value[1]);
@@ -1980,29 +1965,17 @@ class lessc {
 	}
 
 	// parse and compile buffer
-	// This is deprecated
 	public function parse($str = null, $initialVariables = null) {
-		if (is_array($str)) {
-			$initialVariables = $str;
-			$str = null;
-		}
+  	    $out = '';
 
-		$oldVars = $this->registeredVars;
 		if ($initialVariables !== null) {
 			$this->setVariables($initialVariables);
 		}
 
-		if ($str == null) {
-			if (empty($this->_parseFile)) {
-				throw new exception("nothing to parse");
-			}
-
-			$out = $this->compileFile($this->_parseFile);
-		} else {
+		if ($str != null) {
 			$out = $this->compile($str);
 		}
 
-		$this->registeredVars = $oldVars;
 		return $out;
 	}
 
@@ -2040,8 +2013,17 @@ class lessc {
 		unset($this->libFunctions[$name]);
 	}
 
+	public function getValueVariable($variable, $default = null) {
+		$variable = ltrim($variable, $this->vPrefix);
+
+		if( isset($this->registeredVars[$variable]) )
+			return $this->registeredVars[$variable];
+		else
+			return $default;
+	}
+
 	public function setVariables($variables) {
-		$this->registeredVars = array_merge($this->registeredVars, $variables);
+		$this->registeredVars = array_merge($this->registeredVars, (array) $variables);
 	}
 
 	public function unsetVariable($name) {
@@ -2081,7 +2063,8 @@ class lessc {
 		if ($less === null) {
 			$less = new self;
 		}
-		return $less->checkedCompile($in, $out);
+		//return $less->checkedCompile($in, $out);
+		return true;
 	}
 
 	public static function cexecute($in, $force = false, $less = null) {
@@ -2437,6 +2420,7 @@ class lessc_parser {
 			$this->seek($s);
 		}
 
+
 		// setting a variable
 		if ($this->variable($var) && $this->assign() &&
 			$this->propertyValue($value) && $this->end())
@@ -2513,6 +2497,23 @@ class lessc_parser {
 			return true;
 		}
 
+
+		//setting a default var
+		if( '#' === $tags[0][0] ) {
+
+				if ($this->variable($var, $this->lessc->dvPrefix) && $this->assign() &&
+					$this->propertyValue($value) && $this->end())
+				{
+					$value = $this->lessc->getValueVariable($var, $value);
+					$this->append(array('assign', $var, $value), $s);
+					return true;
+	
+				}
+			$this->seek($s);
+		}
+
+
+
 		// mixin
 		if ($this->mixinTags($tags) &&
 			($this->argumentDef($argv, $isVararg) || true) &&
@@ -2524,6 +2525,7 @@ class lessc_parser {
 		} else {
 			$this->seek($s);
 		}
+
 
 		// spare ;
 		if ($this->literal(';')) return true;
@@ -3292,9 +3294,11 @@ class lessc_parser {
 	}
 
 	// consume a less variable
-	protected function variable(&$name) {
+	protected function variable(&$name, $prefix = null) {
+		if(!$prefix) $prefix = $this->lessc->vPrefix;
+
 		$s = $this->seek();
-		if ($this->literal($this->lessc->vPrefix, false) &&
+		if ($this->literal($prefix, false) &&
 			($this->variable($sub) || $this->keyword($name)))
 		{
 			if (!empty($sub)) {

@@ -1,8 +1,10 @@
 @import url(forms.css);
 
-@background: default( background ,  #f1f1f1 );  
-@main_font: default( main_font ,  'Open Sans' );  
-@main_fontsize: default( main_fontsize ,  13px );  
+#background: #f1f1f1;  
+#main_font: 'Open Sans';  
+#main_fontsize: 13px;  
+#logo_image:  none;   
+
  
 html,
 body {
@@ -128,6 +130,7 @@ p {
 
 .login h1 a {
 	-webkit-background-size: 84px;
+	background-image: @logo_image;
 	background-size: 84px;
 	background-position: center top;
 	background-repeat: no-repeat;
