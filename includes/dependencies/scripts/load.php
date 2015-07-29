@@ -3,7 +3,7 @@
 define('RAPIDO_PRESS', true);
 include('../functions/commons.php');
 
-
+error_reporting(E_ALL);
 
 $load = $_GET['load'];
 if ( is_array( $load ) )
@@ -31,6 +31,7 @@ foreach( $load as $handle ) {
 	$path = ABSPATH . $wp_scripts->registered[$handle]->src;
 	$out .= get_file($path) . "\n";
 }
+
 
 header('Content-Type: application/javascript; charset=UTF-8');
 header('Expires: ' . gmdate( "D, d M Y H:i:s", time() + $expires_offset ) . ' GMT');
