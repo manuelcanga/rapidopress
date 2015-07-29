@@ -1249,8 +1249,6 @@ function wp_insert_user( $userdata ) {
 	 */
 	$meta['description'] = apply_filters( 'pre_user_description', $description );
 
-	$meta['comment_shortcuts'] = empty( $userdata['comment_shortcuts'] ) ? 'false' : $userdata['comment_shortcuts'];
-
 	$admin_color = empty( $userdata['admin_color'] ) ? 'fresh' : $userdata['admin_color'];
 	$meta['admin_color'] = preg_replace( '|[^a-z0-9 _.\-@]|i', '', $admin_color );
 
@@ -1440,7 +1438,7 @@ function wp_create_user($username, $password, $email = '') {
  * @return array
  */
 function _get_additional_user_keys( $user ) {
-	$keys = array( 'first_name', 'last_name', 'nickname', 'description', 'comment_shortcuts', 'admin_color', 'use_ssl', 'show_admin_bar_front' );
+	$keys = array( 'first_name', 'last_name', 'nickname', 'description', 'admin_color', 'use_ssl', 'show_admin_bar_front' );
 	return array_merge( $keys, array_keys( wp_get_user_contact_methods( $user ) ) );
 }
 

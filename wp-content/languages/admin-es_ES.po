@@ -743,10 +743,6 @@ msgstr "Desconectar a %s de todas sus sesiones"
 msgid "Left your account logged in at a public computer? Lost your phone? This will log you out everywhere except your current browser."
 msgstr "¿Has dejado tu cuenta conectada en un ordenador público? ¿Has perdido tu teléfono? Esto cerrará tu sesión de todos los sitios excepto este navegador."
 
-#: wp-admin/options-general.php:92
-msgid "You can set the language, and the translation files will be automatically downloaded and installed (available if your filesystem is writable)."
-msgstr "Puedes configurar el idioma y los archivos de traducción serán descargados e instalados automáticamente (disponible si el sistema de archivos es escribible)."
-
 #: wp-admin/options-discussion.php:242
 msgid "Mystery Person"
 msgstr "Persona misteriosa"
@@ -1282,10 +1278,6 @@ msgstr "%s MB de espacio permitidos"
 #: wp-admin/includes/dashboard.php:1158
 msgid "%1$s MB (%2$s%%) Space Used"
 msgstr "%1$s MB (%2$s%%) del espacio utilizado"
-
-#: wp-admin/options-reading.php:64
-msgid "When this setting is in effect, a reminder is shown in the At a Glance box of the Dashboard that says, &#8220;Search Engines Discouraged,&#8221; to remind you that your site is not being crawled."
-msgstr "Cuando este ajuste está activo se muestra un recordatorio en la caja De un vistazo del Escritorio que dice &#8220;Motores de búsqueda disuadidos,&#8221; para recordarte que tu sitio no está siendo rastreado."
 
 #: wp-admin/includes/dashboard.php:35
 msgid "At a Glance"
@@ -2385,10 +2377,6 @@ msgctxt "column name"
 msgid "Uploaded to"
 msgstr "Subido a"
 
-#: wp-admin/options-reading.php:63
-msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen. Note that your privacy is not complete; your site is still visible on the web."
-msgstr "Puedes elegir si quieres (o no) que tu sitio sea rastreado por robots, servicios de notificación o arañas. Si quieres que esos servicios ignoren tu sitio, haz click en la casilla de verificación que están junto a &#8220;No permitir a los motores de búsqueda indexar este sitio&#8221;y hacer click en el botón de Guardar Cambios que hay en la parte inferior de la pantalla. Ten en cuenta que la privacidad no es completa, el sitio sigue siendo visible y público en la web."
-
 #: wp-admin/includes/dashboard.php:1318
 msgid "More Actions"
 msgstr "Más acciones"
@@ -3316,10 +3304,6 @@ msgstr "Puedes filtrar la lista de roles de usuario usando los enlaces de texto 
 msgid "There are unsaved changes that will be lost. 'OK' to continue, 'Cancel' to return to the Image Editor."
 msgstr "Hay cambios sin guardar que se perderán. 'Aceptar' para continuar, 'Cancelar' para volver a editor de imágenes."
 
-#: wp-admin/options-writing.php:30
-msgid "Post via email settings allow you to send your WordPress install an email with the content of your post. You must set up a secret e-mail account with POP3 access to use this, and any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret."
-msgstr "La configuración de publicar via correo electrónico te permite enviar a tu WordPress un correo con el contenido de tu entrada. Debes dar de alta una cuenta de correo secreta con acceso por POP3 para poder usarlo, y cualquier correo recibido en esta dirección se publicará, por eso es buena idea mantener esta dirección secretísima."
-
 #: wp-admin/themes.php:135
 msgid "The active theme is broken. Reverting to the default theme."
 msgstr "El tema activo está roto. Volviendo al tema por defecto."
@@ -3444,17 +3428,9 @@ msgstr "Estruturas personalizadas"
 msgid "Uploading Files allows you to choose the folder and path for storing your uploaded files."
 msgstr "La subida de archivo te permite elegir la carpeta y la ruta donde guardar tu archivos subidos."
 
-#: wp-admin/options-writing.php:21
-msgid "You can submit content in several different ways; this screen holds the settings for all of them. The top section controls the editor within the dashboard, while the rest control external publishing methods. For more information on any of these methods, use the documentation links."
-msgstr "Puedes enviar contenido de muchas formas; esta pantalla contiene las opciones para todas ellas. La selección superior controla el editor dentro del escritorio, mientras las demás controlan las formas externas de publicación. Para más información sobre estos métodos para publicar, puedes mirar en los enlaces de la documentación."
-
 #: wp-admin/themes.php:63
 msgid "Installing themes on Multisite can only be done from the Network Admin section."
 msgstr "La instalación de temas en el multisitio sólo se puede hacer desde la sección de Administrador de red."
-
-#: wp-admin/options-general.php:89
-msgid "If you want site visitors to be able to register themselves, as opposed to by the site administrator, check the membership box. A default user role can be set for all new users, whether self-registered or registered by the site admin."
-msgstr "Si quieres que los visitantes puedan registrarse sólos, no que sea el administrador el que lo haga, marca la caja de miembros. Puede definirse un rol de usuario por defecto para todos los usuarios, ya sean de registro propio o por el administrador."
 
 #: wp-admin/options-general.php:429
 msgid "Date Format"
@@ -3467,18 +3443,6 @@ msgstr "Formato de hora"
 #: wp-admin/options-general.php:367
 msgid "Site Address (URL)"
 msgstr "Dirección del sitio (URL)"
-
-#: wp-admin/options-writing.php:29
-msgid "Post Via Email"
-msgstr "Publicar por Correo Electrónico"
-
-#: wp-admin/options-writing.php:39
-msgid "If desired, WordPress will automatically alert various services of your new posts."
-msgstr "Si lo deseas, WordPress puede alertar automáticamente a varios servicios de tus nuevos artículos."
-
-#: wp-admin/options-discussion.php:40
-msgid "This screen provides many options for controlling the management and display of comments and links to your posts/pages. So many, in fact, they won&#8217;t all fit here! :) Use the documentation links to get information on what each discussion setting does."
-msgstr "Esta pantalla ofrece muchas opciones para controlar la gestión y la visualización de los comentarios y enlaces de tus páginas y entradas. Hay tantas que no todas caben aquí :). Puedes consultar en los enlaces de la documentación para saber qué hace cada opción de discusión."
 
 #: wp-admin/user-edit.php:40
 msgid "You can change your password, turn on keyboard shortcuts, change the color scheme of your WordPress administration screens, and turn off the WYSIWYG (Visual) editor, among other things. You can hide the Toolbar (formerly called the Admin Bar) from the front end of your site, however it cannot be disabled on the admin screens."
@@ -4443,10 +4407,6 @@ msgstr "Contraseña FTP/SSH"
 msgid "FTP/SSH Username"
 msgstr "Usuario FTP/SSH"
 
-#: wp-admin/options-reading.php:55
-msgid "You can choose what&#8217;s displayed on the front page of your site. It can be posts in reverse chronological order (classic blog), or a fixed/static page. To set a static home page, you first need to create two <a href=\"%s\">Pages</a>. One will become the front page, and the other will be where your posts are displayed."
-msgstr "Puedes elegir lo que se muestra en la página principal de tu sitio. Pueden ser entradas en orden cronológico inverso (blog clásico) o una página fija/estática. Para definir una página de inicio estática primero tienes que crear dos <a href=\"%s\">páginas</a>. Una será la página principal y la otra donde se mostrarán tus entradas."
-
 #: wp-admin/themes.php:273
 msgid "The following themes are installed but incomplete. Themes must have a stylesheet and a template."
 msgstr "Los siguientes temas están instalados pero incompletos. Los temas deben tener una hoja de estilos y una plantilla."
@@ -4462,14 +4422,6 @@ msgstr "Para añadir un usuario nuevo a tu sitio haz clic en el botón Añadir n
 #: wp-admin/widgets.php:59
 msgid "If you want to remove the widget but save its setting for possible future use, just drag it into the Inactive Widgets area. You can add them back anytime from there. This is especially helpful when you switch to a theme with fewer or different widget areas."
 msgstr "Si quieres quitar el widget, pero también guardar los ajustes por si los necesitaras en el futuro, simplemente arrástralo al área de widgets inactivos. Puedes añadirlos de nuevo en cualquier otro momento desde ahí. Esto es especialmente útil cuando cambias a un tema con pocas o distintas áreas de widgets."
-
-#: wp-admin/options-general.php:85
-msgid "Most themes display the site title at the top of every page, in the title bar of the browser, and as the identifying name for syndicated feeds. The tagline is also displayed by many themes."
-msgstr "La mayoría de los temas muestran el título del sitio en la parte superior de cada página, en la barra de título del navegador, y como nombre identificativo para los feeds. La descripción corta también se muestra en muchos temas."
-
-#: wp-admin/options-media.php:18
-msgid "You can set maximum sizes for images inserted into your written content; you can also insert an image as Full Size."
-msgstr "Puedes establecer los tamaños máximos para las imágenes insertadas en tu contenido; también puedes insertar una imagen a tamaño completo."
 
 #: wp-admin/includes/file.php:1137
 msgid "Please enter your FTP or SSH credentials to proceed."
@@ -4530,22 +4482,6 @@ msgstr "También puedes moderar los comentarios desde esta pantalla usando la ca
 #: wp-admin/nav-menus.php:711
 msgid "Enter menu name here"
 msgstr "Introduce el nombre del menú aquí."
-
-#: wp-admin/options-general.php:93
-msgid "UTC means Coordinated Universal Time."
-msgstr "UTC quiere decir  Hora universal coordinada (Coordinated Universal Time)"
-
-#: wp-admin/options-general.php:84
-msgid "The fields on this screen determine some of the basics of your site setup."
-msgstr "Los campos en esta pantalla determinan algunas configuraciones básicas de tu sitio."
-
-#: wp-admin/options-general.php:88
-msgid "The WordPress URL and the Site URL can be the same (example.com) or different; for example, having the WordPress core files (example.com/wordpress) in a subdirectory instead of the root directory."
-msgstr "La URL de WordPress y la URL del sitio pueden ser las mismas (ejemplo.com) o diferentes; por ejemplo, puedes tener los archivos del core de WordPress en un subdirectorio (ejemplo.com/wordpress) en vez de en el directorio raíz."
-
-#: wp-admin/options-reading.php:54
-msgid "This screen contains the settings that affect the display of your content."
-msgstr "Esta pantalla contiene los ajustes que afectarán a cómo se muestran tus contenidos."
 
 #: wp-admin/edit-link-form.php:59
 msgid "The boxes for link name, web address, and description have fixed positions, while the others may be repositioned using drag and drop. You can also hide boxes you don&#8217;t use in the Screen Options tab, or minimize boxes by clicking on the title bar of the box."
@@ -6279,10 +6215,6 @@ msgstr "No tienes autorización para editar este usuario."
 #: wp-admin/user-edit.php:193
 msgid "User updated."
 msgstr "El usuario ha sido actualizado."
-
-#: wp-admin/user-edit.php:265
-msgid "Enable keyboard shortcuts for comment moderation."
-msgstr "Activar los atajos del teclado para la moderación de comentarios."
 
 #: wp-admin/user-edit.php:359
 msgid "Display name publicly as"
