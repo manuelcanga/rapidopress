@@ -85,13 +85,11 @@ add_action( 'profile_update', 'default_password_nag_edit_user', 10, 2 );
 add_action( 'admin_notices', 'default_password_nag' );
 
 /** Update hooks */
-add_filter( 'update_footer', 'core_update_footer' );
-add_action( 'admin_notices', 'update_nag', 3 );
-add_action( 'network_admin_notices', 'update_nag', 3 );
+//add_filter( 'update_footer', 'core_update_footer' );
+//add_action( 'admin_notices', 'update_nag', 3 );
 add_action( 'admin_init', 'wp_plugin_update_rows' );
 add_action( 'admin_init', 'wp_theme_update_rows' );
 add_action( 'admin_notices', 'maintenance_nag' );
-add_action( 'network_admin_notices', 'maintenance_nag' );
 
 /** Update Core hooks */
 add_action( '_core_updated_successfully', '_redirect_to_about_wordpress' );
