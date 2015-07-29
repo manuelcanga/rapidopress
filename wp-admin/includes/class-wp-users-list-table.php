@@ -56,6 +56,8 @@ class WP_Users_List_Table extends WP_List_Table {
 	 *
  	 * @since 3.1.0
 	 * @access public
+	 *
+	 * @return bool
 	 */
 	public function ajax_user_can() {
 		if ( $this->is_site_users )
@@ -409,13 +411,17 @@ class WP_Users_List_Table extends WP_List_Table {
 			if ( $primary === $column_name ) {
 				$classes .= ' has-row-actions column-primary';
 			}
-
-			$style = '';
-			if ( in_array( $column_name, $hidden ) ) {
-				$style = ' style="display:none;"';
+			if ( 'posts' === $column_name ) {
+				$classes .= ' num'; // Special case for that column
 			}
 
-			$attributes = "class='$classes'$style";
+			if ( in_array( $column_name, $hidden ) ) {
+				$classes .= ' hidden';
+			}
+
+			$data = 'data-colname="' . wp_strip_all_tags( $column_display_name ) . '"';
+
+			$attributes = "class='$classes' $data";
 
 			if ( 'cb' === $column_name ) {
 				$r .= "<th scope='row' class='check-column'>$checkbox</th>";
@@ -429,17 +435,16 @@ class WP_Users_List_Table extends WP_List_Table {
 						$r .= "$user_object->first_name $user_object->last_name";
 						break;
 					case 'email':
-						$r .= "<a href='mailto:$email' title='" . esc_attr( sprintf( __( 'E-mail: %s' ), $email ) ) . "'>$email</a>";
+						$r .= "<a href='mailto:$email'>$email</a>";
 						break;
 					case 'role':
 						$r .= $role_name;
 						break;
 					case 'posts':
-						$attributes = 'class="posts column-posts num"' . $style;
-						$r .= "";
 						if ( $numposts > 0 ) {
-							$r .= "<a href='edit.php?author=$user_object->ID' title='" . esc_attr__( 'View posts by this author' ) . "' class='edit'>";
-							$r .= $numposts;
+							$r .= "<a href='edit.php?author=$user_object->ID' class='edit'>";
+							$r .= '<span aria-hidden="true">' . $numposts . '</span>';
+							$r .= '<span class="screen-reader-text">' . sprintf( _n( '%s post by this author', '%s posts by this author', $numposts ), number_format_i18n( $numposts ) ) . '</span>';
 							$r .= '</a>';
 						} else {
 							$r .= 0;
@@ -470,12 +475,12 @@ class WP_Users_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Get name of default primary column
+	 * Gets the name of the default primary column.
 	 *
 	 * @since 4.3.0
 	 * @access protected
 	 *
-	 * @return string
+	 * @return string Name of the default primary column, in this case, 'username'.
 	 */
 	protected function get_default_primary_column_name() {
 		return 'username';

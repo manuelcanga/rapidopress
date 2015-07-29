@@ -731,8 +731,8 @@
 	margin-top: 11px;
 	margin-right: 2%;
 	max-width: 42%;
-	max-width: -webkit-calc(48% - 12px);
-	max-width: calc(48% - 12px);
+	max-width: ~"-webkit-calc(48% - 12px)";
+	max-width: ~"calc(48% - 12px)";
 }
 
 .media-frame select.attachment-filters:last-of-type {
@@ -759,7 +759,7 @@
  * Attachments
  */
 .wp-core-ui .attachments {
-	margin: 0;
+	margin: 75px 0 0 0;
 	-webkit-overflow-scrolling: touch;
 }
 
