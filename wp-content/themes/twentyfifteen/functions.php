@@ -26,15 +26,6 @@
  */
 
 
-function myUrl($atts,$content=null){
-
-  extract(shortcode_atts(array(
-    "href"=>'http://'
-  ),$atts));
-
-  return'<a href="'.$href.'">'.$content.'</a>';
-}
-  add_shortcode("url","myUrl");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
