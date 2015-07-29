@@ -199,16 +199,22 @@ class WP_Styles extends WP_Dependencies {
 	 * @return string
 	 */
 	public function _css_href( $src, $ver, $handle ) {
-		if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) { //admin css
+
+
+
+ 		if( 0 === strpos($src, $this->content_url ) ){ //theme css
+
+			if($src[0] != '/') { //for absolute url
+				$path = str_replace(site_url(), '', $src);
+				$path = $this->precompile($path, $handle );
+				$src = root_url($path);
+			}
+			
+		}else if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) { //admin css
 		    $path = str_replace(site_url(), '', $src);
 			$path = $this->precompile($path, $handle );
 			$src = root_url($path);
 
-		}else if( 0 === strpos($src, $this->content_url ) ){ //theme css
-		    $path = str_replace(site_url(), '', $src);
-			$path = $this->precompile($path, $handle );
-			$src = root_url($path);
-			
 		}else {
 			//External css
 		}
@@ -247,8 +253,6 @@ class WP_Styles extends WP_Dependencies {
 		 */
 		$last_update = apply_filters('\\rapidopress\\styles\\last_update', $last_update, $handle );
 
-//$last_update = time();
-error_log($in_file);
 		if( $last_update >  $when_last_rapido_css_was_created ) {
 			$out_file = self::parse_css_file($in_file, $out_file, $handle );
 		}

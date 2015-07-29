@@ -1582,7 +1582,7 @@ function win_is_writable( $path ) {
  * @return array See above for description.
  */
 function wp_upload_dir( $time = null ) {
-	$siteurl = get_option( 'siteurl' );
+	$root = root_url();
 	$upload_path = trim( get_option( 'upload_path' ) );
 
 	if ( empty( $upload_path ) || 'wp-content/uploads' == $upload_path ) {
@@ -1598,7 +1598,7 @@ function wp_upload_dir( $time = null ) {
 		if ( empty($upload_path) || ( 'wp-content/uploads' == $upload_path ) || ( $upload_path == $dir ) )
 			$url = WP_CONTENT_URL . '/uploads';
 		else
-			$url = trailingslashit( $siteurl ) . $upload_path;
+			$url = trailingslashit( $root ) . $upload_path;
 	}
 
 	/*
@@ -1607,7 +1607,7 @@ function wp_upload_dir( $time = null ) {
 	 */
 	if ( defined( 'UPLOADS' )  ) {
 		$dir = ABSPATH . UPLOADS;
-		$url = trailingslashit( $siteurl ) . UPLOADS;
+		$url = trailingslashit( $root ) . UPLOADS;
 	}
 
 

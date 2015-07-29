@@ -158,11 +158,13 @@ class WP_Scripts extends WP_Dependencies {
 		}
 
 
-		if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) {
+		 if( 0 === strpos($src, $this->content_url ) ){ //theme css
+			if($src[0] != '/') { //for absolute url
+				$path = str_replace(site_url(), '', $src);
+				$src = root_url($path);
+			}
+		}else if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) {
 			$src = root_url($src);
-		}else if( 0 === strpos($src, $this->content_url ) ){ //theme css
-		    $path = str_replace(site_url(), '', $src);
-			$src = root_url($path);
 		}else {
 			//External js
 		}

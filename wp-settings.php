@@ -22,6 +22,7 @@ define('RAPIDO_PRESS', true);
 
 // Include files required for initialization.
 require( ABSPATH . WPINC . '/load.php' );
+require( ABSPATH . WPINC . '/link-template.php' );
 require( RAPIDO_INCLUDES . 'init/default-constants.php' );
 
 /*
@@ -126,7 +127,6 @@ require( ABSPATH . WPINC . '/template.php' );
 require( RAPIDO_INCLUDES . '/user/functions/user.php' );
 require( ABSPATH . WPINC . '/meta.php' );
 require( ABSPATH . WPINC . '/general-template.php' );
-require( ABSPATH . WPINC . '/link-template.php' );
 require( ABSPATH . WPINC . '/author-template.php' );
 require( RAPIDO_INCLUDES . '/post/functions/post.php' );
 require( ABSPATH . WPINC . '/revision.php' );
