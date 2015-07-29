@@ -174,11 +174,9 @@ function wp_style_loader_src( $src, $handle ) {
  * @since 2.8.0
  */
 function print_admin_styles() {
-	global $wp_styles, $concatenate_scripts;
+	global $concatenate_scripts;
 
-	if ( ! ( $wp_styles instanceof WP_Styles ) ) {
-		$wp_styles = new WP_Styles();
-	}
+	$wp_styles = wp_styles();
 
 	script_concat_settings();
 	$wp_styles->do_concat = false;
@@ -206,11 +204,9 @@ function print_admin_styles() {
  * @since 3.3.0
  */
 function print_late_styles() {
-	global $wp_styles, $concatenate_scripts;
+	global $concatenate_scripts;
 
-	if ( ! ( $wp_styles instanceof WP_Styles ) ) {
-		return;
-	}
+	$wp_styles = wp_styles();
 
 	$wp_styles->do_concat = $concatenate_scripts;
 	$wp_styles->do_footer_items();
