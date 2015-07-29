@@ -1987,19 +1987,8 @@ function wp_no_robots() {
  * @return bool
  */
 function user_can_richedit() {
-	global $wp_rich_edit, $is_gecko, $is_opera, $is_safari, $is_chrome, $is_IE;
+	global  $is_gecko, $is_opera, $is_safari, $is_chrome, $is_IE;
 
-	if ( !isset($wp_rich_edit) ) {
-		$wp_rich_edit = false;
-
-		if ( get_user_option( 'rich_editing' ) == 'true' || ! is_user_logged_in() ) { // default to 'true' for logged out users
-			if ( $is_safari ) {
-				$wp_rich_edit = ! wp_is_mobile() || ( preg_match( '!AppleWebKit/(\d+)!', $_SERVER['HTTP_USER_AGENT'], $match ) && intval( $match[1] ) >= 534 );
-			} elseif ( $is_gecko || $is_chrome || $is_IE || ( $is_opera && !wp_is_mobile() ) ) {
-				$wp_rich_edit = true;
-			}
-		}
-	}
 
 	/**
 	 * Filter whether the user can access the rich (Visual) editor.
@@ -2008,7 +1997,19 @@ function user_can_richedit() {
 	 *
 	 * @param bool $wp_rich_edit Whether the user can access to the rich (Visual) editor.
 	 */
-	return apply_filters( 'user_can_richedit', $wp_rich_edit );
+	$wp_rich_edit =  apply_filters( 'user_can_richedit', is_user_logged_in() );
+
+	
+	if($wp_rich_edit) {
+		if ( $is_safari ) {
+			$wp_rich_edit = ! wp_is_mobile() || ( preg_match( '!AppleWebKit/(\d+)!', $_SERVER['HTTP_USER_AGENT'], $match ) && intval( $match[1] ) >= 534 );
+		} elseif ( $is_gecko || $is_chrome || $is_IE || ( $is_opera && !wp_is_mobile() ) ) {
+			$wp_rich_edit = true;
+		}
+	}
+
+
+	return $wp_rich_edit;
 }
 
 /**

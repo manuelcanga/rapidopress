@@ -180,12 +180,6 @@ if ( ! IS_PROFILE_PAGE ) {
 <h3><?php _e('Personal Options'); ?></h3>
 
 <table class="form-table">
-<?php if ( ! ( IS_PROFILE_PAGE && ! $user_can_edit ) ) : ?>
-	<tr class="user-rich-editing-wrap">
-		<th scope="row"><?php _e( 'Visual Editor' ); ?></th>
-		<td><label for="rich_editing"><input name="rich_editing" type="checkbox" id="rich_editing" value="false" <?php if ( ! empty( $profileuser->rich_editing ) ) checked( 'false', $profileuser->rich_editing ); ?> /> <?php _e( 'Disable the visual editor when writing' ); ?></label></td>
-	</tr>
-<?php endif; ?>
 <?php if ( count($_wp_admin_css_colors) > 1 && has_action('admin_color_scheme_picker') ) : ?>
 <tr class="user-admin-color-wrap">
 <th scope="row"><?php _e('Admin Color Scheme')?></th>

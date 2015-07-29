@@ -1045,7 +1045,7 @@ function validate_username( $username ) {
  * Insert a user into the database.
  *
  * Most of the $userdata array fields have filters associated with the values.
- * The exceptions are 'rich_editing', 'role', 'jabber', 'aim', 'yim',
+ * The exceptions are  'role', 'jabber', 'aim', 'yim',
  * 'user_registered', and 'ID'. The filters have the prefix 'pre_user_' followed
  * by the field name. An example using 'description' would have the filter
  * called, 'pre_user_description' that can be hooked into.
@@ -1071,8 +1071,6 @@ function validate_username( $username ) {
  *                                        to build $display_name if unspecified.
  *     @type stirng      $last_name       The user's last name. For new users, will be used
  *                                        to build $display_name if unspecified.
- *     @type string|bool $rich_editing    Whether to enable the rich-editor for the user. False
- *                                        if not empty.
  *     @type string      $user_registered Date the user registered. Format is 'Y-m-d H:i:s'.
  *     @type string      $role            User's role.
  *     @type string      $jabber          User's Jabber account username.
@@ -1250,8 +1248,6 @@ function wp_insert_user( $userdata ) {
 	 * @param string $description The user's description.
 	 */
 	$meta['description'] = apply_filters( 'pre_user_description', $description );
-
-	$meta['rich_editing'] = empty( $userdata['rich_editing'] ) ? 'true' : $userdata['rich_editing'];
 
 	$meta['comment_shortcuts'] = empty( $userdata['comment_shortcuts'] ) ? 'false' : $userdata['comment_shortcuts'];
 
@@ -1444,7 +1440,7 @@ function wp_create_user($username, $password, $email = '') {
  * @return array
  */
 function _get_additional_user_keys( $user ) {
-	$keys = array( 'first_name', 'last_name', 'nickname', 'description', 'rich_editing', 'comment_shortcuts', 'admin_color', 'use_ssl', 'show_admin_bar_front' );
+	$keys = array( 'first_name', 'last_name', 'nickname', 'description', 'comment_shortcuts', 'admin_color', 'use_ssl', 'show_admin_bar_front' );
 	return array_merge( $keys, array_keys( wp_get_user_contact_methods( $user ) ) );
 }
 

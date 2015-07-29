@@ -6280,10 +6280,6 @@ msgstr "No tienes autorización para editar este usuario."
 msgid "User updated."
 msgstr "El usuario ha sido actualizado."
 
-#: wp-admin/user-edit.php:239
-msgid "Disable the visual editor when writing"
-msgstr "Desactivar el editor visual al escribir"
-
 #: wp-admin/user-edit.php:265
 msgid "Enable keyboard shortcuts for comment moderation."
 msgstr "Activar los atajos del teclado para la moderación de comentarios."
