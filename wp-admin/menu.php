@@ -197,7 +197,7 @@ $menu[80] = array( __('Settings'), 'manage_options', 'options-general.php', '', 
 	$submenu['options-general.php'][30] = array(__('Contents'), 'manage_options', 'options-contents.php');
 	$submenu['options-general.php'][35] = array(__('Search engines'), 'manage_options', 'options-seo.php');
 	$submenu['options-general.php'][40] = array(__('Permalinks'), 'manage_options', 'options-permalink.php');
-	$submenu['options-general.php'][40] = array(__('Tracking'), 'manage_options', 'options-tracking.php');
+	$submenu['options-general.php'][45] = array(__('Tracking'), 'manage_options', 'options-tracking.php');
 	$submenu['options-general.php'][50] = array(__('Discussion'), 'manage_options', 'options-discussion.php');
 	$submenu['options-general.php'][55] = array(__('Media'), 'manage_options', 'options-media.php');
 
