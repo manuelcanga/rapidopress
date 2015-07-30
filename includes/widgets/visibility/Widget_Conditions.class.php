@@ -298,6 +298,7 @@ class Widget_Conditions {
 	public static function sidebars_widgets( $widget_areas ) {
 		$settings = array();
 
+		if( empty($widget_areas)) return array();
 		foreach ( $widget_areas as $widget_area => $widgets ) {
 			if ( empty( $widgets ) )
 				continue;
