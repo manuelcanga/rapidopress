@@ -575,6 +575,10 @@ function upgrade_420() {
 
 	if ( $wp_current_db_version < 31351 && $wpdb->charset === 'utf8mb4' ) {
 			$tables = $wpdb->tables( 'all' );
+            if ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) { 
+                $global_tables = $wpdb->tables( 'global' ); 
+                $tables = array_diff_assoc( $tables, $global_tables ); 
+            } 
 
 		foreach ( $tables as $table ) {
 			maybe_convert_table_to_utf8mb4( $table );
@@ -731,7 +735,7 @@ function upgrade_network() {
 
 	// 4.2
 	if ( $wp_current_db_version < 31351 && $wpdb->charset === 'utf8mb4' ) {
-		if ( ! ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) && DO_NOT_UPGRADE_GLOBAL_TABLES ) ) {
+		if ( ! defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
 			$wpdb->query( "ALTER TABLE $wpdb->usermeta DROP INDEX meta_key, ADD INDEX meta_key(meta_key(191))" );
 			$wpdb->query( "ALTER TABLE $wpdb->site DROP INDEX domain_path, ADD INDEX domain_path(domain(140),path(51))" );
 			$wpdb->query( "ALTER TABLE $wpdb->sitemeta DROP INDEX meta_key, ADD INDEX meta_key(meta_key(191))" );
@@ -747,7 +751,7 @@ function upgrade_network() {
 
 	// 4.2.2
 	if ( $wp_current_db_version < 31535 && 'utf8mb4' === $wpdb->charset ) {
-		if ( ! ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) && DO_NOT_UPGRADE_GLOBAL_TABLES ) ) {
+		if ( ! defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
 			$upgrade = false;
 			$indexes = $wpdb->get_results( "SHOW INDEXES FROM $wpdb->signups" );
 			foreach( $indexes as $index ) {
@@ -765,7 +769,7 @@ function upgrade_network() {
 
     // 4.3
     if ( $wp_current_db_version < 32378 && 'utf8mb4' === $wpdb->charset ) {
-        if ( ! ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) && DO_NOT_UPGRADE_GLOBAL_TABLES ) ) {
+        if ( ! defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
             $upgrade = false;
             $indexes = $wpdb->get_results( "SHOW INDEXES FROM $wpdb->signups" );
             foreach( $indexes as $index ) {
@@ -1568,7 +1572,7 @@ function pre_schema_upgrade() {
 
 
 	// Upgrade versions prior to 4.2.
-	if ( $wp_current_db_version < 31351 ) {
+	if ( $wp_current_db_version < 31351 && ! defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
 
 		$wpdb->query( "ALTER TABLE $wpdb->usermeta DROP INDEX meta_key, ADD INDEX meta_key(meta_key(191))" );
 		$wpdb->query( "ALTER TABLE $wpdb->terms DROP INDEX slug, ADD INDEX slug(slug(191))" );
