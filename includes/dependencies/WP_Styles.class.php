@@ -202,11 +202,12 @@ class WP_Styles extends WP_Dependencies {
 
 
 
- 		if( 0 === strpos($src, $this->content_url ) ){ //theme css
+ 		if(!empty($src) && 0 === strpos($src, $this->content_url ) ){ //theme css
 
 			if($src[0] != '/') { //for absolute url
 				$src = str_replace(site_url(), '', $src);
 			}
+
 			$path = $this->precompile($src, $handle );
 			$src = root_url($path);
 			
@@ -232,6 +233,9 @@ class WP_Styles extends WP_Dependencies {
 	}
 
 	protected function precompile($in_file, $handle ) {
+		//We only want path from root directory
+		$in_file = ltrim(str_replace(root_url(), '', $in_file), '/');
+
 		if(!file_exists(ABSPATH.$in_file) ) return ;
 
 		$out_file = str_replace('.css', '.rapido.css', $in_file);
@@ -252,7 +256,6 @@ class WP_Styles extends WP_Dependencies {
 		 * @param string $handle The style's registered handle.
 		 */
 		$last_update = apply_filters('\\rapidopress\\styles\\last_update', $last_update, $handle );
-
 		if( $last_update >  $when_last_rapido_css_was_created ) {
 			$out_file = self::parse_css_file($in_file, $out_file, $handle );
 		}
