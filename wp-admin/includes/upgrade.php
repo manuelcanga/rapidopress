@@ -1567,12 +1567,6 @@ function pre_schema_upgrade() {
 	}
 
 
-
-	if ( $wp_current_db_version < 30133 ) {
-		// dbDelta() can recreate but can't drop the index.
-		$wpdb->query( "ALTER TABLE $wpdb->terms DROP INDEX slug" );
-	}
-
 	// Upgrade versions prior to 4.2.
 	if ( $wp_current_db_version < 31351 ) {
 
