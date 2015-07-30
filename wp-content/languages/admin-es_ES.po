@@ -1155,10 +1155,6 @@ msgstr "¿Qué debería hacerse con el contenido de este usuario?"
 msgid "Remove allows you to remove a user from your site. It does not delete their content. You can also remove multiple users at once by using Bulk Actions."
 msgstr "Borrar te permite borrar un usuario de tu sitio. No borra su contenido. También puedes borrar varios usuarios a la vez usando las acciones en lote."
 
-#: wp-admin/users.php:48
-msgid "Delete brings you to the Delete Users screen for confirmation, where you can permanently remove a user from your site and delete their content. You can also delete multiple users at once by using Bulk Actions."
-msgstr "Borrar te lleva a la pantalla de confirmación de borrado de usuarios, donde puedes borrar permanentemente a un usuario de tu sitio y borrar su contenido. También puedes borrar varios usuarios a la vez usando las acciones en lote."
-
 #: wp-admin/includes/ajax-actions.php:1668
 msgid "Type"
 msgstr "Tipo"
@@ -1361,10 +1357,6 @@ msgstr "Mostrar tema anterior"
 #: wp-admin/widgets.php:447
 msgid "Add Widget"
 msgstr "Añadir widget"
-
-#: wp-admin/post.php:119
-msgid "Oops, you don&#8217;t have access to add new drafts."
-msgstr "Vaya, no tienes permisos para crear nuevos borradores."
 
 #: wp-admin/themes.php:107
 msgid ""
@@ -3296,10 +3288,6 @@ msgstr "La actualización de este tema perderá cualquier cambio que hayas hecho
 msgid "You are using a development version of WordPress. You can update to the latest nightly build automatically or download the nightly build and install it manually:"
 msgstr "Estás usando una versión de desarrollo de WordPress. Puedes actualizar a la última versión de desarrollo automáticamente o descargarla e instalarla manualmente:"
 
-#: wp-admin/users.php:36
-msgid "You can filter the list of users by User Role using the text links in the upper left to show All, Administrator, Editor, Author, Contributor, or Subscriber. The default view is to show all users. Unused User Roles are not listed."
-msgstr "Puedes filtrar la lista de roles de usuario usando los enlaces de texto de arriba a la izquierda para mostrar Todos, Administrador, Editor, Autor, Colaborador o Subscriptor. La vista por defecto muestra todos los usuarios. Los roles de usuario no usados no se listan."
-
 #: wp-admin/includes/image-edit.php:199
 msgid "There are unsaved changes that will be lost. 'OK' to continue, 'Cancel' to return to the Image Editor."
 msgstr "Hay cambios sin guardar que se perderán. 'Aceptar' para continuar, 'Cancelar' para volver a editor de imágenes."
@@ -3372,10 +3360,6 @@ msgstr "Añadir plugins"
 msgid "Screen Content"
 msgstr "Pantalla de contenido"
 
-#: wp-admin/user-new.php:160
-msgid "Remember to click the Add New User button at the bottom of this screen when you are finished."
-msgstr "Recuerda hacer clic en el botón \"Añadir nuevo usuario\" de esta pantalla cuando hayas terminado."
-
 #: wp-admin/edit-comments.php:122
 msgid "Moderating Comments"
 msgstr "Moderar comentarios"
@@ -3396,22 +3380,6 @@ msgstr "Añadir temas"
 msgid "You can customize the display of this screen&#8217;s contents in a number of ways:"
 msgstr "Puedes personalizar el formato de los contenidos de esta pantalla&#8217;s de muchas formas:"
 
-#: wp-admin/user-new.php:171
-msgid "Here is a basic overview of the different user roles and the permissions associated with each one:"
-msgstr "Aquí tienes una visión general de los diferentes roles de usuarios y los permisos que cada uno tiene:"
-
-#: wp-admin/user-new.php:150
-msgid "To add a new user to your site, fill in the form on this screen and click the Add New User button at the bottom."
-msgstr "Para añadir un usuario nuevo a tu sitio, rellena el formulario de esta pantalla y haz clic en el botón \"Añadir nuevo usuario\" de abajo."
-
-#: wp-admin/user-new.php:173
-msgid "Subscribers can read comments/comment/receive newsletters, etc. but cannot create regular site content."
-msgstr "Los suscriptores pueden leer comentarios/comentar/recibir listas de distribución, etc, pero no pueden crear contenido normal en el sitio."
-
-#: wp-admin/user-new.php:156
-msgid "You must assign a password to the new user, which they can change after logging in. The username, however, cannot be changed."
-msgstr "Debes asignar una contraseña al nuevo usuario, la cual puedes cambiar después de que acceda. En todo caso, el nombre de usuario no pude cambiarse."
-
 #: wp-admin/plugin-install.php:73
 msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\" target=\"_blank\">WordPress.org Plugin Directory</a> are compatible with the license WordPress uses. You can find new plugins to install by searching or browsing the Directory right here in your own Plugins section."
 msgstr "Los plugins se conectan con WordPress para extender su funcionalidad con características personalizadas. Los plugins son desarrollados de forma independiente de la aplicación principal de WordPress por miles de desarrolladores en todo el mundo. Todos los plugins en el <a href=\"%s\" target=\"_blank\">repositorio oficial de Plugins de WordPress.org</a> son compatibles con la licencia de uso de WordPress. Puedes encontrar nuevos plugins para instalar haciendo una búsqueda o explorando el Directorio en tu sección de Plugins."
@@ -3427,10 +3395,6 @@ msgstr "Estruturas personalizadas"
 #: wp-admin/options-media.php:21
 msgid "Uploading Files allows you to choose the folder and path for storing your uploaded files."
 msgstr "La subida de archivo te permite elegir la carpeta y la ruta donde guardar tu archivos subidos."
-
-#: wp-admin/themes.php:63
-msgid "Installing themes on Multisite can only be done from the Network Admin section."
-msgstr "La instalación de temas en el multisitio sólo se puede hacer desde la sección de Administrador de red."
 
 #: wp-admin/options-general.php:429
 msgid "Date Format"
@@ -3487,26 +3451,6 @@ msgstr "<a href=\"%s\">Aprende más sobre WordPress, %s</a>."
 #: wp-admin/edit.php:224
 msgid "Managing Pages"
 msgstr "Gestionar páginas"
-
-#: wp-admin/users.php:37
-msgid "You can view all posts made by a user by clicking on the number under the Posts column."
-msgstr "Puedes ver todas las entradas escritas por un usuario haciendo clic en el número que hay bajo la columna Entradas."
-
-#: wp-admin/users.php:35
-msgid "You can hide/display columns based on your needs and decide how many users to list per screen using the Screen Options tab."
-msgstr "Puedes mostrar/ocultar columnas basándote en tus necesidades y decidir cuántos usuarios listar por pantalla utilizando la pestaña de Opciones de Pantalla."
-
-#: wp-admin/users.php:41
-msgid "Hovering over a row in the users list will display action links that allow you to manage users. You can perform the following actions:"
-msgstr "Pasando por encima de una línea en la lista de usuarios se mostrarán los enlaces de acción para gestionar usuarios. Puedes realizar las siguientes acciones:"
-
-#: wp-admin/users.php:43
-msgid "Edit takes you to the editable profile screen for that user. You can also reach that screen by clicking on the username."
-msgstr "Editar te lleva a la pantalla de edición de perfil para ese usuario. Puedes llegar también a esa pantalla cliqueando sobre su nombre de usuario."
-
-#: wp-admin/user-new.php:153
-msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
-msgstr "En una instalación multisitio puedes añadir cuentas que ya existen en la Red especificando el nombre de usuario o la contraseña con la que están registrados en la misma, y definiendo un rol. Para más opciones, como especificar una contraseña, debes ser Administrador de la Red y utilizar el enlace que aparece al pasar sobre los nombres de usuario. Puedes encontrar esta opción bajo Administración de Red > Todos los Usuarios."
 
 #: wp-admin/includes/template.php:2156
 msgid "Likely direct inclusion of wp-admin/includes/template.php in order to use add_meta_box(). This is very wrong. Hook the add_meta_box() call into the add_meta_boxes action instead."
@@ -4029,10 +3973,6 @@ msgctxt "user"
 msgid "Add Existing User"
 msgstr "Añadir usuario existente"
 
-#: wp-admin/users.php:26
-msgid "This screen lists all the existing users for your site. Each user has one of five defined roles as set by the site admin: Site Administrator, Editor, Author, Contributor, or Subscriber. Users with roles other than Administrator will see fewer options in the dashboard navigation when they are logged in, based on their role."
-msgstr "Esta pantalla muestra todos los usuarios existentes para tu sitio. Cada usuario dispone de uno de los cinco perfiles definidos según lo establecido por el administrador del sitio: Administrador del sitio, editor, autor, colaborador o suscriptor. Los usuarios con perfiles que no sean de administrador verán menos opciones en el panel de navegación cuando se hayan identificado, en base a su perfil."
-
 #: wp-admin/plugin-editor.php:134
 msgid "If you want to make changes but don&#8217;t want them to be overwritten when the plugin is updated, you may be ready to think about writing your own plugin. For information on how to edit plugins, write your own from scratch, or just better understand their anatomy, check out the links below."
 msgstr "Si quieres hacer cambios pero no quieres que se sobreescriban cuando se actualice el plugin, deberías pensar en escribir tu propio plugin. Para obtener información acerca de cómo editar plugins, escribir desde cero el tuyo, o simplemente entender mejor su anatomía, echa un vistazo a los enlaces de aquí abajo."
@@ -4342,10 +4282,6 @@ msgstr "http://wordpress.org/news/feed/"
 msgid "(Signup has been disabled. Only members of this site can comment.)"
 msgstr "(El registro ha sido deshabilitado. Sólo los miembros de este sitio pueden comentar.)"
 
-#: wp-admin/user-new.php:157
-msgid "New users will receive an email letting them know they&#8217;ve been added as a user for your site. By default, this email will also contain their password. Uncheck the box if you don&#8217;t want the password to be included in the welcome email."
-msgstr "Los usuarios nuevos recibirán un correo electrónico haciéndoles saber que han sido añadidos como usuarios de tu sitio. De forma predeterminada, este correo electrónico también contendrá su contraseña. Desmarca la casilla si no quieres que la contraseña se incluya en el correo electrónico de bienvenida."
-
 #: wp-admin/includes/theme.php:166 wp-admin/includes/update.php:285
 #: wp-admin/includes/update.php:374
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a>."
@@ -4415,10 +4351,6 @@ msgstr "Los siguientes temas están instalados pero incompletos. Los temas deben
 msgid "Many themes show some sidebar widgets by default until you edit your sidebars, but they are not automatically displayed in your sidebar management tool. After you make your first widget change, you can re-add the default widgets by adding them from the Available Widgets area."
 msgstr "Muchos temas muestran varios widgets de barra lateral por defecto hasta que editas tus barras laterales, pero no se muestran automáticamente en tu herramienta de gestión de barras laterales. Una vez hagas tu primer cambio en un widget puedes volver a añadirlo desde el área de widgets disponibles."
 
-#: wp-admin/users.php:27
-msgid "To add a new user for your site, click the Add New button at the top of the screen or Add New in the Users menu section."
-msgstr "Para añadir un usuario nuevo a tu sitio haz clic en el botón Añadir nuevo en la parte superior de la pantalla o en la sección Añadir nuevo del menú Usuarios."
-
 #: wp-admin/widgets.php:59
 msgid "If you want to remove the widget but save its setting for possible future use, just drag it into the Inactive Widgets area. You can add them back anytime from there. This is especially helpful when you switch to a theme with fewer or different widget areas."
 msgstr "Si quieres quitar el widget, pero también guardar los ajustes por si los necesitaras en el futuro, simplemente arrástralo al área de widgets inactivos. Puedes añadirlos de nuevo en cualquier otro momento desde ahí. Esto es especialmente útil cuando cambias a un tema con pocas o distintas áreas de widgets."
@@ -4443,14 +4375,6 @@ msgstr "Pudes subir manualmente un tema si ya has descargado su archivo ZIP en t
 msgid "Your profile contains information about you (your &#8220;account&#8221;) as well as some personal options related to using WordPress."
 msgstr "Tu perfil contiene infomación sobre ti (tu &#8220;cuenta&#8221;) así como algunas opciones personales relacionadas con el uso de WordPress."
 
-#: wp-admin/user-new.php:174
-msgid "Contributors can write and manage their posts but not publish posts or upload media files."
-msgstr "Los Colaboradores pueden escribir y gestionar sus entradas, pero no pueden publicar entradas o subir archivos multimedia."
-
-#: wp-admin/user-new.php:177
-msgid "Administrators have access to all the administration features."
-msgstr "Los Administradores tienen acceso a todas las funciones de administración."
-
 #: wp-admin/plugin-editor.php:130
 msgid "You can use the editor to make changes to any of your plugins&#8217; individual PHP files. Be aware that if you make changes, plugins updates will overwrite your customizations."
 msgstr "Puedes usar el editor para realizar cambios a cualquier archivo php de tus plugins. Cuidado si realizas cambios, la actualización de los plugins producirá que tus modificaciones sean sobrescritas y se pierdan."
@@ -4462,10 +4386,6 @@ msgstr "Tu nombre de usuario no puede cambiarse, pero puedes usar los otros camp
 #: wp-admin/user-edit.php:44
 msgid "Remember to click the Update Profile button when you are finished."
 msgstr "Recuerda hacer click en el botón actualizar Perfil cuando acabes."
-
-#: wp-admin/user-new.php:176
-msgid "Editors can publish posts, manage posts as well as manage other people&#8217;s posts, etc."
-msgstr "Los Editores pueden publicar entradas, gestionar sus entradas y entradas de otras personas, etc."
 
 #: wp-admin/user-edit.php:43
 msgid "Required fields are indicated; the rest are optional. Profile information will only be displayed if your theme is set up to do so."
@@ -4630,10 +4550,6 @@ msgstr "Permitir comentarios."
 #: wp-admin/includes/class-wp-upgrader-skins.php:684
 msgid "Return to WordPress Updates"
 msgstr "Volver a  las actualizaciones de WordPress"
-
-#: wp-admin/users.php:33
-msgid "You can customize the display of this screen in a number of ways:"
-msgstr "Puedes personalizar cómo se muestra esta pantalla de diferentes formas:"
 
 #: wp-admin/plugins.php:473
 msgid "Search Installed Plugins"
@@ -5242,10 +5158,6 @@ msgstr "El archivo está vacío. Por favor, sube algo con más sustancia."
 #: wp-admin/includes/class-wp-theme-install-list-table.php:249
 msgid "Install %s"
 msgstr "Instalar %s"
-
-#: wp-admin/includes/plugin.php:420
-msgid "Executed before Multisite is loaded."
-msgstr "Ejecutado antes de cargar el Multisitio."
 
 #: wp-admin/includes/plugin.php:415
 msgid "Custom maintenance message."
