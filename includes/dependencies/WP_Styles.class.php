@@ -205,10 +205,10 @@ class WP_Styles extends WP_Dependencies {
  		if( 0 === strpos($src, $this->content_url ) ){ //theme css
 
 			if($src[0] != '/') { //for absolute url
-				$path = str_replace(site_url(), '', $src);
-				$path = $this->precompile($path, $handle );
-				$src = root_url($path);
+				$src = str_replace(site_url(), '', $src);
 			}
+			$path = $this->precompile($src, $handle );
+			$src = root_url($path);
 			
 		}else if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src)  ) { //admin css
 		    $path = str_replace(site_url(), '', $src);
