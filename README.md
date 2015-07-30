@@ -41,7 +41,7 @@ RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the d
 
 ## Better performance...
 
-*  minimize html by default
+*  minify HTML and CSS  by default
 *  not more unuseful attributes in css or script tags. URLs without versions and relatives to domain.
 *  not more unuseful metatags: ‘wp_generator’, ‘wlwmanifest_link’, ...
 
@@ -50,6 +50,7 @@ RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the d
 
 * constant RAPIDO_PRESS always 'true'
 * RapidoPress loads functions.php but it also loads  theme-functions.php ( for theme area ) or  admin-functions.php ( for admin area ) 
+* lessCSS support from http://leafo.net/lessphp/
 * not more "$accepted_args" in add_action or add_filter.
 * add_action allow path. Examples: 
 
