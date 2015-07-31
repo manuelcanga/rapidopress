@@ -443,7 +443,7 @@ function populate_options() {
 	'default_post_format' => 0,
 
 	// RapidoPress 0.4
-	'limit_revisions' => 0,
+	'limit_revisions' => 2,
 	'tracking_code' => ''
 	);
 
