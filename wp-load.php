@@ -46,7 +46,7 @@ if ( file_exists( ABSPATH . 'wp-config.php') ) {
 	// A config file doesn't exist
 
 	define( 'WPINC', 'wp-includes' );
-	define( ' RAPIDO_INCLUDES', ABSPATH.'includes/' );
+	define( 'RAPIDO_INCLUDES', ABSPATH.'includes/' );
 	require_once( ABSPATH . WPINC . '/load.php' );
 
 	// Standardize $_SERVER variables across setups.
