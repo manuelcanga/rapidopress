@@ -633,6 +633,10 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			global $wp_version;
 			$output = $wp_version;
 			break;
+		case 'rapido':
+			global $rapido_version;
+			$output = $rapido_version;
+			break;
 		case 'language':
 			$output = get_locale();
 			$output = str_replace('_', '-', $output);

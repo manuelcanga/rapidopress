@@ -1225,8 +1225,8 @@ msgid "Recently Published"
 msgstr "Publicaciones recientes"
 
 #: wp-admin/includes/update.php:233
-msgid "WordPress %1$s running %2$s theme."
-msgstr "WordPress %1$s funciona con el tema %2$s."
+msgid "RapidoPress %1$s using %2$s theme."
+msgstr "RapidoPress %1$s usando el tema %2$s."
 
 #: wp-admin/includes/class-wp-upgrader.php:2984
 msgid "WordPress %s is also now available."
