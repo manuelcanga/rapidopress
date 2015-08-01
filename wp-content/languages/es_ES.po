@@ -1798,18 +1798,6 @@ msgctxt "post revision title extra"
 msgid "%1$s [Current Revision]"
 msgstr "%1$s [Revisión actual]"
 
-#: wp-signup.php:637
-msgid "Have you entered your email correctly? You have entered %s, if it&#8217;s incorrect, you will not receive your email."
-msgstr "¿Has puesto tu correo correctamente? Has escrito %s. Si es incorrecto, no recibirás el correo electrónico."
-
-#: wp-signup.php:716
-msgid "The site you were looking for, <strong>%s</strong>, does not exist."
-msgstr "El sitio que estabas buscando, <strong>%s</strong>, no existe."
-
-#: wp-signup.php:714
-msgid "The site you were looking for, <strong>%s</strong>, does not exist, but you can create it now!"
-msgstr "El sitio que estabas buscando, <strong>%s</strong>, no existe, ¡pero puedes crearlo ahora!"
-
 #. translators: 1: month, 2: day, 3: year, 4: hour, 5: minute
 #: wp-includes/script-loader.php:460
 msgid "%1$s %2$s, %3$s @ %4$s : %5$s"
@@ -2401,18 +2389,6 @@ msgstr "Parece que el archivo <code>wp-config.php</code> no existe. Lo necesito 
 msgid "You can create a <code>wp-config.php</code> file through a web interface, but this doesn't work for all server setups. The safest way is to manually create the file."
 msgstr "Puedes crear un archivo <code>wp-config.php</code> a través de la interfaz web pero esto no funciona para todas las configuraciones de servidores. La manera más segura es crear manualmente el archivo."
 
-#: wp-signup.php:376
-msgid "<a href=\"http://%1$s\">http://%2$s</a> is your new site. <a href=\"%3$s\">Log in</a> as &#8220;%4$s&#8221; using your existing password."
-msgstr "<a href=\"http://%1$s\">http://%2$s</a> es tu nuevo sitio. <a href=\"%3$s\">Accede</a> como &#8220;%4$s&#8221; usando tu contraseña."
-
-#: wp-activate.php:98
-msgid "Your site at <a href=\"%1$s\">%2$s</a> is active. You may now log in to your site using your chosen username of &#8220;%3$s&#8221;. Please check your email inbox at %4$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href=\"%5$s\">reset your password</a>."
-msgstr "Tu sitio en <a href=\"%1$s\">%2$s</a> está activo. Puedes entrar en tu sitio usando el usuario  &#8220;%3$s&#8221;. Por favor, comprueba en tu correo electrónico %4$s la contraseña y las instrucciones de acceso. Si no recibes el correo mira en la papelera o en la carpeta de spam. Si no recibes el correo en una hora puedes <a href=\"%5$s\">reiniciar tu contraseña</a>."
-
-#: wp-activate.php:96
-msgid "Your account has been activated. You may now <a href=\"%1$s\">log in</a> to the site using your chosen username of &#8220;%2$s&#8221;. Please check your email inbox at %3$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href=\"%4$s\">reset your password</a>."
-msgstr "Tu cuenta ha sido activada. Ahora puedes <a href=\"%1$s\">acceder</a> al sitio usando el usuario  &#8220;%2$s&#8221; que has elegido. Por favor, revisa tu correo electrónico %3$s para conocer la contraseña y las instrucciones de acceso. Si no recibes el correo, por favor revisa la carpeta de correo basura y en la de spam. Si en una hora no recibes el correo, puedes <a href=\"%4$s\">reiniciar tu contraseña</a>."
-
 #: wp-includes/functions.php:1318
 msgid "One or more database tables are unavailable. The database may need to be <a href=\"%s\">repaired</a>."
 msgstr "Una o más tablas de la base de datos no están disponibles. La base de datos podría necesitar ser <a href=\"%s\">reparada</a>."
@@ -2733,14 +2709,6 @@ msgctxt "Post format"
 msgid "Standard"
 msgstr "Estándar"
 
-#: wp-signup.php:112
-msgid "Your address will be %s."
-msgstr "Tu dirección será %s."
-
-#: wp-signup.php:111
-msgid "domain"
-msgstr "dominio"
-
 #: wp-includes/post-formats.php:99
 msgctxt "Post format"
 msgid "Audio"
@@ -2916,26 +2884,6 @@ msgstr "Administrador de la red"
 msgid "Your server is running PHP version %1$s but WordPress %2$s requires at least %3$s."
 msgstr "Tu servidor está ejecutando la versión %1$s de PHP, pero WordPess %2$s necesita, al menos, la versión %3$s."
 
-#: wp-signup.php:661
-msgctxt "Multisite active signup type"
-msgid "user"
-msgstr "usuario"
-
-#: wp-signup.php:660
-msgctxt "Multisite active signup type"
-msgid "blog"
-msgstr "blog"
-
-#: wp-signup.php:659
-msgctxt "Multisite active signup type"
-msgid "none"
-msgstr "ninguno"
-
-#: wp-signup.php:658
-msgctxt "Multisite active signup type"
-msgid "all"
-msgstr "todo"
-
 #: wp-includes/default-widgets.php:1345
 msgid "Custom Menu"
 msgstr "Menú personalizado"
@@ -2997,30 +2945,6 @@ msgstr "Categoría superior"
 #: wp-includes/taxonomy.php:490
 msgid "Update Tag"
 msgstr "Actualizar etiqueta"
-
-#: wp-signup.php:706
-msgid "Sorry, new registrations are not allowed at this time."
-msgstr "Disculpa, los nuevos registros están deshabilitados."
-
-#: wp-signup.php:500 wp-signup.php:629
-msgid "Check your inbox at <strong>%s</strong> and click the link given."
-msgstr "Comprueba la bandeja de entrada de <strong>%s</strong> y haz clic en el enlace que encontrarás."
-
-#: wp-signup.php:636
-msgid "Check the junk or spam folder of your email client. Sometime emails wind up there by mistake."
-msgstr "Comprueba la carpeta de correo basura, correo no deseado o spam de tu cliente de correo electrónico o correo web. A veces los correos electrónicos acaban ahí por equivocación."
-
-#: wp-signup.php:664
-msgid "Greetings Site Administrator! You are currently allowing &#8220;%s&#8221; registrations. To change or disable registration go to your <a href=\"%s\">Options page</a>."
-msgstr "¡Saludos, administrador del sitio! En este momento permites registros de &#8220;%s&#8221;. Para cambiar o desactivar los registros ve a tu <a href=\"%s\">página de opciones</a>."
-
-#: wp-signup.php:635
-msgid "Wait a little longer. Sometimes delivery of email can be delayed by processes outside of our control."
-msgstr "Espera un poco más. Hay veces que el correo electrónico puede tardar en llegar por procesos que escapan a nuestro control."
-
-#: wp-signup.php:189
-msgid "We send your registration email to this address. (Double-check your email address before continuing.)"
-msgstr "Enviaremos los datos de registro a esta dirección de correo electrónico. Comprueba bien esta dirección antes de continuar."
 
 #: wp-includes/post.php:1631
 msgctxt "post type general name"
@@ -3115,29 +3039,9 @@ msgstr "Conectado como <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Salir
 msgid "Could not calculate resized image dimensions"
 msgstr "No se han podido recalcular las dimensiones de la imagen redimensionada"
 
-#: wp-signup.php:673
-msgid "You must first <a href=\"%s\">log in</a>, and then you can create a new site."
-msgstr "Primero debes <a href=\"%s\">iniciar sesión</a>, después podrás crear un sitio nuevo."
-
-#: wp-signup.php:708
-msgid "You are logged in already. No need to register again!"
-msgstr "Ya te has identificado. ¡No necesitas registrarte de nuevo!"
-
-#: wp-signup.php:112
-msgid "Must be at least 4 characters, letters and numbers only. It cannot be changed, so choose carefully!"
-msgstr "Debe tener al menos 4 caracteres, letras y números solamente. ¡No se puede cambiar, así que elige con cuidado!"
-
-#: wp-signup.php:262
-msgid "Welcome back, %s. By filling out the form below, you can <strong>add another site to your account</strong>. There is no limit to the number of sites you can have, so create to your heart&#8217;s content, but write responsibly!"
-msgstr "Bienvenido de nuevo %s. Rellenando el siguiente formulario, puedes <strong>añadir otro sitio a tu cuenta</strong>. No hay límite en el número de sitios que puedas tener, por tanto, crea los que necesites, pero escribe con responsabilidad."
-
 #: wp-includes/author-template.php:62
 msgid "Use <code>get_the_author()</code> instead if you do not want the value echoed."
 msgstr "Utiliza <code>get_the_author()</code> en su lugar si no quieres un valor vacío."
-
-#: wp-signup.php:633
-msgid "If you haven&#8217;t received your email yet, there are a number of things you can do:"
-msgstr "Si todavía no has recibido el correo electrónico, hay una serie de acciones que puedes realizar:"
 
 #: wp-includes/script-loader.php:521
 msgid "Are you sure you want to install this plugin?"
@@ -3211,65 +3115,9 @@ msgid_plural "%d Plugin Updates"
 msgstr[0] "%d actualización de plugin"
 msgstr[1] "%d actualizaciones de plugins"
 
-#: wp-signup.php:374
-msgid "The site %s is yours."
-msgstr "El sitio %s es tuyo."
-
-#: wp-signup.php:277
-msgid "If you&#8217;re not going to use a great site domain, leave it for a new user. Now have at it!"
-msgstr "Si no vas a usar un dominio de un sitio, por favor, libéralo para que otro lo pueda usar. Ahora ¡consigue uno!"
-
-#: wp-signup.php:268
-msgid "Sites you are already a member of:"
-msgstr "Eres miembro de los siguientes sitios:"
-
 #: wp-includes/script-loader.php:263
 msgid "File canceled."
 msgstr "Archivo cancelado."
-
-#: wp-signup.php:109
-msgid "sitename"
-msgstr "nombresitio"
-
-#: wp-signup.php:256
-msgid "Get <em>another</em> %s site in seconds"
-msgstr "Consigue <em>otro</em> sitio en %s en segundos"
-
-#: wp-signup.php:626
-msgid "Congratulations! Your new site, %s, is almost ready."
-msgstr "¡Felicidades! Tu nuevo sitio , %s, ya está listo."
-
-#: wp-signup.php:687
-msgid "Site registration has been disabled."
-msgstr "No se permiten nuevos registros de sitios."
-
-#: wp-signup.php:446
-msgid "Gimme a site!"
-msgstr "¡Dame un sitio!"
-
-#: wp-signup.php:628
-msgid "But, before you can start using your site, <strong>you must activate it</strong>."
-msgstr "Pero, antes de que puedas comenzar a usar tu sitio, <strong>debes activarlo</strong>."
-
-#: wp-signup.php:630
-msgid "If you do not activate your site within two days, you will have to sign up again."
-msgstr "Si no activas tu sitio en dos días, deberás registrarte de nuevo."
-
-#: wp-signup.php:292
-msgid "Create Site"
-msgstr "Crear sitio"
-
-#: wp-signup.php:117
-msgid "Site Title:"
-msgstr "Título del sitio:"
-
-#: wp-signup.php:96
-msgid "Site Domain:"
-msgstr "Dominio del sitio:"
-
-#: wp-signup.php:94
-msgid "Site Name:"
-msgstr "Nombre del sitio:"
 
 #: wp-includes/pluggable.php:1577
 msgid "A new comment on the post \"%s\" is waiting for your approval"
@@ -4410,38 +4258,6 @@ msgstr "¿Has perdido tu contraseña?"
 msgid "You are now logged out."
 msgstr "Ahora estás desconectado."
 
-#: wp-signup.php:126
-msgid "Privacy:"
-msgstr "Privacidad:"
-
-#: wp-signup.php:259
-msgid "There was a problem, please correct the form below and try again."
-msgstr "Hubo un problema, revisa el formulario y prueba de nuevo."
-
-#: wp-signup.php:498
-msgid "%s is your new username"
-msgstr "%s es tu nuevo nombre de usuario"
-
-#: wp-signup.php:499
-msgid "But, before you can start using your new username, <strong>you must activate it</strong>."
-msgstr "Pero, antes de poder comenzar a usar tu nuevo nombre de usuario, <strong>debes activarlo</strong>."
-
-#: wp-signup.php:501
-msgid "If you do not activate your username within two days, you will have to sign up again."
-msgstr "Si no activas tu nombre de usuario en dos días, deberás registrarte de nuevo."
-
-#: wp-signup.php:565
-msgid "Signup"
-msgstr "Registrarse"
-
-#: wp-signup.php:670
-msgid "Registration has been disabled."
-msgstr "Los registros están deshabilitados."
-
-#: wp-signup.php:681
-msgid "User registration has been disabled."
-msgstr "No se permite el registro de nuevos usuarios."
-
 #: wp-includes/taxonomy.php:3464
 msgid "The slug &#8220;%s&#8221; is already in use by another term"
 msgstr "El slug &#8220;%s&#8221; lo está utilizando ya otro término."
@@ -4531,26 +4347,6 @@ msgstr "Funciona gracias a WordPress"
 #: wp-login.php:567
 msgid "Get New Password"
 msgstr "Obtener una contraseña nueva"
-
-#: wp-signup.php:182
-msgid "(Must be at least 4 characters, letters and numbers only.)"
-msgstr "(Deben tener como mínimo 4 caracteres, solo letras y números.)"
-
-#: wp-signup.php:449
-msgid "Just a username, please."
-msgstr "Solo el nombre de usuario, gracias."
-
-#: wp-includes/user.php:1906
-msgid "Sorry, that email address is already used!"
-msgstr "Disculpa, este correo electrónico ya está en uso."
-
-#: wp-signup.php:631
-msgid "Still waiting for your email?"
-msgstr "¿Continúas esperando el correo electrónico?"
-
-#: wp-signup.php:185
-msgid "Email&nbsp;Address:"
-msgstr "Dirección de correo electrónico:"
 
 #: wp-login.php:282
 msgid "<strong>ERROR</strong>: There is no user registered with that email address."
@@ -4789,10 +4585,6 @@ msgstr "Insertar columna antes"
 #: wp-includes/class-wp-editor.php:930
 msgid "Insert column after"
 msgstr "Insertar columna después"
-
-#: wp-signup.php:430
-msgid "Get your own %s account in seconds"
-msgstr "Consigue tu propia cuenta en %s en segundos."
 
 #: wp-includes/functions.php:3393 wp-includes/functions.php:3450
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
@@ -5033,10 +4825,6 @@ msgstr "<strong>ERROR</strong>: Esa dirección de correo electrónico ya está r
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: wp-signup.php:131
-msgid "Yes"
-msgstr "Sí"
-
 #: wp-includes/comment-template.php:1307
 msgid "Enter your password to view comments."
 msgstr "Escribe tu contraseña para ver los comentarios."
@@ -5077,10 +4865,6 @@ msgstr "Aplicar"
 #: wp-includes/media-template.php:585
 msgid "Description"
 msgstr "Descripción"
-
-#: wp-signup.php:135
-msgid "No"
-msgstr "No"
 
 #: wp-includes/class-wp-editor.php:846
 msgid "Author"
@@ -5477,10 +5261,6 @@ msgstr "Contraseña:"
 #: wp-activate.php:80
 msgid "Activate"
 msgstr "Activar"
-
-#: wp-activate.php:114 wp-signup.php:177
-msgid "Username:"
-msgstr "Nombre de usuario:"
 
 #: wp-includes/script-loader.php:399
 msgid "Cheatin&#8217; uh?"
