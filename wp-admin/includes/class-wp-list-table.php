@@ -850,7 +850,7 @@ class WP_List_Table {
 	 * @return array
 	 */
 	protected function get_column_info() {
-		if ( isset( $this->_column_headers ) )
+        if ( isset( $this->_column_headers ) && is_array( $this->_column_headers ) && count( $this->_column_headers ) >= 4 ) { 
 			return $this->_column_headers;
 
 		$columns = get_column_headers( $this->screen );
