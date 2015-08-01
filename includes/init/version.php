@@ -11,7 +11,7 @@ $wp_version = '4.2.3';
  *
  * @global string $wp_version
  */
-$rapido_version = '0.4-beta1';
+$rapido_version = '0.4';
 
 
 /**
