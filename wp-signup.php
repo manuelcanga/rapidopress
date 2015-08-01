@@ -7,8 +7,8 @@ add_action( 'wp_head', 'wp_no_robots' );
 
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );
 
-if ( is_array( get_site_option( 'illegal_names' )) && isset( $_GET[ 'new' ] ) && in_array( $_GET[ 'new' ], get_site_option( 'illegal_names' ) ) == true ) {
-	wp_redirect( network_site_url() );
+if ( is_array( get_site_option( 'illegal_names' )) && isset( $_GET[ 'new' ] ) && in_array( $_GET[ 'new' ], get_site_option( 'illegal_names' ) ) ) { 
+	wp_redirect( network_siteis_array( get_site_option( 'illegal_names' )) && isset( $_GET[ 'new' ] ) && in_array( $_GET[ 'new' ], get_site_option( 'illegal_names' ) ) == true _url() );
 	die();
 }
 
