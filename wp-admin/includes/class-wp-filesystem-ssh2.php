@@ -183,7 +183,7 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 	}
 
 	public function cwd() {
-		$cwd = $this->run_command('pwd');
+        $cwd = ssh2_sftp_realpath( $this->sftp_link, '.' ); 
 		if ( $cwd ) {
 			$cwd = trailingslashit( trim( $cwd ) );
 		}
