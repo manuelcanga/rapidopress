@@ -1451,6 +1451,7 @@ function kses_init() {
 
     if ( ! current_user_can( 'unfiltered_html' ) ) { 
 		kses_init_filters();
+	}
 }
 
 /**
