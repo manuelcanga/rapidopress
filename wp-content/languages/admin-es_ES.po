@@ -4907,14 +4907,6 @@ msgstr "Guardar los archivos subidos en esta carpeta"
 msgid "Full URL path to files"
 msgstr "Ruta URL completa a los archivos"
 
-#: wp-admin/options-permalink.php:207
-msgid "Day and name"
-msgstr "Día y nombre"
-
-#: wp-admin/options-permalink.php:211
-msgid "Month and name"
-msgstr "Mes y nombre"
-
 #: wp-admin/options-permalink.php:215
 msgid "Numeric"
 msgstr "Numérico"
