@@ -87,29 +87,6 @@ $show_avatars = get_option( 'show_avatars' );
 </fieldset></td>
 </tr>
 <tr class="avatar-settings<?php if ( ! $show_avatars ) echo ' hide-if-js'; ?>">
-<th scope="row"><?php _e('Maximum Rating'); ?></th>
-<td><fieldset><legend class="screen-reader-text"><span><?php _e('Maximum Rating'); ?></span></legend>
-
-<?php
-$ratings = array(
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
-	'G' => __('G &#8212; Suitable for all audiences'),
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
-	'PG' => __('PG &#8212; Possibly offensive, usually for audiences 13 and above'),
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
-	'R' => __('R &#8212; Intended for adult audiences above 17'),
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
-	'X' => __('X &#8212; Even more mature than above')
-);
-foreach ($ratings as $key => $rating) :
-	$selected = (get_option('avatar_rating') == $key) ? 'checked="checked"' : '';
-	echo "\n\t<label><input type='radio' name='avatar_rating' value='" . esc_attr($key) . "' $selected/> $rating</label><br />";
-endforeach;
-?>
-
-</fieldset></td>
-</tr>
-<tr class="avatar-settings<?php if ( ! $show_avatars ) echo ' hide-if-js'; ?>">
 <th scope="row"><?php _e('Default Avatar'); ?></th>
 <td class="defaultavatarpicker"><fieldset><legend class="screen-reader-text"><span><?php _e('Default Avatar'); ?></span></legend>
 

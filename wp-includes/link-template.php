@@ -2793,8 +2793,6 @@ function the_shortlink( $text = '', $title = '', $before = '', $after = '' ) {
  *                                  'gravatar_default' (the Gravatar logo). Default is the value of the
  *                                  'avatar_default' option, with a fallback of 'mystery'.
  *     @type bool   $force_default  Whether to always show the default image, never the Gravatar. Default false.
- *     @type string $rating         What rating to display avatars up to. Accepts 'G', 'PG', 'R', 'X', and are
- *                                  judged in that order. Default is the value of the 'avatar_rating' option.
  *     @type string $scheme         URL scheme to use. See set_url_scheme() for accepted values.
  *                                  Default null.
  *     @type array  $processed_args When the function returns, the value will be the processed/sanitized $args
@@ -2827,8 +2825,6 @@ function get_avatar_url( $id_or_email, $args = null ) {
  *                                  'gravatar_default' (the Gravatar logo). Default is the value of the
  *                                  'avatar_default' option, with a fallback of 'mystery'.
  *     @type bool   $force_default  Whether to always show the default image, never the Gravatar. Default false.
- *     @type string $rating         What rating to display avatars up to. Accepts 'G', 'PG', 'R', 'X', and are
- *                                  judged in that order. Default is the value of the 'avatar_rating' option.
  *     @type string $scheme         URL scheme to use. See set_url_scheme() for accepted values.
  *                                  Default null.
  *     @type array  $processed_args When the function returns, the value will be the processed/sanitized $args
@@ -2850,7 +2846,6 @@ function get_avatar_data( $id_or_email, $args = null ) {
 		'width'          => null,
 		'default'        => get_option( 'avatar_default', 'mystery' ),
 		'force_default'  => false,
-		'rating'         => get_option( 'avatar_rating' ),
 		'scheme'         => null,
 		'processed_args' => null, // if used, should be a reference
 		'extra_attr'     => '',
@@ -2899,8 +2894,6 @@ function get_avatar_data( $id_or_email, $args = null ) {
 	}
 
 	$args['force_default'] = (bool) $args['force_default'];
-
-	$args['rating'] = strtolower( $args['rating'] );
 
 	$args['found_avatar'] = false;
 
@@ -2989,7 +2982,6 @@ function get_avatar_data( $id_or_email, $args = null ) {
 		's' => $args['size'],
 		'd' => $args['default'],
 		'f' => $args['force_default'] ? 'y' : false,
-		'r' => $args['rating'],
 	);
 
 	$url = sprintf( 'http://%d.gravatar.com/avatar/%s', $gravatar_server, $email_hash );

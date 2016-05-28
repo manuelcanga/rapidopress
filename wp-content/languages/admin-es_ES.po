@@ -5677,21 +5677,6 @@ msgstr "Error al guardar los cambios."
 msgid "Error in displaying the widget settings form."
 msgstr "Error al mostrar el formulario con las opciones del widget."
 
-#. translators: Content suitability rating: http:bit.ly/89QxZA
-#: wp-admin/options-discussion.php:218
-msgid "G &#8212; Suitable for all audiences"
-msgstr "G &#8212; Para todos los públicos"
-
-#. translators: Content suitability rating: http:bit.ly/89QxZA
-#: wp-admin/options-discussion.php:222
-msgid "R &#8212; Intended for adult audiences above 17"
-msgstr "R &#8212; Destinado a un público adulto mayor de 17"
-
-#. translators: Content suitability rating: http:bit.ly/89QxZA
-#: wp-admin/options-discussion.php:224
-msgid "X &#8212; Even more mature than above"
-msgstr "X &#8212; Contenido más adulto que los anteriores."
-
 #: wp-admin/options-general.php:214
 msgid "This timezone is currently in standard time."
 msgstr "Esta zona horaria se encuentra actualmente en horario de invierno."
@@ -5780,10 +5765,6 @@ msgstr "Moderación de comentarios"
 #: wp-admin/options-discussion.php:207
 msgid "Show Avatars"
 msgstr "Mostrar avatares"
-
-#: wp-admin/options-discussion.php:212 wp-admin/options-discussion.php:213
-msgid "Maximum Rating"
-msgstr "Calificación máxima"
 
 #: wp-admin/options-discussion.php:243
 msgid "Blank"
@@ -6039,11 +6020,6 @@ msgstr "Enviarme un correo electrónico cuando"
 #: wp-admin/options-discussion.php:173
 msgid "When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Mantener en la <a href=\"edit-comments.php?comment_status=moderated\">cola de moderación</a> todo comentario que incluya cualquiera de las siguientes palabras en su contenido, nombre, URL, e-mail o IP. Una palabra o IP por línea. Atención a las coincidencias en el interior de palabras: &#8220;press&#8221; coincidirá con &#8220;WordPress&#8221;."
-
-#. translators: Content suitability rating: http:bit.ly/89QxZA
-#: wp-admin/options-discussion.php:220
-msgid "PG &#8212; Possibly offensive, usually for audiences 13 and above"
-msgstr "PG &#8212; Posiblemente ofensivo, normalmente para mayores de 13 años"
 
 #: wp-admin/options-media.php:48
 msgid "Image sizes"

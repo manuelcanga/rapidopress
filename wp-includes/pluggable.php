@@ -1776,8 +1776,7 @@ if ( !function_exists( 'get_avatar' ) ) :
  *     @type int          $height        Display height of the avatar in pixels. Defaults to $size.
  *     @type int          $width         Display width of the avatar in pixels. Defaults to $size.
  *     @type bool         $force_default Whether to always show the default image, never the Gravatar. Default false.
- *     @type string       $rating        What rating to display avatars up to. Accepts 'G', 'PG', 'R', 'X', and are
- *                                       judged in that order. Default is the value of the 'avatar_rating' option.
+
  *     @type string       $scheme        URL scheme to use. See set_url_scheme() for accepted values.
  *                                       Default null.
  *     @type array|string $class         Array or string of additional classes to add to the &lt;img&gt; element.
@@ -1796,7 +1795,6 @@ function get_avatar( $id_or_email, $size = 96, $default = '', $alt = '', $args =
 		'width'         => null,
 		'default'       => get_option( 'avatar_default', 'mystery' ),
 		'force_default' => false,
-		'rating'        => get_option( 'avatar_rating' ),
 		'scheme'        => null,
 		'alt'           => '',
 		'class'         => null,
