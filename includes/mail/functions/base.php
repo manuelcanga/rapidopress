@@ -224,7 +224,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 				}
 			}
 			$phpmailer->AddAddress( $recipient, $recipient_name);
-		} catch ( phpmailerException $e ) {
+		} catch ( \rapidopress\mail\phpmailerException $e ) {
 			continue;
 		}
 	}
@@ -246,7 +246,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 					}
 				}
 				$phpmailer->AddCc( $recipient, $recipient_name );
-			} catch ( phpmailerException $e ) {
+			} catch ( \rapidopress\mail\phpmailerException $e ) {
 				continue;
 			}
 		}
@@ -264,7 +264,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 					}
 				}
 				$phpmailer->AddBcc( $recipient, $recipient_name );
-			} catch ( phpmailerException $e ) {
+			} catch ( \rapidopress\mail\phpmailerException $e ) {
 				continue;
 			}
 		}
@@ -322,7 +322,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 		foreach ( $attachments as $attachment ) {
 			try {
 				$phpmailer->AddAttachment($attachment);
-			} catch ( phpmailerException $e ) {
+			} catch ( \rapidopress\mail\phpmailerException $e ) {
 				continue;
 			}
 		}
@@ -340,7 +340,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 	// Send!
 	try {
 		return $phpmailer->Send();
-	} catch ( phpmailerException $e ) {
+	} catch ( \rapidopress\mail\phpmailerException $e ) {
 		return false;
 	}
 }
