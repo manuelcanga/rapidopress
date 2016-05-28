@@ -86,69 +86,6 @@ $show_avatars = get_option( 'show_avatars' );
 	</label>
 </fieldset></td>
 </tr>
-<tr class="avatar-settings<?php if ( ! $show_avatars ) echo ' hide-if-js'; ?>">
-<th scope="row"><?php _e('Default Avatar'); ?></th>
-<td class="defaultavatarpicker"><fieldset><legend class="screen-reader-text"><span><?php _e('Default Avatar'); ?></span></legend>
-
-<?php _e('For users without a custom avatar of their own, you can either display a generic logo or a generated one based on their e-mail address.'); ?><br />
-
-<?php
-$avatar_defaults = array(
-	'mystery' => __('Mystery Person'),
-	'blank' => __('Blank'),
-	'gravatar_default' => __('Gravatar Logo'),
-	'identicon' => __('Identicon (Generated)'),
-	'wavatar' => __('Wavatar (Generated)'),
-	'monsterid' => __('MonsterID (Generated)'),
-	'retro' => __('Retro (Generated)')
-);
-/**
- * Filter the default avatars.
- *
- * Avatars are stored in key/value pairs, where the key is option value,
- * and the name is the displayed avatar name.
- *
- * @since 2.6.0
- *
- * @param array $avatar_defaults Array of default avatars.
- */
-$avatar_defaults = apply_filters( 'avatar_defaults', $avatar_defaults );
-$default = get_option('avatar_default');
-if ( empty($default) )
-	$default = 'mystery';
-$size = 32;
-$avatar_list = '';
-
-// Force avatars on to display these choices
-add_filter( 'pre_option_show_avatars', '__return_true', 100 );
-
-foreach ( $avatar_defaults as $default_key => $default_name ) {
-	$selected = ($default == $default_key) ? 'checked="checked" ' : '';
-	$avatar_list .= "\n\t<label><input type='radio' name='avatar_default' id='avatar_{$default_key}' value='" . esc_attr($default_key) . "' {$selected}/> ";
-
-	$avatar = get_avatar( $user_email, $size, $default_key );
-	$avatar = preg_replace( "/src='(.+?)'/", "src='\$1&amp;forcedefault=1'", $avatar );
-	$avatar = preg_replace( "/srcset='(.+?) 2x'/", "srcset='\$1&amp;forcedefault=1 2x'", $avatar );
-	$avatar_list .= $avatar;
-
-	$avatar_list .= ' ' . $default_name . '</label>';
-	$avatar_list .= '<br />';
-}
-
-remove_filter( 'pre_option_show_avatars', '__return_true', 100 );
-
-/**
- * Filter the HTML output of the default avatar list.
- *
- * @since 2.6.0
- *
- * @param string $avatar_list HTML markup of the avatar list.
- */
-echo apply_filters( 'default_avatar_select', $avatar_list );
-?>
-
-</fieldset></td>
-</tr>
 <?php do_settings_fields('users', 'avatars'); ?>
 </table>
 

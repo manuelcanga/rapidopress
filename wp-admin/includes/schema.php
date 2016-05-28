@@ -409,9 +409,6 @@ function populate_options() {
 	'medium_size_w' => 300,
 	'medium_size_h' => 300,
 
-	// 2.6
-	'avatar_default' => 'mystery',
-
 	// 2.7
 	'large_size_w' => 1024,
 	'large_size_h' => 1024,
@@ -479,7 +476,7 @@ function populate_options() {
 
 	// Delete unused options.
 	$unusedoptions = array(
-		'avatar_rating', 'blodotgsping_url', 'bodyterminator', 'emailtestonly', 'phoneemail_separator', 
+		'avatar_rating', 'avatar_default', 'blodotgsping_url', 'bodyterminator', 'emailtestonly', 'phoneemail_separator', 
 		'subjectprefix', 'use_bbcode', 'use_blodotgsping', 'use_phoneemail', 'use_quicktags', 'use_weblogsping',
 		'weblogs_cache_file', 'use_preview', 'use_htmltrans',  'fileupload_allowedusers',
 		'use_phoneemail', 'default_post_status', 'default_post_category', 'archive_mode', 'time_difference',

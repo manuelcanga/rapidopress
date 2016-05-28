@@ -2790,8 +2790,7 @@ function the_shortlink( $text = '', $title = '', $before = '', $after = '' ) {
  *                                  a 404 instead of a default image), 'retro' (8bit), 'monsterid' (monster),
  *                                  'wavatar' (cartoon face), 'indenticon' (the "quilt"), 'mystery', 'mm',
  *                                  or 'mysterman' (The Oyster Man), 'blank' (transparent GIF), or
- *                                  'gravatar_default' (the Gravatar logo). Default is the value of the
- *                                  'avatar_default' option, with a fallback of 'mystery'.
+ *                                  'gravatar_default' (the Gravatar logo). Default is  'mystery'.
  *     @type bool   $force_default  Whether to always show the default image, never the Gravatar. Default false.
  *     @type string $scheme         URL scheme to use. See set_url_scheme() for accepted values.
  *                                  Default null.
@@ -2822,8 +2821,7 @@ function get_avatar_url( $id_or_email, $args = null ) {
  *                                  a 404 instead of a default image), 'retro' (8bit), 'monsterid' (monster),
  *                                  'wavatar' (cartoon face), 'indenticon' (the "quilt"), 'mystery', 'mm',
  *                                  or 'mysterman' (The Oyster Man), 'blank' (transparent GIF), or
- *                                  'gravatar_default' (the Gravatar logo). Default is the value of the
- *                                  'avatar_default' option, with a fallback of 'mystery'.
+ *                                  'gravatar_default' (the Gravatar logo). Default is  'mystery'.
  *     @type bool   $force_default  Whether to always show the default image, never the Gravatar. Default false.
  *     @type string $scheme         URL scheme to use. See set_url_scheme() for accepted values.
  *                                  Default null.
@@ -2844,7 +2842,7 @@ function get_avatar_data( $id_or_email, $args = null ) {
 		'size'           => 96,
 		'height'         => null,
 		'width'          => null,
-		'default'        => get_option( 'avatar_default', 'mystery' ),
+		'default'        => 'mystery',
 		'force_default'  => false,
 		'scheme'         => null,
 		'processed_args' => null, // if used, should be a reference
@@ -2879,7 +2877,7 @@ function get_avatar_data( $id_or_email, $args = null ) {
 	}
 
 	if ( empty( $args['default'] ) ) {
-		$args['default'] = get_option( 'avatar_default', 'mystery' );
+		$args['default'] = 'mystery';
 	}
 
 	switch ( $args['default'] ) {

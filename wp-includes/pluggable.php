@@ -1767,8 +1767,7 @@ if ( !function_exists( 'get_avatar' ) ) :
  *                           (return a 404 instead of a default image), 'retro' (8bit), 'monsterid'
  *                           (monster), 'wavatar' (cartoon face), 'indenticon' (the "quilt"),
  *                           'mystery', 'mm', or 'mysterman' (The Oyster Man), 'blank' (transparent GIF),
- *                           or 'gravatar_default' (the Gravatar logo). Default is the value of the
- *                           'avatar_default' option, with a fallback of 'mystery'.
+ *                           or 'gravatar_default' (the Gravatar logo). Default is  'mystery'.
  * @param string $alt        Optional. Alternative text to use in &lt;img&gt; tag. Default empty.
  * @param array  $args       {
  *     Optional. Extra arguments to retrieve the avatar.
@@ -1793,7 +1792,7 @@ function get_avatar( $id_or_email, $size = 96, $default = '', $alt = '', $args =
 		'size'          => 96,
 		'height'        => null,
 		'width'         => null,
-		'default'       => get_option( 'avatar_default', 'mystery' ),
+		'default'       => 'mystery',
 		'force_default' => false,
 		'scheme'        => null,
 		'alt'           => '',

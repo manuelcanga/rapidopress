@@ -508,10 +508,6 @@ msgstr "Desconectar a %s de todas sus sesiones"
 msgid "Left your account logged in at a public computer? Lost your phone? This will log you out everywhere except your current browser."
 msgstr "¿Has dejado tu cuenta conectada en un ordenador público? ¿Has perdido tu teléfono? Esto cerrará tu sesión de todos los sitios excepto este navegador."
 
-#: wp-admin/options-discussion.php:242
-msgid "Mystery Person"
-msgstr "Persona misteriosa"
-
 #: wp-admin/install.php:121
 msgid "Usernames can have only alphanumeric characters, spaces, underscores, hyphens, periods, and the @ symbol."
 msgstr "Los nombres de usuario pueden tener únicamente caracteres alfanuméricos, espacios, guiones bajos, guiones medios, puntos y el símbolo @."
@@ -3566,10 +3562,6 @@ msgstr "pagina-ejemplo"
 msgid "Sample Page"
 msgstr "Página de ejemplo"
 
-#: wp-admin/options-discussion.php:248
-msgid "Retro (Generated)"
-msgstr "Retro (generado)"
-
 #: wp-admin/includes/class-wp-themes-list-table.php:82
 msgid "You only have one theme enabled for this site right now. Visit the Network Admin to <a href=\"%1$s\">enable</a> more themes."
 msgstr "Sólo tienes un tema activado para este sitio. Ve a la administración de la red para <a href=\"%1$s\">activar</a> más temas."
@@ -5332,14 +5324,6 @@ msgstr "Los comentarios se ordenarán con los %s al principio"
 msgid "Avatar Display"
 msgstr "Visibilidad"
 
-#: wp-admin/options-discussion.php:235 wp-admin/options-discussion.php:236
-msgid "Default Avatar"
-msgstr "Avatar por defecto"
-
-#: wp-admin/options-discussion.php:244
-msgid "Gravatar Logo"
-msgstr "Logo de Gravatar"
-
 #: wp-admin/options-general.php:140
 msgid "This address is used for admin purposes, like new user notification."
 msgstr "Esta dirección se usa sólo con fines administrativos, como para la notificación de nuevos usuarios."
@@ -5758,22 +5742,6 @@ msgstr "Moderación de comentarios"
 msgid "Show Avatars"
 msgstr "Mostrar avatares"
 
-#: wp-admin/options-discussion.php:243
-msgid "Blank"
-msgstr "Sin avatar"
-
-#: wp-admin/options-discussion.php:245
-msgid "Identicon (Generated)"
-msgstr "Identicon (autogenerado)"
-
-#: wp-admin/options-discussion.php:246
-msgid "Wavatar (Generated)"
-msgstr "Wavatar (autogenerado)"
-
-#: wp-admin/options-discussion.php:247
-msgid "MonsterID (Generated)"
-msgstr "MonsterID (autogenerado)"
-
 #: wp-admin/options-general.php:18
 msgid "General Settings"
 msgstr "Ajustes generales"
@@ -5959,10 +5927,6 @@ msgstr "Enviar esta contraseña al nuevo usuario por correo electrónico."
 #: wp-admin/user-new.php:308 wp-admin/user-new.php:423
 msgid "Skip Confirmation Email"
 msgstr "No enviar el correo electrónico de confirmación"
-
-#: wp-admin/options-discussion.php:238
-msgid "For users without a custom avatar of their own, you can either display a generic logo or a generated one based on their e-mail address."
-msgstr "Para usuarios que no tengan un avatar personalizado podemos mostrar uno genérico o uno basado en su dirección de correo electrónico."
 
 #: wp-admin/includes/theme.php:539 wp-admin/theme-install.php:253
 #: wp-admin/themes.php:381
