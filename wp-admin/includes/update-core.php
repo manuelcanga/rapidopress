@@ -489,7 +489,6 @@ $_old_files = array(
 'wp-admin/js/image-edit.dev.js',
 'wp-admin/js/media.dev.js',
 'wp-admin/js/customize-controls.dev.js',
-'wp-admin/js/inline-edit-post.dev.js',
 'wp-admin/js/categories.dev.js',
 'wp-admin/js/editor.dev.js',
 'wp-includes/js/tinymce/plugins/wpeditimage/js/editimage.dev.js',

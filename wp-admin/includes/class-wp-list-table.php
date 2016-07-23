@@ -440,7 +440,10 @@ class WP_List_Table {
 		echo "<option value='-1' selected='selected'>" . __( 'Bulk Actions' ) . "</option>\n";
 
 		foreach ( $this->_actions as $name => $title ) {
-			$class = 'edit' == $name ? ' class="hide-if-no-js"' : '';
+			if('edit' == $name )
+				continue;
+
+			$class = '';
 
 			echo "\t<option value='$name'$class>$title</option>\n";
 		}
