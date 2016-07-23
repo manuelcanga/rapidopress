@@ -1458,7 +1458,7 @@ function check_theme_switched() {
 	}
 }
 
-
+ 
 
 
 /**
@@ -1473,4 +1473,8 @@ function check_theme_switched() {
  */
 function is_customize_preview() {
 	return false;
+}
+
+function wp_customize_url( $stylesheet = null ) {
+	return null;
 }
