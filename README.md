@@ -1,7 +1,9 @@
 # RapidoPress
 RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the development of web portals and web applications.
 
-**IMPORTANT** Spanish language by default. You can change it if you remove  "$wp_local_package" line in includes/init/version.php file before installation
+**IMPORTANTS** 
+- Spanish language by default. You can change it if you remove  "$wp_local_package" line in includes/init/version.php file before installation
+- Assign perms to your wp-content if you can't install plugins
 
 
 ## RapidoPress doesn't have...
