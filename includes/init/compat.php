@@ -70,37 +70,4 @@ function _hash_hmac($algo, $data, $key, $raw_output = false) {
 }
 
 
-if ( ! function_exists( 'hash_equals' ) ) :
-/**
- * Compare two strings in constant time.
- *
- * This function was added in PHP 5.6.
- * It can leak the length of a string.
- *
- * @since 3.9.2
- *
- * @param string $a Expected string.
- * @param string $b Actual string.
- * @return bool Whether strings are equal.
- */
-function hash_equals( $a, $b ) {
-	$a_length = strlen( $a );
-	if ( $a_length !== strlen( $b ) ) {
-		return false;
-	}
-	$result = 0;
 
-	// Do not attempt to "optimize" this.
-	for ( $i = 0; $i < $a_length; $i++ ) {
-		$result |= ord( $a[ $i ] ) ^ ord( $b[ $i ] );
-	}
-
-	return $result === 0;
-}
-endif;
-
-// JSON_PRETTY_PRINT was introduced in PHP 5.4
-// Defined here to prevent a notice when using it with wp_json_encode()
-if ( ! defined( 'JSON_PRETTY_PRINT' ) ) {
-	define( 'JSON_PRETTY_PRINT', 128 );
-}
