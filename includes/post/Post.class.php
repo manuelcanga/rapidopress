@@ -96,13 +96,6 @@ final class Post {
 	public $post_name = '';
 
 	/**
-	 * URLs queued to be pinged.
-	 *
-	 * @var string
-	 */
-	public $to_ping = '';
-
-	/**
 	 * URLs that have been pinged.
 	 *
 	 * @var string

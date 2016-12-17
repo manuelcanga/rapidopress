@@ -160,7 +160,6 @@ function wp_install_defaults( $user_id ) {
 								'post_modified_gmt' => $now_gmt,
 								'guid' => $first_post_guid,
 								'comment_count' => 1,
-								'to_ping' => '',
 								'pinged' => '',
 								'post_content_filtered' => ''
 								));
@@ -207,7 +206,6 @@ As a new RapidoPress user, you should go to <a href=\"%s\">your dashboard</a> to
 								'post_modified_gmt' => $now_gmt,
 								'guid' => $first_post_guid,
 								'post_type' => 'page',
-								'to_ping' => '',
 								'pinged' => '',
 								'post_content_filtered' => ''
 								));

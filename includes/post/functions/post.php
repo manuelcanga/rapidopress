@@ -2596,8 +2596,7 @@ function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
  *     @type string $ping_status           Whether the post can accept pings. Accepts 'open' or 'closed'.
  *                                         Default is the value of 'default_ping_status' option.
  *     @type string $post_name             The post name. Default is the sanitized post title.
- *     @type string $to_ping               Space or carriage return-separated list of URLs to ping.
- *                                         Default empty.
+
  *     @type string $pinged                Space or carriage return-separated list of URLs that have
  *                                         been pinged. Default empty.
  *     @type string $post_modified         The date when the post was last modified. Default is
@@ -2619,7 +2618,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 
 	$defaults = array('post_status' => 'draft', 'post_type' => 'post', 'post_author' => $user_id,
 		'ping_status' =>0 ,'post_parent' => 0,
-		'menu_order' => 0, 'to_ping' =>  '', 'pinged' => '', 
+		'menu_order' => 0,  'pinged' => '', 
 		'guid' => '', 'post_content_filtered' => '', 'post_excerpt' => '', 'import_id' => 0,
 		'post_content' => '', 'post_title' => '', 'context' => '');
 
@@ -2806,7 +2805,6 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	$post_content_filtered = $postarr['post_content_filtered'];
 	$post_author = empty( $postarr['post_author'] ) ? $user_id : $postarr['post_author'];
 	$ping_status = 0;
-	$to_ping =  '';
 	$pinged =   '';
 	$import_id = isset( $postarr['import_id'] ) ? $postarr['import_id'] : 0;
 
@@ -2845,7 +2843,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	$post_mime_type = isset( $postarr['post_mime_type'] ) ? $postarr['post_mime_type'] : '';
 
 	// Expected_slashed (everything!).
-	$data = compact( 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_content_filtered', 'post_title', 'post_excerpt', 'post_status', 'post_type', 'comment_status', 'ping_status', 'post_name', 'to_ping', 'pinged', 'post_modified', 'post_modified_gmt', 'post_parent', 'menu_order', 'post_mime_type', 'guid' );
+	$data = compact( 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_content_filtered', 'post_title', 'post_excerpt', 'post_status', 'post_type', 'comment_status', 'ping_status', 'post_name', 'pinged', 'post_modified', 'post_modified_gmt', 'post_parent', 'menu_order', 'post_mime_type', 'guid' );
 
 
 
