@@ -11,6 +11,6 @@ if(!defined('ABSPATH') ) die();
 
 add_shortcode( 'rapidopress_home', function() { return home_url(); });
 add_shortcode( 'rapidopress_theme', function() { return get_template_directory_uri(); });
-add_shortcode( 'rapidopress_child', function() { return get_stylesheet_directory_uri(); });
+
 
 

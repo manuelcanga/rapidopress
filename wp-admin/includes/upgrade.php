@@ -1486,7 +1486,6 @@ function make_site_theme() {
 	$current_template = __get_option('template');
 	if ($current_template == WP_DEFAULT_THEME) {
 		update_option('template', $template);
-		update_option('stylesheet', $template);
 	}
 	return $template;
 }

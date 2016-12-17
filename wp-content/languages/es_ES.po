@@ -2282,10 +2282,6 @@ msgstr "ERROR: El directorio de temas está vacio o no existe. Por favor revisa 
 msgid "Stylesheet is not readable."
 msgstr "La hoja de estilo no es legible."
 
-#: wp-includes/class-wp-theme.php:279 wp-includes/class-wp-theme.php:283
-msgid "The \"%s\" theme is not a valid parent theme."
-msgstr "El tema \"%s\" no es un tema padre válido."
-
 #: wp-includes/media-template.php:526
 msgid "Refresh"
 msgstr "Actualizar"
@@ -4509,10 +4505,6 @@ msgstr "Este archivo está vacio. Por favor, prueba con otro."
 #: wp-includes/script-loader.php:261
 msgid "IO error."
 msgstr "Error de entrada/salida."
-
-#: wp-includes/class-wp-theme.php:267
-msgid "The parent theme is missing. Please install the \"%s\" parent theme."
-msgstr "No encontramos el tema principal. Por favor, instala el tema principal \"%s\"."
 
 #: wp-login.php:556
 msgid "Username or E-mail:"

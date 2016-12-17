@@ -308,7 +308,7 @@ function wp_templating_constants() {
 	 * Filesystem path to the current active template stylesheet directory
 	 * @since 2.1.0
 	 */
-	define('STYLESHEETPATH', get_stylesheet_directory());
+	define('STYLESHEETPATH', TEMPLATEPATH);
 
 	/**
 	 * Slug of the default theme for this install.

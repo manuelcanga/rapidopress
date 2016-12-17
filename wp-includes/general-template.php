@@ -613,8 +613,6 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			$output = get_stylesheet_uri();
 			break;
 		case 'stylesheet_directory':
-			$output = get_stylesheet_directory_uri();
-			break;
 		case 'template_directory':
 		case 'template_url':
 			$output = get_template_directory_uri();

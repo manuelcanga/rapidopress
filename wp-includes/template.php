@@ -445,8 +445,6 @@ function get_comments_popup_template() {
 /**
  * Retrieve the name of the highest priority template file that exists.
  *
- * Searches in the STYLESHEETPATH before TEMPLATEPATH so that themes which
- * inherit from a parent theme can just overload one file.
  *
  * @since 2.7.0
  *
@@ -460,10 +458,8 @@ function locate_template($template_names, $load = false, $require_once = true ) 
 	foreach ( (array) $template_names as $template_name ) {
 		if ( !$template_name )
 			continue;
-		if ( file_exists(STYLESHEETPATH . '/' . $template_name)) {
-			$located = STYLESHEETPATH . '/' . $template_name;
-			break;
-		} elseif ( file_exists(TEMPLATEPATH . '/' . $template_name) ) {
+		
+		if ( file_exists(TEMPLATEPATH . '/' . $template_name) ) {
 			$located = TEMPLATEPATH . '/' . $template_name;
 			break;
 		}

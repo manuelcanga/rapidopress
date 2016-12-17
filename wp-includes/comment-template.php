@@ -1161,18 +1161,7 @@ function comments_template( $file = '/comments.php', $separate_comments = false 
 	if ( !defined('COMMENTS_TEMPLATE') )
 		define('COMMENTS_TEMPLATE', true);
 
-	$theme_template = STYLESHEETPATH . $file;
-	/**
-	 * Filter the path to the theme template file used for the comments template.
-	 *
-	 * @since 1.5.1
-	 *
-	 * @param string $theme_template The path to the theme template file.
-	 */
-	$include = apply_filters( 'comments_template', $theme_template );
-	if ( file_exists( $include ) )
-		require( $include );
-	elseif ( file_exists( TEMPLATEPATH . $file ) )
+	if ( file_exists( TEMPLATEPATH . $file ) )
 		require( TEMPLATEPATH . $file );
 }
 

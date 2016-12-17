@@ -664,6 +664,7 @@ function load_theme_textdomain( $domain, $path = false ) {
  * The .mo files must be named based on the locale exactly.
  *
  * @since 2.9.0
+ * @rapidopress deprecated
  *
  * @param string $domain Text domain. Unique identifier for retrieving translated strings.
  * @param string $path   Optional. Path to the directory containing the .mo file.
@@ -671,9 +672,7 @@ function load_theme_textdomain( $domain, $path = false ) {
  * @return bool True when the theme textdomain is successfully loaded, false otherwise.
  */
 function load_child_theme_textdomain( $domain, $path = false ) {
-	if ( ! $path )
-		$path = get_stylesheet_directory();
-	return load_theme_textdomain( $domain, $path );
+	return '';
 }
 
 /**

@@ -491,9 +491,6 @@ msgstr ""
 msgid "Log Out of All Sessions"
 msgstr "Cerrar todas las sesiones"
 
-#: wp-admin/themes.php:145
-msgid "You cannot delete a theme while it has an active child theme."
-msgstr "No puedes eliminar un tema mientras este tenga un tema hijo activo."
 
 #: wp-admin/user-edit.php:481 wp-admin/user-edit.php:491
 msgid "Log Out of All Other Sessions"
@@ -1040,10 +1037,6 @@ msgstr "De un vistazo"
 #: wp-admin/includes/theme.php:223
 msgid "Accessibility Ready"
 msgstr "Listo para accesibilidad"
-
-#: wp-admin/themes.php:393
-msgid "This is a child theme of %s."
-msgstr "Este es un tema hijo de %s."
 
 #: wp-admin/widgets.php:356
 msgid "To activate a widget drag it to a sidebar or click on it. To deactivate a widget and delete its settings, drag it back."
@@ -2280,10 +2273,6 @@ msgstr "Si por cualquier motivo la creación automática del archivo no funciona
 msgid "This screen allows you to edit four fields for metadata in a file within the media library."
 msgstr "Esta pantalla te permite editar los cambios de los metadatos en un archivo dentro de la biblioteca multimedia."
 
-#: wp-admin/includes/class-wp-themes-list-table.php:215
-msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
-msgstr "Este <a href=\"%1$s\">tema hijo</a> requiere su tema padre, %2$s."
-
 #: wp-admin/includes/theme.php:233
 msgid "Flexible Header"
 msgstr "Cabecera flexible"
@@ -2620,24 +2609,6 @@ msgstr "Palabra clave"
 #: wp-admin/includes/class-wp-upgrader.php:1142
 msgid "Preparing to install <strong>%1$s %2$s</strong>&#8230;"
 msgstr "Preparando para instalar <strong>%1$s %2$s</strong>&#8230;"
-
-#: wp-admin/includes/class-wp-upgrader.php:1140
-msgid "This theme requires a parent theme. Checking if it is installed&#8230;"
-msgstr "Este tema requiere un tema padre. Comprueba si está instalado&#8230;"
-
-#. translators: 1: theme name, 2: version
-#: wp-admin/includes/class-wp-upgrader.php:1144
-msgid "The parent theme, <strong>%1$s %2$s</strong>, is currently installed."
-msgstr "El tema padre, <strong>%1$s %2$s</strong>, ya está instalado."
-
-#. translators: 1: theme name, 2: version
-#: wp-admin/includes/class-wp-upgrader.php:1146
-msgid "Successfully installed the parent theme, <strong>%1$s %2$s</strong>."
-msgstr "Instalado con éxito el tema padre, <strong>%1$s %2$s</strong>."
-
-#: wp-admin/includes/class-wp-upgrader.php:1147
-msgid "<strong>The parent theme could not be found.</strong> You will need to install the parent theme, <strong>%s</strong>, before you can use this child theme."
-msgstr "<strong>No se encuentra el tema padre.</strong> Tienes que instalar el tema padre, <strong>%s</strong>, antes de utilizar este tema hijo."
 
 #: wp-admin/includes/theme.php:172 wp-admin/includes/update.php:378
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update now</a>."
@@ -3710,10 +3681,6 @@ msgstr "Buscar temas instalados"
 #: wp-admin/includes/class-wp-upgrader-skins.php:539
 msgid "Enable this theme for all sites in this network"
 msgstr "Activar este tema para todos los sitios en esta red"
-
-#: wp-admin/update-core.php:305
-msgid "<strong>Please Note:</strong> Any customizations you have made to theme files will be lost. Please consider using <a href=\"%s\">child themes</a> for modifications."
-msgstr "<strong>Atención:</strong> Se perderá cualquier personalización que hayas hecho a los archivos del tema. Por favor, considere el uso de <a href=\"%s\">temas hijos</a> para mantener cambios."
 
 #: wp-admin/includes/class-wp-posts-list-table.php:231
 msgctxt "posts"

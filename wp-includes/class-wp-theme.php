@@ -22,7 +22,6 @@ final class WP_Theme implements ArrayAccess {
 		'Author'      => 'Author',
 		'AuthorURI'   => 'Author URI',
 		'Version'     => 'Version',
-		'Template'    => 'Template',
 		'Status'      => 'Status',
 		'Tags'        => 'Tags',
 		'TextDomain'  => 'Text Domain',
@@ -273,32 +272,10 @@ final class WP_Theme implements ArrayAccess {
 				// Look for the template in the search_theme_directories() results, in case it is in another theme root.
 				// We don't look into directories of themes, just the theme root.
 				$theme_root_template = $directories[ $this->template ]['theme_root'];
-			} else {
-				// Parent theme is missing.
-				$this->errors = new WP_Error( 'theme_no_parent', sprintf( __( 'The parent theme is missing. Please install the "%s" parent theme.' ), $this->template ) );
-				$this->cache_add( 'theme', array( 'headers' => $this->headers, 'errors' => $this->errors, 'stylesheet' => $this->stylesheet, 'template' => $this->template ) );
-				$this->parent = new WP_Theme( $this->template, $this->theme_root, $this );
-				return;
-			}
+			} 
 		}
 
-		// Set the parent, if we're a child theme.
-		if ( $this->template != $this->stylesheet ) {
-			// If we are a parent, then there is a problem. Only two generations allowed! Cancel things out.
-			if ( $_child instanceof WP_Theme && $_child->template == $this->stylesheet ) {
-				$_child->parent = null;
-				$_child->errors = new WP_Error( 'theme_parent_invalid', sprintf( __( 'The "%s" theme is not a valid parent theme.' ), $_child->template ) );
-				$_child->cache_add( 'theme', array( 'headers' => $_child->headers, 'errors' => $_child->errors, 'stylesheet' => $_child->stylesheet, 'template' => $_child->template ) );
-				// The two themes actually reference each other with the Template header.
-				if ( $_child->stylesheet == $this->template ) {
-					$this->errors = new WP_Error( 'theme_parent_invalid', sprintf( __( 'The "%s" theme is not a valid parent theme.' ), $this->template ) );
-					$this->cache_add( 'theme', array( 'headers' => $this->headers, 'errors' => $this->errors, 'stylesheet' => $this->stylesheet, 'template' => $this->template ) );
-				}
-				return;
-			}
-			// Set the parent. Pass the current instance so we can do the crazy checks above and assess errors.
-			$this->parent = new WP_Theme( $this->template, isset( $theme_root_template ) ? $theme_root_template : $this->theme_root, $this );
-		}
+
 
 		// We're good. If we didn't retrieve from cache, set it.
 		if ( ! is_array( $cache ) ) {
@@ -350,13 +327,12 @@ final class WP_Theme implements ArrayAccess {
 			case 'parent_theme' :
 				return $this->parent() ? $this->parent()->get('Name') : '';
 			case 'template_dir' :
-				return $this->get_template_directory();
 			case 'stylesheet_dir' :
-				return $this->get_stylesheet_directory();
+				return $this->get_template_directory();
+
 			case 'template' :
-				return $this->get_template();
 			case 'stylesheet' :
-				return $this->get_stylesheet();
+				return $this->get_template();
 			case 'screenshot' :
 				return $this->get_screenshot( 'relative' );
 			// 'author' and 'description' did not previously return translated data.
@@ -402,7 +378,7 @@ final class WP_Theme implements ArrayAccess {
 	public function offsetExists( $offset ) {
 		static $keys = array(
 			'Name', 'Version', 'Status', 'Title', 'Author', 'Author Name', 'Author URI', 'Description',
-			'Template', 'Stylesheet', 'Template Files', 'Stylesheet Files', 'Template Dir', 'Stylesheet Dir',
+			'Stylesheet', 'Template Files', 'Stylesheet Files', 'Template Dir', 'Stylesheet Dir',
 			 'Screenshot', 'Tags', 'Theme Root', 'Theme Root URI', 'Parent Theme',
 		);
 
@@ -449,9 +425,8 @@ final class WP_Theme implements ArrayAccess {
 			case 'Stylesheet Files' :
 				return $this->get_files( 'css', 0, false );
 			case 'Template Dir' :
-				return $this->get_template_directory();
 			case 'Stylesheet Dir' :
-				return $this->get_stylesheet_directory();
+				return $this->get_template_directory();
 			case 'Screenshot' :
 				return $this->get_screenshot( 'relative' );
 			case 'Tags' :
@@ -813,14 +788,12 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * @since 3.4.0
 	 * @access public
+	 * @rapidopress deprecated
 	 *
 	 * @return string Absolute path of the stylesheet directory.
 	 */
 	public function get_stylesheet_directory() {
-		if ( $this->errors() && in_array( 'theme_root_missing', $this->errors()->get_error_codes() ) )
-			return '';
-
-		return $this->theme_root . '/' . $this->stylesheet;
+		return get_template_directory();
 	}
 
 	/**
@@ -851,11 +824,12 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * @since 3.4.0
 	 * @access public
+	 * @rapidopress deprecated
 	 *
 	 * @return string URL to the stylesheet directory.
 	 */
 	public function get_stylesheet_directory_uri() {
-		return $this->get_theme_root_uri() . '/' . str_replace( '%2F', '/', rawurlencode( $this->stylesheet ) );
+		return get_template_directory_uri();
 	}
 
 	/**
@@ -929,17 +903,17 @@ final class WP_Theme implements ArrayAccess {
 		if ( $screenshot ) {
 			if ( 'relative' == $uri )
 				return $screenshot;
-			return $this->get_stylesheet_directory_uri() . '/' . $screenshot;
+			return $this->get_template_directory_uri() . '/' . $screenshot;
 		} elseif ( 0 === $screenshot ) {
 			return false;
 		}
 
 		foreach ( array( 'png', 'gif', 'jpg', 'jpeg' ) as $ext ) {
-			if ( file_exists( $this->get_stylesheet_directory() . "/screenshot.$ext" ) ) {
+			if ( file_exists( $this->get_template_directory() . "/screenshot.$ext" ) ) {
 				$this->cache_add( 'screenshot', 'screenshot.' . $ext );
 				if ( 'relative' == $uri )
 					return 'screenshot.' . $ext;
-				return $this->get_stylesheet_directory_uri() . '/' . 'screenshot.' . $ext;
+				return $this->get_template_directory_uri() . '/' . 'screenshot.' . $ext;
 			}
 		}
 
@@ -960,10 +934,8 @@ final class WP_Theme implements ArrayAccess {
      *               being absolute paths. 
 	 */
 	public function get_files( $type = null, $depth = 0, $search_parent = false ) {
-		$files = (array) self::scandir( $this->get_stylesheet_directory(), $type, $depth );
 
-		if ( $search_parent && $this->parent() )
-			$files += (array) self::scandir( $this->get_template_directory(), $type, $depth );
+		$files = (array) self::scandir( $this->get_template_directory(), $type, $depth );
 
 		return $files;
 	}
@@ -1102,7 +1074,7 @@ final class WP_Theme implements ArrayAccess {
 			return true;
 		}
 
-		$path = $this->get_stylesheet_directory();
+		$path = $this->get_template_directory();
 		if ( $domainpath = $this->get('DomainPath') )
 			$path .= $domainpath;
 		else

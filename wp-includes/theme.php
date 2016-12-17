@@ -113,11 +113,12 @@ function wp_clean_themes_cache( $clear_update_cache = true ) {
  * Whether a child theme is in use.
  *
  * @since 3.0.0
+ * @rapidopress deprecated
  *
  * @return bool true if a child theme is in use, false otherwise.
  **/
 function is_child_theme() {
-	return ( TEMPLATEPATH !== STYLESHEETPATH );
+	return false;
 }
 
 /**
@@ -148,48 +149,25 @@ function get_stylesheet() {
  * Retrieve stylesheet directory path for current theme.
  *
  * @since 1.5.0
+ * @rapidopress deprecated
  *
  * @return string Path to current theme directory.
  */
 function get_stylesheet_directory() {
-	$stylesheet = get_stylesheet();
-	$theme_root = get_theme_root( $stylesheet );
-	$stylesheet_dir = "$theme_root/$stylesheet";
-
-	/**
-	 * Filter the stylesheet directory path for current theme.
-	 *
-	 * @since 1.5.0
-	 *
-	 * @param string $stylesheet_dir Absolute path to the current them.
-	 * @param string $stylesheet     Directory name of the current theme.
-	 * @param string $theme_root     Absolute path to themes directory.
-	 */
-	return apply_filters( 'stylesheet_directory', $stylesheet_dir, $stylesheet, $theme_root );
+	return get_template_directory();
 }
 
 /**
  * Retrieve stylesheet directory URI.
  *
  * @since 1.5.0
+ * @rapidopress deprecated
  *
  * @return string
  */
 function get_stylesheet_directory_uri() {
-	$stylesheet = str_replace( '%2F', '/', rawurlencode( get_stylesheet() ) );
-	$theme_root_uri = get_theme_root_uri( $stylesheet );
-	$stylesheet_dir_uri = "$theme_root_uri/$stylesheet";
 
-	/**
-	 * Filter the stylesheet directory URI.
-	 *
-	 * @since 1.5.0
-	 *
-	 * @param string $stylesheet_dir_uri Stylesheet directory URI.
-	 * @param string $stylesheet         Name of the activated theme's directory.
-	 * @param string $theme_root_uri     Themes root URI.
-	 */
-	return apply_filters( 'stylesheet_directory_uri', $stylesheet_dir_uri, $stylesheet, $theme_root_uri );
+	return get_template_directory_uri();
 }
 
 /**
@@ -841,10 +819,6 @@ function validate_current_theme() {
 		return false;
 	}
 
-	if ( is_child_theme() && ! file_exists( get_stylesheet_directory() . '/style.css' ) ) {
-		switch_theme( WP_DEFAULT_THEME );
-		return false;
-	}
 
 	return true;
 }
@@ -1173,8 +1147,6 @@ function get_editor_stylesheets() {
 		$editor_styles = $GLOBALS['editor_styles'];
 
 		$editor_styles = array_unique( array_filter( $editor_styles ) );
-		$style_uri = get_stylesheet_directory_uri();
-		$style_dir = get_stylesheet_directory();
 
 		// Support externally referenced styles (like, say, fonts).
 		foreach ( $editor_styles as $key => $file ) {
@@ -1196,11 +1168,6 @@ function get_editor_stylesheets() {
 			}
 		}
 
-		foreach ( $editor_styles as $file ) {
-			if ( $file && file_exists( "$style_dir/$file" ) ) {
-				$stylesheets[] = "$style_uri/$file";
-			}
-		}
 	}
 	return $stylesheets;
 }

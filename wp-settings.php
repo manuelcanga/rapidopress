@@ -308,16 +308,6 @@ $GLOBALS['wp_locale'] = new WP_Locale();
 if ( ! defined( 'WP_INSTALLING' ) || 'wp-activate.php' === $pagenow ) {
 	$functions = [];
 
-	if ( TEMPLATEPATH !== STYLESHEETPATH  ) {
-			$functions[] = STYLESHEETPATH . '/functions.php';
-
-			if(is_admin() ) {
-				$functions[] = STYLESHEETPATH . '/admin-functions.php';
-			}else {
-				$functions[] = STYLESHEETPATH . '/theme-functions.php';
-			}
-	}
-
 	$functions[] = TEMPLATEPATH . '/functions.php';
 	if(is_admin() ) {
 		$functions[] = TEMPLATEPATH . '/admin-functions.php';

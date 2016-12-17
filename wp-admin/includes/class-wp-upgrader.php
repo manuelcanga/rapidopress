@@ -1137,14 +1137,10 @@ class Theme_Upgrader extends WP_Upgrader {
 		$this->strings['process_success'] = __('Theme installed successfully.');
 		/* translators: 1: theme name, 2: version */
 		$this->strings['process_success_specific'] = __('Successfully installed the theme <strong>%1$s %2$s</strong>.');
-		$this->strings['parent_theme_search'] = __('This theme requires a parent theme. Checking if it is installed&#8230;');
 		/* translators: 1: theme name, 2: version */
 		$this->strings['parent_theme_prepare_install'] = __('Preparing to install <strong>%1$s %2$s</strong>&#8230;');
-		/* translators: 1: theme name, 2: version */
-		$this->strings['parent_theme_currently_installed'] = __('The parent theme, <strong>%1$s %2$s</strong>, is currently installed.');
-		/* translators: 1: theme name, 2: version */
-		$this->strings['parent_theme_install_success'] = __('Successfully installed the parent theme, <strong>%1$s %2$s</strong>.');
-		$this->strings['parent_theme_not_found'] = __('<strong>The parent theme could not be found.</strong> You will need to install the parent theme, <strong>%s</strong>, before you can use this child theme.');
+
+
 	}
 
 	/**

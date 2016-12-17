@@ -27,12 +27,10 @@ if ( current_user_can( 'switch_themes' ) && isset($_GET['action'] ) ) {
 		if ( !current_user_can('delete_themes') || ! $theme->exists() )
 			wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 		$active = wp_get_theme();
-		if ( $active->get( 'Template' ) == $_GET['stylesheet'] ) {
-			wp_redirect( admin_url( 'themes.php?delete-active-child=true' ) );
-		} else {
-			delete_theme( $_GET['stylesheet'] );
-			wp_redirect( admin_url( 'themes.php?deleted=true' ) );
-		}
+
+		delete_theme( $_GET['stylesheet'] );
+		wp_redirect( admin_url( 'themes.php?deleted=true' ) );
+
 		exit;
 	}
 }
@@ -90,8 +88,6 @@ if ( ! validate_current_theme() || isset( $_GET['broken'] ) ) : ?>
 		}
 	elseif ( isset($_GET['deleted']) ) : ?>
 <div id="message3" class="updated notice is-dismissible"><p><?php _e('Theme deleted.') ?></p></div>
-<?php elseif ( isset( $_GET['delete-active-child'] ) ) : ?>
-	<div id="message4" class="error"><p><?php _e( 'You cannot delete a theme while it has an active child theme.' ); ?></p></div>
 <?php
 endif;
 
@@ -316,9 +312,6 @@ $can_delete = current_user_can( 'delete_themes' );
 				<# } #>
 				<p class="theme-description">{{{ data.description }}}</p>
 
-				<# if ( data.parent ) { #>
-					<p class="parent-theme"><?php printf( __( 'This is a child theme of %s.' ), '<strong>{{{ data.parent }}}</strong>' ); ?></p>
-				<# } #>
 
 				<# if ( data.tags ) { #>
 					<p class="theme-tags"><span><?php _e( 'Tags:' ); ?></span> {{{ data.tags }}}</p>
