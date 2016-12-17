@@ -25,7 +25,7 @@ RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the d
 *   Widget Meta
 *   Widget Links
 *   Widget Archives
-*	Widget Tag Cloud
+*   Widget Tag Cloud
 *   Widget last comments
 *   Widget Pages
 *   theme editor and plugin editor
@@ -33,6 +33,8 @@ RapidoPress is a fork of WordPress. Rapido is minimalist and is focused on the d
 *   Customizer
 *   jquery-migrate and others deprecated scripts
 *   Post using email
+*   Password neither pages nor posts
+*   Child themes support
   
 ## Rapido has...
 

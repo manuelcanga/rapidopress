@@ -321,8 +321,8 @@ class Banner_Widget extends Widget {
 	}
 
 	/**
-	 * Loads theme files in appropriate hierarchy: 1) child theme,
-	 * 2) parent template, 3) plugin resources. will look in the image-widget/
+	 * Loads theme files in appropriate hierarchy:
+	 * 1) parent template, 2) plugin resources. will look in the image-widget/
 	 * directory in a theme and the views/ directory in the plugin
 	 *
 	 * @param string $template template file to search for

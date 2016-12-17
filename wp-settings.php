@@ -304,7 +304,7 @@ require_once( ABSPATH . WPINC . '/locale.php' );
  */
 $GLOBALS['wp_locale'] = new WP_Locale();
 
-// Load the functions for the active theme, for both parent and child theme if applicable.
+// Load the functions for the active theme
 if ( ! defined( 'WP_INSTALLING' ) || 'wp-activate.php' === $pagenow ) {
 	$functions = [];
 
