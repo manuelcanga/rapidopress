@@ -1654,10 +1654,6 @@ msgstr "En <code>%1$s</code>, usa el método <code>%2$s</code>, no la función <
 msgid "ERROR: This is not a valid feed template."
 msgstr "ERROR: Esta no es una plantilla de agregador válida."
 
-#: wp-includes/post-template.php:1632
-msgid "This content is password protected. To view it please enter your password below:"
-msgstr "Este contenido está protegido por contraseña. Para verlo introduce tu contraseña a continuación:"
-
 #. translators: This is a comma-separated list of very common words that should
 #. be excluded from a search, like a, an, and the. These are usually called
 #. "stopwords". You should not simply translate these individual words into
@@ -4060,10 +4056,6 @@ msgstr "[%s] Contraseña Perdida/Cambiada"
 msgid "[%s] New User Registration"
 msgstr "[%s] Registro de nuevo usuario"
 
-#: wp-includes/post-template.php:357
-msgid "There is no excerpt because this is a protected post."
-msgstr "No hay extracto porque es una entrada protegida."
-
 #: wp-includes/post-template.php:792
 msgid "Next page"
 msgstr "Página siguiente"
@@ -4825,10 +4817,6 @@ msgstr "<strong>ERROR</strong>: Esa dirección de correo electrónico ya está r
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: wp-includes/comment-template.php:1307
-msgid "Enter your password to view comments."
-msgstr "Escribe tu contraseña para ver los comentarios."
-
 #: wp-includes/author-template.php:168
 msgid "Visit %s&#8217;s website"
 msgstr "Visitar el sitio de %s"
@@ -5254,7 +5242,7 @@ msgstr "Cerrar sesión"
 msgid "Draft"
 msgstr "Borrador"
 
-#: wp-activate.php:115 wp-includes/post-template.php:1633
+#: wp-activate.php:115 
 msgid "Password:"
 msgstr "Contraseña:"
 

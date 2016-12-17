@@ -403,7 +403,7 @@ if ( isset($_GET['key']) )
 	$action = 'resetpass';
 
 // validate action so as to default to the login screen
-if ( !in_array( $action, array( 'postpass', 'logout', 'lostpassword', 'retrievepassword', 'resetpass', 'rp', 'register', 'login' ), true ) && false === has_filter( 'login_form_' . $action ) )
+if ( !in_array( $action, array( 'logout', 'lostpassword', 'retrievepassword', 'resetpass', 'rp', 'register', 'login' ), true ) && false === has_filter( 'login_form_' . $action ) )
 	$action = 'login';
 
 nocache_headers();
@@ -435,7 +435,7 @@ do_action( 'login_init' );
  * Fires before a specified login form action.
  *
  * The dynamic portion of the hook name, `$action`, refers to the action
- * that brought the visitor to the login form. Actions include 'postpass',
+ * that brought the visitor to the login form. Actions 
  * 'logout', 'lostpassword', etc.
  *
  * @since 2.8.0
@@ -446,26 +446,6 @@ $http_post = ('POST' == $_SERVER['REQUEST_METHOD']);
 $interim_login = isset($_REQUEST['interim-login']);
 
 switch ($action) {
-
-case 'postpass' :
-	$hasher = new \rapidopress\user\PasswordHash( 8, true );
-
-	/**
-	 * Filter the life span of the post password cookie.
-	 *
-	 * By default, the cookie expires 10 days from creation. To turn this
-	 * into a session cookie, return 0.
-	 *
-	 * @since 3.7.0
-	 *
-	 * @param int $expires The expiry time, as passed to setcookie().
-	 */
-	$expire = apply_filters( 'post_password_expires', time() + 10 * DAY_IN_SECONDS );
-	$secure = ( 'https' === parse_url( site_url(), PHP_URL_SCHEME ) );
-	setcookie( 'wp-postpass_' . COOKIEHASH, $hasher->HashPassword( wp_unslash( $_POST['post_password'] ) ), $expire, COOKIEPATH, COOKIE_DOMAIN, $secure );
-
-	wp_safe_redirect( wp_get_referer() );
-	exit();
 
 case 'logout' :
 	check_admin_referer('log-out');

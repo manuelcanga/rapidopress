@@ -2055,8 +2055,6 @@ class WP_Query {
 
 		if ( ! empty( $search ) ) {
 			$search = " AND ({$search}) ";
-			if ( ! is_user_logged_in() )
-				$search .= " AND ($wpdb->posts.post_password = '') ";
 		}
 
 		return $search;
@@ -2870,15 +2868,6 @@ class WP_Query {
 			$post_type_object = get_post_type_object( $post_type );
 			if ( empty( $post_type_object ) )
 				$post_type_cap = $post_type;
-		}
-
-		if ( isset( $q['post_password'] ) ) {
-			$where .= $wpdb->prepare( " AND $wpdb->posts.post_password = %s", $q['post_password'] );
-			if ( empty( $q['perm'] ) ) {
-				$q['perm'] = 'readable';
-			}
-		} elseif ( isset( $q['has_password'] ) ) {
-			$where .= sprintf( " AND $wpdb->posts.post_password %s ''", $q['has_password'] ? '!=' : '=' );
 		}
 
 		if ( 'any' == $post_type ) {

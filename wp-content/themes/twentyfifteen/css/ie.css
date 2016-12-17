@@ -93,7 +93,6 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-.post-password-form input[type="submit"],
 .widecolumn #submit,
 .widecolumn .mu_register input[type="submit"] {
 	font-size: 16px;
@@ -161,7 +160,6 @@ textarea {
 	line-height: 64px;
 }
 
-.post-password-form label,
 .post-navigation .meta-nav,
 .comment-navigation,
 .image-navigation,

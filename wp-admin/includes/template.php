@@ -386,8 +386,7 @@ function get_inline_data($post) {
 	<div class="aa">' . mysql2date( 'Y', $post->post_date, false ) . '</div>
 	<div class="hh">' . mysql2date( 'H', $post->post_date, false ) . '</div>
 	<div class="mn">' . mysql2date( 'i', $post->post_date, false ) . '</div>
-	<div class="ss">' . mysql2date( 's', $post->post_date, false ) . '</div>
-	<div class="post_password">' . esc_html( $post->post_password ) . '</div>';
+	<div class="ss">' . mysql2date( 's', $post->post_date, false ) . '</div>';
 
 	if ( $post_type_object->hierarchical )
 		echo '<div class="post_parent">' . $post->post_parent . '</div>';
@@ -1489,19 +1488,7 @@ function find_posts_div($found_action = '') {
 <?php
 }
 
-/**
- * Display the post password.
- *
- * The password is passed through {@link esc_attr()} to ensure that it
- * is safe for placing in an html attribute.
- *
- * @since 2.7.0
- */
-function the_post_password() {
-	$post = get_post();
-	if ( isset( $post->post_password ) )
-		echo esc_attr( $post->post_password );
-}
+
 
 /**
  * Get the post title.
@@ -1644,8 +1631,6 @@ function _post_states($post) {
 	else
 		$post_status = '';
 
-	if ( !empty($post->post_password) )
-		$post_states['protected'] = __('Password protected');
 	if ( 'private' == $post->post_status && 'private' != $post_status )
 		$post_states['private'] = __('Private');
 	if ( 'draft' == $post->post_status && 'draft' != $post_status )

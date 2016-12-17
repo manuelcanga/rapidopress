@@ -68,17 +68,7 @@ if ( ! comments_open( $comment_post_ID ) ) {
 	 */
 	do_action( 'comment_on_draft', $comment_post_ID );
 	exit;
-} elseif ( post_password_required( $comment_post_ID ) ) {
-	/**
-	 * Fires when a comment is attempted on a password-protected post.
-	 *
-	 * @since 2.9.0
-	 *
-	 * @param int $comment_post_ID Post ID.
-	 */
-	do_action( 'comment_on_password_protected', $comment_post_ID );
-	exit;
-} else {
+}  else {
 	/**
 	 * Fires before a comment is posted.
 	 *

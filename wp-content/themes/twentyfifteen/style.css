@@ -593,30 +593,6 @@ textarea:focus {
 	outline: 0;
 }
 
-.post-password-form {
-	position: relative;
-}
-
-.post-password-form label {
-	color: #707070;
-	color: rgba(51, 51, 51, 0.7);
-	display: block;
-	font-family: "Noto Sans", sans-serif;
-	font-size: 12px;
-	font-size: 1.2rem;
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	line-height: 1.5;
-	text-transform: uppercase;
-}
-
-.post-password-form input[type="submit"] {
-	padding: 0.7917em;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-}
-
 input[type="checkbox"],
 input[type="radio"] {
 	padding: 0;
@@ -2831,7 +2807,6 @@ p > video {
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-	.post-password-form input[type="submit"],
 	.widecolumn #submit,
 	.widecolumn .mu_register input[type="submit"] {
 		font-size: 14px;
@@ -2887,7 +2862,6 @@ p > video {
 		width: 54px;
 	}
 
-	.post-password-form label,
 	.post-navigation .meta-nav,
 	.image-navigation,
 	.comment-navigation,
@@ -3429,7 +3403,6 @@ p > video {
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-	.post-password-form input[type="submit"],
 	.widecolumn #submit,
 	.widecolumn .mu_register input[type="submit"] {
 		font-size: 16px;
@@ -3481,7 +3454,6 @@ p > video {
 		width: 62px;
 	}
 
-	.post-password-form label,
 	.post-navigation .meta-nav,
 	.comment-navigation,
 	.image-navigation,
@@ -4004,7 +3976,6 @@ p > video {
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-	.post-password-form input[type="submit"],
 	.widecolumn #submit,
 	.widecolumn .mu_register input[type="submit"] {
 		font-size: 12px;
@@ -4072,7 +4043,6 @@ p > video {
 		display: none;
 	}
 
-	.post-password-form label,
 	.post-navigation .meta-nav,
 	.comment-navigation,
 	.image-navigation,
@@ -4643,7 +4613,6 @@ p > video {
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-	.post-password-form input[type="submit"],
 	.widecolumn #submit,
 	.widecolumn .mu_register input[type="submit"] {
 		font-size: 14px;
@@ -4700,7 +4669,6 @@ p > video {
 		height: 2.8824em;
 	}
 
-	.post-password-form label,
 	.post-navigation .meta-nav,
 	.comment-navigation,
 	.image-navigation,
@@ -5159,7 +5127,6 @@ p > video {
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-	.post-password-form input[type="submit"],
 	.widecolumn #submit,
 	.widecolumn .mu_register input[type="submit"] {
 		font-size: 16px;
@@ -5215,7 +5182,6 @@ p > video {
 		height: 2.5263em;
 	}
 
-	.post-password-form label,
 	.post-navigation .meta-nav,
 	.comment-navigation,
 	.image-navigation,

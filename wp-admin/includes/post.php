@@ -123,9 +123,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$post_data['post_status'] = 'auto-draft' === $previous_status ? 'draft' : $previous_status;
 	}
 
-	if ( isset( $post_data['post_password'] ) && ! current_user_can( $ptype->cap->publish_posts ) ) {
-		unset( $post_data['post_password'] );
-	}
 
 	if (!isset( $post_data['comment_status'] ))
 		$post_data['comment_status'] = 'closed';
@@ -215,14 +212,12 @@ function edit_post( $post_data = null ) {
 	if ( isset($post_data['visibility']) ) {
 		switch ( $post_data['visibility'] ) {
 			case 'public' :
-				$post_data['post_password'] = '';
 				break;
 			case 'password' :
 				unset( $post_data['sticky'] );
 				break;
 			case 'private' :
 				$post_data['post_status'] = 'private';
-				$post_data['post_password'] = '';
 				unset( $post_data['sticky'] );
 				break;
 		}
@@ -438,7 +433,7 @@ function bulk_edit_posts( $post_data = null ) {
 	$post_IDs = array_map( 'intval', (array) $post_data['post'] );
 
 	$reset = array(
-		'post_author', 'post_status', 'post_password',
+		'post_author', 'post_status', 
 		'post_parent', 'page_template', 'comment_status',
 		'ping_status', 'keep_private', 'tax_input',
 		'post_category', 'sticky', 'post_format',
@@ -597,7 +592,6 @@ function get_default_post_to_edit( $post_type = 'post', $create_in_db = false ) 
 		$post->post_author = '';
 		$post->post_date = '';
 		$post->post_date_gmt = '';
-		$post->post_password = '';
 		$post->post_name = '';
 		$post->post_type = $post_type;
 		$post->post_status = 'draft';
@@ -719,14 +713,12 @@ function wp_write_post() {
 	if ( isset($_POST['visibility']) ) {
 		switch ( $_POST['visibility'] ) {
 			case 'public' :
-				$_POST['post_password'] = '';
 				break;
 			case 'password' :
 				unset( $_POST['sticky'] );
 				break;
 			case 'private' :
 				$_POST['post_status'] = 'private';
-				$_POST['post_password'] = '';
 				unset( $_POST['sticky'] );
 				break;
 		}

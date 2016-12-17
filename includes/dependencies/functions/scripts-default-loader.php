@@ -400,7 +400,6 @@ function wp_default_scripts( &$scripts ) {
 			'private' => __('Private'),
 			'public' => __('Public'),
 			'publicSticky' => __('Public, Sticky'),
-			'password' => __('Password Protected'),
 			'privatelyPublished' => __('Privately Published'),
 			'published' => __('Published'),
 			'saveAlert' => __('The changes you made will be lost if you navigate away from this page.'),

@@ -356,7 +356,6 @@ function twentyfifteen_get_color_scheme_css( $colors ) {
 	.comment-author,
 	.comment-metadata,
 	.comment-metadata a,
-	.post-password-form label,
 	.comment-form label,
 	.comment-notes,
 	.comment-awaiting-moderation,

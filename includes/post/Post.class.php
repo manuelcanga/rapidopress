@@ -87,12 +87,6 @@ final class Post {
 	 */
 	public $ping_status = 'close';
 
-	/**
-	 * The post's password in plain text.
-	 *
-	 * @var string
-	 */
-	public $post_password = '';
 
 	/**
 	 * The post's slug.

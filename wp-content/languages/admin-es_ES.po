@@ -6118,11 +6118,6 @@ msgstr "Entrada guardada."
 msgid "Visibility:"
 msgstr "Visibilidad:"
 
-#: wp-admin/includes/meta-boxes.php:127 wp-admin/includes/meta-boxes.php:150
-#: wp-admin/includes/template.php:1686
-msgid "Password protected"
-msgstr "Protegida con contraseña"
-
 #: wp-admin/includes/meta-boxes.php:172 wp-admin/includes/meta-boxes.php:180
 msgid "Publish <b>immediately</b>"
 msgstr "Publicar <b>inmediatamente</b>"
