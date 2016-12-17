@@ -2843,7 +2843,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	$post_mime_type = isset( $postarr['post_mime_type'] ) ? $postarr['post_mime_type'] : '';
 
 	// Expected_slashed (everything!).
-	$data = compact( 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_content_filtered', 'post_title', 'post_excerpt', 'post_status', 'post_type', 'comment_status', 'ping_status', 'post_name', 'pinged', 'post_modified', 'post_modified_gmt', 'post_parent', 'menu_order', 'post_mime_type', 'guid' );
+	$data = compact( 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_content_filtered', 'post_title', 'post_excerpt', 'post_status', 'post_type', 'comment_status', 'ping_status', 'post_name',  'post_modified', 'post_modified_gmt', 'post_parent', 'menu_order', 'post_mime_type', 'guid' );
 
 
 
@@ -3537,30 +3537,16 @@ function wp_transition_post_status( $new_status, $old_status, $post ) {
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+ * @rapidopress deprecated
+ *
  * @param int    $post_id Post ID.
  * @param string $uri     Ping URI.
  * @return int How many rows were updated.
  */
 function add_ping( $post_id, $uri ) {
 	global $wpdb;
-	$pung = $wpdb->get_var( $wpdb->prepare( "SELECT pinged FROM $wpdb->posts WHERE ID = %d", $post_id ));
-	$pung = trim($pung);
-	$pung = preg_split('/\s/', $pung);
-	$pung[] = $uri;
-	$new = implode("\n", $pung);
 
-	/**
-	 * Filter the new ping URL to add for the given post.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $new New ping URL to add.
-	 */
-	$new = apply_filters( 'add_ping', $new );
-
-	// expected_slashed ($new).
-	$new = wp_unslash($new);
-	return $wpdb->update( $wpdb->posts, array( 'pinged' => $new ), array( 'ID' => $post_id ) );
+	return 0;
 }
 
 /**

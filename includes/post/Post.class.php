@@ -96,13 +96,6 @@ final class Post {
 	public $post_name = '';
 
 	/**
-	 * URLs that have been pinged.
-	 *
-	 * @var string
-	 */
-	public $pinged = '';
-
-	/**
 	 * The post's local modified time.
 	 *
 	 * @var string

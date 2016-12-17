@@ -595,7 +595,6 @@ function get_default_post_to_edit( $post_type = 'post', $create_in_db = false ) 
 		$post->post_name = '';
 		$post->post_type = $post_type;
 		$post->post_status = 'draft';
-		$post->pinged = '';
 		$post->comment_status = get_option( 'default_comment_status' );
 		$post->ping_status = 0;
 		$post->post_pingback = 0;

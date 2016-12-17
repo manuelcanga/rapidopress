@@ -137,7 +137,6 @@ CREATE TABLE $wpdb->posts (
   comment_status varchar(20) NOT NULL default 'open',
   ping_status varchar(20) NOT NULL default 'open',
   post_name varchar(200) NOT NULL default '',
-  pinged text NOT NULL,
   post_modified datetime NOT NULL default '0000-00-00 00:00:00',
   post_modified_gmt datetime NOT NULL default '0000-00-00 00:00:00',
   post_content_filtered longtext NOT NULL,
